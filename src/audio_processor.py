@@ -111,10 +111,12 @@ class AudioProcessor:
 
     def compute_spectral_features(self, y: np.ndarray) -> dict:
         """
-        Computes auxiliary signal metrics.
+        Computes auxiliary signal metrics including centroid, ZCR, rolloff, and spectral flatness.
         """
         centroid = float(np.mean(librosa.feature.spectral_centroid(y=y, sr=self.target_sr)))
         zcr = float(np.mean(librosa.feature.zero_crossing_rate(y=y)))
+        flatness = float(np.mean(librosa.feature.spectral_flatness(y=y)))
+        rolloff = float(np.mean(librosa.feature.spectral_rolloff(y=y, sr=self.target_sr, roll_percent=0.85)))
         
         stft = np.abs(librosa.stft(y))
         freqs = librosa.fft_frequencies(sr=self.target_sr)
@@ -127,5 +129,7 @@ class AudioProcessor:
         return {
             "spectral_centroid_hz": round(centroid, 2),
             "zero_crossing_rate": round(zcr, 4),
+            "spectral_flatness": round(flatness, 6),
+            "spectral_rolloff_hz": round(rolloff, 2),
             "high_freq_energy_ratio": round(hf_ratio, 4)
         }

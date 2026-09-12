@@ -42,31 +42,41 @@ class BiometricsEngine:
     def assess_anti_spoofing(self, lfcc_features: np.ndarray, spectral_features: dict) -> dict:
         """
         Assesses whether the audio is a real human voice vs. a synthetic / AI-generated voice or replay attack.
-        Uses LFCC variance anomalies and high-frequency spectral ratios.
+        Uses spectral rolloff, spectral flatness, LFCC subband variance, and centroid distributions.
         """
-        # Synthetic TTS voices often have unusually low variance in higher LFCC cepstral bins
         lfcc_std_sum = float(np.sum(lfcc_features[len(lfcc_features)//2:]))
         hf_energy = spectral_features.get("high_freq_energy_ratio", 0.0)
+        centroid = spectral_features.get("spectral_centroid_hz", 1500)
+        rolloff = spectral_features.get("spectral_rolloff_hz", 1500)
+        flatness = spectral_features.get("spectral_flatness", 0.0001)
 
-        # Baseline heuristic calculation for mini demo
         risk_points = 0.0
 
-        # Heuristic 1: Extremely smooth/flat high-frequency LFCC variance (vocoder artifact)
-        if lfcc_std_sum < 0.5:
+        # Heuristic 1: High Spectral Rolloff (High-frequency synthetic vocoder excitation)
+        if rolloff > 3000:
+            risk_points += 45.0
+        elif rolloff > 1500:
+            risk_points += 30.0
+        elif rolloff > 900:
+            risk_points += 15.0
+
+        # Heuristic 2: Elevated Spectral Flatness (Wiener entropy from vocoder/noise smearing)
+        if flatness > 0.0003:
             risk_points += 40.0
-        elif lfcc_std_sum < 1.0:
-            risk_points += 20.0
-
-        # Heuristic 2: Abnormally low or suppressed high-frequency energy ratio (over-compressed TTS audio)
-        if hf_energy < 0.005 or hf_energy > 0.35:
-            risk_points += 35.0
-
-        # Heuristic 3: Spectral Centroid sharpness anomaly
-        centroid = spectral_features.get("spectral_centroid_hz", 1500)
-        if centroid < 1000 or centroid > 3800:
+        elif flatness > 0.00004:
             risk_points += 25.0
 
-        risk_score = min(100.0, max(0.0, risk_points))
+        # Heuristic 3: Spectral Centroid anomaly (Vocoder phase buzz)
+        if centroid > 1800:
+            risk_points += 25.0
+        elif centroid > 900:
+            risk_points += 15.0
+
+        # Heuristic 4: Extremely smooth/flat high-frequency LFCC variance
+        if lfcc_std_sum < 0.2:
+            risk_points += 20.0
+
+        risk_score = min(95.0, max(5.0, risk_points))
         real_score = round(100.0 - risk_score, 1)
         is_spoof = real_score < 50.0
 
@@ -79,5 +89,7 @@ class BiometricsEngine:
             "real_score_percentage": real_score,
             "risk_score_percentage": round(risk_score, 1),
             "lfcc_variance_metric": round(lfcc_std_sum, 4),
+            "spectral_flatness": flatness,
+            "spectral_rolloff_hz": rolloff,
             "high_freq_energy_ratio": hf_energy
         }
