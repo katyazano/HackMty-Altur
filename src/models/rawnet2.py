@@ -115,6 +115,7 @@ class RawNet2(nn.Module):
             spoof_prob = 1.0 - real_prob
 
             real_pct = round(real_prob * 100, 1)
+            risk_pct = round(spoof_prob * 100, 1)
             is_real = real_pct >= 50.0
             is_spoof = not is_real
 
