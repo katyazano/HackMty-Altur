@@ -92,14 +92,18 @@ class RawNet2(nn.Module):
             logits = self.forward(waveform_tensor)
             probs = F.softmax(logits, dim=1)
             # Class 0: Bonafide (Real), Class 1: Spoof (Synthetic)
+            real_prob = float(probs[0, 0].item())
             spoof_prob = float(probs[0, 1].item())
+            real_pct = round(real_prob * 100, 2)
             risk_pct = round(spoof_prob * 100, 2)
-            is_spoof = risk_pct >= 50.0
+            is_spoof = real_pct < 50.0
 
             return {
                 "model_name": "RawNet2",
                 "is_spoof": is_spoof,
+                "real_score_pct": real_pct,
+                "real_score_percentage": real_pct,
                 "spoof_risk_pct": risk_pct,
-                "confidence_pct": round(max(float(probs[0, 0].item()), float(probs[0, 1].item())) * 100, 2),
+                "confidence_pct": round(max(real_prob, spoof_prob) * 100, 2),
                 "verdict": "SYNTHETIC / SPOOF" if is_spoof else "AUTHENTIC HUMAN"
             }

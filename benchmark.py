@@ -69,10 +69,10 @@ def run_benchmark():
 
     # 3. Benchmark Execution
     print("\n[3/3] Running Side-by-Side Inference Benchmark...")
-    print("-" * 80)
-    header = f"{'Audio Sample':<26} | {'DSP Baseline':<16} | {'RawNet2':<16} | {'AASIST-L':<16}"
+    print("-" * 96)
+    header = f"{'Audio Sample':<26} | {'DSP Baseline':<22} | {'RawNet2':<22} | {'AASIST-L':<22}"
     print(header)
-    print("-" * 80)
+    print("-" * 96)
 
     results = []
 
@@ -98,11 +98,11 @@ def run_benchmark():
         aasist_res = aasist_model.predict_spoof(tensor_in)
         aasist_latency = (time.perf_counter() - t0) * 1000
 
-        dsp_str = f"{'SPOOF' if dsp_res['is_spoof'] else 'REAL'} ({dsp_latency:.1f}ms)"
-        raw_str = f"{'SPOOF' if raw_res['is_spoof'] else 'REAL'} ({raw_latency:.1f}ms)"
-        aasist_str = f"{'SPOOF' if aasist_res['is_spoof'] else 'REAL'} ({aasist_latency:.1f}ms)"
+        dsp_str = f"{'SPOOF' if dsp_res['is_spoof'] else 'REAL'} ({dsp_res.get('real_score_pct', 0)}%, {dsp_latency:.1f}ms)"
+        raw_str = f"{'SPOOF' if raw_res['is_spoof'] else 'REAL'} ({raw_res.get('real_score_pct', 0)}%, {raw_latency:.1f}ms)"
+        aasist_str = f"{'SPOOF' if aasist_res['is_spoof'] else 'REAL'} ({aasist_res.get('real_score_pct', 0)}%, {aasist_latency:.1f}ms)"
 
-        print(f"{label:<26} | {dsp_str:<16} | {raw_str:<16} | {aasist_str:<16}")
+        print(f"{label:<26} | {dsp_str:<22} | {raw_str:<22} | {aasist_str:<22}")
 
         results.append({
             "label": label,

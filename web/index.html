@@ -480,9 +480,19 @@
         const raw = item.rawnet2 || {};
         const aas = item.aasist || {};
 
-        const makeModelBadge = (modelData, defaultRisk) => {
+        const makeModelBadge = (modelData, defaultScore) => {
           const isSpoof = modelData.is_spoof;
-          const risk = modelData.spoof_risk_pct !== undefined ? modelData.spoof_risk_pct : (modelData.risk_score_percentage !== undefined ? modelData.risk_score_percentage : defaultRisk);
+          // Authenticity score: 100% is Real Human, 0% is Spoof
+          let realScore = modelData.real_score_pct !== undefined 
+            ? modelData.real_score_pct 
+            : (modelData.real_score_percentage !== undefined 
+                ? modelData.real_score_percentage 
+                : (modelData.spoof_risk_pct !== undefined 
+                    ? (100 - modelData.spoof_risk_pct) 
+                    : (modelData.risk_score_percentage !== undefined 
+                        ? (100 - modelData.risk_score_percentage) 
+                        : defaultScore)));
+          realScore = Number(realScore).toFixed(1);
           const isCorr = modelData.is_correct;
           const lat = modelData.latency_ms || 0.5;
 
@@ -493,7 +503,7 @@
           if (isCorr === true) corrIcon = '<span class="text-emerald-400 font-bold ml-1 text-xs" title="Correct Prediction">✓</span>';
           else if (isCorr === false) corrIcon = '<span class="text-rose-400 font-bold ml-1 text-xs" title="Incorrect Prediction">✗</span>';
 
-          return `<div class="flex items-center gap-1.5"><span class="px-2 py-0.5 rounded text-[11px] font-bold border ${predClass}">${predTxt} (${risk}%)${corrIcon}</span> <span class="text-[10px] text-slate-400 font-mono">${lat}ms</span></div>`;
+          return `<div class="flex items-center gap-1.5"><span class="px-2 py-0.5 rounded text-[11px] font-bold border ${predClass}">${predTxt} (${realScore}%)${corrIcon}</span> <span class="text-[10px] text-slate-400 font-mono">${lat}ms</span></div>`;
         };
 
         const tr = document.createElement('tr');
