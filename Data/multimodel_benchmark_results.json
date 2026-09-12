@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-09-12 21:16:55",
+  "timestamp": "2026-09-12 22:30:51",
   "total_test_samples": 71,
   "calibrated_threshold": 0.9424,
   "uncertainty_band": [
@@ -11,17 +11,17 @@
     "RawNet2": {
       "accuracy_pct": 88.73,
       "correct_count": 63,
-      "mean_latency_ms": 50.51
+      "mean_latency_ms": 67.9
     },
     "AASIST": {
       "accuracy_pct": 84.51,
       "correct_count": 60,
-      "mean_latency_ms": 68.73
+      "mean_latency_ms": 89.81
     },
     "Triple_Ensemble": {
       "accuracy_pct": 91.55,
       "correct_count": 65,
-      "mean_latency_ms": 162.12
+      "mean_latency_ms": 219.63
     }
   },
   "records": [
@@ -33,19 +33,19 @@
       "rawnet2": {
         "score_pct": 2.0,
         "prediction": "SYNTHETIC",
-        "latency_ms": 57.68
+        "latency_ms": 53.14
       },
       "aasist": {
         "score_pct": 3.3,
         "prediction": "SYNTHETIC",
-        "latency_ms": 67.61
+        "latency_ms": 68.2
       },
       "triple_ensemble": {
         "verdict": "synthetic",
         "confidence_score": 0.0188,
         "business_action": "BLOCK_TRANSACTION (Synthetic AI Voice Detected)",
         "is_correct": true,
-        "latency_ms": 167.99
+        "latency_ms": 229.72
       }
     },
     {
@@ -56,19 +56,19 @@
       "rawnet2": {
         "score_pct": 0.9,
         "prediction": "SYNTHETIC",
-        "latency_ms": 50.0
+        "latency_ms": 56.59
       },
       "aasist": {
         "score_pct": 7.3,
         "prediction": "SYNTHETIC",
-        "latency_ms": 65.95
+        "latency_ms": 87.42
       },
       "triple_ensemble": {
         "verdict": "synthetic",
         "confidence_score": 0.0142,
         "business_action": "BLOCK_TRANSACTION (Synthetic AI Voice Detected)",
         "is_correct": true,
-        "latency_ms": 167.63
+        "latency_ms": 229.51
       }
     },
     {
@@ -79,19 +79,19 @@
       "rawnet2": {
         "score_pct": 4.4,
         "prediction": "SYNTHETIC",
-        "latency_ms": 49.14
+        "latency_ms": 71.94
       },
       "aasist": {
         "score_pct": 25.6,
         "prediction": "SYNTHETIC",
-        "latency_ms": 66.09
+        "latency_ms": 97.0
       },
       "triple_ensemble": {
         "verdict": "synthetic",
         "confidence_score": 0.0144,
         "business_action": "BLOCK_TRANSACTION (Synthetic AI Voice Detected)",
         "is_correct": true,
-        "latency_ms": 164.87
+        "latency_ms": 196.76
       }
     },
     {
@@ -102,19 +102,19 @@
       "rawnet2": {
         "score_pct": 94.9,
         "prediction": "HUMAN",
-        "latency_ms": 49.37
+        "latency_ms": 87.28
       },
       "aasist": {
         "score_pct": 64.4,
         "prediction": "HUMAN",
-        "latency_ms": 70.48
+        "latency_ms": 69.33
       },
       "triple_ensemble": {
         "verdict": "human",
         "confidence_score": 0.9829,
         "business_action": "ALLOW_TRANSACTION (Verified Human Voice)",
         "is_correct": true,
-        "latency_ms": 169.29
+        "latency_ms": 161.77
       }
     },
     {
@@ -125,19 +125,19 @@
       "rawnet2": {
         "score_pct": 17.9,
         "prediction": "SYNTHETIC",
-        "latency_ms": 49.25
+        "latency_ms": 53.45
       },
       "aasist": {
         "score_pct": 33.7,
         "prediction": "SYNTHETIC",
-        "latency_ms": 65.02
+        "latency_ms": 67.56
       },
       "triple_ensemble": {
         "verdict": "synthetic",
         "confidence_score": 0.0576,
         "business_action": "BLOCK_TRANSACTION (Synthetic AI Voice Detected)",
         "is_correct": false,
-        "latency_ms": 155.2
+        "latency_ms": 163.39
       }
     },
     {
@@ -148,19 +148,19 @@
       "rawnet2": {
         "score_pct": 0.7,
         "prediction": "SYNTHETIC",
-        "latency_ms": 49.14
+        "latency_ms": 50.25
       },
       "aasist": {
         "score_pct": 2.5,
         "prediction": "SYNTHETIC",
-        "latency_ms": 66.39
+        "latency_ms": 69.15
       },
       "triple_ensemble": {
         "verdict": "synthetic",
         "confidence_score": 0.0174,
         "business_action": "BLOCK_TRANSACTION (Synthetic AI Voice Detected)",
         "is_correct": true,
-        "latency_ms": 157.0
+        "latency_ms": 163.27
       }
     },
     {
@@ -171,19 +171,19 @@
       "rawnet2": {
         "score_pct": 2.5,
         "prediction": "SYNTHETIC",
-        "latency_ms": 49.32
+        "latency_ms": 50.6
       },
       "aasist": {
         "score_pct": 16.0,
         "prediction": "SYNTHETIC",
-        "latency_ms": 65.52
+        "latency_ms": 76.13
       },
       "triple_ensemble": {
         "verdict": "synthetic",
         "confidence_score": 0.0169,
         "business_action": "BLOCK_TRANSACTION (Synthetic AI Voice Detected)",
         "is_correct": true,
-        "latency_ms": 162.13
+        "latency_ms": 161.49
       }
     },
     {
@@ -194,19 +194,19 @@
       "rawnet2": {
         "score_pct": 13.6,
         "prediction": "SYNTHETIC",
-        "latency_ms": 48.6
+        "latency_ms": 51.27
       },
       "aasist": {
         "score_pct": 19.6,
         "prediction": "SYNTHETIC",
-        "latency_ms": 65.73
+        "latency_ms": 66.69
       },
       "triple_ensemble": {
         "verdict": "human",
         "confidence_score": 0.1,
         "business_action": "ALLOW_TRANSACTION (Verified Human Voice)",
         "is_correct": true,
-        "latency_ms": 155.95
+        "latency_ms": 172.17
       }
     },
     {
@@ -217,19 +217,19 @@
       "rawnet2": {
         "score_pct": 98.3,
         "prediction": "HUMAN",
-        "latency_ms": 49.71
+        "latency_ms": 57.1
       },
       "aasist": {
         "score_pct": 89.7,
         "prediction": "HUMAN",
-        "latency_ms": 65.99
+        "latency_ms": 77.72
       },
       "triple_ensemble": {
         "verdict": "human",
         "confidence_score": 0.9834,
         "business_action": "ALLOW_TRANSACTION (Verified Human Voice)",
         "is_correct": true,
-        "latency_ms": 194.49
+        "latency_ms": 182.93
       }
     },
     {
@@ -240,19 +240,19 @@
       "rawnet2": {
         "score_pct": 92.4,
         "prediction": "HUMAN",
-        "latency_ms": 48.99
+        "latency_ms": 62.82
       },
       "aasist": {
         "score_pct": 62.8,
         "prediction": "HUMAN",
-        "latency_ms": 64.88
+        "latency_ms": 84.09
       },
       "triple_ensemble": {
         "verdict": "human",
         "confidence_score": 0.9812,
         "business_action": "ALLOW_TRANSACTION (Verified Human Voice)",
         "is_correct": true,
-        "latency_ms": 158.51
+        "latency_ms": 178.34
       }
     },
     {
@@ -263,19 +263,19 @@
       "rawnet2": {
         "score_pct": 4.3,
         "prediction": "SYNTHETIC",
-        "latency_ms": 54.87
+        "latency_ms": 54.24
       },
       "aasist": {
         "score_pct": 22.7,
         "prediction": "SYNTHETIC",
-        "latency_ms": 64.07
+        "latency_ms": 72.38
       },
       "triple_ensemble": {
         "verdict": "synthetic",
         "confidence_score": 0.0139,
         "business_action": "BLOCK_TRANSACTION (Synthetic AI Voice Detected)",
         "is_correct": true,
-        "latency_ms": 152.73
+        "latency_ms": 176.67
       }
     },
     {
@@ -286,19 +286,19 @@
       "rawnet2": {
         "score_pct": 0.5,
         "prediction": "SYNTHETIC",
-        "latency_ms": 48.8
+        "latency_ms": 57.01
       },
       "aasist": {
         "score_pct": 3.8,
         "prediction": "SYNTHETIC",
-        "latency_ms": 64.43
+        "latency_ms": 80.9
       },
       "triple_ensemble": {
         "verdict": "synthetic",
         "confidence_score": 0.0136,
         "business_action": "BLOCK_TRANSACTION (Synthetic AI Voice Detected)",
         "is_correct": true,
-        "latency_ms": 152.59
+        "latency_ms": 172.6
       }
     },
     {
@@ -309,19 +309,19 @@
       "rawnet2": {
         "score_pct": 5.5,
         "prediction": "SYNTHETIC",
-        "latency_ms": 53.77
+        "latency_ms": 55.03
       },
       "aasist": {
         "score_pct": 31.9,
         "prediction": "SYNTHETIC",
-        "latency_ms": 65.56
+        "latency_ms": 73.08
       },
       "triple_ensemble": {
         "verdict": "human",
         "confidence_score": 0.3036,
         "business_action": "ALLOW_TRANSACTION (Verified Human Voice)",
         "is_correct": true,
-        "latency_ms": 155.64
+        "latency_ms": 171.45
       }
     },
     {
@@ -332,19 +332,19 @@
       "rawnet2": {
         "score_pct": 53.4,
         "prediction": "HUMAN",
-        "latency_ms": 57.01
+        "latency_ms": 58.14
       },
       "aasist": {
         "score_pct": 58.2,
         "prediction": "HUMAN",
-        "latency_ms": 101.14
+        "latency_ms": 139.39
       },
       "triple_ensemble": {
         "verdict": "human",
         "confidence_score": 0.8555,
         "business_action": "ALLOW_TRANSACTION (Verified Human Voice)",
         "is_correct": true,
-        "latency_ms": 168.01
+        "latency_ms": 241.64
       }
     },
     {
@@ -355,19 +355,19 @@
       "rawnet2": {
         "score_pct": 1.0,
         "prediction": "SYNTHETIC",
-        "latency_ms": 51.22
+        "latency_ms": 54.11
       },
       "aasist": {
         "score_pct": 2.8,
         "prediction": "SYNTHETIC",
-        "latency_ms": 109.06
+        "latency_ms": 70.03
       },
       "triple_ensemble": {
         "verdict": "synthetic",
         "confidence_score": 0.0149,
         "business_action": "BLOCK_TRANSACTION (Synthetic AI Voice Detected)",
         "is_correct": true,
-        "latency_ms": 157.41
+        "latency_ms": 267.99
       }
     },
     {
@@ -378,19 +378,19 @@
       "rawnet2": {
         "score_pct": 87.6,
         "prediction": "HUMAN",
-        "latency_ms": 49.54
+        "latency_ms": 53.76
       },
       "aasist": {
         "score_pct": 72.4,
         "prediction": "HUMAN",
-        "latency_ms": 66.7
+        "latency_ms": 68.44
       },
       "triple_ensemble": {
         "verdict": "human",
         "confidence_score": 0.981,
         "business_action": "ALLOW_TRANSACTION (Verified Human Voice)",
         "is_correct": true,
-        "latency_ms": 155.68
+        "latency_ms": 176.11
       }
     },
     {
@@ -401,19 +401,19 @@
       "rawnet2": {
         "score_pct": 70.2,
         "prediction": "HUMAN",
-        "latency_ms": 54.01
+        "latency_ms": 62.23
       },
       "aasist": {
         "score_pct": 55.5,
         "prediction": "HUMAN",
-        "latency_ms": 65.01
+        "latency_ms": 71.26
       },
       "triple_ensemble": {
         "verdict": "human",
         "confidence_score": 0.967,
         "business_action": "ALLOW_TRANSACTION (Verified Human Voice)",
         "is_correct": true,
-        "latency_ms": 158.23
+        "latency_ms": 193.12
       }
     },
     {
@@ -424,19 +424,19 @@
       "rawnet2": {
         "score_pct": 2.9,
         "prediction": "SYNTHETIC",
-        "latency_ms": 49.88
+        "latency_ms": 59.6
       },
       "aasist": {
         "score_pct": 20.1,
         "prediction": "SYNTHETIC",
-        "latency_ms": 81.8
+        "latency_ms": 71.1
       },
       "triple_ensemble": {
         "verdict": "synthetic",
         "confidence_score": 0.0125,
         "business_action": "BLOCK_TRANSACTION (Synthetic AI Voice Detected)",
         "is_correct": true,
-        "latency_ms": 152.76
+        "latency_ms": 258.72
       }
     },
     {
@@ -447,19 +447,19 @@
       "rawnet2": {
         "score_pct": 2.5,
         "prediction": "SYNTHETIC",
-        "latency_ms": 48.82
+        "latency_ms": 52.9
       },
       "aasist": {
         "score_pct": 16.8,
         "prediction": "SYNTHETIC",
-        "latency_ms": 67.15
+        "latency_ms": 68.96
       },
       "triple_ensemble": {
         "verdict": "synthetic",
         "confidence_score": 0.0137,
         "business_action": "BLOCK_TRANSACTION (Synthetic AI Voice Detected)",
         "is_correct": true,
-        "latency_ms": 160.53
+        "latency_ms": 167.85
       }
     },
     {
@@ -470,19 +470,19 @@
       "rawnet2": {
         "score_pct": 98.8,
         "prediction": "HUMAN",
-        "latency_ms": 50.74
+        "latency_ms": 57.11
       },
       "aasist": {
         "score_pct": 99.9,
         "prediction": "HUMAN",
-        "latency_ms": 73.95
+        "latency_ms": 99.1
       },
       "triple_ensemble": {
         "verdict": "human",
         "confidence_score": 0.9831,
         "business_action": "ALLOW_TRANSACTION (Verified Human Voice)",
         "is_correct": true,
-        "latency_ms": 154.71
+        "latency_ms": 214.5
       }
     },
     {
@@ -493,19 +493,19 @@
       "rawnet2": {
         "score_pct": 84.1,
         "prediction": "HUMAN",
-        "latency_ms": 50.66
+        "latency_ms": 64.3
       },
       "aasist": {
         "score_pct": 62.1,
         "prediction": "HUMAN",
-        "latency_ms": 66.79
+        "latency_ms": 84.76
       },
       "triple_ensemble": {
         "verdict": "human",
         "confidence_score": 0.9836,
         "business_action": "ALLOW_TRANSACTION (Verified Human Voice)",
         "is_correct": true,
-        "latency_ms": 153.73
+        "latency_ms": 202.6
       }
     },
     {
@@ -516,19 +516,19 @@
       "rawnet2": {
         "score_pct": 92.4,
         "prediction": "HUMAN",
-        "latency_ms": 48.96
+        "latency_ms": 54.52
       },
       "aasist": {
         "score_pct": 62.6,
         "prediction": "HUMAN",
-        "latency_ms": 66.15
+        "latency_ms": 71.64
       },
       "triple_ensemble": {
         "verdict": "human",
         "confidence_score": 0.9673,
         "business_action": "ALLOW_TRANSACTION (Verified Human Voice)",
         "is_correct": true,
-        "latency_ms": 229.56
+        "latency_ms": 193.12
       }
     },
     {
@@ -539,19 +539,19 @@
       "rawnet2": {
         "score_pct": 0.4,
         "prediction": "SYNTHETIC",
-        "latency_ms": 64.67
+        "latency_ms": 59.32
       },
       "aasist": {
         "score_pct": 7.0,
         "prediction": "SYNTHETIC",
-        "latency_ms": 82.11
+        "latency_ms": 77.64
       },
       "triple_ensemble": {
         "verdict": "synthetic",
         "confidence_score": 0.0181,
         "business_action": "BLOCK_TRANSACTION (Synthetic AI Voice Detected)",
         "is_correct": true,
-        "latency_ms": 173.08
+        "latency_ms": 177.92
       }
     },
     {
@@ -562,19 +562,19 @@
       "rawnet2": {
         "score_pct": 0.4,
         "prediction": "SYNTHETIC",
-        "latency_ms": 49.12
+        "latency_ms": 56.34
       },
       "aasist": {
         "score_pct": 2.7,
         "prediction": "SYNTHETIC",
-        "latency_ms": 67.77
+        "latency_ms": 83.16
       },
       "triple_ensemble": {
         "verdict": "synthetic",
         "confidence_score": 0.0193,
         "business_action": "BLOCK_TRANSACTION (Synthetic AI Voice Detected)",
         "is_correct": true,
-        "latency_ms": 153.83
+        "latency_ms": 172.59
       }
     },
     {
@@ -585,19 +585,19 @@
       "rawnet2": {
         "score_pct": 67.6,
         "prediction": "HUMAN",
-        "latency_ms": 49.58
+        "latency_ms": 54.03
       },
       "aasist": {
         "score_pct": 50.2,
         "prediction": "HUMAN",
-        "latency_ms": 65.48
+        "latency_ms": 95.12
       },
       "triple_ensemble": {
         "verdict": "human",
         "confidence_score": 0.9769,
         "business_action": "ALLOW_TRANSACTION (Verified Human Voice)",
         "is_correct": true,
-        "latency_ms": 155.74
+        "latency_ms": 199.02
       }
     },
     {
@@ -608,19 +608,19 @@
       "rawnet2": {
         "score_pct": 0.6,
         "prediction": "SYNTHETIC",
-        "latency_ms": 53.3
+        "latency_ms": 73.48
       },
       "aasist": {
         "score_pct": 6.3,
         "prediction": "SYNTHETIC",
-        "latency_ms": 65.91
+        "latency_ms": 77.65
       },
       "triple_ensemble": {
         "verdict": "synthetic",
         "confidence_score": 0.016,
         "business_action": "BLOCK_TRANSACTION (Synthetic AI Voice Detected)",
         "is_correct": true,
-        "latency_ms": 169.15
+        "latency_ms": 165.92
       }
     },
     {
@@ -631,19 +631,19 @@
       "rawnet2": {
         "score_pct": 0.4,
         "prediction": "SYNTHETIC",
-        "latency_ms": 48.43
+        "latency_ms": 57.8
       },
       "aasist": {
         "score_pct": 7.9,
         "prediction": "SYNTHETIC",
-        "latency_ms": 65.07
+        "latency_ms": 76.14
       },
       "triple_ensemble": {
         "verdict": "synthetic",
         "confidence_score": 0.014,
         "business_action": "BLOCK_TRANSACTION (Synthetic AI Voice Detected)",
         "is_correct": true,
-        "latency_ms": 152.68
+        "latency_ms": 174.83
       }
     },
     {
@@ -654,19 +654,19 @@
       "rawnet2": {
         "score_pct": 3.1,
         "prediction": "SYNTHETIC",
-        "latency_ms": 49.73
+        "latency_ms": 58.35
       },
       "aasist": {
         "score_pct": 26.0,
         "prediction": "SYNTHETIC",
-        "latency_ms": 66.92
+        "latency_ms": 73.82
       },
       "triple_ensemble": {
         "verdict": "synthetic",
         "confidence_score": 0.0128,
         "business_action": "BLOCK_TRANSACTION (Synthetic AI Voice Detected)",
         "is_correct": true,
-        "latency_ms": 154.99
+        "latency_ms": 207.31
       }
     },
     {
@@ -677,19 +677,19 @@
       "rawnet2": {
         "score_pct": 0.9,
         "prediction": "SYNTHETIC",
-        "latency_ms": 50.38
+        "latency_ms": 63.18
       },
       "aasist": {
         "score_pct": 2.9,
         "prediction": "SYNTHETIC",
-        "latency_ms": 72.72
+        "latency_ms": 86.97
       },
       "triple_ensemble": {
         "verdict": "synthetic",
         "confidence_score": 0.0131,
         "business_action": "BLOCK_TRANSACTION (Synthetic AI Voice Detected)",
         "is_correct": true,
-        "latency_ms": 191.04
+        "latency_ms": 274.82
       }
     },
     {
@@ -700,19 +700,19 @@
       "rawnet2": {
         "score_pct": 0.7,
         "prediction": "SYNTHETIC",
-        "latency_ms": 51.04
+        "latency_ms": 64.34
       },
       "aasist": {
         "score_pct": 3.3,
         "prediction": "SYNTHETIC",
-        "latency_ms": 66.72
+        "latency_ms": 87.63
       },
       "triple_ensemble": {
         "verdict": "synthetic",
         "confidence_score": 0.0172,
         "business_action": "BLOCK_TRANSACTION (Synthetic AI Voice Detected)",
         "is_correct": true,
-        "latency_ms": 160.36
+        "latency_ms": 245.09
       }
     },
     {
@@ -723,19 +723,19 @@
       "rawnet2": {
         "score_pct": 73.3,
         "prediction": "HUMAN",
-        "latency_ms": 49.26
+        "latency_ms": 94.59
       },
       "aasist": {
         "score_pct": 55.7,
         "prediction": "HUMAN",
-        "latency_ms": 79.51
+        "latency_ms": 187.53
       },
       "triple_ensemble": {
         "verdict": "human",
         "confidence_score": 0.981,
         "business_action": "ALLOW_TRANSACTION (Verified Human Voice)",
         "is_correct": true,
-        "latency_ms": 173.79
+        "latency_ms": 293.04
       }
     },
     {
@@ -746,19 +746,19 @@
       "rawnet2": {
         "score_pct": 0.9,
         "prediction": "SYNTHETIC",
-        "latency_ms": 49.28
+        "latency_ms": 69.21
       },
       "aasist": {
         "score_pct": 16.7,
         "prediction": "SYNTHETIC",
-        "latency_ms": 65.59
+        "latency_ms": 166.47
       },
       "triple_ensemble": {
         "verdict": "synthetic",
         "confidence_score": 0.0128,
         "business_action": "BLOCK_TRANSACTION (Synthetic AI Voice Detected)",
         "is_correct": true,
-        "latency_ms": 153.77
+        "latency_ms": 266.24
       }
     },
     {
@@ -769,19 +769,19 @@
       "rawnet2": {
         "score_pct": 4.9,
         "prediction": "SYNTHETIC",
-        "latency_ms": 51.13
+        "latency_ms": 92.53
       },
       "aasist": {
         "score_pct": 26.5,
         "prediction": "SYNTHETIC",
-        "latency_ms": 79.92
+        "latency_ms": 96.87
       },
       "triple_ensemble": {
         "verdict": "synthetic",
         "confidence_score": 0.0137,
         "business_action": "BLOCK_TRANSACTION (Synthetic AI Voice Detected)",
         "is_correct": true,
-        "latency_ms": 176.64
+        "latency_ms": 289.58
       }
     },
     {
@@ -792,19 +792,19 @@
       "rawnet2": {
         "score_pct": 99.6,
         "prediction": "HUMAN",
-        "latency_ms": 50.47
+        "latency_ms": 124.01
       },
       "aasist": {
         "score_pct": 96.2,
         "prediction": "HUMAN",
-        "latency_ms": 65.04
+        "latency_ms": 98.08
       },
       "triple_ensemble": {
         "verdict": "human",
         "confidence_score": 0.9839,
         "business_action": "ALLOW_TRANSACTION (Verified Human Voice)",
         "is_correct": true,
-        "latency_ms": 152.51
+        "latency_ms": 435.22
       }
     },
     {
@@ -815,19 +815,19 @@
       "rawnet2": {
         "score_pct": 91.1,
         "prediction": "HUMAN",
-        "latency_ms": 49.28
+        "latency_ms": 110.19
       },
       "aasist": {
         "score_pct": 84.0,
         "prediction": "HUMAN",
-        "latency_ms": 65.33
+        "latency_ms": 103.62
       },
       "triple_ensemble": {
         "verdict": "human",
         "confidence_score": 0.9839,
         "business_action": "ALLOW_TRANSACTION (Verified Human Voice)",
         "is_correct": true,
-        "latency_ms": 156.61
+        "latency_ms": 221.85
       }
     },
     {
@@ -838,19 +838,19 @@
       "rawnet2": {
         "score_pct": 89.0,
         "prediction": "HUMAN",
-        "latency_ms": 48.58
+        "latency_ms": 59.15
       },
       "aasist": {
         "score_pct": 60.7,
         "prediction": "HUMAN",
-        "latency_ms": 64.23
+        "latency_ms": 116.8
       },
       "triple_ensemble": {
         "verdict": "human",
         "confidence_score": 0.9816,
         "business_action": "ALLOW_TRANSACTION (Verified Human Voice)",
         "is_correct": true,
-        "latency_ms": 151.93
+        "latency_ms": 203.97
       }
     },
     {
@@ -861,19 +861,19 @@
       "rawnet2": {
         "score_pct": 97.0,
         "prediction": "HUMAN",
-        "latency_ms": 48.55
+        "latency_ms": 76.42
       },
       "aasist": {
         "score_pct": 82.8,
         "prediction": "HUMAN",
-        "latency_ms": 65.93
+        "latency_ms": 76.75
       },
       "triple_ensemble": {
         "verdict": "human",
         "confidence_score": 0.9837,
         "business_action": "ALLOW_TRANSACTION (Verified Human Voice)",
         "is_correct": true,
-        "latency_ms": 152.29
+        "latency_ms": 175.16
       }
     },
     {
@@ -884,19 +884,19 @@
       "rawnet2": {
         "score_pct": 0.9,
         "prediction": "SYNTHETIC",
-        "latency_ms": 48.94
+        "latency_ms": 53.34
       },
       "aasist": {
         "score_pct": 5.6,
         "prediction": "SYNTHETIC",
-        "latency_ms": 65.43
+        "latency_ms": 82.85
       },
       "triple_ensemble": {
         "verdict": "synthetic",
         "confidence_score": 0.0176,
         "business_action": "BLOCK_TRANSACTION (Synthetic AI Voice Detected)",
         "is_correct": true,
-        "latency_ms": 151.89
+        "latency_ms": 189.72
       }
     },
     {
@@ -907,19 +907,19 @@
       "rawnet2": {
         "score_pct": 90.2,
         "prediction": "HUMAN",
-        "latency_ms": 49.79
+        "latency_ms": 56.07
       },
       "aasist": {
         "score_pct": 49.9,
         "prediction": "SYNTHETIC",
-        "latency_ms": 64.77
+        "latency_ms": 75.44
       },
       "triple_ensemble": {
         "verdict": "human",
         "confidence_score": 0.8727,
         "business_action": "ALLOW_TRANSACTION (Verified Human Voice)",
         "is_correct": true,
-        "latency_ms": 152.68
+        "latency_ms": 172.07
       }
     },
     {
@@ -930,19 +930,19 @@
       "rawnet2": {
         "score_pct": 62.9,
         "prediction": "HUMAN",
-        "latency_ms": 49.41
+        "latency_ms": 56.74
       },
       "aasist": {
         "score_pct": 54.1,
         "prediction": "HUMAN",
-        "latency_ms": 67.01
+        "latency_ms": 73.81
       },
       "triple_ensemble": {
         "verdict": "human",
         "confidence_score": 0.9651,
         "business_action": "ALLOW_TRANSACTION (Verified Human Voice)",
         "is_correct": true,
-        "latency_ms": 158.96
+        "latency_ms": 170.11
       }
     },
     {
@@ -953,19 +953,19 @@
       "rawnet2": {
         "score_pct": 0.9,
         "prediction": "SYNTHETIC",
-        "latency_ms": 48.61
+        "latency_ms": 56.56
       },
       "aasist": {
         "score_pct": 5.4,
         "prediction": "SYNTHETIC",
-        "latency_ms": 64.2
+        "latency_ms": 74.48
       },
       "triple_ensemble": {
         "verdict": "synthetic",
         "confidence_score": 0.0231,
         "business_action": "BLOCK_TRANSACTION (Synthetic AI Voice Detected)",
         "is_correct": true,
-        "latency_ms": 151.9
+        "latency_ms": 205.63
       }
     },
     {
@@ -976,19 +976,19 @@
       "rawnet2": {
         "score_pct": 4.9,
         "prediction": "SYNTHETIC",
-        "latency_ms": 49.57
+        "latency_ms": 100.47
       },
       "aasist": {
         "score_pct": 29.6,
         "prediction": "SYNTHETIC",
-        "latency_ms": 65.95
+        "latency_ms": 112.85
       },
       "triple_ensemble": {
         "verdict": "synthetic",
         "confidence_score": 0.0163,
         "business_action": "BLOCK_TRANSACTION (Synthetic AI Voice Detected)",
         "is_correct": false,
-        "latency_ms": 155.56
+        "latency_ms": 225.68
       }
     },
     {
@@ -999,19 +999,19 @@
       "rawnet2": {
         "score_pct": 57.3,
         "prediction": "HUMAN",
-        "latency_ms": 50.35
+        "latency_ms": 69.23
       },
       "aasist": {
         "score_pct": 35.1,
         "prediction": "SYNTHETIC",
-        "latency_ms": 72.76
+        "latency_ms": 74.52
       },
       "triple_ensemble": {
         "verdict": "human",
         "confidence_score": 0.1494,
         "business_action": "ALLOW_TRANSACTION (Verified Human Voice)",
         "is_correct": true,
-        "latency_ms": 155.49
+        "latency_ms": 166.91
       }
     },
     {
@@ -1022,19 +1022,19 @@
       "rawnet2": {
         "score_pct": 0.4,
         "prediction": "SYNTHETIC",
-        "latency_ms": 49.75
+        "latency_ms": 57.22
       },
       "aasist": {
         "score_pct": 8.4,
         "prediction": "SYNTHETIC",
-        "latency_ms": 64.59
+        "latency_ms": 72.09
       },
       "triple_ensemble": {
         "verdict": "synthetic",
         "confidence_score": 0.012,
         "business_action": "BLOCK_TRANSACTION (Synthetic AI Voice Detected)",
         "is_correct": true,
-        "latency_ms": 157.35
+        "latency_ms": 169.94
       }
     },
     {
@@ -1045,19 +1045,19 @@
       "rawnet2": {
         "score_pct": 9.8,
         "prediction": "SYNTHETIC",
-        "latency_ms": 49.95
+        "latency_ms": 59.28
       },
       "aasist": {
         "score_pct": 27.3,
         "prediction": "SYNTHETIC",
-        "latency_ms": 66.38
+        "latency_ms": 72.7
       },
       "triple_ensemble": {
         "verdict": "synthetic",
         "confidence_score": 0.0158,
         "business_action": "BLOCK_TRANSACTION (Synthetic AI Voice Detected)",
         "is_correct": false,
-        "latency_ms": 156.51
+        "latency_ms": 179.39
       }
     },
     {
@@ -1068,19 +1068,19 @@
       "rawnet2": {
         "score_pct": 85.9,
         "prediction": "HUMAN",
-        "latency_ms": 49.79
+        "latency_ms": 59.09
       },
       "aasist": {
         "score_pct": 81.1,
         "prediction": "HUMAN",
-        "latency_ms": 65.0
+        "latency_ms": 75.57
       },
       "triple_ensemble": {
         "verdict": "human",
         "confidence_score": 0.9744,
         "business_action": "ALLOW_TRANSACTION (Verified Human Voice)",
         "is_correct": true,
-        "latency_ms": 153.05
+        "latency_ms": 185.35
       }
     },
     {
@@ -1091,19 +1091,19 @@
       "rawnet2": {
         "score_pct": 89.7,
         "prediction": "HUMAN",
-        "latency_ms": 48.16
+        "latency_ms": 53.26
       },
       "aasist": {
         "score_pct": 67.7,
         "prediction": "HUMAN",
-        "latency_ms": 64.73
+        "latency_ms": 72.24
       },
       "triple_ensemble": {
         "verdict": "human",
         "confidence_score": 0.9483,
         "business_action": "ALLOW_TRANSACTION (Verified Human Voice)",
         "is_correct": true,
-        "latency_ms": 155.87
+        "latency_ms": 181.66
       }
     },
     {
@@ -1114,19 +1114,19 @@
       "rawnet2": {
         "score_pct": 99.5,
         "prediction": "HUMAN",
-        "latency_ms": 59.63
+        "latency_ms": 57.68
       },
       "aasist": {
         "score_pct": 100.0,
         "prediction": "HUMAN",
-        "latency_ms": 68.78
+        "latency_ms": 72.78
       },
       "triple_ensemble": {
         "verdict": "human",
         "confidence_score": 0.9722,
         "business_action": "ALLOW_TRANSACTION (Verified Human Voice)",
         "is_correct": true,
-        "latency_ms": 156.24
+        "latency_ms": 177.43
       }
     },
     {
@@ -1137,19 +1137,19 @@
       "rawnet2": {
         "score_pct": 7.5,
         "prediction": "SYNTHETIC",
-        "latency_ms": 49.96
+        "latency_ms": 55.13
       },
       "aasist": {
         "score_pct": 19.3,
         "prediction": "SYNTHETIC",
-        "latency_ms": 67.95
+        "latency_ms": 91.43
       },
       "triple_ensemble": {
         "verdict": "synthetic",
         "confidence_score": 0.0181,
         "business_action": "BLOCK_TRANSACTION (Synthetic AI Voice Detected)",
         "is_correct": true,
-        "latency_ms": 180.99
+        "latency_ms": 240.49
       }
     },
     {
@@ -1160,19 +1160,19 @@
       "rawnet2": {
         "score_pct": 1.2,
         "prediction": "SYNTHETIC",
-        "latency_ms": 48.94
+        "latency_ms": 55.88
       },
       "aasist": {
         "score_pct": 6.6,
         "prediction": "SYNTHETIC",
-        "latency_ms": 64.63
+        "latency_ms": 71.08
       },
       "triple_ensemble": {
         "verdict": "synthetic",
         "confidence_score": 0.0133,
         "business_action": "BLOCK_TRANSACTION (Synthetic AI Voice Detected)",
         "is_correct": true,
-        "latency_ms": 153.36
+        "latency_ms": 168.26
       }
     },
     {
@@ -1183,19 +1183,19 @@
       "rawnet2": {
         "score_pct": 5.5,
         "prediction": "SYNTHETIC",
-        "latency_ms": 49.09
+        "latency_ms": 55.96
       },
       "aasist": {
         "score_pct": 27.5,
         "prediction": "SYNTHETIC",
-        "latency_ms": 69.78
+        "latency_ms": 78.01
       },
       "triple_ensemble": {
         "verdict": "synthetic",
         "confidence_score": 0.0134,
         "business_action": "BLOCK_TRANSACTION (Synthetic AI Voice Detected)",
         "is_correct": true,
-        "latency_ms": 150.91
+        "latency_ms": 172.17
       }
     },
     {
@@ -1206,19 +1206,19 @@
       "rawnet2": {
         "score_pct": 80.7,
         "prediction": "HUMAN",
-        "latency_ms": 48.57
+        "latency_ms": 55.54
       },
       "aasist": {
         "score_pct": 38.9,
         "prediction": "SYNTHETIC",
-        "latency_ms": 64.73
+        "latency_ms": 71.6
       },
       "triple_ensemble": {
         "verdict": "human",
         "confidence_score": 0.9755,
         "business_action": "ALLOW_TRANSACTION (Verified Human Voice)",
         "is_correct": true,
-        "latency_ms": 156.68
+        "latency_ms": 179.85
       }
     },
     {
@@ -1229,19 +1229,19 @@
       "rawnet2": {
         "score_pct": 69.2,
         "prediction": "HUMAN",
-        "latency_ms": 55.3
+        "latency_ms": 57.1
       },
       "aasist": {
         "score_pct": 84.5,
         "prediction": "HUMAN",
-        "latency_ms": 68.46
+        "latency_ms": 74.59
       },
       "triple_ensemble": {
         "verdict": "human",
         "confidence_score": 0.9829,
         "business_action": "ALLOW_TRANSACTION (Verified Human Voice)",
         "is_correct": true,
-        "latency_ms": 150.94
+        "latency_ms": 179.05
       }
     },
     {
@@ -1252,19 +1252,19 @@
       "rawnet2": {
         "score_pct": 56.1,
         "prediction": "HUMAN",
-        "latency_ms": 51.24
+        "latency_ms": 74.22
       },
       "aasist": {
         "score_pct": 53.1,
         "prediction": "HUMAN",
-        "latency_ms": 89.07
+        "latency_ms": 74.87
       },
       "triple_ensemble": {
         "verdict": "human",
         "confidence_score": 0.9054,
         "business_action": "ALLOW_TRANSACTION (Verified Human Voice)",
         "is_correct": true,
-        "latency_ms": 280.07
+        "latency_ms": 195.63
       }
     },
     {
@@ -1275,19 +1275,19 @@
       "rawnet2": {
         "score_pct": 56.3,
         "prediction": "HUMAN",
-        "latency_ms": 49.85
+        "latency_ms": 90.42
       },
       "aasist": {
         "score_pct": 53.1,
         "prediction": "HUMAN",
-        "latency_ms": 66.0
+        "latency_ms": 89.54
       },
       "triple_ensemble": {
         "verdict": "human",
         "confidence_score": 0.0858,
         "business_action": "ALLOW_TRANSACTION (Verified Human Voice)",
         "is_correct": false,
-        "latency_ms": 166.98
+        "latency_ms": 242.88
       }
     },
     {
@@ -1298,19 +1298,19 @@
       "rawnet2": {
         "score_pct": 55.9,
         "prediction": "HUMAN",
-        "latency_ms": 49.36
+        "latency_ms": 56.05
       },
       "aasist": {
         "score_pct": 53.0,
         "prediction": "HUMAN",
-        "latency_ms": 67.88
+        "latency_ms": 70.96
       },
       "triple_ensemble": {
         "verdict": "human",
         "confidence_score": 0.9173,
         "business_action": "ALLOW_TRANSACTION (Verified Human Voice)",
         "is_correct": true,
-        "latency_ms": 151.1
+        "latency_ms": 177.01
       }
     },
     {
@@ -1321,19 +1321,19 @@
       "rawnet2": {
         "score_pct": 55.1,
         "prediction": "HUMAN",
-        "latency_ms": 50.37
+        "latency_ms": 62.32
       },
       "aasist": {
         "score_pct": 52.7,
         "prediction": "HUMAN",
-        "latency_ms": 66.27
+        "latency_ms": 93.71
       },
       "triple_ensemble": {
         "verdict": "human",
         "confidence_score": 0.1218,
         "business_action": "ALLOW_TRANSACTION (Verified Human Voice)",
         "is_correct": false,
-        "latency_ms": 155.89
+        "latency_ms": 239.29
       }
     },
     {
@@ -1344,19 +1344,19 @@
       "rawnet2": {
         "score_pct": 89.2,
         "prediction": "HUMAN",
-        "latency_ms": 48.39
+        "latency_ms": 53.76
       },
       "aasist": {
         "score_pct": 73.3,
         "prediction": "HUMAN",
-        "latency_ms": 65.61
+        "latency_ms": 75.3
       },
       "triple_ensemble": {
         "verdict": "human",
         "confidence_score": 0.9839,
         "business_action": "ALLOW_TRANSACTION (Verified Human Voice)",
         "is_correct": true,
-        "latency_ms": 150.54
+        "latency_ms": 213.26
       }
     },
     {
@@ -1367,19 +1367,19 @@
       "rawnet2": {
         "score_pct": 96.3,
         "prediction": "HUMAN",
-        "latency_ms": 49.12
+        "latency_ms": 55.93
       },
       "aasist": {
         "score_pct": 73.7,
         "prediction": "HUMAN",
-        "latency_ms": 64.65
+        "latency_ms": 89.5
       },
       "triple_ensemble": {
         "verdict": "human",
         "confidence_score": 0.9709,
         "business_action": "ALLOW_TRANSACTION (Verified Human Voice)",
         "is_correct": true,
-        "latency_ms": 155.37
+        "latency_ms": 189.55
       }
     },
     {
@@ -1390,19 +1390,19 @@
       "rawnet2": {
         "score_pct": 35.3,
         "prediction": "SYNTHETIC",
-        "latency_ms": 48.71
+        "latency_ms": 54.31
       },
       "aasist": {
         "score_pct": 39.3,
         "prediction": "SYNTHETIC",
-        "latency_ms": 69.32
+        "latency_ms": 73.36
       },
       "triple_ensemble": {
         "verdict": "synthetic",
         "confidence_score": 0.0359,
         "business_action": "BLOCK_TRANSACTION (Synthetic AI Voice Detected)",
         "is_correct": true,
-        "latency_ms": 164.12
+        "latency_ms": 203.83
       }
     },
     {
@@ -1413,19 +1413,19 @@
       "rawnet2": {
         "score_pct": 36.8,
         "prediction": "SYNTHETIC",
-        "latency_ms": 55.02
+        "latency_ms": 57.46
       },
       "aasist": {
         "score_pct": 42.5,
         "prediction": "SYNTHETIC",
-        "latency_ms": 64.42
+        "latency_ms": 73.82
       },
       "triple_ensemble": {
         "verdict": "synthetic",
         "confidence_score": 0.0363,
         "business_action": "BLOCK_TRANSACTION (Synthetic AI Voice Detected)",
         "is_correct": true,
-        "latency_ms": 186.35
+        "latency_ms": 193.89
       }
     },
     {
@@ -1436,19 +1436,19 @@
       "rawnet2": {
         "score_pct": 60.5,
         "prediction": "HUMAN",
-        "latency_ms": 49.91
+        "latency_ms": 64.93
       },
       "aasist": {
         "score_pct": 53.3,
         "prediction": "HUMAN",
-        "latency_ms": 65.21
+        "latency_ms": 202.67
       },
       "triple_ensemble": {
         "verdict": "human",
         "confidence_score": 0.9824,
         "business_action": "ALLOW_TRANSACTION (Verified Human Voice)",
         "is_correct": true,
-        "latency_ms": 161.7
+        "latency_ms": 242.68
       }
     },
     {
@@ -1459,19 +1459,19 @@
       "rawnet2": {
         "score_pct": 69.6,
         "prediction": "HUMAN",
-        "latency_ms": 53.72
+        "latency_ms": 85.73
       },
       "aasist": {
         "score_pct": 57.8,
         "prediction": "HUMAN",
-        "latency_ms": 64.92
+        "latency_ms": 113.27
       },
       "triple_ensemble": {
         "verdict": "human",
         "confidence_score": 0.8554,
         "business_action": "ALLOW_TRANSACTION (Verified Human Voice)",
         "is_correct": true,
-        "latency_ms": 153.06
+        "latency_ms": 312.14
       }
     },
     {
@@ -1482,19 +1482,19 @@
       "rawnet2": {
         "score_pct": 0.2,
         "prediction": "SYNTHETIC",
-        "latency_ms": 48.82
+        "latency_ms": 73.66
       },
       "aasist": {
         "score_pct": 2.2,
         "prediction": "SYNTHETIC",
-        "latency_ms": 65.67
+        "latency_ms": 164.25
       },
       "triple_ensemble": {
         "verdict": "synthetic",
         "confidence_score": 0.0187,
         "business_action": "BLOCK_TRANSACTION (Synthetic AI Voice Detected)",
         "is_correct": true,
-        "latency_ms": 154.18
+        "latency_ms": 405.85
       }
     },
     {
@@ -1505,19 +1505,19 @@
       "rawnet2": {
         "score_pct": 61.4,
         "prediction": "HUMAN",
-        "latency_ms": 48.84
+        "latency_ms": 136.1
       },
       "aasist": {
         "score_pct": 54.9,
         "prediction": "HUMAN",
-        "latency_ms": 64.02
+        "latency_ms": 94.58
       },
       "triple_ensemble": {
         "verdict": "human",
         "confidence_score": 0.9629,
         "business_action": "ALLOW_TRANSACTION (Verified Human Voice)",
         "is_correct": true,
-        "latency_ms": 151.63
+        "latency_ms": 349.4
       }
     },
     {
@@ -1528,19 +1528,19 @@
       "rawnet2": {
         "score_pct": 23.8,
         "prediction": "SYNTHETIC",
-        "latency_ms": 49.56
+        "latency_ms": 104.44
       },
       "aasist": {
         "score_pct": 34.7,
         "prediction": "SYNTHETIC",
-        "latency_ms": 66.91
+        "latency_ms": 105.15
       },
       "triple_ensemble": {
         "verdict": "synthetic",
         "confidence_score": 0.0359,
         "business_action": "BLOCK_TRANSACTION (Synthetic AI Voice Detected)",
         "is_correct": true,
-        "latency_ms": 168.95
+        "latency_ms": 282.19
       }
     },
     {
@@ -1551,19 +1551,19 @@
       "rawnet2": {
         "score_pct": 4.8,
         "prediction": "SYNTHETIC",
-        "latency_ms": 49.89
+        "latency_ms": 144.31
       },
       "aasist": {
         "score_pct": 24.9,
         "prediction": "SYNTHETIC",
-        "latency_ms": 66.17
+        "latency_ms": 87.52
       },
       "triple_ensemble": {
         "verdict": "synthetic",
         "confidence_score": 0.013,
         "business_action": "BLOCK_TRANSACTION (Synthetic AI Voice Detected)",
         "is_correct": true,
-        "latency_ms": 151.4
+        "latency_ms": 266.97
       }
     },
     {
@@ -1574,19 +1574,19 @@
       "rawnet2": {
         "score_pct": 55.6,
         "prediction": "HUMAN",
-        "latency_ms": 48.39
+        "latency_ms": 113.61
       },
       "aasist": {
         "score_pct": 52.9,
         "prediction": "HUMAN",
-        "latency_ms": 64.53
+        "latency_ms": 100.53
       },
       "triple_ensemble": {
         "verdict": "human",
         "confidence_score": 0.7666,
         "business_action": "ALLOW_TRANSACTION (Verified Human Voice)",
         "is_correct": true,
-        "latency_ms": 157.84
+        "latency_ms": 351.65
       }
     },
     {
@@ -1597,19 +1597,19 @@
       "rawnet2": {
         "score_pct": 56.3,
         "prediction": "HUMAN",
-        "latency_ms": 48.85
+        "latency_ms": 74.43
       },
       "aasist": {
         "score_pct": 53.1,
         "prediction": "HUMAN",
-        "latency_ms": 80.02
+        "latency_ms": 119.42
       },
       "triple_ensemble": {
         "verdict": "human",
         "confidence_score": 0.0813,
         "business_action": "ALLOW_TRANSACTION (Verified Human Voice)",
         "is_correct": false,
-        "latency_ms": 155.84
+        "latency_ms": 291.08
       }
     },
     {
@@ -1620,19 +1620,19 @@
       "rawnet2": {
         "score_pct": 85.4,
         "prediction": "HUMAN",
-        "latency_ms": 49.19
+        "latency_ms": 91.36
       },
       "aasist": {
         "score_pct": 53.8,
         "prediction": "HUMAN",
-        "latency_ms": 65.28
+        "latency_ms": 164.78
       },
       "triple_ensemble": {
         "verdict": "human",
         "confidence_score": 0.9827,
         "business_action": "ALLOW_TRANSACTION (Verified Human Voice)",
         "is_correct": true,
-        "latency_ms": 160.81
+        "latency_ms": 322.37
       }
     },
     {
@@ -1643,19 +1643,19 @@
       "rawnet2": {
         "score_pct": 6.4,
         "prediction": "SYNTHETIC",
-        "latency_ms": 49.16
+        "latency_ms": 79.01
       },
       "aasist": {
         "score_pct": 21.5,
         "prediction": "SYNTHETIC",
-        "latency_ms": 64.7
+        "latency_ms": 98.51
       },
       "triple_ensemble": {
         "verdict": "synthetic",
         "confidence_score": 0.0175,
         "business_action": "BLOCK_TRANSACTION (Synthetic AI Voice Detected)",
         "is_correct": true,
-        "latency_ms": 153.14
+        "latency_ms": 372.03
       }
     }
   ]

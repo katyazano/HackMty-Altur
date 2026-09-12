@@ -1,7 +1,7 @@
 {
   "model_name": "Triple Multi-Model Ensemble (AASIST + RawNet2 + Acoustic XGBoost)",
-  "timestamp": "2026-09-12 21:16:31",
-  "training_time_s": 0.789,
+  "timestamp": "2026-09-12 22:30:20",
+  "training_time_s": 0.973,
   "kfold_validation": {
     "n_splits": 5,
     "total_samples": 353,

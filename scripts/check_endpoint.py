@@ -25,21 +25,18 @@ ROOT = os.path.dirname(HERE)
 
 
 def load_manifest(path, split):
-    # Search fallback if in Data/manifest.csv
     if not os.path.exists(path) and os.path.exists(os.path.join(ROOT, "Data", "manifest.csv")):
         path = os.path.join(ROOT, "Data", "manifest.csv")
     rows = list(csv.DictReader(open(path, encoding="utf-8")))
     if split != "all":
-        rows = [r for r in rows if r["split"] == split]
+        rows = [r for r in rows if r.get("split") == split]
     return rows
 
 
 def find_audio_file(audio_dir, anon_id):
-    # Check root audio_dir
     p = os.path.join(audio_dir, anon_id + ".wav")
     if os.path.exists(p):
         return p
-    # Check nested splits (train/val/test) in audio_dir or Data/audio/
     candidates = [
         os.path.join(ROOT, "audio", anon_id + ".wav"),
         os.path.join(ROOT, "Data", "audio", anon_id + ".wav"),
@@ -54,13 +51,18 @@ def find_audio_file(audio_dir, anon_id):
 
 
 def post_call(url, audio_dir, row, timeout):
-    path = find_audio_file(audio_dir, row["anon_id"])
+    # Normalize localhost to 127.0.0.1 on Windows to avoid IPv6 hanging on Docker Desktop
+    if "://localhost:" in url:
+        url = url.replace("://localhost:", "://127.0.0.1:")
+
+    anon_id = row.get("anon_id") or row.get("id") or ""
+    path = find_audio_file(audio_dir, anon_id)
     if not os.path.exists(path):
         return {"error": f"Audio file not found: {path}", "latency_s": 0.0}
 
     body = json.dumps(
         {
-            "call_id": row["anon_id"],
+            "call_id": anon_id,
             "audio_base64": base64.b64encode(open(path, "rb").read()).decode("ascii"),
             "sample_rate": 8000,
             "channels": 2,
@@ -140,7 +142,7 @@ def main():
     ap.add_argument("--url", required=True, help="your /detect endpoint")
     ap.add_argument("--manifest", default=os.path.join(ROOT, "manifest.csv"))
     ap.add_argument("--audio-dir", default=os.path.join(ROOT, "audio"))
-    ap.add_argument("--split", default="val", choices=["train", "val", "all", "hidden"])
+    ap.add_argument("--split", default="val", choices=["train", "val", "all", "hidden", "test"])
     ap.add_argument("--n", type=int, default=10, help="how many calls to send (0 = all)")
     ap.add_argument("--seed", type=int, default=0)
     ap.add_argument("--timeout", type=float, default=30.0, help="seconds per call, same as the judge")
@@ -156,12 +158,13 @@ def main():
         rows = rows[: args.n]
     results = []
     for i, row in enumerate(rows, 1):
+        anon_id = row.get("anon_id") or row.get("id") or ""
         r = post_call(args.url, args.audio_dir, row, args.timeout)
-        r.update({"call_id": row["anon_id"], "label": row["label"]})
+        r.update({"call_id": anon_id, "label": row["label"]})
         verdict = r.get("error") or ("synthetic" if r["is_synthetic"] else "human")
         mark = "" if "error" in r else ("ok " if verdict == row["label"] else "MISS")
         conf = "" if r.get("confidence") is None else f" conf={r['confidence']:.2f}"
-        print(f"{i:3d}/{len(rows)} {row['anon_id']} truth={row['label']:9s} got={verdict:20s} {mark}{conf} {r['latency_s']:.2f}s", flush=True)
+        print(f"{i:3d}/{len(rows)} {anon_id} truth={row['label']:9s} got={verdict:20s} {mark}{conf} {r['latency_s']:.2f}s", flush=True)
         results.append(r)
     summary = score(results)
     print("\nsummary:")
