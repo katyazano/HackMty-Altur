@@ -20,14 +20,8 @@ cd HackMty-Altur
 pip install -r requirements.txt
 ```
 
-### 2. Place Your Raw Data
-Place your raw audio files and metadata inside the `Data/` folder:
-```
-Data/
-├── manifest.csv
-├── turns/          # Loose turn JSON files (*.json)
-└── audio/          # Loose audio recordings (*.wav)
-```
+### 2. Audio Dataset Placement
+The repository already includes all metadata tables (`manifest.csv`, `train_manifest.csv`, `test_manifest.csv`) and turn timestamps (`turns/*.json`). Simply place the raw `.wav` audio files inside `Data/audio/` (or download/track them via Git LFS).
 
 ### 3. Run Automated 1-Command Dataset Setup
 Organize the manifests, audio splits, turn metadata, and Channel 0/1 tracks in one command:

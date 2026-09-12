@@ -28,8 +28,12 @@ weights/
 real_audio_data/
 demo_data/
 demo_real_audios/
-Data/
-data/
+
+# Heavy audio recordings
+Data/audio/
+Data/separated_agents/
+!Data/*.csv
+!Data/turns/
 
 # Audio files
 *.wav
