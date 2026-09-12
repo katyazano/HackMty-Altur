@@ -147,29 +147,19 @@ def separate_call_agents(
         "mode": mode
     }
 
-def main():
-    default_audio = os.path.join(PROJECT_ROOT, "Data", "audio")
-    default_turns = os.path.join(PROJECT_ROOT, "Data", "turns")
-    default_output = os.path.join(PROJECT_ROOT, "Data", "separated_agents")
-
-    parser = argparse.ArgumentParser(
-        description="Separate 2-party call recordings into Agent 0 and Agent 1 audio tracks using Data/turns metadata."
-    )
-    parser.add_argument("--audio_dir", type=str, default=default_audio, help="Directory containing call audio files (.wav)")
-    parser.add_argument("--turns_dir", type=str, default=default_turns, help="Directory containing turn metadata (.json)")
-    parser.add_argument("--output_dir", type=str, default=default_output, help="Directory to save separated audio tracks")
-    parser.add_argument("--mode", type=str, default="concat", choices=["concat", "timeline", "full_channel"],
-                        help="Separation mode: 'concat' (speech segments merged), 'timeline' (timeline preserved with silence), 'full_channel' (raw channels)")
-    parser.add_argument("--target_sr", type=int, default=16000, help="Target sample rate (e.g. 16000 for RawNet2/AASIST, 8000 for native)")
-    parser.add_argument("--padding_ms", type=int, default=50, help="Silence padding in ms between concatenated turns in concat mode")
-    parser.add_argument("--workers", type=int, default=8, help="Number of parallel worker threads")
-    parser.add_argument("--limit", type=int, default=None, help="Optional limit on number of calls to process (for quick testing)")
-
-    args = parser.parse_args()
-
-    audio_dir = os.path.abspath(args.audio_dir)
-    turns_dir = os.path.abspath(args.turns_dir)
-    output_dir = os.path.abspath(args.output_dir)
+def run_batch_separation(
+    audio_dir: str,
+    turns_dir: str,
+    output_dir: str,
+    mode: str = "concat",
+    target_sr: int = 16000,
+    padding_ms: int = 50,
+    workers: int = 8,
+    limit: Optional[int] = None
+) -> List[dict]:
+    audio_dir = os.path.abspath(audio_dir)
+    turns_dir = os.path.abspath(turns_dir)
+    output_dir = os.path.abspath(output_dir)
 
     if not os.path.exists(audio_dir):
         print(f"Error: Audio directory not found at {audio_dir}")
@@ -181,8 +171,8 @@ def main():
         print(f"Error: No .wav files found in {audio_dir}")
         sys.exit(1)
 
-    if args.limit:
-        audio_files = audio_files[:args.limit]
+    if limit:
+        audio_files = audio_files[:limit]
 
     print("=" * 80)
     print("      ALTUR CALL AUDIO SEPARATION - AGENT 0 & AGENT 1 EXTRACTION")
@@ -190,8 +180,8 @@ def main():
     print(f"  * Audio Directory : {audio_dir}")
     print(f"  * Turns Directory : {turns_dir}")
     print(f"  * Output Directory: {output_dir}")
-    print(f"  * Separation Mode : {args.mode}")
-    print(f"  * Target Rate     : {args.target_sr} Hz")
+    print(f"  * Separation Mode : {mode}")
+    print(f"  * Target Rate     : {target_sr} Hz")
     print(f"  * Files to Process: {len(audio_files)}")
     print("=" * 80 + "\n")
 
@@ -221,12 +211,12 @@ def main():
             audio_path=apath,
             turns_path=tpath,
             output_dir=output_dir,
-            mode=args.mode,
-            target_sr=args.target_sr,
-            padding_ms=args.padding_ms
+            mode=mode,
+            target_sr=target_sr,
+            padding_ms=padding_ms
         )
 
-    with ThreadPoolExecutor(max_workers=args.workers) as executor:
+    with ThreadPoolExecutor(max_workers=workers) as executor:
         for res in executor.map(process_task, tasks):
             results.append(res)
             processed_count += 1
@@ -248,6 +238,39 @@ def main():
     print(f"  * Agent 1 Audios  : {os.path.join(output_dir, 'agent_1')}")
     print(f"  * Summary Manifest: {manifest_csv}")
     print("=" * 80 + "\n")
+
+    return results
+
+def main():
+    default_audio = os.path.join(PROJECT_ROOT, "Data", "audio")
+    default_turns = os.path.join(PROJECT_ROOT, "Data", "turns")
+    default_output = os.path.join(PROJECT_ROOT, "Data", "separated_agents")
+
+    parser = argparse.ArgumentParser(
+        description="Separate 2-party call recordings into Agent 0 and Agent 1 audio tracks using Data/turns metadata."
+    )
+    parser.add_argument("--audio_dir", type=str, default=default_audio, help="Directory containing call audio files (.wav)")
+    parser.add_argument("--turns_dir", type=str, default=default_turns, help="Directory containing turn metadata (.json)")
+    parser.add_argument("--output_dir", type=str, default=default_output, help="Directory to save separated audio tracks")
+    parser.add_argument("--mode", type=str, default="concat", choices=["concat", "timeline", "full_channel"],
+                        help="Separation mode: 'concat' (speech segments merged), 'timeline' (timeline preserved with silence), 'full_channel' (raw channels)")
+    parser.add_argument("--target_sr", type=int, default=16000, help="Target sample rate (e.g. 16000 for RawNet2/AASIST, 8000 for native)")
+    parser.add_argument("--padding_ms", type=int, default=50, help="Silence padding in ms between concatenated turns in concat mode")
+    parser.add_argument("--workers", type=int, default=8, help="Number of parallel worker threads")
+    parser.add_argument("--limit", type=int, default=None, help="Optional limit on number of calls to process (for quick testing)")
+
+    args = parser.parse_args()
+
+    run_batch_separation(
+        audio_dir=args.audio_dir,
+        turns_dir=args.turns_dir,
+        output_dir=args.output_dir,
+        mode=args.mode,
+        target_sr=args.target_sr,
+        padding_ms=args.padding_ms,
+        workers=args.workers,
+        limit=args.limit
+    )
 
 if __name__ == "__main__":
     main()

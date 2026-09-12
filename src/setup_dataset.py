@@ -11,7 +11,7 @@ if str(PROJECT_ROOT) not in sys.path:
 from src.split_manifest import split_manifest
 from src.split_audio_files import separate_audio_splits
 from src.split_turns_files import separate_turns_splits
-from src.separate_agents import main as separate_agents_main
+from src.separate_agents import run_batch_separation
 
 def run_full_dataset_setup():
     print("=" * 80)
@@ -54,31 +54,21 @@ def run_full_dataset_setup():
     
     # Train set channel separation
     print("\n--- Processing Train Set Audios ---", flush=True)
-    sys.argv = [
-        "separate_agents.py",
-        "--audio_dir", str(data_dir / "audio" / "train"),
-        "--turns_dir", str(data_dir / "turns" / "train"),
-        "--output_dir", str(data_dir / "separated_agents" / "train"),
-        "--workers", "8"
-    ]
-    try:
-        separate_agents_main()
-    except SystemExit:
-        pass
+    run_batch_separation(
+        audio_dir=str(data_dir / "audio" / "train"),
+        turns_dir=str(data_dir / "turns" / "train"),
+        output_dir=str(data_dir / "separated_agents" / "train"),
+        workers=8
+    )
 
     # Test set channel separation
     print("\n--- Processing Test Set Audios ---", flush=True)
-    sys.argv = [
-        "separate_agents.py",
-        "--audio_dir", str(data_dir / "audio" / "test"),
-        "--turns_dir", str(data_dir / "turns" / "test"),
-        "--output_dir", str(data_dir / "separated_agents" / "test"),
-        "--workers", "8"
-    ]
-    try:
-        separate_agents_main()
-    except SystemExit:
-        pass
+    run_batch_separation(
+        audio_dir=str(data_dir / "audio" / "test"),
+        turns_dir=str(data_dir / "turns" / "test"),
+        output_dir=str(data_dir / "separated_agents" / "test"),
+        workers=8
+    )
 
     print("\n" + "=" * 80)
     print("                    DATASET SETUP COMPLETE!")
