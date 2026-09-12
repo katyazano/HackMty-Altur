@@ -11,85 +11,85 @@ The platform ingests 2-party call recordings, extracts Channel 0 (Agent 0 - eval
 
 ---
 
-## ⚡ 1-Command Dataset Setup
+## 📋 Step-by-Step Quickstart & Setup Guide
 
-If you have raw data in `Data/` (with loose `.wav` recordings, `manifest.csv`, and `turns/*.json`), organize and slice the full dataset in one command:
+### 1. Clone the Repository & Install Dependencies
+```bash
+git clone https://github.com/katyazano/HackMty-Altur.git
+cd HackMty-Altur
+pip install -r requirements.txt
+```
 
+### 2. Place Your Raw Data
+Place your raw audio files and metadata inside the `Data/` folder:
+```
+Data/
+├── manifest.csv
+├── turns/          # Loose turn JSON files (*.json)
+└── audio/          # Loose audio recordings (*.wav)
+```
+
+### 3. Run Automated 1-Command Dataset Setup
+Organize the manifests, audio splits, turn metadata, and Channel 0/1 tracks in one command:
 ```bash
 python src/setup_dataset.py
 ```
 
-### What `setup_dataset.py` does automatically:
-1. **Splits Manifest**: Generates `train_manifest.csv` (282 calls) and `test_manifest.csv` (71 calls).
-2. **Organizes Audios & Turns**: Moves loose recordings and JSON files into `Data/audio/train/`, `Data/audio/test/`, `Data/turns/train/`, and `Data/turns/test/`.
-3. **Channel Separation**: Slices stereo calls into isolated Agent 0 audio tracks inside `Data/separated_agents/train/agent_0/` and `Data/separated_agents/test/agent_0/`.
+**What `setup_dataset.py` does automatically**:
+* **Splits Manifest**: Generates `train_manifest.csv` (282 calls) and `test_manifest.csv` (71 calls).
+* **Organizes Audios & Turns**: Sorts recordings and JSON files into `Data/audio/train/`, `Data/audio/test/`, `Data/turns/train/`, and `Data/turns/test/`.
+* **Channel Separation**: Slices stereo calls into isolated Agent 0 audio tracks inside `Data/separated_agents/train/agent_0/` and `Data/separated_agents/test/agent_0/`.
 
 ---
 
-## 📦 Large File Management (Git LFS Instructions)
+## 🧠 Model Training & Benchmarking
 
-To track `.wav` audio files and `.pth` model checkpoints in Git without bloating repository size:
-
-### 1. Install & Initialize Git LFS
-```bash
-# Run once on your system
-git lfs install
-```
-
-### 2. Track Audio Files & Weights
-```bash
-git lfs track "*.wav"
-git lfs track "*.pth"
-git add .gitattributes
-git commit -m "Track audio and model checkpoints with Git LFS"
-```
-
-### 3. Cloning or Pulling with Git LFS
-When team members clone or pull the repository:
-```bash
-git clone https://github.com/katyazano/HackMty-Altur.git
-git lfs pull
-```
-*(Git LFS will automatically place all audio files into their exact target folders).*
-
----
-
-## 🚀 Running with Docker
-
-### 1. Build and Run
-```bash
-docker compose up --build -d
-```
-
-### 2. Open the Interactive Benchmark Dashboard
-Open your browser to:
-```
-http://localhost:8000
-```
-
----
-
-## 🧠 Training & Benchmarking Models
-
-### Train Any Model in 1 Line of Code ([`src/trainer.py`](file:///c:/Users/kathe/Desktop/HackMTY/src/trainer.py))
-```python
-from src.trainer import train_model
-from src.models.aasist import AASIST
-
-# Train AASIST model with in-memory dataset caching
-model = AASIST()
-results = train_model(model=model, epochs=15, batch_size=16)
-```
-
-**Terminal CLI Training**:
+### 1. Train Models
+Train models on the 282 Channel 0 training audio files:
 ```bash
 python src/trainer.py --model aasist --epochs 15
 python src/trainer.py --model rawnet2 --epochs 15
 ```
 
-### Benchmark Any Model on Test Dataset ([`src/evaluator.py`](file:///c:/Users/kathe/Desktop/HackMTY/src/evaluator.py))
+### 2. Benchmark Trained Models on Test Set
+Evaluate trained models against the 71 test set Channel 0 audio files:
 ```bash
 python src/evaluator.py --model aasist --weights weights/aasist_best.pth
+python src/evaluator.py --model rawnet2 --weights weights/rawnet2_best.pth
+```
+
+---
+
+## 🚀 Running the Interactive Web Dashboard with Docker
+
+### 1. Build and Launch Container
+```bash
+docker compose up --build -d
+```
+
+### 2. Open the Dashboard
+Open your browser to:
+```
+http://localhost:8000
+```
+*(Displays real-time test predictions, ground-truth badges, accuracy metrics, and in-browser Channel 0 audio playback).*
+
+---
+
+## 📦 Optional: Tracking Heavy Audio Files & Weights with Git LFS
+
+If you wish to store `.wav` audio files or `.pth` model checkpoints in Git:
+
+```bash
+# 1. Initialize Git LFS once
+git lfs install
+
+# 2. Track large binary formats
+git lfs track "*.wav"
+git lfs track "*.pth"
+
+# 3. Pull LFS files on new clones
+git lfs pull
 ```
 
 ---
