@@ -29,7 +29,7 @@ class RawNet2(nn.Module):
     RawNet2: End-to-end Raw Waveform Anti-Spoofing Architecture (ASVspoof 2019 baseline).
     Ingests 1D raw waveforms directly.
     """
-    def __init__(self, sinc_out=128, sinc_kernel=128, gru_dim=1024, num_classes=2):
+    def __init__(self, sinc_out=64, sinc_kernel=128, gru_dim=256, num_classes=2):
         super(RawNet2, self).__init__()
 
         # 1. Sinc-convolution frontend
@@ -40,20 +40,18 @@ class RawNet2(nn.Module):
         )
         self.bn_sinc = nn.BatchNorm1d(sinc_out)
         self.lrelu = nn.LeakyReLU(0.2)
-        self.maxpool_sinc = nn.MaxPool1d(3)
+        self.maxpool_sinc = nn.MaxPool1d(8)
 
         # 2. Residual Blocks
         self.res1 = ResidualBlock(sinc_out, 64)
-        self.res2 = ResidualBlock(64, 64)
-        self.res3 = ResidualBlock(64, 128)
-        self.res4 = ResidualBlock(128, 128)
+        self.res2 = ResidualBlock(64, 128)
 
         # 3. Recurrent layer (GRU)
-        self.gru = nn.GRU(input_size=128, hidden_size=gru_dim, num_layers=2, batch_first=True)
+        self.gru = nn.GRU(input_size=128, hidden_size=gru_dim, num_layers=1, batch_first=True)
 
         # 4. Dense Classifier
-        self.fc1 = nn.Linear(gru_dim, 256)
-        self.fc_out = nn.Linear(256, num_classes)
+        self.fc1 = nn.Linear(gru_dim, 128)
+        self.fc_out = nn.Linear(128, num_classes)
 
     def forward(self, x):
         # Input shape: [batch, samples] -> [batch, 1, samples]
@@ -67,8 +65,9 @@ class RawNet2(nn.Module):
         # Residual blocks
         x = self.res1(x)
         x = self.res2(x)
-        x = self.res3(x)
-        x = self.res4(x)
+
+        # Adaptive temporal pool to 32 frames
+        x = F.adaptive_avg_pool1d(x, 32)
 
         # Reshape for GRU: [batch, channels, time] -> [batch, time, channels]
         x = x.transpose(1, 2)

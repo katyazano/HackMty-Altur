@@ -73,13 +73,31 @@ def evaluate_channel0_dataset(
 
     print(f"Discovered {len(audio_files)} Channel 0 audio files. Starting parallel evaluation...\n", flush=True)
 
-    # Thread-local models
+    # Instantiate and load trained models
+    rawnet_net = RawNet2()
+    rawnet_weights = PROJECT_ROOT / "weights" / "rawnet2_best.pth"
+    if rawnet_weights.exists():
+        print(f"Loading trained RawNet2 weights from {rawnet_weights}", flush=True)
+        try:
+            rawnet_net.load_state_dict(torch.load(str(rawnet_weights), map_location="cpu"))
+        except Exception as e:
+            print(f"Warning: Could not load RawNet2 weights: {e}", flush=True)
+    rawnet_net.eval()
+
+    aasist_net = AASIST()
+    aasist_weights = PROJECT_ROOT / "weights" / "aasist_best.pth"
+    if aasist_weights.exists():
+        print(f"Loading trained AASIST weights from {aasist_weights}", flush=True)
+        try:
+            aasist_net.load_state_dict(torch.load(str(aasist_weights), map_location="cpu"))
+        except Exception as e:
+            print(f"Warning: Could not load AASIST weights: {e}", flush=True)
+    aasist_net.eval()
+
     models = {
-        "rawnet": RawNet2(),
-        "aasist": AASIST()
+        "rawnet": rawnet_net,
+        "aasist": aasist_net
     }
-    models["rawnet"].eval()
-    models["aasist"].eval()
 
     results = []
     processed = 0
