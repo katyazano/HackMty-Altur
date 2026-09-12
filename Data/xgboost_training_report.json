@@ -1,90 +1,111 @@
 {
-  "model_name": "AASIST + XGBoost Ensemble",
-  "timestamp": "2026-09-12 03:05:57",
-  "training_time_s": 0.43,
-  "test_samples": 71,
-  "metrics": {
-    "accuracy": 0.9155,
-    "precision": 0.85,
-    "recall": 1.0,
-    "f1_score": 0.9189,
-    "roc_auc": 0.9889,
-    "eer": 0.0994,
-    "optimal_threshold": 0.9861,
-    "inference_latency_ms": 0.01
+  "model_name": "Triple Multi-Model Ensemble (AASIST + RawNet2 + Acoustic XGBoost)",
+  "timestamp": "2026-09-12 03:58:44",
+  "training_time_s": 0.402,
+  "kfold_validation": {
+    "n_splits": 5,
+    "total_samples": 353,
+    "dual_mean_accuracy": 0.9631,
+    "dual_std_accuracy": 0.0173,
+    "triple_mean_accuracy": 0.9688,
+    "triple_std_accuracy": 0.0141,
+    "is_robust": true
   },
-  "confusion_matrix": {
-    "true_positives_synthetic": 34,
-    "false_positives_synthetic": 6,
-    "true_negatives_human": 31,
-    "false_negatives_human": 0
+  "threshold_calibration": {
+    "default_threshold": 0.5,
+    "optimal_eer_threshold": 0.9623,
+    "eer_value": 0.0847,
+    "roc_auc": 0.973,
+    "uncertainty_band": {
+      "low": 0.4,
+      "high": 0.6,
+      "suspicious_samples_in_test": 0,
+      "action": "Trigger Step-up Authentication (SMS OTP / Biometrics)"
+    }
   },
-  "acoustic_only_metrics": {
-    "accuracy": 0.8873,
-    "f1_score": 0.8919,
-    "roc_auc": 0.9936,
-    "eer": 0.0147
+  "test_comparison": {
+    "threshold_0_50": {
+      "accuracy": 0.9155,
+      "precision": 0.85,
+      "recall": 1.0,
+      "f1_score": 0.9189,
+      "tp": 34,
+      "tn": 31,
+      "fp": 6,
+      "fn": 0
+    },
+    "calibrated_threshold": {
+      "threshold": 0.9623,
+      "accuracy": 0.9155,
+      "precision": 0.9118,
+      "recall": 0.9118,
+      "f1_score": 0.9118,
+      "tp": 31,
+      "tn": 34,
+      "fp": 3,
+      "fn": 3
+    }
   },
   "top_features": [
     {
-      "feature": "aasist_emb_119",
-      "importance": 0.12599609792232513
-    },
-    {
       "feature": "aasist_emb_12",
-      "importance": 0.11791679263114929
+      "importance": 0.14928919076919556
     },
     {
-      "feature": "aasist_emb_10",
-      "importance": 0.10215317457914352
+      "feature": "aasist_emb_62",
+      "importance": 0.11958912014961243
     },
     {
       "feature": "aasist_emb_0",
-      "importance": 0.07458823174238205
+      "importance": 0.10208610445261002
     },
     {
-      "feature": "aasist_emb_2",
-      "importance": 0.05138577148318291
+      "feature": "aasist_emb_119",
+      "importance": 0.07691796123981476
     },
     {
       "feature": "aasist_emb_126",
-      "importance": 0.040319912135601044
+      "importance": 0.062142256647348404
     },
     {
-      "feature": "aasist_emb_28",
-      "importance": 0.03433368355035782
+      "feature": "rawnet2_prob_human",
+      "importance": 0.06178127974271774
+    },
+    {
+      "feature": "aasist_emb_10",
+      "importance": 0.054411571472883224
+    },
+    {
+      "feature": "aasist_emb_2",
+      "importance": 0.03679528087377548
     },
     {
       "feature": "aasist_emb_49",
-      "importance": 0.029378460720181465
-    },
-    {
-      "feature": "aasist_emb_70",
-      "importance": 0.02765374816954136
+      "importance": 0.02839622087776661
     },
     {
       "feature": "aasist_emb_6",
-      "importance": 0.026323167607188225
+      "importance": 0.019219467416405678
     },
     {
-      "feature": "mfcc_6_std",
-      "importance": 0.024053966626524925
+      "feature": "aasist_emb_74",
+      "importance": 0.017534911632537842
     },
     {
       "feature": "aasist_emb_46",
-      "importance": 0.02353566698729992
-    },
-    {
-      "feature": "aasist_emb_122",
-      "importance": 0.023292874917387962
+      "importance": 0.016399264335632324
     },
     {
       "feature": "aasist_emb_23",
-      "importance": 0.021886637434363365
+      "importance": 0.01585150696337223
     },
     {
-      "feature": "mfcc_13_std",
-      "importance": 0.021173710003495216
+      "feature": "mfcc_6_std",
+      "importance": 0.011681117117404938
+    },
+    {
+      "feature": "aasist_emb_122",
+      "importance": 0.0110915033146739
     }
   ]
 }

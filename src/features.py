@@ -13,6 +13,7 @@ if str(PROJECT_ROOT) not in sys.path:
     sys.path.insert(0, str(PROJECT_ROOT))
 
 from src.models.aasist import AASIST
+from src.models.rawnet2 import RawNet2
 
 
 class AcousticFeatureExtractor:
@@ -209,27 +210,80 @@ class AASISTEmbeddingExtractor:
             return combined
 
 
-class MultiModelFeaturePipeline:
+class RawNet2ScoreExtractor:
     """
-    Unified extractor combining AASIST spectro-temporal graph representations
-    and domain-specific acoustic DSP features.
+    Extracts raw waveform predictions and logits from the RawNet2 architecture.
     """
 
-    def __init__(self, aasist_extractor: AASISTEmbeddingExtractor, acoustic_extractor: Optional[AcousticFeatureExtractor] = None):
+    def __init__(self, model: Optional[RawNet2] = None, weights_path: Optional[str] = None, device: Optional[str] = None):
+        if device is None:
+            self.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+        else:
+            self.device = torch.device(device)
+
+        if model is not None:
+            self.model = model.to(self.device)
+        else:
+            self.model = RawNet2().to(self.device)
+            if weights_path and os.path.exists(weights_path):
+                self.model.load_state_dict(torch.load(weights_path, map_location=self.device))
+        self.model.eval()
+
+    def extract_from_waveform(self, waveform: torch.Tensor, target_samples: int = 64000) -> np.ndarray:
+        """
+        Runs forward pass on waveform tensor and returns:
+        [rawnet2_logits (2-d), rawnet2_prob_human (1-d), rawnet2_prob_synthetic (1-d)] -> total 4 dimensions.
+        """
+        self.model.eval()
+        with torch.no_grad():
+            if waveform.dim() == 1:
+                waveform = waveform.unsqueeze(0)
+            waveform = waveform.to(self.device)
+
+            nb_samples = waveform.shape[-1]
+            if nb_samples > target_samples:
+                mid = nb_samples // 2
+                waveform_in = waveform[:, mid - target_samples // 2 : mid + target_samples // 2]
+            elif nb_samples < target_samples:
+                waveform_in = F.pad(waveform, (0, target_samples - nb_samples))
+            else:
+                waveform_in = waveform
+
+            logits = self.model(waveform_in)
+            probs = F.softmax(logits, dim=1)
+
+            logits_np = logits.squeeze(0).cpu().numpy()
+            probs_np = probs.squeeze(0).cpu().numpy()
+
+            return np.concatenate([logits_np, probs_np], axis=0).astype(np.float32)
+
+
+class TripleEnsembleFeaturePipeline:
+    """
+    Unified triple-extractor combining:
+    1. AASIST spectro-temporal graph representations (132-dim)
+    2. RawNet2 raw-waveform logits & probabilities (4-dim)
+    3. Acoustic DSP & Spectral features (136-dim)
+    Total combined dimension = 272 features.
+    """
+
+    def __init__(
+        self,
+        aasist_extractor: AASISTEmbeddingExtractor,
+        rawnet2_extractor: RawNet2ScoreExtractor,
+        acoustic_extractor: Optional[AcousticFeatureExtractor] = None
+    ):
         self.aasist_extractor = aasist_extractor
+        self.rawnet2_extractor = rawnet2_extractor
         self.acoustic_extractor = acoustic_extractor or AcousticFeatureExtractor()
 
     def extract_combined_vector(self, waveform_tensor: torch.Tensor, sample_rate: int = 16000) -> np.ndarray:
-        """
-        Extracts concatenated feature vector for XGBoost meta-learner.
-        """
-        # 1. AASIST features (132-dim)
+        # 1. AASIST (132-dim)
         aasist_feats = self.aasist_extractor.extract_from_waveform(waveform_tensor)
-
-        # 2. Acoustic features (134-dim)
+        # 2. RawNet2 (4-dim)
+        rawnet_feats = self.rawnet2_extractor.extract_from_waveform(waveform_tensor)
+        # 3. Acoustic DSP (136-dim)
         waveform_np = waveform_tensor.detach().cpu().squeeze().numpy()
         acoustic_feats = self.acoustic_extractor.extract_features(waveform_np, sr=sample_rate)
 
-        # 3. Concatenate
-        combined = np.concatenate([aasist_feats, acoustic_feats], axis=0)
-        return combined
+        return np.concatenate([aasist_feats, rawnet_feats, acoustic_feats], axis=0)
