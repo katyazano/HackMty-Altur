@@ -98,9 +98,9 @@ def run_benchmark():
         aasist_res = aasist_model.predict_spoof(tensor_in)
         aasist_latency = (time.perf_counter() - t0) * 1000
 
-        dsp_str = f"{'SPOOF' if dsp_res['is_spoof'] else 'REAL'} ({dsp_res.get('real_score_pct', 0)}%, {dsp_latency:.1f}ms)"
-        raw_str = f"{'SPOOF' if raw_res['is_spoof'] else 'REAL'} ({raw_res.get('real_score_pct', 0)}%, {raw_latency:.1f}ms)"
-        aasist_str = f"{'SPOOF' if aasist_res['is_spoof'] else 'REAL'} ({aasist_res.get('real_score_pct', 0)}%, {aasist_latency:.1f}ms)"
+        dsp_str = f"{'REAL' if dsp_res.get('is_real', not dsp_res.get('is_spoof', False)) else 'SPOOF'} ({dsp_res.get('real_score_pct', 0)}%, {dsp_latency:.1f}ms)"
+        raw_str = f"{'REAL' if raw_res.get('is_real', not raw_res.get('is_spoof', False)) else 'SPOOF'} ({raw_res.get('real_score_pct', 0)}%, {raw_latency:.1f}ms)"
+        aasist_str = f"{'REAL' if aasist_res.get('is_real', not aasist_res.get('is_spoof', False)) else 'SPOOF'} ({aasist_res.get('real_score_pct', 0)}%, {aasist_latency:.1f}ms)"
 
         print(f"{label:<26} | {dsp_str:<22} | {raw_str:<22} | {aasist_str:<22}")
 

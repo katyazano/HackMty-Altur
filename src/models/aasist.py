@@ -111,15 +111,16 @@ class AASIST(nn.Module):
             real_prob = float(probs[0, 0].item())
             spoof_prob = float(probs[0, 1].item())
             real_pct = round(real_prob * 100, 2)
-            risk_pct = round(spoof_prob * 100, 2)
-            is_spoof = real_pct < 50.0
+            is_real = real_pct >= 50.0
+            is_spoof = not is_real
 
             return {
                 "model_name": "AASIST",
+                "is_real": is_real,
                 "is_spoof": is_spoof,
                 "real_score_pct": real_pct,
                 "real_score_percentage": real_pct,
                 "spoof_risk_pct": risk_pct,
                 "confidence_pct": round(max(real_prob, spoof_prob) * 100, 2),
-                "verdict": "SYNTHETIC / SPOOF" if is_spoof else "AUTHENTIC HUMAN"
+                "verdict": "AUTHENTIC HUMAN" if is_real else "SYNTHETIC / SPOOF"
             }

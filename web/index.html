@@ -481,7 +481,10 @@
         const aas = item.aasist || {};
 
         const makeModelBadge = (modelData, defaultScore) => {
-          const isSpoof = modelData.is_spoof;
+          const isReal = modelData.is_real !== undefined 
+            ? modelData.is_real 
+            : (modelData.is_spoof !== undefined ? !modelData.is_spoof : true);
+
           // Authenticity score: 100% is Real Human, 0% is Spoof
           let realScore = modelData.real_score_pct !== undefined 
             ? modelData.real_score_pct 
@@ -496,8 +499,8 @@
           const isCorr = modelData.is_correct;
           const lat = modelData.latency_ms || 0.5;
 
-          const predClass = isSpoof ? 'bg-rose-500/10 text-rose-400 border-rose-500/20' : 'bg-emerald-500/10 text-emerald-400 border-emerald-500/20';
-          const predTxt = isSpoof ? 'SPOOF' : 'REAL';
+          const predClass = isReal ? 'bg-emerald-500/10 text-emerald-400 border-emerald-500/20' : 'bg-rose-500/10 text-rose-400 border-rose-500/20';
+          const predTxt = isReal ? 'REAL' : 'SPOOF';
 
           let corrIcon = '';
           if (isCorr === true) corrIcon = '<span class="text-emerald-400 font-bold ml-1 text-xs" title="Correct Prediction">✓</span>';

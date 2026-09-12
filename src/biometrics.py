@@ -78,12 +78,14 @@ class BiometricsEngine:
 
         risk_score = min(95.0, max(5.0, risk_points))
         real_score = round(100.0 - risk_score, 1)
-        is_spoof = real_score < 50.0
+        is_real = real_score >= 50.0
+        is_spoof = not is_real
 
-        verdict = "SYNTHETIC / AI VOICE DETECTED" if is_spoof else "AUTHENTIC HUMAN VOICE"
+        verdict = "AUTHENTIC HUMAN VOICE" if is_real else "SYNTHETIC / AI VOICE DETECTED"
 
         return {
             "verdict": verdict,
+            "is_real": is_real,
             "is_spoof": is_spoof,
             "real_score_pct": real_score,
             "real_score_percentage": real_score,

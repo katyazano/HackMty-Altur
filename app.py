@@ -157,8 +157,8 @@ def process_all_audios(params: dict):
         
         # Accuracy check for DSP
         if ground_truth != "UNKNOWN":
-            is_truth_spoof = (ground_truth == "FAKE_SPOOF")
-            dsp_res["is_correct"] = (dsp_res["is_spoof"] == is_truth_spoof)
+            is_truth_real = (ground_truth == "REAL_HUMAN")
+            dsp_res["is_correct"] = (dsp_res.get("is_real", not dsp_res.get("is_spoof", False)) == is_truth_real)
         else:
             dsp_res["is_correct"] = None
 
@@ -171,8 +171,8 @@ def process_all_audios(params: dict):
         raw_latency = round((time.perf_counter() - t0) * 1000, 2)
         rawnet_res["latency_ms"] = raw_latency
         if ground_truth != "UNKNOWN":
-            is_truth_spoof = (ground_truth == "FAKE_SPOOF")
-            rawnet_res["is_correct"] = (rawnet_res["is_spoof"] == is_truth_spoof)
+            is_truth_real = (ground_truth == "REAL_HUMAN")
+            rawnet_res["is_correct"] = (rawnet_res.get("is_real", not rawnet_res.get("is_spoof", False)) == is_truth_real)
         else:
             rawnet_res["is_correct"] = None
 
@@ -182,8 +182,8 @@ def process_all_audios(params: dict):
         aasist_latency = round((time.perf_counter() - t0) * 1000, 2)
         aasist_res["latency_ms"] = aasist_latency
         if ground_truth != "UNKNOWN":
-            is_truth_spoof = (ground_truth == "FAKE_SPOOF")
-            aasist_res["is_correct"] = (aasist_res["is_spoof"] == is_truth_spoof)
+            is_truth_real = (ground_truth == "REAL_HUMAN")
+            aasist_res["is_correct"] = (aasist_res.get("is_real", not aasist_res.get("is_spoof", False)) == is_truth_real)
         else:
             aasist_res["is_correct"] = None
 
