@@ -19,18 +19,21 @@ ENV/
 models/weights/
 weights/
 
-# Audio Datasets, Samples & Large Archives
+# Audio Datasets, User Uploads & Large Archives
 *.tar.gz
 *.tar
 *.zip
 *.rar
 *.7z
+real_audio_data/
+demo_data/
+demo_real_audios/
+
+# Ignore loose audio files except the bundled benchmark sample_packs
 *.wav
 *.mp3
 *.ogg
 *.flac
 *.m4a
-real_audio_data/
-demo_data/
-sample_packs/
-demo_real_audios/
+!sample_packs/
+!sample_packs/**
