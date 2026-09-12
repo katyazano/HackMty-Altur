@@ -6,7 +6,13 @@ __pycache__
 .gitignore
 .env
 .venv/
-real_audio_data/*.tar.gz
-real_audio_data/extracted/
+env/
+venv/
 .idea/
 .vscode/
+.DS_Store
+.pytest_cache/
+.ipynb_checkpoints/
+multimodel_analysis.ipynb
+real_audio_data/*.tar.gz
+real_audio_data/extracted/

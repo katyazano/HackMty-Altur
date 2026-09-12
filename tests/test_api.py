@@ -33,9 +33,14 @@ class TestAntiSpoofingAPI(unittest.TestCase):
     def test_root_endpoint(self):
         response = client.get("/")
         self.assertEqual(response.status_code, 200)
+
+    def test_api_info_endpoint(self):
+        response = client.get("/api/info")
+        self.assertEqual(response.status_code, 200)
         data = response.json()
         self.assertIn("service", data)
         self.assertIn("docs", data)
+        self.assertEqual(data["calibrated_threshold"], 0.9623)
 
     def test_health_endpoint(self):
         response = client.get("/health")

@@ -1,308 +1,719 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="dark">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Altur Banking - Voice Anti-Spoofing Benchmark (Channel 0)</title>
+  <title>Altur Banking | Voice Anti-Spoofing AI Engine</title>
+  <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <style>
-    audio {
-      height: 32px;
-      width: 170px;
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50: '#eef2ff',
+              500: '#6366f1',
+              600: '#4f46e5',
+              700: '#4338ca',
+              900: '#312e81',
+              950: '#0f172a',
+            }
+          },
+          animation: {
+            'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+            'glow-red': 'glowRed 2s ease-in-out infinite alternate',
+            'glow-green': 'glowGreen 2s ease-in-out infinite alternate',
+          },
+          keyframes: {
+            glowRed: {
+              '0%': { boxShadow: '0 0 15px -3px rgba(239, 68, 68, 0.3)' },
+              '100%': { boxShadow: '0 0 30px 4px rgba(239, 68, 68, 0.6)' },
+            },
+            glowGreen: {
+              '0%': { boxShadow: '0 0 15px -3px rgba(34, 197, 94, 0.3)' },
+              '100%': { boxShadow: '0 0 30px 4px rgba(34, 197, 94, 0.6)' },
+            }
+          }
+        }
+      }
     }
-    audio::-webkit-media-controls-panel {
-      background-color: #1e293b;
+  </script>
+  <style>
+    /* Custom glassmorphism & scrollbar */
+    ::-webkit-scrollbar { width: 6px; height: 6px; }
+    ::-webkit-scrollbar-track { background: #090d16; }
+    ::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 4px; }
+    ::-webkit-scrollbar-thumb:hover { background: #334155; }
+    .glass-card {
+      background: rgba(15, 23, 42, 0.75);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
     }
   </style>
 </head>
-<body class="bg-slate-950 text-slate-100 min-h-screen font-sans pb-16">
+<body class="bg-slate-950 text-slate-100 min-h-screen font-sans antialiased selection:bg-indigo-500 selection:text-white flex flex-col">
 
-  <!-- Header -->
-  <header class="bg-slate-900/90 backdrop-blur border-b border-slate-800 sticky top-0 z-50">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3.5 flex items-center justify-between">
+  <!-- Navigation Header -->
+  <header class="border-b border-slate-800/80 bg-slate-900/80 backdrop-blur sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
       <div class="flex items-center space-x-3">
-        <div class="bg-indigo-600 p-2.5 rounded-xl text-white shadow-md shadow-indigo-500/20">
-          <i class="fa-solid fa-shield-halved text-lg"></i>
+        <div class="h-10 w-10 rounded-xl bg-gradient-to-tr from-indigo-600 to-violet-500 flex items-center justify-center shadow-lg shadow-indigo-500/30">
+          <i class="fa-solid fa-shield-halved text-white text-lg"></i>
         </div>
         <div>
-          <h1 class="text-base font-bold text-white tracking-tight flex items-center gap-2">
-            Altur Voice Anti-Spoofing Benchmark
-            <span class="px-2 py-0.5 bg-indigo-500/20 text-indigo-400 border border-indigo-500/30 rounded text-xs font-mono font-medium">Channel 0 (Agent 0)</span>
-          </h1>
-          <p class="text-xs text-slate-400">Deepfake Detection Evaluation: RawNet2 vs AASIST-L</p>
+          <div class="flex items-center gap-2">
+            <span class="font-black text-lg tracking-tight bg-gradient-to-r from-white via-slate-200 to-indigo-300 bg-clip-text text-transparent">ALTUR</span>
+            <span class="text-xs px-2 py-0.5 rounded-full bg-indigo-500/20 text-indigo-400 font-semibold border border-indigo-500/30">VOICE AI DEFENSE</span>
+          </div>
+          <p class="text-[11px] text-slate-400">Bank Telephony Deepfake Detection Engine</p>
         </div>
       </div>
-      <div class="flex items-center space-x-3">
-        <button id="btn-refresh" onclick="loadData()" class="px-3 py-1.5 bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white border border-slate-700 rounded-lg text-xs font-semibold transition flex items-center gap-1.5">
-          <i class="fa-solid fa-arrows-rotate"></i> Refresh
-        </button>
-        <button id="btn-reeval" onclick="reEvaluate()" class="px-3 py-1.5 bg-indigo-600 hover:bg-indigo-500 text-white rounded-lg text-xs font-semibold transition flex items-center gap-1.5 shadow-md shadow-indigo-600/30">
-          <i class="fa-solid fa-bolt"></i> Re-Run Benchmark
-        </button>
+
+      <!-- Live Engine Telemetry Pill -->
+      <div class="hidden sm:flex items-center gap-3">
+        <div class="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-slate-800/60 border border-slate-700/60 text-xs text-slate-300">
+          <span class="h-2 w-2 rounded-full bg-emerald-400 animate-ping"></span>
+          <span class="font-mono text-slate-200">API Live</span>
+          <span class="text-slate-600">|</span>
+          <span class="text-slate-400">Threshold:</span>
+          <span id="header-threshold" class="font-mono text-indigo-400 font-semibold">0.9623</span>
+        </div>
+        <a href="/docs" target="_blank" class="px-3 py-1.5 rounded-lg bg-indigo-600/20 hover:bg-indigo-600/30 border border-indigo-500/40 text-indigo-300 hover:text-white text-xs font-semibold transition flex items-center gap-1.5">
+          <i class="fa-solid fa-code text-xs"></i> Swagger Docs
+        </a>
       </div>
     </div>
   </header>
 
-  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 space-y-6">
+  <!-- Main Container -->
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex-1 space-y-6 w-full">
 
-    <!-- KPI Metric Cards -->
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-      <div class="bg-slate-900 border border-slate-800 rounded-xl p-4 shadow-sm">
-        <div class="flex items-center justify-between">
-          <span class="text-xs font-medium text-slate-400 uppercase tracking-wider">Total Evaluated</span>
-          <div class="p-1.5 bg-blue-500/10 text-blue-400 rounded-lg">
-            <i class="fa-solid fa-headphones text-sm"></i>
-          </div>
-        </div>
-        <div class="mt-2 flex items-baseline gap-2">
-          <span id="metric-total" class="text-2xl font-bold text-white">0</span>
-          <span class="text-xs text-slate-400">Channel 0 files</span>
+    <!-- Top Architecture Banner -->
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-3">
+      <div class="glass-card rounded-xl p-3 flex items-center gap-3">
+        <div class="p-2 rounded-lg bg-indigo-500/10 text-indigo-400"><i class="fa-solid fa-diagram-project text-base"></i></div>
+        <div>
+          <p class="text-[11px] uppercase tracking-wider text-slate-400 font-semibold">Model 1: AASIST</p>
+          <p class="text-xs font-medium text-slate-200">Graph Latents (132-dim)</p>
         </div>
       </div>
-
-      <div class="bg-slate-900 border border-slate-800 rounded-xl p-4 shadow-sm">
-        <div class="flex items-center justify-between">
-          <span class="text-xs font-medium text-slate-400 uppercase tracking-wider">Ground Truth Split</span>
-          <div class="p-1.5 bg-purple-500/10 text-purple-400 rounded-lg">
-            <i class="fa-solid fa-scale-balanced text-sm"></i>
-          </div>
-        </div>
-        <div class="mt-2 flex items-baseline gap-2">
-          <span id="metric-human" class="text-sm font-semibold text-emerald-400">0 Human</span>
-          <span class="text-slate-600">/</span>
-          <span id="metric-synth" class="text-sm font-semibold text-rose-400">0 Synthetic</span>
+      <div class="glass-card rounded-xl p-3 flex items-center gap-3">
+        <div class="p-2 rounded-lg bg-violet-500/10 text-violet-400"><i class="fa-solid fa-wave-square text-base"></i></div>
+        <div>
+          <p class="text-[11px] uppercase tracking-wider text-slate-400 font-semibold">Model 2: RawNet2</p>
+          <p class="text-xs font-medium text-slate-200">Raw Waveforms (4-dim)</p>
         </div>
       </div>
-
-      <div class="bg-slate-900 border border-slate-800 rounded-xl p-4 shadow-sm">
-        <div class="flex items-center justify-between">
-          <span class="text-xs font-medium text-slate-400 uppercase tracking-wider">1. RawNet2 Accuracy</span>
-          <div class="p-1.5 bg-amber-500/10 text-amber-400 rounded-lg">
-            <i class="fa-solid fa-wave-square text-sm"></i>
-          </div>
-        </div>
-        <div class="mt-2 flex items-baseline gap-2">
-          <span id="metric-rawnet-acc" class="text-2xl font-bold text-amber-400">0.0%</span>
-          <span id="metric-rawnet-correct" class="text-xs text-slate-400">(0/0 correct)</span>
+      <div class="glass-card rounded-xl p-3 flex items-center gap-3">
+        <div class="p-2 rounded-lg bg-blue-500/10 text-blue-400"><i class="fa-solid fa-chart-simple text-base"></i></div>
+        <div>
+          <p class="text-[11px] uppercase tracking-wider text-slate-400 font-semibold">Model 3: Acoustic DSP</p>
+          <p class="text-xs font-medium text-slate-200">Spectral/MFCCs (136-dim)</p>
         </div>
       </div>
-
-      <div class="bg-slate-900 border border-slate-800 rounded-xl p-4 shadow-sm">
-        <div class="flex items-center justify-between">
-          <span class="text-xs font-medium text-slate-400 uppercase tracking-wider">2. AASIST-L Accuracy</span>
-          <div class="p-1.5 bg-emerald-500/10 text-emerald-400 rounded-lg">
-            <i class="fa-solid fa-diagram-project text-sm"></i>
-          </div>
-        </div>
-        <div class="mt-2 flex items-baseline gap-2">
-          <span id="metric-aasist-acc" class="text-2xl font-bold text-emerald-400">0.0%</span>
-          <span id="metric-aasist-correct" class="text-xs text-slate-400">(0/0 correct)</span>
+      <div class="glass-card rounded-xl p-3 flex items-center gap-3">
+        <div class="p-2 rounded-lg bg-emerald-500/10 text-emerald-400"><i class="fa-solid fa-sliders text-base"></i></div>
+        <div>
+          <p class="text-[11px] uppercase tracking-wider text-slate-400 font-semibold">Meta-Learner: XGBoost</p>
+          <p class="text-xs font-medium text-slate-200">EER Calibrated (272-dim)</p>
         </div>
       </div>
     </div>
 
-    <!-- Main Table Container -->
-    <div class="bg-slate-900 rounded-xl border border-slate-800 shadow-xl overflow-hidden">
-      
-      <!-- Toolbar & Filters -->
-      <div class="p-4 border-b border-slate-800 bg-slate-900/50 flex flex-wrap items-center justify-between gap-3">
-        <div class="flex items-center gap-3 flex-1 min-w-[280px]">
-          <div class="relative w-full max-w-xs">
-            <i class="fa-solid fa-magnifying-glass absolute left-3 top-2.5 text-slate-500 text-xs"></i>
-            <input type="text" id="search-input" oninput="applyFilters()" placeholder="Search Audio ID (e.g. call_0181...)" class="w-full pl-8 pr-3 py-1.5 bg-slate-950 border border-slate-700 rounded-lg text-xs text-white placeholder-slate-500 focus:outline-none focus:border-indigo-500">
+    <!-- Main 2-Column Workflow -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+
+      <!-- LEFT COLUMN: Input & Audio Player (7 Cols) -->
+      <div class="lg:col-span-7 space-y-6">
+
+        <!-- Input Source Tabs -->
+        <div class="glass-card rounded-2xl p-5 space-y-4 shadow-xl">
+          <div class="flex items-center justify-between border-b border-slate-800 pb-3">
+            <h2 class="text-sm font-bold uppercase tracking-wider text-slate-300 flex items-center gap-2">
+              <i class="fa-solid fa-file-audio text-indigo-400"></i> Audio Input Source
+            </h2>
+            <div class="flex bg-slate-900/80 p-1 rounded-lg border border-slate-800 text-xs font-semibold">
+              <button id="tab-upload" onclick="switchTab('upload')" class="px-3 py-1 rounded-md bg-indigo-600 text-white shadow transition">Upload / Drop</button>
+              <button id="tab-presets" onclick="switchTab('presets')" class="px-3 py-1 rounded-md text-slate-400 hover:text-slate-200 transition">Sample Presets</button>
+              <button id="tab-mic" onclick="switchTab('mic')" class="px-3 py-1 rounded-md text-slate-400 hover:text-slate-200 transition">Microphone</button>
+            </div>
           </div>
-          <select id="filter-gt" onchange="applyFilters()" class="px-2.5 py-1.5 bg-slate-950 border border-slate-700 rounded-lg text-xs text-slate-300 focus:outline-none focus:border-indigo-500">
-            <option value="ALL">All Ground Truths</option>
-            <option value="human">Human (Bonafide)</option>
-            <option value="synthetic">Synthetic (Spoof)</option>
-          </select>
-          <select id="filter-status" onchange="applyFilters()" class="px-2.5 py-1.5 bg-slate-950 border border-slate-700 rounded-lg text-xs text-slate-300 focus:outline-none focus:border-indigo-500">
-            <option value="ALL">All Predictions</option>
-            <option value="BOTH_CORRECT">Both Models Correct</option>
-            <option value="DISAGREEMENT">Models Disagree</option>
-            <option value="BOTH_INCORRECT">Both Models Incorrect</option>
-          </select>
+
+          <!-- TAB 1: File Upload & Drag-and-Drop Area -->
+          <div id="panel-upload" class="space-y-3">
+            <div id="drop-zone" onclick="document.getElementById('file-input').click()" class="border-2 border-dashed border-slate-700 hover:border-indigo-500 bg-slate-900/40 hover:bg-slate-900/80 transition-all rounded-xl p-8 text-center cursor-pointer group">
+              <input type="file" id="file-input" accept=".wav,.mp3,.ogg,.m4a,audio/*" class="hidden" onchange="handleFileSelect(event)">
+              <div class="h-12 w-12 rounded-full bg-slate-800 group-hover:bg-indigo-500/20 text-slate-400 group-hover:text-indigo-400 flex items-center justify-center mx-auto mb-3 transition">
+                <i class="fa-solid fa-cloud-arrow-up text-xl"></i>
+              </div>
+              <p class="text-sm font-medium text-slate-200">Drag and drop audio file here, or <span class="text-indigo-400 underline">browse</span></p>
+              <p class="text-xs text-slate-500 mt-1">Supports Stereo 8kHz Bank Recordings (.wav, .mp3, etc.)</p>
+            </div>
+          </div>
+
+          <!-- TAB 2: Curated Bank Audio Presets -->
+          <div id="panel-presets" class="hidden space-y-3">
+            <p class="text-xs text-slate-400">Quickly test against verified human customer calls and synthetic AI deepfake clones from the evaluation dataset:</p>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2" id="preset-list">
+              <!-- Dynamically populated or static fallbacks -->
+              <button onclick="loadSamplePreset('call_0e1e2f29bfdc', 'human')" class="p-3 rounded-xl bg-slate-900/80 hover:bg-slate-800/80 border border-slate-800 hover:border-emerald-500/50 text-left transition flex items-center justify-between group">
+                <div>
+                  <div class="flex items-center gap-1.5">
+                    <span class="h-2 w-2 rounded-full bg-emerald-400"></span>
+                    <span class="text-xs font-bold text-slate-200">Customer Call #1</span>
+                  </div>
+                  <p class="text-[11px] text-slate-400 mt-0.5">call_0e1e2f29bfdc (Human Real)</p>
+                </div>
+                <i class="fa-solid fa-play text-slate-500 group-hover:text-emerald-400 text-xs"></i>
+              </button>
+
+              <button onclick="loadSamplePreset('call_10aa0d1d33f0', 'human')" class="p-3 rounded-xl bg-slate-900/80 hover:bg-slate-800/80 border border-slate-800 hover:border-emerald-500/50 text-left transition flex items-center justify-between group">
+                <div>
+                  <div class="flex items-center gap-1.5">
+                    <span class="h-2 w-2 rounded-full bg-emerald-400"></span>
+                    <span class="text-xs font-bold text-slate-200">Customer Call #2</span>
+                  </div>
+                  <p class="text-[11px] text-slate-400 mt-0.5">call_10aa0d1d33f0 (Human Real)</p>
+                </div>
+                <i class="fa-solid fa-play text-slate-500 group-hover:text-emerald-400 text-xs"></i>
+              </button>
+
+              <button onclick="loadSamplePreset('call_0294f969f98b', 'synthetic')" class="p-3 rounded-xl bg-slate-900/80 hover:bg-slate-800/80 border border-slate-800 hover:border-rose-500/50 text-left transition flex items-center justify-between group">
+                <div>
+                  <div class="flex items-center gap-1.5">
+                    <span class="h-2 w-2 rounded-full bg-rose-400"></span>
+                    <span class="text-xs font-bold text-slate-200">AI Clone Spoof #1</span>
+                  </div>
+                  <p class="text-[11px] text-slate-400 mt-0.5">call_0294f969f98b (Synthetic Spoof)</p>
+                </div>
+                <i class="fa-solid fa-play text-slate-500 group-hover:text-rose-400 text-xs"></i>
+              </button>
+
+              <button onclick="loadSamplePreset('call_0847d7417bb1', 'synthetic')" class="p-3 rounded-xl bg-slate-900/80 hover:bg-slate-800/80 border border-slate-800 hover:border-rose-500/50 text-left transition flex items-center justify-between group">
+                <div>
+                  <div class="flex items-center gap-1.5">
+                    <span class="h-2 w-2 rounded-full bg-rose-400"></span>
+                    <span class="text-xs font-bold text-slate-200">AI Clone Spoof #2</span>
+                  </div>
+                  <p class="text-[11px] text-slate-400 mt-0.5">call_0847d7417bb1 (Synthetic Spoof)</p>
+                </div>
+                <i class="fa-solid fa-play text-slate-500 group-hover:text-rose-400 text-xs"></i>
+              </button>
+            </div>
+          </div>
+
+          <!-- TAB 3: Live Microphone Recording -->
+          <div id="panel-mic" class="hidden space-y-4 text-center py-4">
+            <div class="flex items-center justify-center">
+              <button id="btn-record" onclick="toggleMicrophone()" class="h-16 w-16 rounded-full bg-rose-600 hover:bg-rose-500 text-white flex items-center justify-center text-xl shadow-lg shadow-rose-600/30 transition transform hover:scale-105 active:scale-95">
+                <i id="record-icon" class="fa-solid fa-microphone"></i>
+              </button>
+            </div>
+            <div>
+              <p id="record-status" class="text-sm font-semibold text-slate-300">Click to Start Recording</p>
+              <p id="record-timer" class="text-xs font-mono text-slate-500 mt-0.5">00:00</p>
+            </div>
+          </div>
         </div>
 
-        <div class="flex items-center gap-2">
-          <span id="table-count" class="text-xs text-slate-400 font-mono">Showing 0 of 0 recordings</span>
+        <!-- Audio Player & Visualizer Card -->
+        <div id="player-card" class="glass-card rounded-2xl p-5 space-y-4 shadow-xl">
+          <div class="flex items-center justify-between">
+            <div class="flex items-center gap-2">
+              <i class="fa-solid fa-headphones text-indigo-400 text-sm"></i>
+              <h3 class="text-sm font-bold text-slate-200">Audio Stream Preview</h3>
+            </div>
+            <div id="audio-meta-pill" class="flex items-center gap-2 text-[11px] font-mono text-slate-400 bg-slate-900 px-2.5 py-1 rounded-md border border-slate-800">
+              <span id="meta-sr">8000 Hz</span>
+              <span>•</span>
+              <span id="meta-channels">Stereo (Ch0: Caller)</span>
+            </div>
+          </div>
+
+          <!-- Waveform Canvas -->
+          <div class="relative bg-slate-900/90 rounded-xl p-3 border border-slate-800">
+            <canvas id="waveform-canvas" class="w-full h-24 rounded"></canvas>
+            <div id="empty-wave-hint" class="absolute inset-0 flex items-center justify-center text-xs text-slate-500 pointer-events-none">
+              Load an audio file or sample preset to visualize waveform
+            </div>
+          </div>
+
+          <!-- Playback Controls -->
+          <div class="flex items-center justify-between pt-1">
+            <div class="flex items-center gap-3">
+              <button id="btn-play" onclick="togglePlayAudio()" disabled class="h-10 w-10 rounded-xl bg-indigo-600 disabled:bg-slate-800 disabled:text-slate-600 hover:bg-indigo-500 text-white flex items-center justify-center transition shadow-md shadow-indigo-600/20">
+                <i id="play-icon" class="fa-solid fa-play text-sm"></i>
+              </button>
+              <div>
+                <p id="loaded-file-name" class="text-xs font-bold text-slate-200 truncate max-w-[200px] sm:max-w-xs">No audio loaded</p>
+                <p id="loaded-file-time" class="text-[11px] font-mono text-slate-400">0:00 / 0:00</p>
+              </div>
+            </div>
+
+            <!-- Analyze Action Button -->
+            <button id="btn-analyze" onclick="analyzeLoadedAudio()" disabled class="px-5 py-2.5 rounded-xl bg-gradient-to-r from-indigo-600 to-violet-600 hover:from-indigo-500 hover:to-violet-500 disabled:from-slate-800 disabled:to-slate-800 disabled:text-slate-600 text-white text-xs font-bold uppercase tracking-wider transition shadow-lg shadow-indigo-600/30 flex items-center gap-2">
+              <i class="fa-solid fa-bolt"></i> Run Detection
+            </button>
+          </div>
         </div>
+
       </div>
 
-      <!-- Evaluation Table -->
-      <div class="overflow-x-auto max-h-[680px] overflow-y-auto">
-        <table class="w-full text-left text-xs text-slate-300 border-collapse">
-          <thead class="bg-slate-950/90 backdrop-blur text-slate-400 uppercase font-semibold border-b border-slate-800 sticky top-0 z-20">
-            <tr>
-              <th class="py-3 px-4">Audio ID</th>
-              <th class="py-3 px-4">Listen (Channel 0)</th>
-              <th class="py-3 px-4 text-purple-400">Ground Truth</th>
-              <th class="py-3 px-4 text-amber-400">1. RawNet2 Score</th>
-              <th class="py-3 px-4 text-emerald-400">2. AASIST-L Score</th>
-            </tr>
-          </thead>
-          <tbody id="evaluation-table-body" class="divide-y divide-slate-800/60">
-            <tr>
-              <td colspan="5" class="py-12 text-center text-slate-500">
-                <i class="fa-solid fa-spinner fa-spin text-2xl mb-2 text-indigo-400 block"></i>
-                Loading Channel 0 benchmark data...
-              </td>
-            </tr>
-          </tbody>
-        </table>
+      <!-- RIGHT COLUMN: Real-Time Detection Results (5 Cols) -->
+      <div class="lg:col-span-5 space-y-6">
+
+        <div id="verdict-container" class="glass-card rounded-2xl p-6 space-y-5 shadow-2xl relative overflow-hidden min-h-[460px] flex flex-col justify-between">
+
+          <!-- Top Status -->
+          <div class="flex items-center justify-between border-b border-slate-800 pb-3">
+            <span class="text-xs font-bold uppercase tracking-wider text-slate-400 flex items-center gap-1.5">
+              <i class="fa-solid fa-microchip text-indigo-400"></i> Inference Verdict
+            </span>
+            <span id="processing-badge" class="hidden text-[10px] font-mono px-2 py-0.5 rounded bg-slate-800 text-slate-400 border border-slate-700">
+              Latency: <span id="val-latency" class="text-indigo-300 font-bold">0ms</span>
+            </span>
+          </div>
+
+          <!-- STATE 1: Idle Initial Screen -->
+          <div id="view-idle" class="flex-1 flex flex-col items-center justify-center text-center py-12 space-y-3">
+            <div class="h-16 w-16 rounded-2xl bg-slate-800/80 border border-slate-700 flex items-center justify-center text-slate-500 text-2xl">
+              <i class="fa-solid fa-shield-virus"></i>
+            </div>
+            <div>
+              <p class="text-sm font-bold text-slate-300">Ready for Anti-Spoofing Analysis</p>
+              <p class="text-xs text-slate-500 max-w-xs mt-1">Upload a recording or pick a preset to evaluate caller voice authenticity.</p>
+            </div>
+          </div>
+
+          <!-- STATE 2: Analyzing Loader -->
+          <div id="view-loading" class="hidden flex-1 flex flex-col items-center justify-center text-center py-12 space-y-4">
+            <div class="relative flex items-center justify-center">
+              <div class="h-20 w-20 rounded-full border-4 border-indigo-500/20 border-t-indigo-500 animate-spin"></div>
+              <i class="fa-solid fa-fingerprint text-indigo-400 text-2xl absolute"></i>
+            </div>
+            <div class="space-y-1">
+              <p class="text-sm font-bold text-slate-200 animate-pulse">Running Neural Inference...</p>
+              <p class="text-[11px] text-slate-400 font-mono">Extracting 272-dim GNN & DSP features</p>
+            </div>
+          </div>
+
+          <!-- STATE 3: Verdict Result Display -->
+          <div id="view-result" class="hidden space-y-5 flex-1">
+
+            <!-- Primary Verdict Banner -->
+            <div id="verdict-banner" class="p-4 rounded-xl border flex items-center gap-3.5 transition-all">
+              <div id="verdict-icon-box" class="h-12 w-12 rounded-xl flex items-center justify-center text-xl shrink-0">
+                <i id="verdict-icon" class="fa-solid"></i>
+              </div>
+              <div>
+                <p id="verdict-subtitle" class="text-[10px] uppercase font-bold tracking-wider"></p>
+                <h4 id="verdict-title" class="text-base font-black tracking-tight leading-tight"></h4>
+              </div>
+            </div>
+
+            <!-- Calibrated Confidence Gauge -->
+            <div class="space-y-2 bg-slate-900/80 p-4 rounded-xl border border-slate-800">
+              <div class="flex items-center justify-between text-xs">
+                <span class="text-slate-400 font-medium">Synthetic Risk Probability:</span>
+                <span id="val-confidence-pct" class="font-mono font-black text-sm">0.0%</span>
+              </div>
+
+              <!-- Bar with Threshold Marker -->
+              <div class="relative h-4 bg-slate-950 rounded-full overflow-hidden border border-slate-800">
+                <div id="gauge-fill" class="h-full rounded-full transition-all duration-700 ease-out" style="width: 0%;"></div>
+                <!-- Marker for Calibrated Threshold 0.9623 (96.23%) -->
+                <div class="absolute top-0 bottom-0 w-0.5 bg-yellow-400 z-10" style="left: 96.23%;" title="Calibrated EER Threshold (0.9623)"></div>
+              </div>
+
+              <div class="flex items-center justify-between text-[10px] font-mono text-slate-500 pt-1">
+                <span>0.0 (Human)</span>
+                <span class="text-yellow-400/90 font-bold">▲ Threshold: 0.9623</span>
+                <span>1.0 (Spoof)</span>
+              </div>
+            </div>
+
+            <!-- API Contract Response JSON -->
+            <div class="space-y-1.5">
+              <div class="flex items-center justify-between">
+                <span class="text-[11px] font-mono uppercase text-slate-400 font-bold">Exact API Response Payload:</span>
+                <button onclick="copyPayloadJSON()" class="text-[10px] text-indigo-400 hover:text-indigo-300 font-mono flex items-center gap-1">
+                  <i class="fa-regular fa-copy"></i> <span id="copy-text">Copy</span>
+                </button>
+              </div>
+              <pre id="json-output" class="bg-slate-950 p-3 rounded-lg border border-slate-800 text-[11px] font-mono text-emerald-400 overflow-x-auto select-all"></pre>
+            </div>
+
+          </div>
+
+          <!-- Bottom Footer Info -->
+          <div class="border-t border-slate-800 pt-3 flex items-center justify-between text-[11px] text-slate-500">
+            <span class="flex items-center gap-1.5"><i class="fa-solid fa-lock text-[10px]"></i> Bank Security Level 4</span>
+            <span id="call-id-display" class="font-mono text-slate-400 truncate max-w-[150px]">call_id: -</span>
+          </div>
+
+        </div>
+
       </div>
 
     </div>
 
   </main>
 
+  <!-- Footer -->
+  <footer class="border-t border-slate-900 bg-slate-950 py-4 text-center text-xs text-slate-500">
+    Altur Banking Voice Anti-Spoofing AI • HackMTY 2026 • Real-Time Biometric Defense
+  </footer>
+
+  <!-- WebAudio & Application Logic -->
   <script>
-    let allRecords = [];
+    let currentAudioBytes = null;
+    let currentBase64 = null;
+    let currentCallId = null;
+    let audioContext = null;
+    let audioBuffer = null;
+    let audioSourceNode = null;
+    let isPlaying = false;
+    let startTime = 0;
+    let startOffset = 0;
+    let animationFrameId = null;
 
-    async function loadData() {
-      const tbody = document.getElementById('evaluation-table-body');
-      tbody.innerHTML = '<tr><td colspan="5" class="py-12 text-center text-slate-500"><i class="fa-solid fa-spinner fa-spin text-2xl mb-2 text-indigo-400 block"></i>Loading benchmark records...</td></tr>';
-      
-      try {
-        const res = await fetch('/api/data');
-        const data = await res.json();
-        allRecords = data.results || [];
-        updateMetrics(data);
-        applyFilters();
-      } catch (err) {
-        console.error('Error fetching data:', err);
-        tbody.innerHTML = '<tr><td colspan="5" class="py-12 text-center text-rose-400"><i class="fa-solid fa-circle-exclamation text-2xl mb-2 block"></i>Failed to load evaluation data.</td></tr>';
+    // MediaRecorder for Live Mic
+    let mediaRecorder = null;
+    let micStream = null;
+    let audioChunks = [];
+    let recordTimerInterval = null;
+    let recordSeconds = 0;
+
+    // Switch Input Source Tabs
+    function switchTab(tab) {
+      document.getElementById('panel-upload').classList.toggle('hidden', tab !== 'upload');
+      document.getElementById('panel-presets').classList.toggle('hidden', tab !== 'presets');
+      document.getElementById('panel-mic').classList.toggle('hidden', tab !== 'mic');
+
+      const btnUp = document.getElementById('tab-upload');
+      const btnPre = document.getElementById('tab-presets');
+      const btnMic = document.getElementById('tab-mic');
+
+      btnUp.className = tab === 'upload' ? 'px-3 py-1 rounded-md bg-indigo-600 text-white shadow transition' : 'px-3 py-1 rounded-md text-slate-400 hover:text-slate-200 transition';
+      btnPre.className = tab === 'presets' ? 'px-3 py-1 rounded-md bg-indigo-600 text-white shadow transition' : 'px-3 py-1 rounded-md text-slate-400 hover:text-slate-200 transition';
+      btnMic.className = tab === 'mic' ? 'px-3 py-1 rounded-md bg-indigo-600 text-white shadow transition' : 'px-3 py-1 rounded-md text-slate-400 hover:text-slate-200 transition';
+    }
+
+    // Handle Drag & Drop File Selection
+    const dropZone = document.getElementById('drop-zone');
+    dropZone.addEventListener('dragover', (e) => { e.preventDefault(); dropZone.classList.add('border-indigo-500', 'bg-slate-900/80'); });
+    dropZone.addEventListener('dragleave', () => { dropZone.classList.remove('border-indigo-500', 'bg-slate-900/80'); });
+    dropZone.addEventListener('drop', (e) => {
+      e.preventDefault();
+      dropZone.classList.remove('border-indigo-500', 'bg-slate-900/80');
+      if (e.dataTransfer.files.length > 0) {
+        processRawFile(e.dataTransfer.files[0]);
+      }
+    });
+
+    function handleFileSelect(e) {
+      if (e.target.files.length > 0) {
+        processRawFile(e.target.files[0]);
       }
     }
 
-    async function reEvaluate() {
-      const btn = document.getElementById('btn-reeval');
-      btn.disabled = true;
-      btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Running Models...';
+    // Process File into ArrayBuffer and Base64
+    async function processRawFile(file) {
+      const arrayBuffer = await file.arrayBuffer();
+      currentAudioBytes = arrayBuffer;
+      currentCallId = file.name.replace(/\.[^/.]+$/, "");
+      document.getElementById('loaded-file-name').textContent = file.name;
+
+      // Convert ArrayBuffer to Base64
+      let binary = '';
+      const bytes = new Uint8Array(arrayBuffer);
+      for (let i = 0; i < bytes.byteLength; i++) {
+        binary += String.fromCharCode(bytes[i]);
+      }
+      currentBase64 = btoa(binary);
+
+      await decodeAndDrawWaveform(arrayBuffer);
+      document.getElementById('btn-analyze').disabled = false;
+      document.getElementById('btn-play').disabled = false;
+    }
+
+    // Load Sample Preset Call
+    async function loadSamplePreset(callId, expectedLabel) {
+      document.getElementById('loaded-file-name').textContent = `${callId}.wav (${expectedLabel})`;
+      currentCallId = callId;
+      try {
+        const response = await fetch(`/api/samples/${callId}/audio`);
+        if (!response.ok) throw new Error("Could not fetch sample audio");
+        const arrayBuffer = await response.arrayBuffer();
+        currentAudioBytes = arrayBuffer;
+
+        let binary = '';
+        const bytes = new Uint8Array(arrayBuffer);
+        for (let i = 0; i < bytes.byteLength; i++) {
+          binary += String.fromCharCode(bytes[i]);
+        }
+        currentBase64 = btoa(binary);
+
+        await decodeAndDrawWaveform(arrayBuffer);
+        document.getElementById('btn-analyze').disabled = false;
+        document.getElementById('btn-play').disabled = false;
+      } catch (err) {
+        console.error(err);
+        alert("Error loading sample: " + err.message);
+      }
+    }
+
+    // WebAudio Decoding and Waveform Visualization
+    async function decodeAndDrawWaveform(arrayBuffer) {
+      if (!audioContext) {
+        audioContext = new (window.AudioContext || window.webkitAudioContext)();
+      }
+      stopAudioPlayback();
+      try {
+        audioBuffer = await audioContext.decodeAudioData(arrayBuffer.slice(0));
+        document.getElementById('meta-sr').textContent = `${audioBuffer.sampleRate} Hz`;
+        document.getElementById('meta-channels').textContent = audioBuffer.numberOfChannels > 1 ? `Stereo (Ch0: Caller)` : `Mono`;
+        document.getElementById('loaded-file-time').textContent = `0:00 / ${formatTime(audioBuffer.duration)}`;
+        document.getElementById('empty-wave-hint').classList.add('hidden');
+        drawWaveform(audioBuffer);
+      } catch (e) {
+        console.warn("WebAudio decoding error:", e);
+      }
+    }
+
+    function drawWaveform(buffer) {
+      const canvas = document.getElementById('waveform-canvas');
+      const ctx = canvas.getContext('2d');
+      const width = canvas.width = canvas.offsetWidth * 2;
+      const height = canvas.height = canvas.offsetHeight * 2;
+
+      const rawData = buffer.getChannelData(0); // Channel 0 (Caller)
+      const step = Math.ceil(rawData.length / width);
+      const amp = height / 2;
+
+      ctx.clearRect(0, 0, width, height);
+
+      // Gradient wave
+      const grad = ctx.createLinearGradient(0, 0, width, 0);
+      grad.addColorStop(0, '#6366f1');
+      grad.addColorStop(0.5, '#a855f7');
+      grad.addColorStop(1, '#ec4899');
+      ctx.fillStyle = grad;
+
+      ctx.beginPath();
+      for (let i = 0; i < width; i++) {
+        let min = 1.0;
+        let max = -1.0;
+        for (let j = 0; j < step; j++) {
+          const datum = rawData[(i * step) + j];
+          if (datum < min) min = datum;
+          if (datum > max) max = datum;
+        }
+        ctx.fillRect(i, (1 + min) * amp, 1.5, Math.max(2, (max - min) * amp));
+      }
+    }
+
+    // Audio Playback Controls
+    function togglePlayAudio() {
+      if (!audioBuffer) return;
+      if (isPlaying) {
+        stopAudioPlayback();
+      } else {
+        playAudio();
+      }
+    }
+
+    function playAudio() {
+      if (!audioContext || !audioBuffer) return;
+      if (audioContext.state === 'suspended') audioContext.resume();
+
+      audioSourceNode = audioContext.createBufferSource();
+      audioSourceNode.buffer = audioBuffer;
+      audioSourceNode.connect(audioContext.destination);
+
+      startTime = audioContext.currentTime - startOffset;
+      audioSourceNode.start(0, startOffset);
+      isPlaying = true;
+
+      document.getElementById('play-icon').className = 'fa-solid fa-pause text-sm';
+      audioSourceNode.onended = () => {
+        if (isPlaying) stopAudioPlayback();
+      };
+    }
+
+    function stopAudioPlayback() {
+      if (audioSourceNode) {
+        try { audioSourceNode.stop(); } catch(e){}
+        audioSourceNode.disconnect();
+        audioSourceNode = null;
+      }
+      isPlaying = false;
+      startOffset = 0;
+      document.getElementById('play-icon').className = 'fa-solid fa-play text-sm';
+    }
+
+    function formatTime(sec) {
+      const m = Math.floor(sec / 60);
+      const s = Math.floor(sec % 60);
+      return `${m}:${s < 10 ? '0' : ''}${s}`;
+    }
+
+    // Microphone Recording Logic
+    async function toggleMicrophone() {
+      const btn = document.getElementById('btn-record');
+      const icon = document.getElementById('record-icon');
+      const status = document.getElementById('record-status');
+      const timer = document.getElementById('record-timer');
+
+      if (!mediaRecorder || mediaRecorder.state === 'inactive') {
+        try {
+          micStream = await navigator.mediaDevices.getUserMedia({ audio: true });
+          mediaRecorder = new MediaRecorder(micStream);
+          audioChunks = [];
+
+          mediaRecorder.ondataavailable = (e) => { if (e.data.size > 0) audioChunks.push(e.data); };
+          mediaRecorder.onstop = async () => {
+            const blob = new Blob(audioChunks, { type: 'audio/wav' });
+            processRawFile(new File([blob], "mic_recording.wav", { type: "audio/wav" }));
+          };
+
+          mediaRecorder.start();
+          btn.className = 'h-16 w-16 rounded-full bg-slate-800 text-rose-500 border-2 border-rose-500 flex items-center justify-center text-xl shadow-lg shadow-rose-600/40 animate-pulse';
+          icon.className = 'fa-solid fa-stop';
+          status.textContent = 'Recording live audio...';
+          recordSeconds = 0;
+          recordTimerInterval = setInterval(() => {
+            recordSeconds++;
+            timer.textContent = formatTime(recordSeconds);
+          }, 1000);
+        } catch (err) {
+          alert("Microphone permission denied: " + err.message);
+        }
+      } else {
+        mediaRecorder.stop();
+        if (micStream) micStream.getTracks().forEach(t => t.stop());
+        clearInterval(recordTimerInterval);
+        btn.className = 'h-16 w-16 rounded-full bg-rose-600 hover:bg-rose-500 text-white flex items-center justify-center text-xl shadow-lg shadow-rose-600/30 transition transform hover:scale-105 active:scale-95';
+        icon.className = 'fa-solid fa-microphone';
+        status.textContent = 'Recording complete. Processing...';
+      }
+    }
+
+    // Run Anti-Spoofing Analysis via POST /detect
+    async function analyzeLoadedAudio() {
+      if (!currentBase64) return;
+
+      const viewIdle = document.getElementById('view-idle');
+      const viewLoading = document.getElementById('view-loading');
+      const viewResult = document.getElementById('view-result');
+      const btnAnalyze = document.getElementById('btn-analyze');
+
+      viewIdle.classList.add('hidden');
+      viewResult.classList.add('hidden');
+      viewLoading.classList.remove('hidden');
+      btnAnalyze.disabled = true;
+
+      const t0 = performance.now();
 
       try {
-        const res = await fetch('/api/re-evaluate', { method: 'POST' });
-        const data = await res.json();
-        allRecords = data.results || [];
-        updateMetrics(data);
-        applyFilters();
+        const response = await fetch('/detect', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            audio: currentBase64,
+            call_id: currentCallId || `call_${Date.now()}`
+          })
+        });
+
+        const elapsedMs = Math.round(performance.now() - t0);
+        if (!response.ok) {
+          const errData = await response.json();
+          throw new Error(errData.detail || "Inference failed");
+        }
+
+        const data = await response.json();
+        renderResult(data, elapsedMs);
+
       } catch (err) {
-        console.error('Re-evaluation failed:', err);
+        alert("Detection Error: " + err.message);
+        viewLoading.classList.add('hidden');
+        viewIdle.classList.remove('hidden');
       } finally {
-        btn.disabled = false;
-        btn.innerHTML = '<i class="fa-solid fa-bolt"></i> Re-Run Benchmark';
+        btnAnalyze.disabled = false;
       }
     }
 
-    function updateMetrics(data) {
-      const records = data.results || [];
-      const total = records.length;
-      const humanCount = records.filter(r => r.ground_truth === 'human').length;
-      const synthCount = records.filter(r => r.ground_truth === 'synthetic').length;
+    // Render Detection Result
+    function renderResult(data, latencyMs) {
+      document.getElementById('view-loading').classList.add('hidden');
+      document.getElementById('view-result').classList.remove('hidden');
+      document.getElementById('processing-badge').classList.remove('hidden');
+      document.getElementById('val-latency').textContent = `${latencyMs}ms`;
+      document.getElementById('call-id-display').textContent = `call_id: ${currentCallId || 'stream'}`;
 
-      const rawnetCorrect = records.filter(r => r.rawnet2_is_correct === true).length;
-      const aasistCorrect = records.filter(r => r.aasistl_is_correct === true).length;
+      const banner = document.getElementById('verdict-banner');
+      const iconBox = document.getElementById('verdict-icon-box');
+      const icon = document.getElementById('verdict-icon');
+      const subtitle = document.getElementById('verdict-subtitle');
+      const title = document.getElementById('verdict-title');
+      const gaugeFill = document.getElementById('gauge-fill');
+      const confPct = document.getElementById('val-confidence-pct');
 
-      document.getElementById('metric-total').textContent = total;
-      document.getElementById('metric-human').textContent = `${humanCount} Human`;
-      document.getElementById('metric-synth').textContent = `${synthCount} Synthetic`;
+      const isSynth = data.is_synthetic;
+      const confidence = data.confidence;
+      const pct = (confidence * 100).toFixed(1);
 
-      const rAcc = total > 0 ? ((rawnetCorrect / total) * 100).toFixed(1) : '0.0';
-      const aAcc = total > 0 ? ((aasistCorrect / total) * 100).toFixed(1) : '0.0';
+      confPct.textContent = `${pct}%`;
+      gaugeFill.style.width = `${pct}%`;
 
-      document.getElementById('metric-rawnet-acc').textContent = `${rAcc}%`;
-      document.getElementById('metric-rawnet-correct').textContent = `(${rawnetCorrect}/${total} correct)`;
-
-      document.getElementById('metric-aasist-acc').textContent = `${aAcc}%`;
-      document.getElementById('metric-aasist-correct').textContent = `(${aasistCorrect}/${total} correct)`;
-    }
-
-    function applyFilters() {
-      const query = document.getElementById('search-input').value.trim().toLowerCase();
-      const gtFilter = document.getElementById('filter-gt').value;
-      const statusFilter = document.getElementById('filter-status').value;
-
-      const filtered = allRecords.filter(item => {
-        if (query && !item.audio_id.toLowerCase().includes(query)) return false;
-        if (gtFilter !== 'ALL' && item.ground_truth !== gtFilter) return false;
-        if (statusFilter === 'BOTH_CORRECT' && !(item.rawnet2_is_correct === true && item.aasistl_is_correct === true)) return false;
-        if (statusFilter === 'DISAGREEMENT' && item.rawnet2_prediction === item.aasistl_prediction) return false;
-        if (statusFilter === 'BOTH_INCORRECT' && !(item.rawnet2_is_correct === false && item.aasistl_is_correct === false)) return false;
-        return true;
-      });
-
-      renderTable(filtered);
-    }
-
-    function renderTable(records) {
-      const tbody = document.getElementById('evaluation-table-body');
-      tbody.innerHTML = '';
-
-      document.getElementById('table-count').textContent = `Showing ${records.length} of ${allRecords.length} recordings`;
-
-      if (records.length === 0) {
-        tbody.innerHTML = '<tr><td colspan="5" class="py-12 text-center text-slate-500"><i class="fa-solid fa-filter-circle-xmark text-2xl mb-2 text-slate-600 block"></i>No matching Channel 0 recordings found.</td></tr>';
-        return;
+      if (isSynth) {
+        // Red Synthetic Alert
+        banner.className = 'p-4 rounded-xl border border-rose-500/50 bg-rose-950/40 animate-glow-red flex items-center gap-3.5';
+        iconBox.className = 'h-12 w-12 rounded-xl bg-rose-500/20 text-rose-400 border border-rose-500/30 flex items-center justify-center text-xl shrink-0';
+        icon.className = 'fa-solid fa-triangle-exclamation';
+        subtitle.className = 'text-[10px] uppercase font-bold tracking-wider text-rose-400';
+        subtitle.textContent = 'Security Alert • Deepfake Detected';
+        title.className = 'text-base font-black tracking-tight text-rose-200';
+        title.textContent = 'SYNTHETIC AI VOICE DETECTED';
+        gaugeFill.className = 'h-full rounded-full bg-gradient-to-r from-amber-500 via-rose-500 to-red-600 transition-all duration-700 ease-out';
+      } else {
+        // Green Human Verified
+        banner.className = 'p-4 rounded-xl border border-emerald-500/50 bg-emerald-950/40 animate-glow-green flex items-center gap-3.5';
+        iconBox.className = 'h-12 w-12 rounded-xl bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 flex items-center justify-center text-xl shrink-0';
+        icon.className = 'fa-solid fa-user-check';
+        subtitle.className = 'text-[10px] uppercase font-bold tracking-wider text-emerald-400';
+        subtitle.textContent = 'Biometric Authenticity Verified';
+        title.className = 'text-base font-black tracking-tight text-emerald-200';
+        title.textContent = 'AUTHENTIC HUMAN VOICE';
+        gaugeFill.className = 'h-full rounded-full bg-gradient-to-r from-teal-500 to-emerald-500 transition-all duration-700 ease-out';
       }
 
-      records.forEach(item => {
-        const gt = item.ground_truth || 'unknown';
-        const isHuman = (gt === 'human');
-        const gtBadge = isHuman 
-          ? `<span class="px-2.5 py-1 rounded-md text-[11px] font-bold bg-emerald-500/15 text-emerald-400 border border-emerald-500/30 flex items-center gap-1 w-max"><i class="fa-solid fa-user-check text-[10px]"></i> HUMAN</span>`
-          : `<span class="px-2.5 py-1 rounded-md text-[11px] font-bold bg-rose-500/15 text-rose-400 border border-rose-500/30 flex items-center gap-1 w-max"><i class="fa-solid fa-robot text-[10px]"></i> SYNTHETIC</span>`;
+      // Exact Output Payload JSON
+      document.getElementById('json-output').textContent = JSON.stringify(data, null, 2);
+    }
 
-        const makeScoreBadge = (score, isReal, isCorrect, latency) => {
-          const predText = isReal ? 'HUMAN' : 'SYNTHETIC';
-          const predColor = isReal 
-            ? 'bg-emerald-500/15 text-emerald-400 border-emerald-500/25' 
-            : 'bg-rose-500/15 text-rose-400 border-rose-500/25';
-          
-          let corrBadge = '';
-          if (isCorrect === true) {
-            corrBadge = '<span class="text-emerald-400 font-bold ml-1 text-xs" title="Matches Ground Truth">✓</span>';
-          } else if (isCorrect === false) {
-            corrBadge = '<span class="text-rose-400 font-bold ml-1 text-xs" title="Incorrect Prediction">✗</span>';
-          }
-
-          return `
-            <div class="flex items-center gap-2">
-              <span class="px-2.5 py-1 rounded-md text-[11px] font-bold border ${predColor}">
-                ${predText} (${Number(score).toFixed(1)}%)${corrBadge}
-              </span>
-              <span class="text-[10px] text-slate-500 font-mono">${latency}ms</span>
-            </div>
-          `;
-        };
-
-        const tr = document.createElement('tr');
-        tr.className = 'hover:bg-slate-800/40 transition';
-        tr.innerHTML = `
-          <td class="py-3 px-4 font-semibold text-white">
-            <div class="font-mono text-xs text-indigo-300">${item.audio_id}</div>
-            <div class="text-[10px] text-slate-500 font-mono">${item.duration_s}s duration</div>
-          </td>
-          <td class="py-3 px-4">
-            <audio controls src="${item.audio_url}" preload="none"></audio>
-          </td>
-          <td class="py-3 px-4">
-            ${gtBadge}
-          </td>
-          <td class="py-3 px-4">
-            ${makeScoreBadge(item.rawnet2_score, item.rawnet2_is_real, item.rawnet2_is_correct, item.rawnet2_latency_ms)}
-          </td>
-          <td class="py-3 px-4">
-            ${makeScoreBadge(item.aasistl_score, item.aasistl_is_real, item.aasistl_is_correct, item.aasistl_latency_ms)}
-          </td>
-        `;
-        tbody.appendChild(tr);
+    function copyPayloadJSON() {
+      const text = document.getElementById('json-output').textContent;
+      navigator.clipboard.writeText(text).then(() => {
+        document.getElementById('copy-text').textContent = 'Copied!';
+        setTimeout(() => { document.getElementById('copy-text').textContent = 'Copy'; }, 2000);
       });
     }
 
-    // Initial load
-    window.addEventListener('DOMContentLoaded', loadData);
+    // Auto-fetch API health on load
+    window.addEventListener('DOMContentLoaded', async () => {
+      try {
+        const res = await fetch('/health');
+        if (res.ok) {
+          const h = await res.json();
+          document.getElementById('header-threshold').textContent = h.calibrated_threshold;
+        }
+      } catch (e) {}
+    });
   </script>
-
 </body>
 </html>

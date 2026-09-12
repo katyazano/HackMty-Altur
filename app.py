@@ -56,8 +56,19 @@ app.add_middleware(
 )
 
 
-@app.get("/", tags=["Info"])
-async def root():
+from pathlib import Path
+from fastapi.responses import FileResponse, Response
+
+PROJECT_ROOT = Path(__file__).resolve().parent
+WEB_INDEX = PROJECT_ROOT / "web" / "index.html"
+
+
+@app.get("/", tags=["UI"])
+@app.get("/demo", tags=["UI"])
+async def serve_ui():
+    """Serves the interactive Altur Voice Anti-Spoofing Web Dashboard."""
+    if WEB_INDEX.exists():
+        return FileResponse(str(WEB_INDEX))
     return {
         "service": settings.app_name,
         "version": settings.app_version,
@@ -66,6 +77,38 @@ async def root():
         "detect_endpoint": "POST /detect (Stereo 8kHz Base64 WAV, Channel 0 = Caller)",
         "calibrated_threshold": settings.calibrated_threshold,
     }
+
+
+@app.get("/api/info", tags=["Info"])
+async def api_info():
+    """Returns service metadata and API specifications."""
+    return {
+        "service": settings.app_name,
+        "version": settings.app_version,
+        "docs": "/docs",
+        "health": "/health",
+        "detect_endpoint": "POST /detect",
+        "calibrated_threshold": settings.calibrated_threshold,
+    }
+
+
+@app.get("/api/samples/{call_id}/audio", tags=["Demo Samples"])
+async def get_sample_audio(call_id: str):
+    """
+    Serves test audio files for quick demo playback in the web UI.
+    Searches across test audio directories.
+    """
+    # Check potential audio locations
+    candidates = [
+        PROJECT_ROOT / "Data" / "audio" / "test" / f"{call_id}.wav",
+        PROJECT_ROOT / "Data" / "separated_agents" / "test" / "agent_0" / f"{call_id}_agent_0.wav",
+        PROJECT_ROOT / "Data" / "audio" / "train" / f"{call_id}.wav",
+    ]
+    for c in candidates:
+        if c.exists():
+            return FileResponse(str(c), media_type="audio/wav", filename=f"{call_id}.wav")
+
+    raise HTTPException(status_code=404, detail=f"Sample audio for '{call_id}' not found.")
 
 
 def get_inference_engine() -> InferenceEngine:
