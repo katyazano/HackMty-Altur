@@ -1,0 +1,2229 @@
+{
+  "timestamp": "2026-09-12 03:06:04",
+  "total_test_samples": 71,
+  "models": {
+    "RawNet2": {
+      "accuracy_pct": 84.51,
+      "correct_count": 60,
+      "mean_latency_ms": 18.18
+    },
+    "AASIST": {
+      "accuracy_pct": 88.73,
+      "correct_count": 63,
+      "mean_latency_ms": 20.66
+    },
+    "Acoustic_XGBoost": {
+      "accuracy_pct": 88.73,
+      "correct_count": 63,
+      "mean_latency_ms": 20.3
+    },
+    "AASIST_XGBoost_Ensemble": {
+      "accuracy_pct": 91.55,
+      "correct_count": 65,
+      "mean_latency_ms": 40.82
+    }
+  },
+  "records": [
+    {
+      "audio_id": "call_0294f969f98b",
+      "filename": "call_0294f969f98b_agent_0.wav",
+      "duration_s": 17.85,
+      "ground_truth": "synthetic",
+      "is_ground_truth_human": false,
+      "rawnet2": {
+        "score_pct": 2.6,
+        "prediction": "SYNTHETIC",
+        "correct": true,
+        "latency_ms": 20.58
+      },
+      "aasist": {
+        "score_pct": 0.5,
+        "prediction": "SYNTHETIC",
+        "correct": true,
+        "latency_ms": 21.58
+      },
+      "acoustic_xgboost": {
+        "score_pct": 3.0,
+        "prediction": "SYNTHETIC",
+        "correct": true,
+        "latency_ms": 20.55
+      },
+      "ensemble_aasist_xgboost": {
+        "score_pct": 0.7,
+        "prediction": "SYNTHETIC",
+        "correct": true,
+        "latency_ms": 41.53
+      }
+    },
+    {
+      "audio_id": "call_0847d7417bb1",
+      "filename": "call_0847d7417bb1_agent_0.wav",
+      "duration_s": 27.39,
+      "ground_truth": "synthetic",
+      "is_ground_truth_human": false,
+      "rawnet2": {
+        "score_pct": 1.5,
+        "prediction": "SYNTHETIC",
+        "correct": true,
+        "latency_ms": 18.32
+      },
+      "aasist": {
+        "score_pct": 3.9,
+        "prediction": "SYNTHETIC",
+        "correct": true,
+        "latency_ms": 20.71
+      },
+      "acoustic_xgboost": {
+        "score_pct": 0.5,
+        "prediction": "SYNTHETIC",
+        "correct": true,
+        "latency_ms": 19.96
+      },
+      "ensemble_aasist_xgboost": {
+        "score_pct": 0.5,
+        "prediction": "SYNTHETIC",
+        "correct": true,
+        "latency_ms": 40.46
+      }
+    },
+    {
+      "audio_id": "call_0cf2f4a71328",
+      "filename": "call_0cf2f4a71328_agent_0.wav",
+      "duration_s": 52.32,
+      "ground_truth": "synthetic",
+      "is_ground_truth_human": false,
+      "rawnet2": {
+        "score_pct": 4.2,
+        "prediction": "SYNTHETIC",
+        "correct": true,
+        "latency_ms": 17.92
+      },
+      "aasist": {
+        "score_pct": 16.9,
+        "prediction": "SYNTHETIC",
+        "correct": true,
+        "latency_ms": 20.55
+      },
+      "acoustic_xgboost": {
+        "score_pct": 3.2,
+        "prediction": "SYNTHETIC",
+        "correct": true,
+        "latency_ms": 19.99
+      },
+      "ensemble_aasist_xgboost": {
+        "score_pct": 0.5,
+        "prediction": "SYNTHETIC",
+        "correct": true,
+        "latency_ms": 40.5
+      }
+    },
+    {
+      "audio_id": "call_0e1e2f29bfdc",
+      "filename": "call_0e1e2f29bfdc_agent_0.wav",
+      "duration_s": 24.51,
+      "ground_truth": "human",
+      "is_ground_truth_human": true,
+      "rawnet2": {
+        "score_pct": 95.1,
+        "prediction": "HUMAN",
+        "correct": true,
+        "latency_ms": 17.91
+      },
+      "aasist": {
+        "score_pct": 77.3,
+        "prediction": "HUMAN",
+        "correct": true,
+        "latency_ms": 20.63
+      },
+      "acoustic_xgboost": {
+        "score_pct": 98.1,
+        "prediction": "HUMAN",
+        "correct": true,
+        "latency_ms": 19.94
+      },
+      "ensemble_aasist_xgboost": {
+        "score_pct": 99.1,
+        "prediction": "HUMAN",
+        "correct": true,
+        "latency_ms": 40.54
+      }
+    },
+    {
+      "audio_id": "call_10aa0d1d33f0",
+      "filename": "call_10aa0d1d33f0_agent_0.wav",
+      "duration_s": 25.75,
+      "ground_truth": "human",
+      "is_ground_truth_human": true,
+      "rawnet2": {
+        "score_pct": 6.6,
+        "prediction": "SYNTHETIC",
+        "correct": false,
+        "latency_ms": 18.48
+      },
+      "aasist": {
+        "score_pct": 24.2,
+        "prediction": "SYNTHETIC",
+        "correct": false,
+        "latency_ms": 20.73
+      },
+      "acoustic_xgboost": {
+        "score_pct": 65.5,
+        "prediction": "HUMAN",
+        "correct": true,
+        "latency_ms": 19.93
+      },
+      "ensemble_aasist_xgboost": {
+        "score_pct": 1.2,
+        "prediction": "SYNTHETIC",
+        "correct": false,
+        "latency_ms": 40.74
+      }
+    },
+    {
+      "audio_id": "call_120d6007bcc1",
+      "filename": "call_120d6007bcc1_agent_0.wav",
+      "duration_s": 53.47,
+      "ground_truth": "synthetic",
+      "is_ground_truth_human": false,
+      "rawnet2": {
+        "score_pct": 0.7,
+        "prediction": "SYNTHETIC",
+        "correct": true,
+        "latency_ms": 18.61
+      },
+      "aasist": {
+        "score_pct": 0.7,
+        "prediction": "SYNTHETIC",
+        "correct": true,
+        "latency_ms": 21.37
+      },
+      "acoustic_xgboost": {
+        "score_pct": 0.5,
+        "prediction": "SYNTHETIC",
+        "correct": true,
+        "latency_ms": 20.09
+      },
+      "ensemble_aasist_xgboost": {
+        "score_pct": 0.3,
+        "prediction": "SYNTHETIC",
+        "correct": true,
+        "latency_ms": 40.93
+      }
+    },
+    {
+      "audio_id": "call_181a5049ecae",
+      "filename": "call_181a5049ecae_agent_0.wav",
+      "duration_s": 30.93,
+      "ground_truth": "synthetic",
+      "is_ground_truth_human": false,
+      "rawnet2": {
+        "score_pct": 3.5,
+        "prediction": "SYNTHETIC",
+        "correct": true,
+        "latency_ms": 18.17
+      },
+      "aasist": {
+        "score_pct": 8.8,
+        "prediction": "SYNTHETIC",
+        "correct": true,
+        "latency_ms": 24.67
+      },
+      "acoustic_xgboost": {
+        "score_pct": 0.6,
+        "prediction": "SYNTHETIC",
+        "correct": true,
+        "latency_ms": 28.7
+      },
+      "ensemble_aasist_xgboost": {
+        "score_pct": 0.6,
+        "prediction": "SYNTHETIC",
+        "correct": true,
+        "latency_ms": 42.0
+      }
+    },
+    {
+      "audio_id": "call_185e958a253b",
+      "filename": "call_185e958a253b_agent_0.wav",
+      "duration_s": 31.07,
+      "ground_truth": "human",
+      "is_ground_truth_human": true,
+      "rawnet2": {
+        "score_pct": 18.5,
+        "prediction": "SYNTHETIC",
+        "correct": false,
+        "latency_ms": 18.39
+      },
+      "aasist": {
+        "score_pct": 20.3,
+        "prediction": "SYNTHETIC",
+        "correct": false,
+        "latency_ms": 21.16
+      },
+      "acoustic_xgboost": {
+        "score_pct": 71.0,
+        "prediction": "HUMAN",
+        "correct": true,
+        "latency_ms": 20.0
+      },
+      "ensemble_aasist_xgboost": {
+        "score_pct": 7.5,
+        "prediction": "SYNTHETIC",
+        "correct": false,
+        "latency_ms": 40.98
+      }
+    },
+    {
+      "audio_id": "call_198ef413fe4a",
+      "filename": "call_198ef413fe4a_agent_0.wav",
+      "duration_s": 31.58,
+      "ground_truth": "human",
+      "is_ground_truth_human": true,
+      "rawnet2": {
+        "score_pct": 98.8,
+        "prediction": "HUMAN",
+        "correct": true,
+        "latency_ms": 18.79
+      },
+      "aasist": {
+        "score_pct": 96.6,
+        "prediction": "HUMAN",
+        "correct": true,
+        "latency_ms": 22.16
+      },
+      "acoustic_xgboost": {
+        "score_pct": 97.1,
+        "prediction": "HUMAN",
+        "correct": true,
+        "latency_ms": 19.92
+      },
+      "ensemble_aasist_xgboost": {
+        "score_pct": 99.5,
+        "prediction": "HUMAN",
+        "correct": true,
+        "latency_ms": 40.75
+      }
+    },
+    {
+      "audio_id": "call_1c1c0cce9fb5",
+      "filename": "call_1c1c0cce9fb5_agent_0.wav",
+      "duration_s": 33.37,
+      "ground_truth": "human",
+      "is_ground_truth_human": true,
+      "rawnet2": {
+        "score_pct": 93.6,
+        "prediction": "HUMAN",
+        "correct": true,
+        "latency_ms": 18.82
+      },
+      "aasist": {
+        "score_pct": 73.6,
+        "prediction": "HUMAN",
+        "correct": true,
+        "latency_ms": 21.45
+      },
+      "acoustic_xgboost": {
+        "score_pct": 96.2,
+        "prediction": "HUMAN",
+        "correct": true,
+        "latency_ms": 20.94
+      },
+      "ensemble_aasist_xgboost": {
+        "score_pct": 99.2,
+        "prediction": "HUMAN",
+        "correct": true,
+        "latency_ms": 40.74
+      }
+    },
+    {
+      "audio_id": "call_2d4374d86df7",
+      "filename": "call_2d4374d86df7_agent_0.wav",
+      "duration_s": 49.01,
+      "ground_truth": "synthetic",
+      "is_ground_truth_human": false,
+      "rawnet2": {
+        "score_pct": 3.4,
+        "prediction": "SYNTHETIC",
+        "correct": true,
+        "latency_ms": 18.54
+      },
+      "aasist": {
+        "score_pct": 16.5,
+        "prediction": "SYNTHETIC",
+        "correct": true,
+        "latency_ms": 21.07
+      },
+      "acoustic_xgboost": {
+        "score_pct": 0.7,
+        "prediction": "SYNTHETIC",
+        "correct": true,
+        "latency_ms": 19.95
+      },
+      "ensemble_aasist_xgboost": {
+        "score_pct": 0.5,
+        "prediction": "SYNTHETIC",
+        "correct": true,
+        "latency_ms": 40.69
+      }
+    },
+    {
+      "audio_id": "call_36d72e4b1aef",
+      "filename": "call_36d72e4b1aef_agent_0.wav",
+      "duration_s": 39.01,
+      "ground_truth": "synthetic",
+      "is_ground_truth_human": false,
+      "rawnet2": {
+        "score_pct": 0.8,
+        "prediction": "SYNTHETIC",
+        "correct": true,
+        "latency_ms": 18.73
+      },
+      "aasist": {
+        "score_pct": 1.1,
+        "prediction": "SYNTHETIC",
+        "correct": true,
+        "latency_ms": 21.37
+      },
+      "acoustic_xgboost": {
+        "score_pct": 1.0,
+        "prediction": "SYNTHETIC",
+        "correct": true,
+        "latency_ms": 20.06
+      },
+      "ensemble_aasist_xgboost": {
+        "score_pct": 0.4,
+        "prediction": "SYNTHETIC",
+        "correct": true,
+        "latency_ms": 41.36
+      }
+    },
+    {
+      "audio_id": "call_3b9afdd4a2df",
+      "filename": "call_3b9afdd4a2df_agent_0.wav",
+      "duration_s": 30.24,
+      "ground_truth": "human",
+      "is_ground_truth_human": true,
+      "rawnet2": {
+        "score_pct": 18.2,
+        "prediction": "SYNTHETIC",
+        "correct": false,
+        "latency_ms": 18.04
+      },
+      "aasist": {
+        "score_pct": 52.1,
+        "prediction": "HUMAN",
+        "correct": true,
+        "latency_ms": 20.63
+      },
+      "acoustic_xgboost": {
+        "score_pct": 27.8,
+        "prediction": "SYNTHETIC",
+        "correct": false,
+        "latency_ms": 19.84
+      },
+      "ensemble_aasist_xgboost": {
+        "score_pct": 95.6,
+        "prediction": "HUMAN",
+        "correct": true,
+        "latency_ms": 40.61
+      }
+    },
+    {
+      "audio_id": "call_47bef2f628eb",
+      "filename": "call_47bef2f628eb_agent_0.wav",
+      "duration_s": 29.19,
+      "ground_truth": "human",
+      "is_ground_truth_human": true,
+      "rawnet2": {
+        "score_pct": 43.6,
+        "prediction": "SYNTHETIC",
+        "correct": false,
+        "latency_ms": 18.37
+      },
+      "aasist": {
+        "score_pct": 63.4,
+        "prediction": "HUMAN",
+        "correct": true,
+        "latency_ms": 21.26
+      },
+      "acoustic_xgboost": {
+        "score_pct": 90.9,
+        "prediction": "HUMAN",
+        "correct": true,
+        "latency_ms": 19.79
+      },
+      "ensemble_aasist_xgboost": {
+        "score_pct": 99.2,
+        "prediction": "HUMAN",
+        "correct": true,
+        "latency_ms": 40.99
+      }
+    },
+    {
+      "audio_id": "call_4affad158a4c",
+      "filename": "call_4affad158a4c_agent_0.wav",
+      "duration_s": 29.13,
+      "ground_truth": "synthetic",
+      "is_ground_truth_human": false,
+      "rawnet2": {
+        "score_pct": 1.5,
+        "prediction": "SYNTHETIC",
+        "correct": true,
+        "latency_ms": 18.53
+      },
+      "aasist": {
+        "score_pct": 0.8,
+        "prediction": "SYNTHETIC",
+        "correct": true,
+        "latency_ms": 21.27
+      },
+      "acoustic_xgboost": {
+        "score_pct": 0.6,
+        "prediction": "SYNTHETIC",
+        "correct": true,
+        "latency_ms": 19.84
+      },
+      "ensemble_aasist_xgboost": {
+        "score_pct": 0.4,
+        "prediction": "SYNTHETIC",
+        "correct": true,
+        "latency_ms": 41.19
+      }
+    },
+    {
+      "audio_id": "call_569ffb0869eb",
+      "filename": "call_569ffb0869eb_agent_0.wav",
+      "duration_s": 37.76,
+      "ground_truth": "human",
+      "is_ground_truth_human": true,
+      "rawnet2": {
+        "score_pct": 88.4,
+        "prediction": "HUMAN",
+        "correct": true,
+        "latency_ms": 18.43
+      },
+      "aasist": {
+        "score_pct": 80.8,
+        "prediction": "HUMAN",
+        "correct": true,
+        "latency_ms": 20.71
+      },
+      "acoustic_xgboost": {
+        "score_pct": 94.4,
+        "prediction": "HUMAN",
+        "correct": true,
+        "latency_ms": 19.99
+      },
+      "ensemble_aasist_xgboost": {
+        "score_pct": 98.6,
+        "prediction": "HUMAN",
+        "correct": true,
+        "latency_ms": 40.58
+      }
+    },
+    {
+      "audio_id": "call_58ed2170e352",
+      "filename": "call_58ed2170e352_agent_0.wav",
+      "duration_s": 30.0,
+      "ground_truth": "human",
+      "is_ground_truth_human": true,
+      "rawnet2": {
+        "score_pct": 69.2,
+        "prediction": "HUMAN",
+        "correct": true,
+        "latency_ms": 17.65
+      },
+      "aasist": {
+        "score_pct": 57.0,
+        "prediction": "HUMAN",
+        "correct": true,
+        "latency_ms": 20.4
+      },
+      "acoustic_xgboost": {
+        "score_pct": 30.8,
+        "prediction": "SYNTHETIC",
+        "correct": false,
+        "latency_ms": 19.9
+      },
+      "ensemble_aasist_xgboost": {
+        "score_pct": 98.6,
+        "prediction": "HUMAN",
+        "correct": true,
+        "latency_ms": 40.27
+      }
+    },
+    {
+      "audio_id": "call_5e4539a471f6",
+      "filename": "call_5e4539a471f6_agent_0.wav",
+      "duration_s": 26.07,
+      "ground_truth": "synthetic",
+      "is_ground_truth_human": false,
+      "rawnet2": {
+        "score_pct": 3.0,
+        "prediction": "SYNTHETIC",
+        "correct": true,
+        "latency_ms": 18.54
+      },
+      "aasist": {
+        "score_pct": 13.0,
+        "prediction": "SYNTHETIC",
+        "correct": true,
+        "latency_ms": 21.1
+      },
+      "acoustic_xgboost": {
+        "score_pct": 0.6,
+        "prediction": "SYNTHETIC",
+        "correct": true,
+        "latency_ms": 19.78
+      },
+      "ensemble_aasist_xgboost": {
+        "score_pct": 0.4,
+        "prediction": "SYNTHETIC",
+        "correct": true,
+        "latency_ms": 41.11
+      }
+    },
+    {
+      "audio_id": "call_6058d9c5c82f",
+      "filename": "call_6058d9c5c82f_agent_0.wav",
+      "duration_s": 31.12,
+      "ground_truth": "synthetic",
+      "is_ground_truth_human": false,
+      "rawnet2": {
+        "score_pct": 3.4,
+        "prediction": "SYNTHETIC",
+        "correct": true,
+        "latency_ms": 17.97
+      },
+      "aasist": {
+        "score_pct": 12.6,
+        "prediction": "SYNTHETIC",
+        "correct": true,
+        "latency_ms": 20.74
+      },
+      "acoustic_xgboost": {
+        "score_pct": 0.6,
+        "prediction": "SYNTHETIC",
+        "correct": true,
+        "latency_ms": 19.82
+      },
+      "ensemble_aasist_xgboost": {
+        "score_pct": 0.3,
+        "prediction": "SYNTHETIC",
+        "correct": true,
+        "latency_ms": 40.44
+      }
+    },
+    {
+      "audio_id": "call_64637c20ee66",
+      "filename": "call_64637c20ee66_agent_0.wav",
+      "duration_s": 57.15,
+      "ground_truth": "human",
+      "is_ground_truth_human": true,
+      "rawnet2": {
+        "score_pct": 99.1,
+        "prediction": "HUMAN",
+        "correct": true,
+        "latency_ms": 18.52
+      },
+      "aasist": {
+        "score_pct": 100.0,
+        "prediction": "HUMAN",
+        "correct": true,
+        "latency_ms": 20.96
+      },
+      "acoustic_xgboost": {
+        "score_pct": 98.7,
+        "prediction": "HUMAN",
+        "correct": true,
+        "latency_ms": 20.09
+      },
+      "ensemble_aasist_xgboost": {
+        "score_pct": 99.6,
+        "prediction": "HUMAN",
+        "correct": true,
+        "latency_ms": 41.08
+      }
+    },
+    {
+      "audio_id": "call_678ee1dd2242",
+      "filename": "call_678ee1dd2242_agent_0.wav",
+      "duration_s": 49.82,
+      "ground_truth": "human",
+      "is_ground_truth_human": true,
+      "rawnet2": {
+        "score_pct": 81.7,
+        "prediction": "HUMAN",
+        "correct": true,
+        "latency_ms": 18.0
+      },
+      "aasist": {
+        "score_pct": 65.6,
+        "prediction": "HUMAN",
+        "correct": true,
+        "latency_ms": 20.15
+      },
+      "acoustic_xgboost": {
+        "score_pct": 99.5,
+        "prediction": "HUMAN",
+        "correct": true,
+        "latency_ms": 20.1
+      },
+      "ensemble_aasist_xgboost": {
+        "score_pct": 99.4,
+        "prediction": "HUMAN",
+        "correct": true,
+        "latency_ms": 39.9
+      }
+    },
+    {
+      "audio_id": "call_6971b2685c1d",
+      "filename": "call_6971b2685c1d_agent_0.wav",
+      "duration_s": 19.99,
+      "ground_truth": "human",
+      "is_ground_truth_human": true,
+      "rawnet2": {
+        "score_pct": 89.4,
+        "prediction": "HUMAN",
+        "correct": true,
+        "latency_ms": 17.9
+      },
+      "aasist": {
+        "score_pct": 68.0,
+        "prediction": "HUMAN",
+        "correct": true,
+        "latency_ms": 20.71
+      },
+      "acoustic_xgboost": {
+        "score_pct": 98.2,
+        "prediction": "HUMAN",
+        "correct": true,
+        "latency_ms": 19.75
+      },
+      "ensemble_aasist_xgboost": {
+        "score_pct": 99.3,
+        "prediction": "HUMAN",
+        "correct": true,
+        "latency_ms": 40.1
+      }
+    },
+    {
+      "audio_id": "call_6c8d4490f8d7",
+      "filename": "call_6c8d4490f8d7_agent_0.wav",
+      "duration_s": 44.63,
+      "ground_truth": "synthetic",
+      "is_ground_truth_human": false,
+      "rawnet2": {
+        "score_pct": 0.6,
+        "prediction": "SYNTHETIC",
+        "correct": true,
+        "latency_ms": 19.02
+      },
+      "aasist": {
+        "score_pct": 2.6,
+        "prediction": "SYNTHETIC",
+        "correct": true,
+        "latency_ms": 21.2
+      },
+      "acoustic_xgboost": {
+        "score_pct": 1.8,
+        "prediction": "SYNTHETIC",
+        "correct": true,
+        "latency_ms": 19.92
+      },
+      "ensemble_aasist_xgboost": {
+        "score_pct": 0.7,
+        "prediction": "SYNTHETIC",
+        "correct": true,
+        "latency_ms": 41.16
+      }
+    },
+    {
+      "audio_id": "call_743448b8a861",
+      "filename": "call_743448b8a861_agent_0.wav",
+      "duration_s": 26.96,
+      "ground_truth": "synthetic",
+      "is_ground_truth_human": false,
+      "rawnet2": {
+        "score_pct": 0.6,
+        "prediction": "SYNTHETIC",
+        "correct": true,
+        "latency_ms": 18.7
+      },
+      "aasist": {
+        "score_pct": 0.6,
+        "prediction": "SYNTHETIC",
+        "correct": true,
+        "latency_ms": 21.16
+      },
+      "acoustic_xgboost": {
+        "score_pct": 1.9,
+        "prediction": "SYNTHETIC",
+        "correct": true,
+        "latency_ms": 19.93
+      },
+      "ensemble_aasist_xgboost": {
+        "score_pct": 0.5,
+        "prediction": "SYNTHETIC",
+        "correct": true,
+        "latency_ms": 40.95
+      }
+    },
+    {
+      "audio_id": "call_74b20933dd43",
+      "filename": "call_74b20933dd43_agent_0.wav",
+      "duration_s": 45.79,
+      "ground_truth": "human",
+      "is_ground_truth_human": true,
+      "rawnet2": {
+        "score_pct": 62.6,
+        "prediction": "HUMAN",
+        "correct": true,
+        "latency_ms": 18.34
+      },
+      "aasist": {
+        "score_pct": 54.6,
+        "prediction": "HUMAN",
+        "correct": true,
+        "latency_ms": 20.81
+      },
+      "acoustic_xgboost": {
+        "score_pct": 75.5,
+        "prediction": "HUMAN",
+        "correct": true,
+        "latency_ms": 19.99
+      },
+      "ensemble_aasist_xgboost": {
+        "score_pct": 98.4,
+        "prediction": "HUMAN",
+        "correct": true,
+        "latency_ms": 58.74
+      }
+    },
+    {
+      "audio_id": "call_7b1e73c133f8",
+      "filename": "call_7b1e73c133f8_agent_0.wav",
+      "duration_s": 23.24,
+      "ground_truth": "synthetic",
+      "is_ground_truth_human": false,
+      "rawnet2": {
+        "score_pct": 0.9,
+        "prediction": "SYNTHETIC",
+        "correct": true,
+        "latency_ms": 18.65
+      },
+      "aasist": {
+        "score_pct": 2.6,
+        "prediction": "SYNTHETIC",
+        "correct": true,
+        "latency_ms": 21.32
+      },
+      "acoustic_xgboost": {
+        "score_pct": 0.5,
+        "prediction": "SYNTHETIC",
+        "correct": true,
+        "latency_ms": 19.99
+      },
+      "ensemble_aasist_xgboost": {
+        "score_pct": 0.4,
+        "prediction": "SYNTHETIC",
+        "correct": true,
+        "latency_ms": 41.25
+      }
+    },
+    {
+      "audio_id": "call_810c24005ecc",
+      "filename": "call_810c24005ecc_agent_0.wav",
+      "duration_s": 30.8,
+      "ground_truth": "synthetic",
+      "is_ground_truth_human": false,
+      "rawnet2": {
+        "score_pct": 0.6,
+        "prediction": "SYNTHETIC",
+        "correct": true,
+        "latency_ms": 18.47
+      },
+      "aasist": {
+        "score_pct": 2.4,
+        "prediction": "SYNTHETIC",
+        "correct": true,
+        "latency_ms": 21.91
+      },
+      "acoustic_xgboost": {
+        "score_pct": 0.4,
+        "prediction": "SYNTHETIC",
+        "correct": true,
+        "latency_ms": 20.2
+      },
+      "ensemble_aasist_xgboost": {
+        "score_pct": 0.4,
+        "prediction": "SYNTHETIC",
+        "correct": true,
+        "latency_ms": 41.1
+      }
+    },
+    {
+      "audio_id": "call_810e3066a7b4",
+      "filename": "call_810e3066a7b4_agent_0.wav",
+      "duration_s": 25.84,
+      "ground_truth": "synthetic",
+      "is_ground_truth_human": false,
+      "rawnet2": {
+        "score_pct": 3.5,
+        "prediction": "SYNTHETIC",
+        "correct": true,
+        "latency_ms": 18.05
+      },
+      "aasist": {
+        "score_pct": 17.3,
+        "prediction": "SYNTHETIC",
+        "correct": true,
+        "latency_ms": 20.44
+      },
+      "acoustic_xgboost": {
+        "score_pct": 1.0,
+        "prediction": "SYNTHETIC",
+        "correct": true,
+        "latency_ms": 19.95
+      },
+      "ensemble_aasist_xgboost": {
+        "score_pct": 0.5,
+        "prediction": "SYNTHETIC",
+        "correct": true,
+        "latency_ms": 40.5
+      }
+    },
+    {
+      "audio_id": "call_8cafd2754e55",
+      "filename": "call_8cafd2754e55_agent_0.wav",
+      "duration_s": 46.22,
+      "ground_truth": "synthetic",
+      "is_ground_truth_human": false,
+      "rawnet2": {
+        "score_pct": 1.2,
+        "prediction": "SYNTHETIC",
+        "correct": true,
+        "latency_ms": 18.72
+      },
+      "aasist": {
+        "score_pct": 0.6,
+        "prediction": "SYNTHETIC",
+        "correct": true,
+        "latency_ms": 21.15
+      },
+      "acoustic_xgboost": {
+        "score_pct": 0.4,
+        "prediction": "SYNTHETIC",
+        "correct": true,
+        "latency_ms": 19.94
+      },
+      "ensemble_aasist_xgboost": {
+        "score_pct": 0.3,
+        "prediction": "SYNTHETIC",
+        "correct": true,
+        "latency_ms": 40.88
+      }
+    },
+    {
+      "audio_id": "call_8d75a71e6126",
+      "filename": "call_8d75a71e6126_agent_0.wav",
+      "duration_s": 46.01,
+      "ground_truth": "synthetic",
+      "is_ground_truth_human": false,
+      "rawnet2": {
+        "score_pct": 1.0,
+        "prediction": "SYNTHETIC",
+        "correct": true,
+        "latency_ms": 18.69
+      },
+      "aasist": {
+        "score_pct": 0.7,
+        "prediction": "SYNTHETIC",
+        "correct": true,
+        "latency_ms": 21.16
+      },
+      "acoustic_xgboost": {
+        "score_pct": 0.8,
+        "prediction": "SYNTHETIC",
+        "correct": true,
+        "latency_ms": 20.25
+      },
+      "ensemble_aasist_xgboost": {
+        "score_pct": 0.4,
+        "prediction": "SYNTHETIC",
+        "correct": true,
+        "latency_ms": 41.1
+      }
+    },
+    {
+      "audio_id": "call_8da8b9947630",
+      "filename": "call_8da8b9947630_agent_0.wav",
+      "duration_s": 31.15,
+      "ground_truth": "human",
+      "is_ground_truth_human": true,
+      "rawnet2": {
+        "score_pct": 65.7,
+        "prediction": "HUMAN",
+        "correct": true,
+        "latency_ms": 17.94
+      },
+      "aasist": {
+        "score_pct": 58.7,
+        "prediction": "HUMAN",
+        "correct": true,
+        "latency_ms": 20.43
+      },
+      "acoustic_xgboost": {
+        "score_pct": 98.6,
+        "prediction": "HUMAN",
+        "correct": true,
+        "latency_ms": 19.71
+      },
+      "ensemble_aasist_xgboost": {
+        "score_pct": 99.2,
+        "prediction": "HUMAN",
+        "correct": true,
+        "latency_ms": 40.45
+      }
+    },
+    {
+      "audio_id": "call_925ba94f05a4",
+      "filename": "call_925ba94f05a4_agent_0.wav",
+      "duration_s": 66.2,
+      "ground_truth": "synthetic",
+      "is_ground_truth_human": false,
+      "rawnet2": {
+        "score_pct": 1.3,
+        "prediction": "SYNTHETIC",
+        "correct": true,
+        "latency_ms": 18.2
+      },
+      "aasist": {
+        "score_pct": 10.6,
+        "prediction": "SYNTHETIC",
+        "correct": true,
+        "latency_ms": 20.67
+      },
+      "acoustic_xgboost": {
+        "score_pct": 0.3,
+        "prediction": "SYNTHETIC",
+        "correct": true,
+        "latency_ms": 19.91
+      },
+      "ensemble_aasist_xgboost": {
+        "score_pct": 0.3,
+        "prediction": "SYNTHETIC",
+        "correct": true,
+        "latency_ms": 40.48
+      }
+    },
+    {
+      "audio_id": "call_957a8384caff",
+      "filename": "call_957a8384caff_agent_0.wav",
+      "duration_s": 54.13,
+      "ground_truth": "synthetic",
+      "is_ground_truth_human": false,
+      "rawnet2": {
+        "score_pct": 6.6,
+        "prediction": "SYNTHETIC",
+        "correct": true,
+        "latency_ms": 18.12
+      },
+      "aasist": {
+        "score_pct": 23.7,
+        "prediction": "SYNTHETIC",
+        "correct": true,
+        "latency_ms": 20.7
+      },
+      "acoustic_xgboost": {
+        "score_pct": 0.8,
+        "prediction": "SYNTHETIC",
+        "correct": true,
+        "latency_ms": 20.24
+      },
+      "ensemble_aasist_xgboost": {
+        "score_pct": 0.3,
+        "prediction": "SYNTHETIC",
+        "correct": true,
+        "latency_ms": 40.66
+      }
+    },
+    {
+      "audio_id": "call_95ccefc6e4ce",
+      "filename": "call_95ccefc6e4ce_agent_0.wav",
+      "duration_s": 56.93,
+      "ground_truth": "human",
+      "is_ground_truth_human": true,
+      "rawnet2": {
+        "score_pct": 99.7,
+        "prediction": "HUMAN",
+        "correct": true,
+        "latency_ms": 18.19
+      },
+      "aasist": {
+        "score_pct": 98.9,
+        "prediction": "HUMAN",
+        "correct": true,
+        "latency_ms": 20.55
+      },
+      "acoustic_xgboost": {
+        "score_pct": 99.6,
+        "prediction": "HUMAN",
+        "correct": true,
+        "latency_ms": 20.06
+      },
+      "ensemble_aasist_xgboost": {
+        "score_pct": 99.5,
+        "prediction": "HUMAN",
+        "correct": true,
+        "latency_ms": 40.35
+      }
+    },
+    {
+      "audio_id": "call_9a3d5b0a64a3",
+      "filename": "call_9a3d5b0a64a3_agent_0.wav",
+      "duration_s": 62.48,
+      "ground_truth": "human",
+      "is_ground_truth_human": true,
+      "rawnet2": {
+        "score_pct": 91.9,
+        "prediction": "HUMAN",
+        "correct": true,
+        "latency_ms": 18.18
+      },
+      "aasist": {
+        "score_pct": 90.7,
+        "prediction": "HUMAN",
+        "correct": true,
+        "latency_ms": 20.62
+      },
+      "acoustic_xgboost": {
+        "score_pct": 99.4,
+        "prediction": "HUMAN",
+        "correct": true,
+        "latency_ms": 19.87
+      },
+      "ensemble_aasist_xgboost": {
+        "score_pct": 99.5,
+        "prediction": "HUMAN",
+        "correct": true,
+        "latency_ms": 40.91
+      }
+    },
+    {
+      "audio_id": "call_9bb847dfc83e",
+      "filename": "call_9bb847dfc83e_agent_0.wav",
+      "duration_s": 20.72,
+      "ground_truth": "human",
+      "is_ground_truth_human": true,
+      "rawnet2": {
+        "score_pct": 88.8,
+        "prediction": "HUMAN",
+        "correct": true,
+        "latency_ms": 18.12
+      },
+      "aasist": {
+        "score_pct": 67.3,
+        "prediction": "HUMAN",
+        "correct": true,
+        "latency_ms": 20.59
+      },
+      "acoustic_xgboost": {
+        "score_pct": 98.9,
+        "prediction": "HUMAN",
+        "correct": true,
+        "latency_ms": 19.89
+      },
+      "ensemble_aasist_xgboost": {
+        "score_pct": 99.2,
+        "prediction": "HUMAN",
+        "correct": true,
+        "latency_ms": 40.34
+      }
+    },
+    {
+      "audio_id": "call_9f11e2c5441c",
+      "filename": "call_9f11e2c5441c_agent_0.wav",
+      "duration_s": 35.27,
+      "ground_truth": "human",
+      "is_ground_truth_human": true,
+      "rawnet2": {
+        "score_pct": 98.0,
+        "prediction": "HUMAN",
+        "correct": true,
+        "latency_ms": 18.19
+      },
+      "aasist": {
+        "score_pct": 96.0,
+        "prediction": "HUMAN",
+        "correct": true,
+        "latency_ms": 20.86
+      },
+      "acoustic_xgboost": {
+        "score_pct": 99.5,
+        "prediction": "HUMAN",
+        "correct": true,
+        "latency_ms": 19.76
+      },
+      "ensemble_aasist_xgboost": {
+        "score_pct": 99.4,
+        "prediction": "HUMAN",
+        "correct": true,
+        "latency_ms": 40.87
+      }
+    },
+    {
+      "audio_id": "call_a3a1f51a4bf9",
+      "filename": "call_a3a1f51a4bf9_agent_0.wav",
+      "duration_s": 27.84,
+      "ground_truth": "synthetic",
+      "is_ground_truth_human": false,
+      "rawnet2": {
+        "score_pct": 1.4,
+        "prediction": "SYNTHETIC",
+        "correct": true,
+        "latency_ms": 18.55
+      },
+      "aasist": {
+        "score_pct": 1.9,
+        "prediction": "SYNTHETIC",
+        "correct": true,
+        "latency_ms": 21.24
+      },
+      "acoustic_xgboost": {
+        "score_pct": 60.2,
+        "prediction": "HUMAN",
+        "correct": false,
+        "latency_ms": 19.94
+      },
+      "ensemble_aasist_xgboost": {
+        "score_pct": 0.4,
+        "prediction": "SYNTHETIC",
+        "correct": true,
+        "latency_ms": 41.23
+      }
+    },
+    {
+      "audio_id": "call_a7c95e99f3b6",
+      "filename": "call_a7c95e99f3b6_agent_0.wav",
+      "duration_s": 35.57,
+      "ground_truth": "human",
+      "is_ground_truth_human": true,
+      "rawnet2": {
+        "score_pct": 90.7,
+        "prediction": "HUMAN",
+        "correct": true,
+        "latency_ms": 18.43
+      },
+      "aasist": {
+        "score_pct": 57.2,
+        "prediction": "HUMAN",
+        "correct": true,
+        "latency_ms": 21.27
+      },
+      "acoustic_xgboost": {
+        "score_pct": 99.1,
+        "prediction": "HUMAN",
+        "correct": true,
+        "latency_ms": 19.97
+      },
+      "ensemble_aasist_xgboost": {
+        "score_pct": 98.9,
+        "prediction": "HUMAN",
+        "correct": true,
+        "latency_ms": 41.09
+      }
+    },
+    {
+      "audio_id": "call_abf730747901",
+      "filename": "call_abf730747901_agent_0.wav",
+      "duration_s": 27.06,
+      "ground_truth": "human",
+      "is_ground_truth_human": true,
+      "rawnet2": {
+        "score_pct": 52.9,
+        "prediction": "HUMAN",
+        "correct": true,
+        "latency_ms": 17.96
+      },
+      "aasist": {
+        "score_pct": 54.5,
+        "prediction": "HUMAN",
+        "correct": true,
+        "latency_ms": 20.36
+      },
+      "acoustic_xgboost": {
+        "score_pct": 21.0,
+        "prediction": "SYNTHETIC",
+        "correct": false,
+        "latency_ms": 19.77
+      },
+      "ensemble_aasist_xgboost": {
+        "score_pct": 97.9,
+        "prediction": "HUMAN",
+        "correct": true,
+        "latency_ms": 40.36
+      }
+    },
+    {
+      "audio_id": "call_af9ad367dcce",
+      "filename": "call_af9ad367dcce_agent_0.wav",
+      "duration_s": 44.66,
+      "ground_truth": "synthetic",
+      "is_ground_truth_human": false,
+      "rawnet2": {
+        "score_pct": 1.2,
+        "prediction": "SYNTHETIC",
+        "correct": true,
+        "latency_ms": 18.65
+      },
+      "aasist": {
+        "score_pct": 1.5,
+        "prediction": "SYNTHETIC",
+        "correct": true,
+        "latency_ms": 21.05
+      },
+      "acoustic_xgboost": {
+        "score_pct": 1.9,
+        "prediction": "SYNTHETIC",
+        "correct": true,
+        "latency_ms": 19.88
+      },
+      "ensemble_aasist_xgboost": {
+        "score_pct": 0.6,
+        "prediction": "SYNTHETIC",
+        "correct": true,
+        "latency_ms": 40.78
+      }
+    },
+    {
+      "audio_id": "call_b5cc1f8d8fee",
+      "filename": "call_b5cc1f8d8fee_agent_0.wav",
+      "duration_s": 41.95,
+      "ground_truth": "human",
+      "is_ground_truth_human": true,
+      "rawnet2": {
+        "score_pct": 4.3,
+        "prediction": "SYNTHETIC",
+        "correct": false,
+        "latency_ms": 18.29
+      },
+      "aasist": {
+        "score_pct": 25.2,
+        "prediction": "SYNTHETIC",
+        "correct": false,
+        "latency_ms": 20.89
+      },
+      "acoustic_xgboost": {
+        "score_pct": 15.7,
+        "prediction": "SYNTHETIC",
+        "correct": false,
+        "latency_ms": 19.93
+      },
+      "ensemble_aasist_xgboost": {
+        "score_pct": 1.4,
+        "prediction": "SYNTHETIC",
+        "correct": false,
+        "latency_ms": 40.69
+      }
+    },
+    {
+      "audio_id": "call_b658b1155216",
+      "filename": "call_b658b1155216_agent_0.wav",
+      "duration_s": 45.53,
+      "ground_truth": "human",
+      "is_ground_truth_human": true,
+      "rawnet2": {
+        "score_pct": 53.2,
+        "prediction": "HUMAN",
+        "correct": true,
+        "latency_ms": 18.47
+      },
+      "aasist": {
+        "score_pct": 28.6,
+        "prediction": "SYNTHETIC",
+        "correct": false,
+        "latency_ms": 20.85
+      },
+      "acoustic_xgboost": {
+        "score_pct": 73.2,
+        "prediction": "HUMAN",
+        "correct": true,
+        "latency_ms": 19.93
+      },
+      "ensemble_aasist_xgboost": {
+        "score_pct": 6.5,
+        "prediction": "SYNTHETIC",
+        "correct": false,
+        "latency_ms": 40.96
+      }
+    },
+    {
+      "audio_id": "call_b712f501aeb8",
+      "filename": "call_b712f501aeb8_agent_0.wav",
+      "duration_s": 65.06,
+      "ground_truth": "synthetic",
+      "is_ground_truth_human": false,
+      "rawnet2": {
+        "score_pct": 0.7,
+        "prediction": "SYNTHETIC",
+        "correct": true,
+        "latency_ms": 18.54
+      },
+      "aasist": {
+        "score_pct": 2.7,
+        "prediction": "SYNTHETIC",
+        "correct": true,
+        "latency_ms": 21.09
+      },
+      "acoustic_xgboost": {
+        "score_pct": 0.3,
+        "prediction": "SYNTHETIC",
+        "correct": true,
+        "latency_ms": 19.94
+      },
+      "ensemble_aasist_xgboost": {
+        "score_pct": 0.3,
+        "prediction": "SYNTHETIC",
+        "correct": true,
+        "latency_ms": 40.94
+      }
+    },
+    {
+      "audio_id": "call_bc2c7c34acea",
+      "filename": "call_bc2c7c34acea_agent_0.wav",
+      "duration_s": 32.93,
+      "ground_truth": "human",
+      "is_ground_truth_human": true,
+      "rawnet2": {
+        "score_pct": 8.4,
+        "prediction": "SYNTHETIC",
+        "correct": false,
+        "latency_ms": 18.48
+      },
+      "aasist": {
+        "score_pct": 17.4,
+        "prediction": "SYNTHETIC",
+        "correct": false,
+        "latency_ms": 20.78
+      },
+      "acoustic_xgboost": {
+        "score_pct": 34.8,
+        "prediction": "SYNTHETIC",
+        "correct": false,
+        "latency_ms": 19.74
+      },
+      "ensemble_aasist_xgboost": {
+        "score_pct": 0.8,
+        "prediction": "SYNTHETIC",
+        "correct": false,
+        "latency_ms": 40.63
+      }
+    },
+    {
+      "audio_id": "call_bd98a8224da0",
+      "filename": "call_bd98a8224da0_agent_0.wav",
+      "duration_s": 34.31,
+      "ground_truth": "human",
+      "is_ground_truth_human": true,
+      "rawnet2": {
+        "score_pct": 85.7,
+        "prediction": "HUMAN",
+        "correct": true,
+        "latency_ms": 17.94
+      },
+      "aasist": {
+        "score_pct": 88.5,
+        "prediction": "HUMAN",
+        "correct": true,
+        "latency_ms": 20.52
+      },
+      "acoustic_xgboost": {
+        "score_pct": 97.4,
+        "prediction": "HUMAN",
+        "correct": true,
+        "latency_ms": 19.75
+      },
+      "ensemble_aasist_xgboost": {
+        "score_pct": 98.4,
+        "prediction": "HUMAN",
+        "correct": true,
+        "latency_ms": 40.13
+      }
+    },
+    {
+      "audio_id": "call_be72006df132",
+      "filename": "call_be72006df132_agent_0.wav",
+      "duration_s": 25.2,
+      "ground_truth": "human",
+      "is_ground_truth_human": true,
+      "rawnet2": {
+        "score_pct": 92.5,
+        "prediction": "HUMAN",
+        "correct": true,
+        "latency_ms": 17.98
+      },
+      "aasist": {
+        "score_pct": 74.5,
+        "prediction": "HUMAN",
+        "correct": true,
+        "latency_ms": 20.95
+      },
+      "acoustic_xgboost": {
+        "score_pct": 52.5,
+        "prediction": "HUMAN",
+        "correct": true,
+        "latency_ms": 19.75
+      },
+      "ensemble_aasist_xgboost": {
+        "score_pct": 99.5,
+        "prediction": "HUMAN",
+        "correct": true,
+        "latency_ms": 40.78
+      }
+    },
+    {
+      "audio_id": "call_bf0384ed27ed",
+      "filename": "call_bf0384ed27ed_agent_0.wav",
+      "duration_s": 43.28,
+      "ground_truth": "human",
+      "is_ground_truth_human": true,
+      "rawnet2": {
+        "score_pct": 99.6,
+        "prediction": "HUMAN",
+        "correct": true,
+        "latency_ms": 18.28
+      },
+      "aasist": {
+        "score_pct": 100.0,
+        "prediction": "HUMAN",
+        "correct": true,
+        "latency_ms": 20.79
+      },
+      "acoustic_xgboost": {
+        "score_pct": 98.9,
+        "prediction": "HUMAN",
+        "correct": true,
+        "latency_ms": 19.82
+      },
+      "ensemble_aasist_xgboost": {
+        "score_pct": 99.0,
+        "prediction": "HUMAN",
+        "correct": true,
+        "latency_ms": 40.39
+      }
+    },
+    {
+      "audio_id": "call_c04725672945",
+      "filename": "call_c04725672945_agent_0.wav",
+      "duration_s": 71.35,
+      "ground_truth": "synthetic",
+      "is_ground_truth_human": false,
+      "rawnet2": {
+        "score_pct": 7.0,
+        "prediction": "SYNTHETIC",
+        "correct": true,
+        "latency_ms": 18.23
+      },
+      "aasist": {
+        "score_pct": 14.9,
+        "prediction": "SYNTHETIC",
+        "correct": true,
+        "latency_ms": 20.88
+      },
+      "acoustic_xgboost": {
+        "score_pct": 1.4,
+        "prediction": "SYNTHETIC",
+        "correct": true,
+        "latency_ms": 19.87
+      },
+      "ensemble_aasist_xgboost": {
+        "score_pct": 0.5,
+        "prediction": "SYNTHETIC",
+        "correct": true,
+        "latency_ms": 40.33
+      }
+    },
+    {
+      "audio_id": "call_c21f9cf2390e",
+      "filename": "call_c21f9cf2390e_agent_0.wav",
+      "duration_s": 37.6,
+      "ground_truth": "synthetic",
+      "is_ground_truth_human": false,
+      "rawnet2": {
+        "score_pct": 1.8,
+        "prediction": "SYNTHETIC",
+        "correct": true,
+        "latency_ms": 18.68
+      },
+      "aasist": {
+        "score_pct": 2.2,
+        "prediction": "SYNTHETIC",
+        "correct": true,
+        "latency_ms": 21.33
+      },
+      "acoustic_xgboost": {
+        "score_pct": 3.9,
+        "prediction": "SYNTHETIC",
+        "correct": true,
+        "latency_ms": 19.86
+      },
+      "ensemble_aasist_xgboost": {
+        "score_pct": 0.3,
+        "prediction": "SYNTHETIC",
+        "correct": true,
+        "latency_ms": 43.05
+      }
+    },
+    {
+      "audio_id": "call_c49b6face6c3",
+      "filename": "call_c49b6face6c3_agent_0.wav",
+      "duration_s": 24.02,
+      "ground_truth": "synthetic",
+      "is_ground_truth_human": false,
+      "rawnet2": {
+        "score_pct": 5.0,
+        "prediction": "SYNTHETIC",
+        "correct": true,
+        "latency_ms": 18.5
+      },
+      "aasist": {
+        "score_pct": 22.6,
+        "prediction": "SYNTHETIC",
+        "correct": true,
+        "latency_ms": 20.86
+      },
+      "acoustic_xgboost": {
+        "score_pct": 0.4,
+        "prediction": "SYNTHETIC",
+        "correct": true,
+        "latency_ms": 20.06
+      },
+      "ensemble_aasist_xgboost": {
+        "score_pct": 0.4,
+        "prediction": "SYNTHETIC",
+        "correct": true,
+        "latency_ms": 40.71
+      }
+    },
+    {
+      "audio_id": "call_c4fc8a865292",
+      "filename": "call_c4fc8a865292_agent_0.wav",
+      "duration_s": 48.66,
+      "ground_truth": "human",
+      "is_ground_truth_human": true,
+      "rawnet2": {
+        "score_pct": 88.3,
+        "prediction": "HUMAN",
+        "correct": true,
+        "latency_ms": 18.25
+      },
+      "aasist": {
+        "score_pct": 54.4,
+        "prediction": "HUMAN",
+        "correct": true,
+        "latency_ms": 20.63
+      },
+      "acoustic_xgboost": {
+        "score_pct": 96.6,
+        "prediction": "HUMAN",
+        "correct": true,
+        "latency_ms": 19.84
+      },
+      "ensemble_aasist_xgboost": {
+        "score_pct": 88.4,
+        "prediction": "HUMAN",
+        "correct": true,
+        "latency_ms": 40.52
+      }
+    },
+    {
+      "audio_id": "call_ca184bb77a63",
+      "filename": "call_ca184bb77a63_agent_0.wav",
+      "duration_s": 60.74,
+      "ground_truth": "human",
+      "is_ground_truth_human": true,
+      "rawnet2": {
+        "score_pct": 69.2,
+        "prediction": "HUMAN",
+        "correct": true,
+        "latency_ms": 18.42
+      },
+      "aasist": {
+        "score_pct": 95.4,
+        "prediction": "HUMAN",
+        "correct": true,
+        "latency_ms": 20.73
+      },
+      "acoustic_xgboost": {
+        "score_pct": 97.8,
+        "prediction": "HUMAN",
+        "correct": true,
+        "latency_ms": 20.02
+      },
+      "ensemble_aasist_xgboost": {
+        "score_pct": 99.3,
+        "prediction": "HUMAN",
+        "correct": true,
+        "latency_ms": 40.51
+      }
+    },
+    {
+      "audio_id": "call_cf313f91b995",
+      "filename": "call_cf313f91b995_agent_0.wav",
+      "duration_s": 118.52,
+      "ground_truth": "human",
+      "is_ground_truth_human": true,
+      "rawnet2": {
+        "score_pct": 43.7,
+        "prediction": "SYNTHETIC",
+        "correct": false,
+        "latency_ms": 16.87
+      },
+      "aasist": {
+        "score_pct": 53.7,
+        "prediction": "HUMAN",
+        "correct": true,
+        "latency_ms": 18.57
+      },
+      "acoustic_xgboost": {
+        "score_pct": 97.2,
+        "prediction": "HUMAN",
+        "correct": true,
+        "latency_ms": 19.88
+      },
+      "ensemble_aasist_xgboost": {
+        "score_pct": 94.5,
+        "prediction": "HUMAN",
+        "correct": true,
+        "latency_ms": 38.18
+      }
+    },
+    {
+      "audio_id": "call_d4518fcb700a",
+      "filename": "call_d4518fcb700a_agent_0.wav",
+      "duration_s": 144.4,
+      "ground_truth": "synthetic",
+      "is_ground_truth_human": false,
+      "rawnet2": {
+        "score_pct": 43.8,
+        "prediction": "SYNTHETIC",
+        "correct": true,
+        "latency_ms": 18.28
+      },
+      "aasist": {
+        "score_pct": 53.8,
+        "prediction": "HUMAN",
+        "correct": false,
+        "latency_ms": 19.79
+      },
+      "acoustic_xgboost": {
+        "score_pct": 3.9,
+        "prediction": "SYNTHETIC",
+        "correct": true,
+        "latency_ms": 20.49
+      },
+      "ensemble_aasist_xgboost": {
+        "score_pct": 3.8,
+        "prediction": "SYNTHETIC",
+        "correct": true,
+        "latency_ms": 40.84
+      }
+    },
+    {
+      "audio_id": "call_d60330be1b1f",
+      "filename": "call_d60330be1b1f_agent_0.wav",
+      "duration_s": 169.3,
+      "ground_truth": "human",
+      "is_ground_truth_human": true,
+      "rawnet2": {
+        "score_pct": 43.4,
+        "prediction": "SYNTHETIC",
+        "correct": false,
+        "latency_ms": 16.31
+      },
+      "aasist": {
+        "score_pct": 53.7,
+        "prediction": "HUMAN",
+        "correct": true,
+        "latency_ms": 17.97
+      },
+      "acoustic_xgboost": {
+        "score_pct": 97.4,
+        "prediction": "HUMAN",
+        "correct": true,
+        "latency_ms": 20.11
+      },
+      "ensemble_aasist_xgboost": {
+        "score_pct": 95.6,
+        "prediction": "HUMAN",
+        "correct": true,
+        "latency_ms": 38.35
+      }
+    },
+    {
+      "audio_id": "call_d88d3c23953c",
+      "filename": "call_d88d3c23953c_agent_0.wav",
+      "duration_s": 166.7,
+      "ground_truth": "synthetic",
+      "is_ground_truth_human": false,
+      "rawnet2": {
+        "score_pct": 42.4,
+        "prediction": "SYNTHETIC",
+        "correct": true,
+        "latency_ms": 18.88
+      },
+      "aasist": {
+        "score_pct": 53.3,
+        "prediction": "HUMAN",
+        "correct": false,
+        "latency_ms": 20.55
+      },
+      "acoustic_xgboost": {
+        "score_pct": 1.7,
+        "prediction": "SYNTHETIC",
+        "correct": true,
+        "latency_ms": 20.05
+      },
+      "ensemble_aasist_xgboost": {
+        "score_pct": 3.8,
+        "prediction": "SYNTHETIC",
+        "correct": true,
+        "latency_ms": 40.45
+      }
+    },
+    {
+      "audio_id": "call_dc1a55102190",
+      "filename": "call_dc1a55102190_agent_0.wav",
+      "duration_s": 160.32,
+      "ground_truth": "human",
+      "is_ground_truth_human": true,
+      "rawnet2": {
+        "score_pct": 90.7,
+        "prediction": "HUMAN",
+        "correct": true,
+        "latency_ms": 16.72
+      },
+      "aasist": {
+        "score_pct": 80.8,
+        "prediction": "HUMAN",
+        "correct": true,
+        "latency_ms": 19.2
+      },
+      "acoustic_xgboost": {
+        "score_pct": 99.6,
+        "prediction": "HUMAN",
+        "correct": true,
+        "latency_ms": 33.34
+      },
+      "ensemble_aasist_xgboost": {
+        "score_pct": 99.6,
+        "prediction": "HUMAN",
+        "correct": true,
+        "latency_ms": 42.43
+      }
+    },
+    {
+      "audio_id": "call_e2d538297f0c",
+      "filename": "call_e2d538297f0c_agent_0.wav",
+      "duration_s": 206.46,
+      "ground_truth": "human",
+      "is_ground_truth_human": true,
+      "rawnet2": {
+        "score_pct": 97.3,
+        "prediction": "HUMAN",
+        "correct": true,
+        "latency_ms": 18.08
+      },
+      "aasist": {
+        "score_pct": 83.5,
+        "prediction": "HUMAN",
+        "correct": true,
+        "latency_ms": 20.5
+      },
+      "acoustic_xgboost": {
+        "score_pct": 97.3,
+        "prediction": "HUMAN",
+        "correct": true,
+        "latency_ms": 20.15
+      },
+      "ensemble_aasist_xgboost": {
+        "score_pct": 99.2,
+        "prediction": "HUMAN",
+        "correct": true,
+        "latency_ms": 40.32
+      }
+    },
+    {
+      "audio_id": "call_e329faf2b6a1",
+      "filename": "call_e329faf2b6a1_agent_0.wav",
+      "duration_s": 153.6,
+      "ground_truth": "synthetic",
+      "is_ground_truth_human": false,
+      "rawnet2": {
+        "score_pct": 22.6,
+        "prediction": "SYNTHETIC",
+        "correct": true,
+        "latency_ms": 18.19
+      },
+      "aasist": {
+        "score_pct": 35.1,
+        "prediction": "SYNTHETIC",
+        "correct": true,
+        "latency_ms": 20.22
+      },
+      "acoustic_xgboost": {
+        "score_pct": 6.1,
+        "prediction": "SYNTHETIC",
+        "correct": true,
+        "latency_ms": 19.95
+      },
+      "ensemble_aasist_xgboost": {
+        "score_pct": 1.0,
+        "prediction": "SYNTHETIC",
+        "correct": true,
+        "latency_ms": 40.18
+      }
+    },
+    {
+      "audio_id": "call_e3f555297277",
+      "filename": "call_e3f555297277_agent_0.wav",
+      "duration_s": 124.52,
+      "ground_truth": "synthetic",
+      "is_ground_truth_human": false,
+      "rawnet2": {
+        "score_pct": 22.8,
+        "prediction": "SYNTHETIC",
+        "correct": true,
+        "latency_ms": 18.27
+      },
+      "aasist": {
+        "score_pct": 36.5,
+        "prediction": "SYNTHETIC",
+        "correct": true,
+        "latency_ms": 20.29
+      },
+      "acoustic_xgboost": {
+        "score_pct": 5.0,
+        "prediction": "SYNTHETIC",
+        "correct": true,
+        "latency_ms": 19.91
+      },
+      "ensemble_aasist_xgboost": {
+        "score_pct": 1.0,
+        "prediction": "SYNTHETIC",
+        "correct": true,
+        "latency_ms": 40.25
+      }
+    },
+    {
+      "audio_id": "call_e58669998b76",
+      "filename": "call_e58669998b76_agent_0.wav",
+      "duration_s": 124.92,
+      "ground_truth": "human",
+      "is_ground_truth_human": true,
+      "rawnet2": {
+        "score_pct": 47.7,
+        "prediction": "SYNTHETIC",
+        "correct": false,
+        "latency_ms": 16.7
+      },
+      "aasist": {
+        "score_pct": 53.2,
+        "prediction": "HUMAN",
+        "correct": true,
+        "latency_ms": 18.91
+      },
+      "acoustic_xgboost": {
+        "score_pct": 24.6,
+        "prediction": "SYNTHETIC",
+        "correct": false,
+        "latency_ms": 19.96
+      },
+      "ensemble_aasist_xgboost": {
+        "score_pct": 93.8,
+        "prediction": "HUMAN",
+        "correct": true,
+        "latency_ms": 38.84
+      }
+    },
+    {
+      "audio_id": "call_e9bd33cdb226",
+      "filename": "call_e9bd33cdb226_agent_0.wav",
+      "duration_s": 142.82,
+      "ground_truth": "human",
+      "is_ground_truth_human": true,
+      "rawnet2": {
+        "score_pct": 60.3,
+        "prediction": "HUMAN",
+        "correct": true,
+        "latency_ms": 18.56
+      },
+      "aasist": {
+        "score_pct": 61.1,
+        "prediction": "HUMAN",
+        "correct": true,
+        "latency_ms": 20.33
+      },
+      "acoustic_xgboost": {
+        "score_pct": 34.1,
+        "prediction": "SYNTHETIC",
+        "correct": false,
+        "latency_ms": 20.33
+      },
+      "ensemble_aasist_xgboost": {
+        "score_pct": 78.0,
+        "prediction": "HUMAN",
+        "correct": true,
+        "latency_ms": 40.38
+      }
+    },
+    {
+      "audio_id": "call_eed2c7389776",
+      "filename": "call_eed2c7389776_agent_0.wav",
+      "duration_s": 184.0,
+      "ground_truth": "synthetic",
+      "is_ground_truth_human": false,
+      "rawnet2": {
+        "score_pct": 0.4,
+        "prediction": "SYNTHETIC",
+        "correct": true,
+        "latency_ms": 18.42
+      },
+      "aasist": {
+        "score_pct": 0.4,
+        "prediction": "SYNTHETIC",
+        "correct": true,
+        "latency_ms": 20.9
+      },
+      "acoustic_xgboost": {
+        "score_pct": 2.6,
+        "prediction": "SYNTHETIC",
+        "correct": true,
+        "latency_ms": 20.01
+      },
+      "ensemble_aasist_xgboost": {
+        "score_pct": 0.8,
+        "prediction": "SYNTHETIC",
+        "correct": true,
+        "latency_ms": 40.66
+      }
+    },
+    {
+      "audio_id": "call_f1b82a4a46f6",
+      "filename": "call_f1b82a4a46f6_agent_0.wav",
+      "duration_s": 133.9,
+      "ground_truth": "human",
+      "is_ground_truth_human": true,
+      "rawnet2": {
+        "score_pct": 49.2,
+        "prediction": "SYNTHETIC",
+        "correct": false,
+        "latency_ms": 18.08
+      },
+      "aasist": {
+        "score_pct": 54.1,
+        "prediction": "HUMAN",
+        "correct": true,
+        "latency_ms": 20.42
+      },
+      "acoustic_xgboost": {
+        "score_pct": 84.7,
+        "prediction": "HUMAN",
+        "correct": true,
+        "latency_ms": 20.02
+      },
+      "ensemble_aasist_xgboost": {
+        "score_pct": 95.4,
+        "prediction": "HUMAN",
+        "correct": true,
+        "latency_ms": 40.44
+      }
+    },
+    {
+      "audio_id": "call_f6ce5de7ac09",
+      "filename": "call_f6ce5de7ac09_agent_0.wav",
+      "duration_s": 158.64,
+      "ground_truth": "synthetic",
+      "is_ground_truth_human": false,
+      "rawnet2": {
+        "score_pct": 15.8,
+        "prediction": "SYNTHETIC",
+        "correct": true,
+        "latency_ms": 18.3
+      },
+      "aasist": {
+        "score_pct": 14.1,
+        "prediction": "SYNTHETIC",
+        "correct": true,
+        "latency_ms": 19.99
+      },
+      "acoustic_xgboost": {
+        "score_pct": 4.8,
+        "prediction": "SYNTHETIC",
+        "correct": true,
+        "latency_ms": 20.01
+      },
+      "ensemble_aasist_xgboost": {
+        "score_pct": 1.5,
+        "prediction": "SYNTHETIC",
+        "correct": true,
+        "latency_ms": 39.95
+      }
+    },
+    {
+      "audio_id": "call_f9fbabf70f7e",
+      "filename": "call_f9fbabf70f7e_agent_0.wav",
+      "duration_s": 104.38,
+      "ground_truth": "synthetic",
+      "is_ground_truth_human": false,
+      "rawnet2": {
+        "score_pct": 5.0,
+        "prediction": "SYNTHETIC",
+        "correct": true,
+        "latency_ms": 18.42
+      },
+      "aasist": {
+        "score_pct": 17.3,
+        "prediction": "SYNTHETIC",
+        "correct": true,
+        "latency_ms": 20.69
+      },
+      "acoustic_xgboost": {
+        "score_pct": 0.5,
+        "prediction": "SYNTHETIC",
+        "correct": true,
+        "latency_ms": 19.96
+      },
+      "ensemble_aasist_xgboost": {
+        "score_pct": 0.4,
+        "prediction": "SYNTHETIC",
+        "correct": true,
+        "latency_ms": 40.57
+      }
+    },
+    {
+      "audio_id": "call_fa26d1186721",
+      "filename": "call_fa26d1186721_agent_0.wav",
+      "duration_s": 125.06,
+      "ground_truth": "human",
+      "is_ground_truth_human": true,
+      "rawnet2": {
+        "score_pct": 43.1,
+        "prediction": "SYNTHETIC",
+        "correct": false,
+        "latency_ms": 11.38
+      },
+      "aasist": {
+        "score_pct": 53.4,
+        "prediction": "HUMAN",
+        "correct": true,
+        "latency_ms": 13.81
+      },
+      "acoustic_xgboost": {
+        "score_pct": 94.0,
+        "prediction": "HUMAN",
+        "correct": true,
+        "latency_ms": 19.61
+      },
+      "ensemble_aasist_xgboost": {
+        "score_pct": 22.1,
+        "prediction": "SYNTHETIC",
+        "correct": false,
+        "latency_ms": 34.05
+      }
+    },
+    {
+      "audio_id": "call_fa9e18dd83dd",
+      "filename": "call_fa9e18dd83dd_agent_0.wav",
+      "duration_s": 141.6,
+      "ground_truth": "synthetic",
+      "is_ground_truth_human": false,
+      "rawnet2": {
+        "score_pct": 43.8,
+        "prediction": "SYNTHETIC",
+        "correct": true,
+        "latency_ms": 18.36
+      },
+      "aasist": {
+        "score_pct": 53.8,
+        "prediction": "HUMAN",
+        "correct": false,
+        "latency_ms": 19.7
+      },
+      "acoustic_xgboost": {
+        "score_pct": 2.9,
+        "prediction": "SYNTHETIC",
+        "correct": true,
+        "latency_ms": 20.19
+      },
+      "ensemble_aasist_xgboost": {
+        "score_pct": 3.7,
+        "prediction": "SYNTHETIC",
+        "correct": true,
+        "latency_ms": 40.52
+      }
+    },
+    {
+      "audio_id": "call_fb1405943fed",
+      "filename": "call_fb1405943fed_agent_0.wav",
+      "duration_s": 177.6,
+      "ground_truth": "human",
+      "is_ground_truth_human": true,
+      "rawnet2": {
+        "score_pct": 91.0,
+        "prediction": "HUMAN",
+        "correct": true,
+        "latency_ms": 18.16
+      },
+      "aasist": {
+        "score_pct": 64.6,
+        "prediction": "HUMAN",
+        "correct": true,
+        "latency_ms": 20.72
+      },
+      "acoustic_xgboost": {
+        "score_pct": 63.4,
+        "prediction": "HUMAN",
+        "correct": true,
+        "latency_ms": 20.24
+      },
+      "ensemble_aasist_xgboost": {
+        "score_pct": 99.5,
+        "prediction": "HUMAN",
+        "correct": true,
+        "latency_ms": 40.59
+      }
+    },
+    {
+      "audio_id": "call_fc8bda4b3374",
+      "filename": "call_fc8bda4b3374_agent_0.wav",
+      "duration_s": 193.36,
+      "ground_truth": "synthetic",
+      "is_ground_truth_human": false,
+      "rawnet2": {
+        "score_pct": 6.0,
+        "prediction": "SYNTHETIC",
+        "correct": true,
+        "latency_ms": 18.63
+      },
+      "aasist": {
+        "score_pct": 11.9,
+        "prediction": "SYNTHETIC",
+        "correct": true,
+        "latency_ms": 20.82
+      },
+      "acoustic_xgboost": {
+        "score_pct": 9.7,
+        "prediction": "SYNTHETIC",
+        "correct": true,
+        "latency_ms": 20.12
+      },
+      "ensemble_aasist_xgboost": {
+        "score_pct": 0.6,
+        "prediction": "SYNTHETIC",
+        "correct": true,
+        "latency_ms": 40.72
+      }
+    }
+  ]
+}

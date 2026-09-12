@@ -1,0 +1,90 @@
+{
+  "model_name": "AASIST + XGBoost Ensemble",
+  "timestamp": "2026-09-12 03:05:57",
+  "training_time_s": 0.43,
+  "test_samples": 71,
+  "metrics": {
+    "accuracy": 0.9155,
+    "precision": 0.85,
+    "recall": 1.0,
+    "f1_score": 0.9189,
+    "roc_auc": 0.9889,
+    "eer": 0.0994,
+    "optimal_threshold": 0.9861,
+    "inference_latency_ms": 0.01
+  },
+  "confusion_matrix": {
+    "true_positives_synthetic": 34,
+    "false_positives_synthetic": 6,
+    "true_negatives_human": 31,
+    "false_negatives_human": 0
+  },
+  "acoustic_only_metrics": {
+    "accuracy": 0.8873,
+    "f1_score": 0.8919,
+    "roc_auc": 0.9936,
+    "eer": 0.0147
+  },
+  "top_features": [
+    {
+      "feature": "aasist_emb_119",
+      "importance": 0.12599609792232513
+    },
+    {
+      "feature": "aasist_emb_12",
+      "importance": 0.11791679263114929
+    },
+    {
+      "feature": "aasist_emb_10",
+      "importance": 0.10215317457914352
+    },
+    {
+      "feature": "aasist_emb_0",
+      "importance": 0.07458823174238205
+    },
+    {
+      "feature": "aasist_emb_2",
+      "importance": 0.05138577148318291
+    },
+    {
+      "feature": "aasist_emb_126",
+      "importance": 0.040319912135601044
+    },
+    {
+      "feature": "aasist_emb_28",
+      "importance": 0.03433368355035782
+    },
+    {
+      "feature": "aasist_emb_49",
+      "importance": 0.029378460720181465
+    },
+    {
+      "feature": "aasist_emb_70",
+      "importance": 0.02765374816954136
+    },
+    {
+      "feature": "aasist_emb_6",
+      "importance": 0.026323167607188225
+    },
+    {
+      "feature": "mfcc_6_std",
+      "importance": 0.024053966626524925
+    },
+    {
+      "feature": "aasist_emb_46",
+      "importance": 0.02353566698729992
+    },
+    {
+      "feature": "aasist_emb_122",
+      "importance": 0.023292874917387962
+    },
+    {
+      "feature": "aasist_emb_23",
+      "importance": 0.021886637434363365
+    },
+    {
+      "feature": "mfcc_13_std",
+      "importance": 0.021173710003495216
+    }
+  ]
+}

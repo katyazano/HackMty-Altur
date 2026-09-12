@@ -97,6 +97,32 @@ class AASIST(nn.Module):
         out = self.fc_out(feat)
         return out
 
+    def extract_embeddings(self, x: torch.Tensor) -> tuple[torch.Tensor, torch.Tensor]:
+        """
+        Extracts intermediate 128-dim graph embeddings and output logits.
+        Returns:
+            feat: [batch, 128] latent embedding vector
+            logits: [batch, num_classes] class logits
+        """
+        if x.dim() == 2:
+            x = x.unsqueeze(1)
+
+        x = torch.abs(self.sinc_conv(x))
+        x = self.maxpool(self.lrelu(self.bn_sinc(x)))
+        x = self.lrelu(self.bn1(self.conv1(x)))
+        x = self.maxpool(self.lrelu(self.bn2(self.conv2(x))))
+        x = F.adaptive_avg_pool1d(x, 64)
+        nodes_t = x.transpose(1, 2)
+
+        h_t = self.gat_temporal(nodes_t)
+        h_s = self.gat_spectral(nodes_t)
+        h_fused = self.gat_hetero(h_t + h_s)
+
+        graph_repr = torch.mean(h_fused, dim=1)
+        feat = self.lrelu(self.fc1(graph_repr))
+        logits = self.fc_out(feat)
+        return feat, logits
+
     def predict_spoof(self, waveform_tensor: torch.Tensor) -> dict:
         """
         Runs inference on raw waveform tensor, returning spoof probability and verdict.
