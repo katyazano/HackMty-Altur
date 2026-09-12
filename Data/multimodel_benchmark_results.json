@@ -1,26 +1,27 @@
 {
-  "timestamp": "2026-09-12 03:06:04",
+  "timestamp": "2026-09-12 21:16:55",
   "total_test_samples": 71,
+  "calibrated_threshold": 0.9424,
+  "uncertainty_band": [
+    0.4,
+    0.6
+  ],
+  "suspicious_count": 0,
   "models": {
     "RawNet2": {
-      "accuracy_pct": 84.51,
-      "correct_count": 60,
-      "mean_latency_ms": 18.18
+      "accuracy_pct": 88.73,
+      "correct_count": 63,
+      "mean_latency_ms": 50.51
     },
     "AASIST": {
-      "accuracy_pct": 88.73,
-      "correct_count": 63,
-      "mean_latency_ms": 20.66
+      "accuracy_pct": 84.51,
+      "correct_count": 60,
+      "mean_latency_ms": 68.73
     },
-    "Acoustic_XGBoost": {
-      "accuracy_pct": 88.73,
-      "correct_count": 63,
-      "mean_latency_ms": 20.3
-    },
-    "AASIST_XGBoost_Ensemble": {
+    "Triple_Ensemble": {
       "accuracy_pct": 91.55,
       "correct_count": 65,
-      "mean_latency_ms": 40.82
+      "mean_latency_ms": 162.12
     }
   },
   "records": [
@@ -29,30 +30,22 @@
       "filename": "call_0294f969f98b_agent_0.wav",
       "duration_s": 17.85,
       "ground_truth": "synthetic",
-      "is_ground_truth_human": false,
       "rawnet2": {
-        "score_pct": 2.6,
+        "score_pct": 2.0,
         "prediction": "SYNTHETIC",
-        "correct": true,
-        "latency_ms": 20.58
+        "latency_ms": 57.68
       },
       "aasist": {
-        "score_pct": 0.5,
+        "score_pct": 3.3,
         "prediction": "SYNTHETIC",
-        "correct": true,
-        "latency_ms": 21.58
+        "latency_ms": 67.61
       },
-      "acoustic_xgboost": {
-        "score_pct": 3.0,
-        "prediction": "SYNTHETIC",
-        "correct": true,
-        "latency_ms": 20.55
-      },
-      "ensemble_aasist_xgboost": {
-        "score_pct": 0.7,
-        "prediction": "SYNTHETIC",
-        "correct": true,
-        "latency_ms": 41.53
+      "triple_ensemble": {
+        "verdict": "synthetic",
+        "confidence_score": 0.0188,
+        "business_action": "BLOCK_TRANSACTION (Synthetic AI Voice Detected)",
+        "is_correct": true,
+        "latency_ms": 167.99
       }
     },
     {
@@ -60,30 +53,22 @@
       "filename": "call_0847d7417bb1_agent_0.wav",
       "duration_s": 27.39,
       "ground_truth": "synthetic",
-      "is_ground_truth_human": false,
       "rawnet2": {
-        "score_pct": 1.5,
+        "score_pct": 0.9,
         "prediction": "SYNTHETIC",
-        "correct": true,
-        "latency_ms": 18.32
+        "latency_ms": 50.0
       },
       "aasist": {
-        "score_pct": 3.9,
+        "score_pct": 7.3,
         "prediction": "SYNTHETIC",
-        "correct": true,
-        "latency_ms": 20.71
+        "latency_ms": 65.95
       },
-      "acoustic_xgboost": {
-        "score_pct": 0.5,
-        "prediction": "SYNTHETIC",
-        "correct": true,
-        "latency_ms": 19.96
-      },
-      "ensemble_aasist_xgboost": {
-        "score_pct": 0.5,
-        "prediction": "SYNTHETIC",
-        "correct": true,
-        "latency_ms": 40.46
+      "triple_ensemble": {
+        "verdict": "synthetic",
+        "confidence_score": 0.0142,
+        "business_action": "BLOCK_TRANSACTION (Synthetic AI Voice Detected)",
+        "is_correct": true,
+        "latency_ms": 167.63
       }
     },
     {
@@ -91,30 +76,22 @@
       "filename": "call_0cf2f4a71328_agent_0.wav",
       "duration_s": 52.32,
       "ground_truth": "synthetic",
-      "is_ground_truth_human": false,
       "rawnet2": {
-        "score_pct": 4.2,
+        "score_pct": 4.4,
         "prediction": "SYNTHETIC",
-        "correct": true,
-        "latency_ms": 17.92
+        "latency_ms": 49.14
       },
       "aasist": {
-        "score_pct": 16.9,
+        "score_pct": 25.6,
         "prediction": "SYNTHETIC",
-        "correct": true,
-        "latency_ms": 20.55
+        "latency_ms": 66.09
       },
-      "acoustic_xgboost": {
-        "score_pct": 3.2,
-        "prediction": "SYNTHETIC",
-        "correct": true,
-        "latency_ms": 19.99
-      },
-      "ensemble_aasist_xgboost": {
-        "score_pct": 0.5,
-        "prediction": "SYNTHETIC",
-        "correct": true,
-        "latency_ms": 40.5
+      "triple_ensemble": {
+        "verdict": "synthetic",
+        "confidence_score": 0.0144,
+        "business_action": "BLOCK_TRANSACTION (Synthetic AI Voice Detected)",
+        "is_correct": true,
+        "latency_ms": 164.87
       }
     },
     {
@@ -122,30 +99,22 @@
       "filename": "call_0e1e2f29bfdc_agent_0.wav",
       "duration_s": 24.51,
       "ground_truth": "human",
-      "is_ground_truth_human": true,
       "rawnet2": {
-        "score_pct": 95.1,
+        "score_pct": 94.9,
         "prediction": "HUMAN",
-        "correct": true,
-        "latency_ms": 17.91
+        "latency_ms": 49.37
       },
       "aasist": {
-        "score_pct": 77.3,
+        "score_pct": 64.4,
         "prediction": "HUMAN",
-        "correct": true,
-        "latency_ms": 20.63
+        "latency_ms": 70.48
       },
-      "acoustic_xgboost": {
-        "score_pct": 98.1,
-        "prediction": "HUMAN",
-        "correct": true,
-        "latency_ms": 19.94
-      },
-      "ensemble_aasist_xgboost": {
-        "score_pct": 99.1,
-        "prediction": "HUMAN",
-        "correct": true,
-        "latency_ms": 40.54
+      "triple_ensemble": {
+        "verdict": "human",
+        "confidence_score": 0.9829,
+        "business_action": "ALLOW_TRANSACTION (Verified Human Voice)",
+        "is_correct": true,
+        "latency_ms": 169.29
       }
     },
     {
@@ -153,30 +122,22 @@
       "filename": "call_10aa0d1d33f0_agent_0.wav",
       "duration_s": 25.75,
       "ground_truth": "human",
-      "is_ground_truth_human": true,
       "rawnet2": {
-        "score_pct": 6.6,
+        "score_pct": 17.9,
         "prediction": "SYNTHETIC",
-        "correct": false,
-        "latency_ms": 18.48
+        "latency_ms": 49.25
       },
       "aasist": {
-        "score_pct": 24.2,
+        "score_pct": 33.7,
         "prediction": "SYNTHETIC",
-        "correct": false,
-        "latency_ms": 20.73
+        "latency_ms": 65.02
       },
-      "acoustic_xgboost": {
-        "score_pct": 65.5,
-        "prediction": "HUMAN",
-        "correct": true,
-        "latency_ms": 19.93
-      },
-      "ensemble_aasist_xgboost": {
-        "score_pct": 1.2,
-        "prediction": "SYNTHETIC",
-        "correct": false,
-        "latency_ms": 40.74
+      "triple_ensemble": {
+        "verdict": "synthetic",
+        "confidence_score": 0.0576,
+        "business_action": "BLOCK_TRANSACTION (Synthetic AI Voice Detected)",
+        "is_correct": false,
+        "latency_ms": 155.2
       }
     },
     {
@@ -184,30 +145,22 @@
       "filename": "call_120d6007bcc1_agent_0.wav",
       "duration_s": 53.47,
       "ground_truth": "synthetic",
-      "is_ground_truth_human": false,
       "rawnet2": {
         "score_pct": 0.7,
         "prediction": "SYNTHETIC",
-        "correct": true,
-        "latency_ms": 18.61
+        "latency_ms": 49.14
       },
       "aasist": {
-        "score_pct": 0.7,
+        "score_pct": 2.5,
         "prediction": "SYNTHETIC",
-        "correct": true,
-        "latency_ms": 21.37
+        "latency_ms": 66.39
       },
-      "acoustic_xgboost": {
-        "score_pct": 0.5,
-        "prediction": "SYNTHETIC",
-        "correct": true,
-        "latency_ms": 20.09
-      },
-      "ensemble_aasist_xgboost": {
-        "score_pct": 0.3,
-        "prediction": "SYNTHETIC",
-        "correct": true,
-        "latency_ms": 40.93
+      "triple_ensemble": {
+        "verdict": "synthetic",
+        "confidence_score": 0.0174,
+        "business_action": "BLOCK_TRANSACTION (Synthetic AI Voice Detected)",
+        "is_correct": true,
+        "latency_ms": 157.0
       }
     },
     {
@@ -215,30 +168,22 @@
       "filename": "call_181a5049ecae_agent_0.wav",
       "duration_s": 30.93,
       "ground_truth": "synthetic",
-      "is_ground_truth_human": false,
       "rawnet2": {
-        "score_pct": 3.5,
+        "score_pct": 2.5,
         "prediction": "SYNTHETIC",
-        "correct": true,
-        "latency_ms": 18.17
+        "latency_ms": 49.32
       },
       "aasist": {
-        "score_pct": 8.8,
+        "score_pct": 16.0,
         "prediction": "SYNTHETIC",
-        "correct": true,
-        "latency_ms": 24.67
+        "latency_ms": 65.52
       },
-      "acoustic_xgboost": {
-        "score_pct": 0.6,
-        "prediction": "SYNTHETIC",
-        "correct": true,
-        "latency_ms": 28.7
-      },
-      "ensemble_aasist_xgboost": {
-        "score_pct": 0.6,
-        "prediction": "SYNTHETIC",
-        "correct": true,
-        "latency_ms": 42.0
+      "triple_ensemble": {
+        "verdict": "synthetic",
+        "confidence_score": 0.0169,
+        "business_action": "BLOCK_TRANSACTION (Synthetic AI Voice Detected)",
+        "is_correct": true,
+        "latency_ms": 162.13
       }
     },
     {
@@ -246,30 +191,22 @@
       "filename": "call_185e958a253b_agent_0.wav",
       "duration_s": 31.07,
       "ground_truth": "human",
-      "is_ground_truth_human": true,
       "rawnet2": {
-        "score_pct": 18.5,
+        "score_pct": 13.6,
         "prediction": "SYNTHETIC",
-        "correct": false,
-        "latency_ms": 18.39
+        "latency_ms": 48.6
       },
       "aasist": {
-        "score_pct": 20.3,
+        "score_pct": 19.6,
         "prediction": "SYNTHETIC",
-        "correct": false,
-        "latency_ms": 21.16
+        "latency_ms": 65.73
       },
-      "acoustic_xgboost": {
-        "score_pct": 71.0,
-        "prediction": "HUMAN",
-        "correct": true,
-        "latency_ms": 20.0
-      },
-      "ensemble_aasist_xgboost": {
-        "score_pct": 7.5,
-        "prediction": "SYNTHETIC",
-        "correct": false,
-        "latency_ms": 40.98
+      "triple_ensemble": {
+        "verdict": "human",
+        "confidence_score": 0.1,
+        "business_action": "ALLOW_TRANSACTION (Verified Human Voice)",
+        "is_correct": true,
+        "latency_ms": 155.95
       }
     },
     {
@@ -277,30 +214,22 @@
       "filename": "call_198ef413fe4a_agent_0.wav",
       "duration_s": 31.58,
       "ground_truth": "human",
-      "is_ground_truth_human": true,
       "rawnet2": {
-        "score_pct": 98.8,
+        "score_pct": 98.3,
         "prediction": "HUMAN",
-        "correct": true,
-        "latency_ms": 18.79
+        "latency_ms": 49.71
       },
       "aasist": {
-        "score_pct": 96.6,
+        "score_pct": 89.7,
         "prediction": "HUMAN",
-        "correct": true,
-        "latency_ms": 22.16
+        "latency_ms": 65.99
       },
-      "acoustic_xgboost": {
-        "score_pct": 97.1,
-        "prediction": "HUMAN",
-        "correct": true,
-        "latency_ms": 19.92
-      },
-      "ensemble_aasist_xgboost": {
-        "score_pct": 99.5,
-        "prediction": "HUMAN",
-        "correct": true,
-        "latency_ms": 40.75
+      "triple_ensemble": {
+        "verdict": "human",
+        "confidence_score": 0.9834,
+        "business_action": "ALLOW_TRANSACTION (Verified Human Voice)",
+        "is_correct": true,
+        "latency_ms": 194.49
       }
     },
     {
@@ -308,30 +237,22 @@
       "filename": "call_1c1c0cce9fb5_agent_0.wav",
       "duration_s": 33.37,
       "ground_truth": "human",
-      "is_ground_truth_human": true,
       "rawnet2": {
-        "score_pct": 93.6,
+        "score_pct": 92.4,
         "prediction": "HUMAN",
-        "correct": true,
-        "latency_ms": 18.82
+        "latency_ms": 48.99
       },
       "aasist": {
-        "score_pct": 73.6,
+        "score_pct": 62.8,
         "prediction": "HUMAN",
-        "correct": true,
-        "latency_ms": 21.45
+        "latency_ms": 64.88
       },
-      "acoustic_xgboost": {
-        "score_pct": 96.2,
-        "prediction": "HUMAN",
-        "correct": true,
-        "latency_ms": 20.94
-      },
-      "ensemble_aasist_xgboost": {
-        "score_pct": 99.2,
-        "prediction": "HUMAN",
-        "correct": true,
-        "latency_ms": 40.74
+      "triple_ensemble": {
+        "verdict": "human",
+        "confidence_score": 0.9812,
+        "business_action": "ALLOW_TRANSACTION (Verified Human Voice)",
+        "is_correct": true,
+        "latency_ms": 158.51
       }
     },
     {
@@ -339,30 +260,22 @@
       "filename": "call_2d4374d86df7_agent_0.wav",
       "duration_s": 49.01,
       "ground_truth": "synthetic",
-      "is_ground_truth_human": false,
       "rawnet2": {
-        "score_pct": 3.4,
+        "score_pct": 4.3,
         "prediction": "SYNTHETIC",
-        "correct": true,
-        "latency_ms": 18.54
+        "latency_ms": 54.87
       },
       "aasist": {
-        "score_pct": 16.5,
+        "score_pct": 22.7,
         "prediction": "SYNTHETIC",
-        "correct": true,
-        "latency_ms": 21.07
+        "latency_ms": 64.07
       },
-      "acoustic_xgboost": {
-        "score_pct": 0.7,
-        "prediction": "SYNTHETIC",
-        "correct": true,
-        "latency_ms": 19.95
-      },
-      "ensemble_aasist_xgboost": {
-        "score_pct": 0.5,
-        "prediction": "SYNTHETIC",
-        "correct": true,
-        "latency_ms": 40.69
+      "triple_ensemble": {
+        "verdict": "synthetic",
+        "confidence_score": 0.0139,
+        "business_action": "BLOCK_TRANSACTION (Synthetic AI Voice Detected)",
+        "is_correct": true,
+        "latency_ms": 152.73
       }
     },
     {
@@ -370,30 +283,22 @@
       "filename": "call_36d72e4b1aef_agent_0.wav",
       "duration_s": 39.01,
       "ground_truth": "synthetic",
-      "is_ground_truth_human": false,
       "rawnet2": {
-        "score_pct": 0.8,
+        "score_pct": 0.5,
         "prediction": "SYNTHETIC",
-        "correct": true,
-        "latency_ms": 18.73
+        "latency_ms": 48.8
       },
       "aasist": {
-        "score_pct": 1.1,
+        "score_pct": 3.8,
         "prediction": "SYNTHETIC",
-        "correct": true,
-        "latency_ms": 21.37
+        "latency_ms": 64.43
       },
-      "acoustic_xgboost": {
-        "score_pct": 1.0,
-        "prediction": "SYNTHETIC",
-        "correct": true,
-        "latency_ms": 20.06
-      },
-      "ensemble_aasist_xgboost": {
-        "score_pct": 0.4,
-        "prediction": "SYNTHETIC",
-        "correct": true,
-        "latency_ms": 41.36
+      "triple_ensemble": {
+        "verdict": "synthetic",
+        "confidence_score": 0.0136,
+        "business_action": "BLOCK_TRANSACTION (Synthetic AI Voice Detected)",
+        "is_correct": true,
+        "latency_ms": 152.59
       }
     },
     {
@@ -401,30 +306,22 @@
       "filename": "call_3b9afdd4a2df_agent_0.wav",
       "duration_s": 30.24,
       "ground_truth": "human",
-      "is_ground_truth_human": true,
       "rawnet2": {
-        "score_pct": 18.2,
+        "score_pct": 5.5,
         "prediction": "SYNTHETIC",
-        "correct": false,
-        "latency_ms": 18.04
+        "latency_ms": 53.77
       },
       "aasist": {
-        "score_pct": 52.1,
-        "prediction": "HUMAN",
-        "correct": true,
-        "latency_ms": 20.63
-      },
-      "acoustic_xgboost": {
-        "score_pct": 27.8,
+        "score_pct": 31.9,
         "prediction": "SYNTHETIC",
-        "correct": false,
-        "latency_ms": 19.84
+        "latency_ms": 65.56
       },
-      "ensemble_aasist_xgboost": {
-        "score_pct": 95.6,
-        "prediction": "HUMAN",
-        "correct": true,
-        "latency_ms": 40.61
+      "triple_ensemble": {
+        "verdict": "human",
+        "confidence_score": 0.3036,
+        "business_action": "ALLOW_TRANSACTION (Verified Human Voice)",
+        "is_correct": true,
+        "latency_ms": 155.64
       }
     },
     {
@@ -432,30 +329,22 @@
       "filename": "call_47bef2f628eb_agent_0.wav",
       "duration_s": 29.19,
       "ground_truth": "human",
-      "is_ground_truth_human": true,
       "rawnet2": {
-        "score_pct": 43.6,
-        "prediction": "SYNTHETIC",
-        "correct": false,
-        "latency_ms": 18.37
+        "score_pct": 53.4,
+        "prediction": "HUMAN",
+        "latency_ms": 57.01
       },
       "aasist": {
-        "score_pct": 63.4,
+        "score_pct": 58.2,
         "prediction": "HUMAN",
-        "correct": true,
-        "latency_ms": 21.26
+        "latency_ms": 101.14
       },
-      "acoustic_xgboost": {
-        "score_pct": 90.9,
-        "prediction": "HUMAN",
-        "correct": true,
-        "latency_ms": 19.79
-      },
-      "ensemble_aasist_xgboost": {
-        "score_pct": 99.2,
-        "prediction": "HUMAN",
-        "correct": true,
-        "latency_ms": 40.99
+      "triple_ensemble": {
+        "verdict": "human",
+        "confidence_score": 0.8555,
+        "business_action": "ALLOW_TRANSACTION (Verified Human Voice)",
+        "is_correct": true,
+        "latency_ms": 168.01
       }
     },
     {
@@ -463,30 +352,22 @@
       "filename": "call_4affad158a4c_agent_0.wav",
       "duration_s": 29.13,
       "ground_truth": "synthetic",
-      "is_ground_truth_human": false,
       "rawnet2": {
-        "score_pct": 1.5,
+        "score_pct": 1.0,
         "prediction": "SYNTHETIC",
-        "correct": true,
-        "latency_ms": 18.53
+        "latency_ms": 51.22
       },
       "aasist": {
-        "score_pct": 0.8,
+        "score_pct": 2.8,
         "prediction": "SYNTHETIC",
-        "correct": true,
-        "latency_ms": 21.27
+        "latency_ms": 109.06
       },
-      "acoustic_xgboost": {
-        "score_pct": 0.6,
-        "prediction": "SYNTHETIC",
-        "correct": true,
-        "latency_ms": 19.84
-      },
-      "ensemble_aasist_xgboost": {
-        "score_pct": 0.4,
-        "prediction": "SYNTHETIC",
-        "correct": true,
-        "latency_ms": 41.19
+      "triple_ensemble": {
+        "verdict": "synthetic",
+        "confidence_score": 0.0149,
+        "business_action": "BLOCK_TRANSACTION (Synthetic AI Voice Detected)",
+        "is_correct": true,
+        "latency_ms": 157.41
       }
     },
     {
@@ -494,30 +375,22 @@
       "filename": "call_569ffb0869eb_agent_0.wav",
       "duration_s": 37.76,
       "ground_truth": "human",
-      "is_ground_truth_human": true,
       "rawnet2": {
-        "score_pct": 88.4,
+        "score_pct": 87.6,
         "prediction": "HUMAN",
-        "correct": true,
-        "latency_ms": 18.43
+        "latency_ms": 49.54
       },
       "aasist": {
-        "score_pct": 80.8,
+        "score_pct": 72.4,
         "prediction": "HUMAN",
-        "correct": true,
-        "latency_ms": 20.71
+        "latency_ms": 66.7
       },
-      "acoustic_xgboost": {
-        "score_pct": 94.4,
-        "prediction": "HUMAN",
-        "correct": true,
-        "latency_ms": 19.99
-      },
-      "ensemble_aasist_xgboost": {
-        "score_pct": 98.6,
-        "prediction": "HUMAN",
-        "correct": true,
-        "latency_ms": 40.58
+      "triple_ensemble": {
+        "verdict": "human",
+        "confidence_score": 0.981,
+        "business_action": "ALLOW_TRANSACTION (Verified Human Voice)",
+        "is_correct": true,
+        "latency_ms": 155.68
       }
     },
     {
@@ -525,30 +398,22 @@
       "filename": "call_58ed2170e352_agent_0.wav",
       "duration_s": 30.0,
       "ground_truth": "human",
-      "is_ground_truth_human": true,
       "rawnet2": {
-        "score_pct": 69.2,
+        "score_pct": 70.2,
         "prediction": "HUMAN",
-        "correct": true,
-        "latency_ms": 17.65
+        "latency_ms": 54.01
       },
       "aasist": {
-        "score_pct": 57.0,
+        "score_pct": 55.5,
         "prediction": "HUMAN",
-        "correct": true,
-        "latency_ms": 20.4
+        "latency_ms": 65.01
       },
-      "acoustic_xgboost": {
-        "score_pct": 30.8,
-        "prediction": "SYNTHETIC",
-        "correct": false,
-        "latency_ms": 19.9
-      },
-      "ensemble_aasist_xgboost": {
-        "score_pct": 98.6,
-        "prediction": "HUMAN",
-        "correct": true,
-        "latency_ms": 40.27
+      "triple_ensemble": {
+        "verdict": "human",
+        "confidence_score": 0.967,
+        "business_action": "ALLOW_TRANSACTION (Verified Human Voice)",
+        "is_correct": true,
+        "latency_ms": 158.23
       }
     },
     {
@@ -556,30 +421,22 @@
       "filename": "call_5e4539a471f6_agent_0.wav",
       "duration_s": 26.07,
       "ground_truth": "synthetic",
-      "is_ground_truth_human": false,
       "rawnet2": {
-        "score_pct": 3.0,
+        "score_pct": 2.9,
         "prediction": "SYNTHETIC",
-        "correct": true,
-        "latency_ms": 18.54
+        "latency_ms": 49.88
       },
       "aasist": {
-        "score_pct": 13.0,
+        "score_pct": 20.1,
         "prediction": "SYNTHETIC",
-        "correct": true,
-        "latency_ms": 21.1
+        "latency_ms": 81.8
       },
-      "acoustic_xgboost": {
-        "score_pct": 0.6,
-        "prediction": "SYNTHETIC",
-        "correct": true,
-        "latency_ms": 19.78
-      },
-      "ensemble_aasist_xgboost": {
-        "score_pct": 0.4,
-        "prediction": "SYNTHETIC",
-        "correct": true,
-        "latency_ms": 41.11
+      "triple_ensemble": {
+        "verdict": "synthetic",
+        "confidence_score": 0.0125,
+        "business_action": "BLOCK_TRANSACTION (Synthetic AI Voice Detected)",
+        "is_correct": true,
+        "latency_ms": 152.76
       }
     },
     {
@@ -587,30 +444,22 @@
       "filename": "call_6058d9c5c82f_agent_0.wav",
       "duration_s": 31.12,
       "ground_truth": "synthetic",
-      "is_ground_truth_human": false,
       "rawnet2": {
-        "score_pct": 3.4,
+        "score_pct": 2.5,
         "prediction": "SYNTHETIC",
-        "correct": true,
-        "latency_ms": 17.97
+        "latency_ms": 48.82
       },
       "aasist": {
-        "score_pct": 12.6,
+        "score_pct": 16.8,
         "prediction": "SYNTHETIC",
-        "correct": true,
-        "latency_ms": 20.74
+        "latency_ms": 67.15
       },
-      "acoustic_xgboost": {
-        "score_pct": 0.6,
-        "prediction": "SYNTHETIC",
-        "correct": true,
-        "latency_ms": 19.82
-      },
-      "ensemble_aasist_xgboost": {
-        "score_pct": 0.3,
-        "prediction": "SYNTHETIC",
-        "correct": true,
-        "latency_ms": 40.44
+      "triple_ensemble": {
+        "verdict": "synthetic",
+        "confidence_score": 0.0137,
+        "business_action": "BLOCK_TRANSACTION (Synthetic AI Voice Detected)",
+        "is_correct": true,
+        "latency_ms": 160.53
       }
     },
     {
@@ -618,30 +467,22 @@
       "filename": "call_64637c20ee66_agent_0.wav",
       "duration_s": 57.15,
       "ground_truth": "human",
-      "is_ground_truth_human": true,
       "rawnet2": {
-        "score_pct": 99.1,
+        "score_pct": 98.8,
         "prediction": "HUMAN",
-        "correct": true,
-        "latency_ms": 18.52
+        "latency_ms": 50.74
       },
       "aasist": {
-        "score_pct": 100.0,
+        "score_pct": 99.9,
         "prediction": "HUMAN",
-        "correct": true,
-        "latency_ms": 20.96
+        "latency_ms": 73.95
       },
-      "acoustic_xgboost": {
-        "score_pct": 98.7,
-        "prediction": "HUMAN",
-        "correct": true,
-        "latency_ms": 20.09
-      },
-      "ensemble_aasist_xgboost": {
-        "score_pct": 99.6,
-        "prediction": "HUMAN",
-        "correct": true,
-        "latency_ms": 41.08
+      "triple_ensemble": {
+        "verdict": "human",
+        "confidence_score": 0.9831,
+        "business_action": "ALLOW_TRANSACTION (Verified Human Voice)",
+        "is_correct": true,
+        "latency_ms": 154.71
       }
     },
     {
@@ -649,30 +490,22 @@
       "filename": "call_678ee1dd2242_agent_0.wav",
       "duration_s": 49.82,
       "ground_truth": "human",
-      "is_ground_truth_human": true,
       "rawnet2": {
-        "score_pct": 81.7,
+        "score_pct": 84.1,
         "prediction": "HUMAN",
-        "correct": true,
-        "latency_ms": 18.0
+        "latency_ms": 50.66
       },
       "aasist": {
-        "score_pct": 65.6,
+        "score_pct": 62.1,
         "prediction": "HUMAN",
-        "correct": true,
-        "latency_ms": 20.15
+        "latency_ms": 66.79
       },
-      "acoustic_xgboost": {
-        "score_pct": 99.5,
-        "prediction": "HUMAN",
-        "correct": true,
-        "latency_ms": 20.1
-      },
-      "ensemble_aasist_xgboost": {
-        "score_pct": 99.4,
-        "prediction": "HUMAN",
-        "correct": true,
-        "latency_ms": 39.9
+      "triple_ensemble": {
+        "verdict": "human",
+        "confidence_score": 0.9836,
+        "business_action": "ALLOW_TRANSACTION (Verified Human Voice)",
+        "is_correct": true,
+        "latency_ms": 153.73
       }
     },
     {
@@ -680,30 +513,22 @@
       "filename": "call_6971b2685c1d_agent_0.wav",
       "duration_s": 19.99,
       "ground_truth": "human",
-      "is_ground_truth_human": true,
       "rawnet2": {
-        "score_pct": 89.4,
+        "score_pct": 92.4,
         "prediction": "HUMAN",
-        "correct": true,
-        "latency_ms": 17.9
+        "latency_ms": 48.96
       },
       "aasist": {
-        "score_pct": 68.0,
+        "score_pct": 62.6,
         "prediction": "HUMAN",
-        "correct": true,
-        "latency_ms": 20.71
+        "latency_ms": 66.15
       },
-      "acoustic_xgboost": {
-        "score_pct": 98.2,
-        "prediction": "HUMAN",
-        "correct": true,
-        "latency_ms": 19.75
-      },
-      "ensemble_aasist_xgboost": {
-        "score_pct": 99.3,
-        "prediction": "HUMAN",
-        "correct": true,
-        "latency_ms": 40.1
+      "triple_ensemble": {
+        "verdict": "human",
+        "confidence_score": 0.9673,
+        "business_action": "ALLOW_TRANSACTION (Verified Human Voice)",
+        "is_correct": true,
+        "latency_ms": 229.56
       }
     },
     {
@@ -711,30 +536,22 @@
       "filename": "call_6c8d4490f8d7_agent_0.wav",
       "duration_s": 44.63,
       "ground_truth": "synthetic",
-      "is_ground_truth_human": false,
       "rawnet2": {
-        "score_pct": 0.6,
+        "score_pct": 0.4,
         "prediction": "SYNTHETIC",
-        "correct": true,
-        "latency_ms": 19.02
+        "latency_ms": 64.67
       },
       "aasist": {
-        "score_pct": 2.6,
+        "score_pct": 7.0,
         "prediction": "SYNTHETIC",
-        "correct": true,
-        "latency_ms": 21.2
+        "latency_ms": 82.11
       },
-      "acoustic_xgboost": {
-        "score_pct": 1.8,
-        "prediction": "SYNTHETIC",
-        "correct": true,
-        "latency_ms": 19.92
-      },
-      "ensemble_aasist_xgboost": {
-        "score_pct": 0.7,
-        "prediction": "SYNTHETIC",
-        "correct": true,
-        "latency_ms": 41.16
+      "triple_ensemble": {
+        "verdict": "synthetic",
+        "confidence_score": 0.0181,
+        "business_action": "BLOCK_TRANSACTION (Synthetic AI Voice Detected)",
+        "is_correct": true,
+        "latency_ms": 173.08
       }
     },
     {
@@ -742,30 +559,22 @@
       "filename": "call_743448b8a861_agent_0.wav",
       "duration_s": 26.96,
       "ground_truth": "synthetic",
-      "is_ground_truth_human": false,
       "rawnet2": {
-        "score_pct": 0.6,
+        "score_pct": 0.4,
         "prediction": "SYNTHETIC",
-        "correct": true,
-        "latency_ms": 18.7
+        "latency_ms": 49.12
       },
       "aasist": {
-        "score_pct": 0.6,
+        "score_pct": 2.7,
         "prediction": "SYNTHETIC",
-        "correct": true,
-        "latency_ms": 21.16
+        "latency_ms": 67.77
       },
-      "acoustic_xgboost": {
-        "score_pct": 1.9,
-        "prediction": "SYNTHETIC",
-        "correct": true,
-        "latency_ms": 19.93
-      },
-      "ensemble_aasist_xgboost": {
-        "score_pct": 0.5,
-        "prediction": "SYNTHETIC",
-        "correct": true,
-        "latency_ms": 40.95
+      "triple_ensemble": {
+        "verdict": "synthetic",
+        "confidence_score": 0.0193,
+        "business_action": "BLOCK_TRANSACTION (Synthetic AI Voice Detected)",
+        "is_correct": true,
+        "latency_ms": 153.83
       }
     },
     {
@@ -773,30 +582,22 @@
       "filename": "call_74b20933dd43_agent_0.wav",
       "duration_s": 45.79,
       "ground_truth": "human",
-      "is_ground_truth_human": true,
       "rawnet2": {
-        "score_pct": 62.6,
+        "score_pct": 67.6,
         "prediction": "HUMAN",
-        "correct": true,
-        "latency_ms": 18.34
+        "latency_ms": 49.58
       },
       "aasist": {
-        "score_pct": 54.6,
+        "score_pct": 50.2,
         "prediction": "HUMAN",
-        "correct": true,
-        "latency_ms": 20.81
+        "latency_ms": 65.48
       },
-      "acoustic_xgboost": {
-        "score_pct": 75.5,
-        "prediction": "HUMAN",
-        "correct": true,
-        "latency_ms": 19.99
-      },
-      "ensemble_aasist_xgboost": {
-        "score_pct": 98.4,
-        "prediction": "HUMAN",
-        "correct": true,
-        "latency_ms": 58.74
+      "triple_ensemble": {
+        "verdict": "human",
+        "confidence_score": 0.9769,
+        "business_action": "ALLOW_TRANSACTION (Verified Human Voice)",
+        "is_correct": true,
+        "latency_ms": 155.74
       }
     },
     {
@@ -804,30 +605,22 @@
       "filename": "call_7b1e73c133f8_agent_0.wav",
       "duration_s": 23.24,
       "ground_truth": "synthetic",
-      "is_ground_truth_human": false,
       "rawnet2": {
-        "score_pct": 0.9,
+        "score_pct": 0.6,
         "prediction": "SYNTHETIC",
-        "correct": true,
-        "latency_ms": 18.65
+        "latency_ms": 53.3
       },
       "aasist": {
-        "score_pct": 2.6,
+        "score_pct": 6.3,
         "prediction": "SYNTHETIC",
-        "correct": true,
-        "latency_ms": 21.32
+        "latency_ms": 65.91
       },
-      "acoustic_xgboost": {
-        "score_pct": 0.5,
-        "prediction": "SYNTHETIC",
-        "correct": true,
-        "latency_ms": 19.99
-      },
-      "ensemble_aasist_xgboost": {
-        "score_pct": 0.4,
-        "prediction": "SYNTHETIC",
-        "correct": true,
-        "latency_ms": 41.25
+      "triple_ensemble": {
+        "verdict": "synthetic",
+        "confidence_score": 0.016,
+        "business_action": "BLOCK_TRANSACTION (Synthetic AI Voice Detected)",
+        "is_correct": true,
+        "latency_ms": 169.15
       }
     },
     {
@@ -835,30 +628,22 @@
       "filename": "call_810c24005ecc_agent_0.wav",
       "duration_s": 30.8,
       "ground_truth": "synthetic",
-      "is_ground_truth_human": false,
       "rawnet2": {
-        "score_pct": 0.6,
+        "score_pct": 0.4,
         "prediction": "SYNTHETIC",
-        "correct": true,
-        "latency_ms": 18.47
+        "latency_ms": 48.43
       },
       "aasist": {
-        "score_pct": 2.4,
+        "score_pct": 7.9,
         "prediction": "SYNTHETIC",
-        "correct": true,
-        "latency_ms": 21.91
+        "latency_ms": 65.07
       },
-      "acoustic_xgboost": {
-        "score_pct": 0.4,
-        "prediction": "SYNTHETIC",
-        "correct": true,
-        "latency_ms": 20.2
-      },
-      "ensemble_aasist_xgboost": {
-        "score_pct": 0.4,
-        "prediction": "SYNTHETIC",
-        "correct": true,
-        "latency_ms": 41.1
+      "triple_ensemble": {
+        "verdict": "synthetic",
+        "confidence_score": 0.014,
+        "business_action": "BLOCK_TRANSACTION (Synthetic AI Voice Detected)",
+        "is_correct": true,
+        "latency_ms": 152.68
       }
     },
     {
@@ -866,30 +651,22 @@
       "filename": "call_810e3066a7b4_agent_0.wav",
       "duration_s": 25.84,
       "ground_truth": "synthetic",
-      "is_ground_truth_human": false,
       "rawnet2": {
-        "score_pct": 3.5,
+        "score_pct": 3.1,
         "prediction": "SYNTHETIC",
-        "correct": true,
-        "latency_ms": 18.05
+        "latency_ms": 49.73
       },
       "aasist": {
-        "score_pct": 17.3,
+        "score_pct": 26.0,
         "prediction": "SYNTHETIC",
-        "correct": true,
-        "latency_ms": 20.44
+        "latency_ms": 66.92
       },
-      "acoustic_xgboost": {
-        "score_pct": 1.0,
-        "prediction": "SYNTHETIC",
-        "correct": true,
-        "latency_ms": 19.95
-      },
-      "ensemble_aasist_xgboost": {
-        "score_pct": 0.5,
-        "prediction": "SYNTHETIC",
-        "correct": true,
-        "latency_ms": 40.5
+      "triple_ensemble": {
+        "verdict": "synthetic",
+        "confidence_score": 0.0128,
+        "business_action": "BLOCK_TRANSACTION (Synthetic AI Voice Detected)",
+        "is_correct": true,
+        "latency_ms": 154.99
       }
     },
     {
@@ -897,30 +674,22 @@
       "filename": "call_8cafd2754e55_agent_0.wav",
       "duration_s": 46.22,
       "ground_truth": "synthetic",
-      "is_ground_truth_human": false,
       "rawnet2": {
-        "score_pct": 1.2,
+        "score_pct": 0.9,
         "prediction": "SYNTHETIC",
-        "correct": true,
-        "latency_ms": 18.72
+        "latency_ms": 50.38
       },
       "aasist": {
-        "score_pct": 0.6,
+        "score_pct": 2.9,
         "prediction": "SYNTHETIC",
-        "correct": true,
-        "latency_ms": 21.15
+        "latency_ms": 72.72
       },
-      "acoustic_xgboost": {
-        "score_pct": 0.4,
-        "prediction": "SYNTHETIC",
-        "correct": true,
-        "latency_ms": 19.94
-      },
-      "ensemble_aasist_xgboost": {
-        "score_pct": 0.3,
-        "prediction": "SYNTHETIC",
-        "correct": true,
-        "latency_ms": 40.88
+      "triple_ensemble": {
+        "verdict": "synthetic",
+        "confidence_score": 0.0131,
+        "business_action": "BLOCK_TRANSACTION (Synthetic AI Voice Detected)",
+        "is_correct": true,
+        "latency_ms": 191.04
       }
     },
     {
@@ -928,30 +697,22 @@
       "filename": "call_8d75a71e6126_agent_0.wav",
       "duration_s": 46.01,
       "ground_truth": "synthetic",
-      "is_ground_truth_human": false,
       "rawnet2": {
-        "score_pct": 1.0,
-        "prediction": "SYNTHETIC",
-        "correct": true,
-        "latency_ms": 18.69
-      },
-      "aasist": {
         "score_pct": 0.7,
         "prediction": "SYNTHETIC",
-        "correct": true,
-        "latency_ms": 21.16
+        "latency_ms": 51.04
       },
-      "acoustic_xgboost": {
-        "score_pct": 0.8,
+      "aasist": {
+        "score_pct": 3.3,
         "prediction": "SYNTHETIC",
-        "correct": true,
-        "latency_ms": 20.25
+        "latency_ms": 66.72
       },
-      "ensemble_aasist_xgboost": {
-        "score_pct": 0.4,
-        "prediction": "SYNTHETIC",
-        "correct": true,
-        "latency_ms": 41.1
+      "triple_ensemble": {
+        "verdict": "synthetic",
+        "confidence_score": 0.0172,
+        "business_action": "BLOCK_TRANSACTION (Synthetic AI Voice Detected)",
+        "is_correct": true,
+        "latency_ms": 160.36
       }
     },
     {
@@ -959,30 +720,22 @@
       "filename": "call_8da8b9947630_agent_0.wav",
       "duration_s": 31.15,
       "ground_truth": "human",
-      "is_ground_truth_human": true,
       "rawnet2": {
-        "score_pct": 65.7,
+        "score_pct": 73.3,
         "prediction": "HUMAN",
-        "correct": true,
-        "latency_ms": 17.94
+        "latency_ms": 49.26
       },
       "aasist": {
-        "score_pct": 58.7,
+        "score_pct": 55.7,
         "prediction": "HUMAN",
-        "correct": true,
-        "latency_ms": 20.43
+        "latency_ms": 79.51
       },
-      "acoustic_xgboost": {
-        "score_pct": 98.6,
-        "prediction": "HUMAN",
-        "correct": true,
-        "latency_ms": 19.71
-      },
-      "ensemble_aasist_xgboost": {
-        "score_pct": 99.2,
-        "prediction": "HUMAN",
-        "correct": true,
-        "latency_ms": 40.45
+      "triple_ensemble": {
+        "verdict": "human",
+        "confidence_score": 0.981,
+        "business_action": "ALLOW_TRANSACTION (Verified Human Voice)",
+        "is_correct": true,
+        "latency_ms": 173.79
       }
     },
     {
@@ -990,30 +743,22 @@
       "filename": "call_925ba94f05a4_agent_0.wav",
       "duration_s": 66.2,
       "ground_truth": "synthetic",
-      "is_ground_truth_human": false,
       "rawnet2": {
-        "score_pct": 1.3,
+        "score_pct": 0.9,
         "prediction": "SYNTHETIC",
-        "correct": true,
-        "latency_ms": 18.2
+        "latency_ms": 49.28
       },
       "aasist": {
-        "score_pct": 10.6,
+        "score_pct": 16.7,
         "prediction": "SYNTHETIC",
-        "correct": true,
-        "latency_ms": 20.67
+        "latency_ms": 65.59
       },
-      "acoustic_xgboost": {
-        "score_pct": 0.3,
-        "prediction": "SYNTHETIC",
-        "correct": true,
-        "latency_ms": 19.91
-      },
-      "ensemble_aasist_xgboost": {
-        "score_pct": 0.3,
-        "prediction": "SYNTHETIC",
-        "correct": true,
-        "latency_ms": 40.48
+      "triple_ensemble": {
+        "verdict": "synthetic",
+        "confidence_score": 0.0128,
+        "business_action": "BLOCK_TRANSACTION (Synthetic AI Voice Detected)",
+        "is_correct": true,
+        "latency_ms": 153.77
       }
     },
     {
@@ -1021,30 +766,22 @@
       "filename": "call_957a8384caff_agent_0.wav",
       "duration_s": 54.13,
       "ground_truth": "synthetic",
-      "is_ground_truth_human": false,
       "rawnet2": {
-        "score_pct": 6.6,
+        "score_pct": 4.9,
         "prediction": "SYNTHETIC",
-        "correct": true,
-        "latency_ms": 18.12
+        "latency_ms": 51.13
       },
       "aasist": {
-        "score_pct": 23.7,
+        "score_pct": 26.5,
         "prediction": "SYNTHETIC",
-        "correct": true,
-        "latency_ms": 20.7
+        "latency_ms": 79.92
       },
-      "acoustic_xgboost": {
-        "score_pct": 0.8,
-        "prediction": "SYNTHETIC",
-        "correct": true,
-        "latency_ms": 20.24
-      },
-      "ensemble_aasist_xgboost": {
-        "score_pct": 0.3,
-        "prediction": "SYNTHETIC",
-        "correct": true,
-        "latency_ms": 40.66
+      "triple_ensemble": {
+        "verdict": "synthetic",
+        "confidence_score": 0.0137,
+        "business_action": "BLOCK_TRANSACTION (Synthetic AI Voice Detected)",
+        "is_correct": true,
+        "latency_ms": 176.64
       }
     },
     {
@@ -1052,30 +789,22 @@
       "filename": "call_95ccefc6e4ce_agent_0.wav",
       "duration_s": 56.93,
       "ground_truth": "human",
-      "is_ground_truth_human": true,
       "rawnet2": {
-        "score_pct": 99.7,
-        "prediction": "HUMAN",
-        "correct": true,
-        "latency_ms": 18.19
-      },
-      "aasist": {
-        "score_pct": 98.9,
-        "prediction": "HUMAN",
-        "correct": true,
-        "latency_ms": 20.55
-      },
-      "acoustic_xgboost": {
         "score_pct": 99.6,
         "prediction": "HUMAN",
-        "correct": true,
-        "latency_ms": 20.06
+        "latency_ms": 50.47
       },
-      "ensemble_aasist_xgboost": {
-        "score_pct": 99.5,
+      "aasist": {
+        "score_pct": 96.2,
         "prediction": "HUMAN",
-        "correct": true,
-        "latency_ms": 40.35
+        "latency_ms": 65.04
+      },
+      "triple_ensemble": {
+        "verdict": "human",
+        "confidence_score": 0.9839,
+        "business_action": "ALLOW_TRANSACTION (Verified Human Voice)",
+        "is_correct": true,
+        "latency_ms": 152.51
       }
     },
     {
@@ -1083,30 +812,22 @@
       "filename": "call_9a3d5b0a64a3_agent_0.wav",
       "duration_s": 62.48,
       "ground_truth": "human",
-      "is_ground_truth_human": true,
       "rawnet2": {
-        "score_pct": 91.9,
+        "score_pct": 91.1,
         "prediction": "HUMAN",
-        "correct": true,
-        "latency_ms": 18.18
+        "latency_ms": 49.28
       },
       "aasist": {
-        "score_pct": 90.7,
+        "score_pct": 84.0,
         "prediction": "HUMAN",
-        "correct": true,
-        "latency_ms": 20.62
+        "latency_ms": 65.33
       },
-      "acoustic_xgboost": {
-        "score_pct": 99.4,
-        "prediction": "HUMAN",
-        "correct": true,
-        "latency_ms": 19.87
-      },
-      "ensemble_aasist_xgboost": {
-        "score_pct": 99.5,
-        "prediction": "HUMAN",
-        "correct": true,
-        "latency_ms": 40.91
+      "triple_ensemble": {
+        "verdict": "human",
+        "confidence_score": 0.9839,
+        "business_action": "ALLOW_TRANSACTION (Verified Human Voice)",
+        "is_correct": true,
+        "latency_ms": 156.61
       }
     },
     {
@@ -1114,30 +835,22 @@
       "filename": "call_9bb847dfc83e_agent_0.wav",
       "duration_s": 20.72,
       "ground_truth": "human",
-      "is_ground_truth_human": true,
       "rawnet2": {
-        "score_pct": 88.8,
+        "score_pct": 89.0,
         "prediction": "HUMAN",
-        "correct": true,
-        "latency_ms": 18.12
+        "latency_ms": 48.58
       },
       "aasist": {
-        "score_pct": 67.3,
+        "score_pct": 60.7,
         "prediction": "HUMAN",
-        "correct": true,
-        "latency_ms": 20.59
+        "latency_ms": 64.23
       },
-      "acoustic_xgboost": {
-        "score_pct": 98.9,
-        "prediction": "HUMAN",
-        "correct": true,
-        "latency_ms": 19.89
-      },
-      "ensemble_aasist_xgboost": {
-        "score_pct": 99.2,
-        "prediction": "HUMAN",
-        "correct": true,
-        "latency_ms": 40.34
+      "triple_ensemble": {
+        "verdict": "human",
+        "confidence_score": 0.9816,
+        "business_action": "ALLOW_TRANSACTION (Verified Human Voice)",
+        "is_correct": true,
+        "latency_ms": 151.93
       }
     },
     {
@@ -1145,30 +858,22 @@
       "filename": "call_9f11e2c5441c_agent_0.wav",
       "duration_s": 35.27,
       "ground_truth": "human",
-      "is_ground_truth_human": true,
       "rawnet2": {
-        "score_pct": 98.0,
+        "score_pct": 97.0,
         "prediction": "HUMAN",
-        "correct": true,
-        "latency_ms": 18.19
+        "latency_ms": 48.55
       },
       "aasist": {
-        "score_pct": 96.0,
+        "score_pct": 82.8,
         "prediction": "HUMAN",
-        "correct": true,
-        "latency_ms": 20.86
+        "latency_ms": 65.93
       },
-      "acoustic_xgboost": {
-        "score_pct": 99.5,
-        "prediction": "HUMAN",
-        "correct": true,
-        "latency_ms": 19.76
-      },
-      "ensemble_aasist_xgboost": {
-        "score_pct": 99.4,
-        "prediction": "HUMAN",
-        "correct": true,
-        "latency_ms": 40.87
+      "triple_ensemble": {
+        "verdict": "human",
+        "confidence_score": 0.9837,
+        "business_action": "ALLOW_TRANSACTION (Verified Human Voice)",
+        "is_correct": true,
+        "latency_ms": 152.29
       }
     },
     {
@@ -1176,30 +881,22 @@
       "filename": "call_a3a1f51a4bf9_agent_0.wav",
       "duration_s": 27.84,
       "ground_truth": "synthetic",
-      "is_ground_truth_human": false,
       "rawnet2": {
-        "score_pct": 1.4,
+        "score_pct": 0.9,
         "prediction": "SYNTHETIC",
-        "correct": true,
-        "latency_ms": 18.55
+        "latency_ms": 48.94
       },
       "aasist": {
-        "score_pct": 1.9,
+        "score_pct": 5.6,
         "prediction": "SYNTHETIC",
-        "correct": true,
-        "latency_ms": 21.24
+        "latency_ms": 65.43
       },
-      "acoustic_xgboost": {
-        "score_pct": 60.2,
-        "prediction": "HUMAN",
-        "correct": false,
-        "latency_ms": 19.94
-      },
-      "ensemble_aasist_xgboost": {
-        "score_pct": 0.4,
-        "prediction": "SYNTHETIC",
-        "correct": true,
-        "latency_ms": 41.23
+      "triple_ensemble": {
+        "verdict": "synthetic",
+        "confidence_score": 0.0176,
+        "business_action": "BLOCK_TRANSACTION (Synthetic AI Voice Detected)",
+        "is_correct": true,
+        "latency_ms": 151.89
       }
     },
     {
@@ -1207,30 +904,22 @@
       "filename": "call_a7c95e99f3b6_agent_0.wav",
       "duration_s": 35.57,
       "ground_truth": "human",
-      "is_ground_truth_human": true,
       "rawnet2": {
-        "score_pct": 90.7,
+        "score_pct": 90.2,
         "prediction": "HUMAN",
-        "correct": true,
-        "latency_ms": 18.43
+        "latency_ms": 49.79
       },
       "aasist": {
-        "score_pct": 57.2,
-        "prediction": "HUMAN",
-        "correct": true,
-        "latency_ms": 21.27
+        "score_pct": 49.9,
+        "prediction": "SYNTHETIC",
+        "latency_ms": 64.77
       },
-      "acoustic_xgboost": {
-        "score_pct": 99.1,
-        "prediction": "HUMAN",
-        "correct": true,
-        "latency_ms": 19.97
-      },
-      "ensemble_aasist_xgboost": {
-        "score_pct": 98.9,
-        "prediction": "HUMAN",
-        "correct": true,
-        "latency_ms": 41.09
+      "triple_ensemble": {
+        "verdict": "human",
+        "confidence_score": 0.8727,
+        "business_action": "ALLOW_TRANSACTION (Verified Human Voice)",
+        "is_correct": true,
+        "latency_ms": 152.68
       }
     },
     {
@@ -1238,30 +927,22 @@
       "filename": "call_abf730747901_agent_0.wav",
       "duration_s": 27.06,
       "ground_truth": "human",
-      "is_ground_truth_human": true,
       "rawnet2": {
-        "score_pct": 52.9,
+        "score_pct": 62.9,
         "prediction": "HUMAN",
-        "correct": true,
-        "latency_ms": 17.96
+        "latency_ms": 49.41
       },
       "aasist": {
-        "score_pct": 54.5,
+        "score_pct": 54.1,
         "prediction": "HUMAN",
-        "correct": true,
-        "latency_ms": 20.36
+        "latency_ms": 67.01
       },
-      "acoustic_xgboost": {
-        "score_pct": 21.0,
-        "prediction": "SYNTHETIC",
-        "correct": false,
-        "latency_ms": 19.77
-      },
-      "ensemble_aasist_xgboost": {
-        "score_pct": 97.9,
-        "prediction": "HUMAN",
-        "correct": true,
-        "latency_ms": 40.36
+      "triple_ensemble": {
+        "verdict": "human",
+        "confidence_score": 0.9651,
+        "business_action": "ALLOW_TRANSACTION (Verified Human Voice)",
+        "is_correct": true,
+        "latency_ms": 158.96
       }
     },
     {
@@ -1269,30 +950,22 @@
       "filename": "call_af9ad367dcce_agent_0.wav",
       "duration_s": 44.66,
       "ground_truth": "synthetic",
-      "is_ground_truth_human": false,
       "rawnet2": {
-        "score_pct": 1.2,
+        "score_pct": 0.9,
         "prediction": "SYNTHETIC",
-        "correct": true,
-        "latency_ms": 18.65
+        "latency_ms": 48.61
       },
       "aasist": {
-        "score_pct": 1.5,
+        "score_pct": 5.4,
         "prediction": "SYNTHETIC",
-        "correct": true,
-        "latency_ms": 21.05
+        "latency_ms": 64.2
       },
-      "acoustic_xgboost": {
-        "score_pct": 1.9,
-        "prediction": "SYNTHETIC",
-        "correct": true,
-        "latency_ms": 19.88
-      },
-      "ensemble_aasist_xgboost": {
-        "score_pct": 0.6,
-        "prediction": "SYNTHETIC",
-        "correct": true,
-        "latency_ms": 40.78
+      "triple_ensemble": {
+        "verdict": "synthetic",
+        "confidence_score": 0.0231,
+        "business_action": "BLOCK_TRANSACTION (Synthetic AI Voice Detected)",
+        "is_correct": true,
+        "latency_ms": 151.9
       }
     },
     {
@@ -1300,30 +973,22 @@
       "filename": "call_b5cc1f8d8fee_agent_0.wav",
       "duration_s": 41.95,
       "ground_truth": "human",
-      "is_ground_truth_human": true,
       "rawnet2": {
-        "score_pct": 4.3,
+        "score_pct": 4.9,
         "prediction": "SYNTHETIC",
-        "correct": false,
-        "latency_ms": 18.29
+        "latency_ms": 49.57
       },
       "aasist": {
-        "score_pct": 25.2,
+        "score_pct": 29.6,
         "prediction": "SYNTHETIC",
-        "correct": false,
-        "latency_ms": 20.89
+        "latency_ms": 65.95
       },
-      "acoustic_xgboost": {
-        "score_pct": 15.7,
-        "prediction": "SYNTHETIC",
-        "correct": false,
-        "latency_ms": 19.93
-      },
-      "ensemble_aasist_xgboost": {
-        "score_pct": 1.4,
-        "prediction": "SYNTHETIC",
-        "correct": false,
-        "latency_ms": 40.69
+      "triple_ensemble": {
+        "verdict": "synthetic",
+        "confidence_score": 0.0163,
+        "business_action": "BLOCK_TRANSACTION (Synthetic AI Voice Detected)",
+        "is_correct": false,
+        "latency_ms": 155.56
       }
     },
     {
@@ -1331,30 +996,22 @@
       "filename": "call_b658b1155216_agent_0.wav",
       "duration_s": 45.53,
       "ground_truth": "human",
-      "is_ground_truth_human": true,
       "rawnet2": {
-        "score_pct": 53.2,
+        "score_pct": 57.3,
         "prediction": "HUMAN",
-        "correct": true,
-        "latency_ms": 18.47
+        "latency_ms": 50.35
       },
       "aasist": {
-        "score_pct": 28.6,
+        "score_pct": 35.1,
         "prediction": "SYNTHETIC",
-        "correct": false,
-        "latency_ms": 20.85
+        "latency_ms": 72.76
       },
-      "acoustic_xgboost": {
-        "score_pct": 73.2,
-        "prediction": "HUMAN",
-        "correct": true,
-        "latency_ms": 19.93
-      },
-      "ensemble_aasist_xgboost": {
-        "score_pct": 6.5,
-        "prediction": "SYNTHETIC",
-        "correct": false,
-        "latency_ms": 40.96
+      "triple_ensemble": {
+        "verdict": "human",
+        "confidence_score": 0.1494,
+        "business_action": "ALLOW_TRANSACTION (Verified Human Voice)",
+        "is_correct": true,
+        "latency_ms": 155.49
       }
     },
     {
@@ -1362,30 +1019,22 @@
       "filename": "call_b712f501aeb8_agent_0.wav",
       "duration_s": 65.06,
       "ground_truth": "synthetic",
-      "is_ground_truth_human": false,
       "rawnet2": {
-        "score_pct": 0.7,
+        "score_pct": 0.4,
         "prediction": "SYNTHETIC",
-        "correct": true,
-        "latency_ms": 18.54
+        "latency_ms": 49.75
       },
       "aasist": {
-        "score_pct": 2.7,
+        "score_pct": 8.4,
         "prediction": "SYNTHETIC",
-        "correct": true,
-        "latency_ms": 21.09
+        "latency_ms": 64.59
       },
-      "acoustic_xgboost": {
-        "score_pct": 0.3,
-        "prediction": "SYNTHETIC",
-        "correct": true,
-        "latency_ms": 19.94
-      },
-      "ensemble_aasist_xgboost": {
-        "score_pct": 0.3,
-        "prediction": "SYNTHETIC",
-        "correct": true,
-        "latency_ms": 40.94
+      "triple_ensemble": {
+        "verdict": "synthetic",
+        "confidence_score": 0.012,
+        "business_action": "BLOCK_TRANSACTION (Synthetic AI Voice Detected)",
+        "is_correct": true,
+        "latency_ms": 157.35
       }
     },
     {
@@ -1393,30 +1042,22 @@
       "filename": "call_bc2c7c34acea_agent_0.wav",
       "duration_s": 32.93,
       "ground_truth": "human",
-      "is_ground_truth_human": true,
       "rawnet2": {
-        "score_pct": 8.4,
+        "score_pct": 9.8,
         "prediction": "SYNTHETIC",
-        "correct": false,
-        "latency_ms": 18.48
+        "latency_ms": 49.95
       },
       "aasist": {
-        "score_pct": 17.4,
+        "score_pct": 27.3,
         "prediction": "SYNTHETIC",
-        "correct": false,
-        "latency_ms": 20.78
+        "latency_ms": 66.38
       },
-      "acoustic_xgboost": {
-        "score_pct": 34.8,
-        "prediction": "SYNTHETIC",
-        "correct": false,
-        "latency_ms": 19.74
-      },
-      "ensemble_aasist_xgboost": {
-        "score_pct": 0.8,
-        "prediction": "SYNTHETIC",
-        "correct": false,
-        "latency_ms": 40.63
+      "triple_ensemble": {
+        "verdict": "synthetic",
+        "confidence_score": 0.0158,
+        "business_action": "BLOCK_TRANSACTION (Synthetic AI Voice Detected)",
+        "is_correct": false,
+        "latency_ms": 156.51
       }
     },
     {
@@ -1424,30 +1065,22 @@
       "filename": "call_bd98a8224da0_agent_0.wav",
       "duration_s": 34.31,
       "ground_truth": "human",
-      "is_ground_truth_human": true,
       "rawnet2": {
-        "score_pct": 85.7,
+        "score_pct": 85.9,
         "prediction": "HUMAN",
-        "correct": true,
-        "latency_ms": 17.94
+        "latency_ms": 49.79
       },
       "aasist": {
-        "score_pct": 88.5,
+        "score_pct": 81.1,
         "prediction": "HUMAN",
-        "correct": true,
-        "latency_ms": 20.52
+        "latency_ms": 65.0
       },
-      "acoustic_xgboost": {
-        "score_pct": 97.4,
-        "prediction": "HUMAN",
-        "correct": true,
-        "latency_ms": 19.75
-      },
-      "ensemble_aasist_xgboost": {
-        "score_pct": 98.4,
-        "prediction": "HUMAN",
-        "correct": true,
-        "latency_ms": 40.13
+      "triple_ensemble": {
+        "verdict": "human",
+        "confidence_score": 0.9744,
+        "business_action": "ALLOW_TRANSACTION (Verified Human Voice)",
+        "is_correct": true,
+        "latency_ms": 153.05
       }
     },
     {
@@ -1455,30 +1088,22 @@
       "filename": "call_be72006df132_agent_0.wav",
       "duration_s": 25.2,
       "ground_truth": "human",
-      "is_ground_truth_human": true,
       "rawnet2": {
-        "score_pct": 92.5,
+        "score_pct": 89.7,
         "prediction": "HUMAN",
-        "correct": true,
-        "latency_ms": 17.98
+        "latency_ms": 48.16
       },
       "aasist": {
-        "score_pct": 74.5,
+        "score_pct": 67.7,
         "prediction": "HUMAN",
-        "correct": true,
-        "latency_ms": 20.95
+        "latency_ms": 64.73
       },
-      "acoustic_xgboost": {
-        "score_pct": 52.5,
-        "prediction": "HUMAN",
-        "correct": true,
-        "latency_ms": 19.75
-      },
-      "ensemble_aasist_xgboost": {
-        "score_pct": 99.5,
-        "prediction": "HUMAN",
-        "correct": true,
-        "latency_ms": 40.78
+      "triple_ensemble": {
+        "verdict": "human",
+        "confidence_score": 0.9483,
+        "business_action": "ALLOW_TRANSACTION (Verified Human Voice)",
+        "is_correct": true,
+        "latency_ms": 155.87
       }
     },
     {
@@ -1486,30 +1111,22 @@
       "filename": "call_bf0384ed27ed_agent_0.wav",
       "duration_s": 43.28,
       "ground_truth": "human",
-      "is_ground_truth_human": true,
       "rawnet2": {
-        "score_pct": 99.6,
+        "score_pct": 99.5,
         "prediction": "HUMAN",
-        "correct": true,
-        "latency_ms": 18.28
+        "latency_ms": 59.63
       },
       "aasist": {
         "score_pct": 100.0,
         "prediction": "HUMAN",
-        "correct": true,
-        "latency_ms": 20.79
+        "latency_ms": 68.78
       },
-      "acoustic_xgboost": {
-        "score_pct": 98.9,
-        "prediction": "HUMAN",
-        "correct": true,
-        "latency_ms": 19.82
-      },
-      "ensemble_aasist_xgboost": {
-        "score_pct": 99.0,
-        "prediction": "HUMAN",
-        "correct": true,
-        "latency_ms": 40.39
+      "triple_ensemble": {
+        "verdict": "human",
+        "confidence_score": 0.9722,
+        "business_action": "ALLOW_TRANSACTION (Verified Human Voice)",
+        "is_correct": true,
+        "latency_ms": 156.24
       }
     },
     {
@@ -1517,30 +1134,22 @@
       "filename": "call_c04725672945_agent_0.wav",
       "duration_s": 71.35,
       "ground_truth": "synthetic",
-      "is_ground_truth_human": false,
       "rawnet2": {
-        "score_pct": 7.0,
+        "score_pct": 7.5,
         "prediction": "SYNTHETIC",
-        "correct": true,
-        "latency_ms": 18.23
+        "latency_ms": 49.96
       },
       "aasist": {
-        "score_pct": 14.9,
+        "score_pct": 19.3,
         "prediction": "SYNTHETIC",
-        "correct": true,
-        "latency_ms": 20.88
+        "latency_ms": 67.95
       },
-      "acoustic_xgboost": {
-        "score_pct": 1.4,
-        "prediction": "SYNTHETIC",
-        "correct": true,
-        "latency_ms": 19.87
-      },
-      "ensemble_aasist_xgboost": {
-        "score_pct": 0.5,
-        "prediction": "SYNTHETIC",
-        "correct": true,
-        "latency_ms": 40.33
+      "triple_ensemble": {
+        "verdict": "synthetic",
+        "confidence_score": 0.0181,
+        "business_action": "BLOCK_TRANSACTION (Synthetic AI Voice Detected)",
+        "is_correct": true,
+        "latency_ms": 180.99
       }
     },
     {
@@ -1548,30 +1157,22 @@
       "filename": "call_c21f9cf2390e_agent_0.wav",
       "duration_s": 37.6,
       "ground_truth": "synthetic",
-      "is_ground_truth_human": false,
       "rawnet2": {
-        "score_pct": 1.8,
+        "score_pct": 1.2,
         "prediction": "SYNTHETIC",
-        "correct": true,
-        "latency_ms": 18.68
+        "latency_ms": 48.94
       },
       "aasist": {
-        "score_pct": 2.2,
+        "score_pct": 6.6,
         "prediction": "SYNTHETIC",
-        "correct": true,
-        "latency_ms": 21.33
+        "latency_ms": 64.63
       },
-      "acoustic_xgboost": {
-        "score_pct": 3.9,
-        "prediction": "SYNTHETIC",
-        "correct": true,
-        "latency_ms": 19.86
-      },
-      "ensemble_aasist_xgboost": {
-        "score_pct": 0.3,
-        "prediction": "SYNTHETIC",
-        "correct": true,
-        "latency_ms": 43.05
+      "triple_ensemble": {
+        "verdict": "synthetic",
+        "confidence_score": 0.0133,
+        "business_action": "BLOCK_TRANSACTION (Synthetic AI Voice Detected)",
+        "is_correct": true,
+        "latency_ms": 153.36
       }
     },
     {
@@ -1579,30 +1180,22 @@
       "filename": "call_c49b6face6c3_agent_0.wav",
       "duration_s": 24.02,
       "ground_truth": "synthetic",
-      "is_ground_truth_human": false,
       "rawnet2": {
-        "score_pct": 5.0,
+        "score_pct": 5.5,
         "prediction": "SYNTHETIC",
-        "correct": true,
-        "latency_ms": 18.5
+        "latency_ms": 49.09
       },
       "aasist": {
-        "score_pct": 22.6,
+        "score_pct": 27.5,
         "prediction": "SYNTHETIC",
-        "correct": true,
-        "latency_ms": 20.86
+        "latency_ms": 69.78
       },
-      "acoustic_xgboost": {
-        "score_pct": 0.4,
-        "prediction": "SYNTHETIC",
-        "correct": true,
-        "latency_ms": 20.06
-      },
-      "ensemble_aasist_xgboost": {
-        "score_pct": 0.4,
-        "prediction": "SYNTHETIC",
-        "correct": true,
-        "latency_ms": 40.71
+      "triple_ensemble": {
+        "verdict": "synthetic",
+        "confidence_score": 0.0134,
+        "business_action": "BLOCK_TRANSACTION (Synthetic AI Voice Detected)",
+        "is_correct": true,
+        "latency_ms": 150.91
       }
     },
     {
@@ -1610,30 +1203,22 @@
       "filename": "call_c4fc8a865292_agent_0.wav",
       "duration_s": 48.66,
       "ground_truth": "human",
-      "is_ground_truth_human": true,
       "rawnet2": {
-        "score_pct": 88.3,
+        "score_pct": 80.7,
         "prediction": "HUMAN",
-        "correct": true,
-        "latency_ms": 18.25
+        "latency_ms": 48.57
       },
       "aasist": {
-        "score_pct": 54.4,
-        "prediction": "HUMAN",
-        "correct": true,
-        "latency_ms": 20.63
+        "score_pct": 38.9,
+        "prediction": "SYNTHETIC",
+        "latency_ms": 64.73
       },
-      "acoustic_xgboost": {
-        "score_pct": 96.6,
-        "prediction": "HUMAN",
-        "correct": true,
-        "latency_ms": 19.84
-      },
-      "ensemble_aasist_xgboost": {
-        "score_pct": 88.4,
-        "prediction": "HUMAN",
-        "correct": true,
-        "latency_ms": 40.52
+      "triple_ensemble": {
+        "verdict": "human",
+        "confidence_score": 0.9755,
+        "business_action": "ALLOW_TRANSACTION (Verified Human Voice)",
+        "is_correct": true,
+        "latency_ms": 156.68
       }
     },
     {
@@ -1641,30 +1226,22 @@
       "filename": "call_ca184bb77a63_agent_0.wav",
       "duration_s": 60.74,
       "ground_truth": "human",
-      "is_ground_truth_human": true,
       "rawnet2": {
         "score_pct": 69.2,
         "prediction": "HUMAN",
-        "correct": true,
-        "latency_ms": 18.42
+        "latency_ms": 55.3
       },
       "aasist": {
-        "score_pct": 95.4,
+        "score_pct": 84.5,
         "prediction": "HUMAN",
-        "correct": true,
-        "latency_ms": 20.73
+        "latency_ms": 68.46
       },
-      "acoustic_xgboost": {
-        "score_pct": 97.8,
-        "prediction": "HUMAN",
-        "correct": true,
-        "latency_ms": 20.02
-      },
-      "ensemble_aasist_xgboost": {
-        "score_pct": 99.3,
-        "prediction": "HUMAN",
-        "correct": true,
-        "latency_ms": 40.51
+      "triple_ensemble": {
+        "verdict": "human",
+        "confidence_score": 0.9829,
+        "business_action": "ALLOW_TRANSACTION (Verified Human Voice)",
+        "is_correct": true,
+        "latency_ms": 150.94
       }
     },
     {
@@ -1672,30 +1249,22 @@
       "filename": "call_cf313f91b995_agent_0.wav",
       "duration_s": 118.52,
       "ground_truth": "human",
-      "is_ground_truth_human": true,
       "rawnet2": {
-        "score_pct": 43.7,
-        "prediction": "SYNTHETIC",
-        "correct": false,
-        "latency_ms": 16.87
+        "score_pct": 56.1,
+        "prediction": "HUMAN",
+        "latency_ms": 51.24
       },
       "aasist": {
-        "score_pct": 53.7,
+        "score_pct": 53.1,
         "prediction": "HUMAN",
-        "correct": true,
-        "latency_ms": 18.57
+        "latency_ms": 89.07
       },
-      "acoustic_xgboost": {
-        "score_pct": 97.2,
-        "prediction": "HUMAN",
-        "correct": true,
-        "latency_ms": 19.88
-      },
-      "ensemble_aasist_xgboost": {
-        "score_pct": 94.5,
-        "prediction": "HUMAN",
-        "correct": true,
-        "latency_ms": 38.18
+      "triple_ensemble": {
+        "verdict": "human",
+        "confidence_score": 0.9054,
+        "business_action": "ALLOW_TRANSACTION (Verified Human Voice)",
+        "is_correct": true,
+        "latency_ms": 280.07
       }
     },
     {
@@ -1703,30 +1272,22 @@
       "filename": "call_d4518fcb700a_agent_0.wav",
       "duration_s": 144.4,
       "ground_truth": "synthetic",
-      "is_ground_truth_human": false,
       "rawnet2": {
-        "score_pct": 43.8,
-        "prediction": "SYNTHETIC",
-        "correct": true,
-        "latency_ms": 18.28
+        "score_pct": 56.3,
+        "prediction": "HUMAN",
+        "latency_ms": 49.85
       },
       "aasist": {
-        "score_pct": 53.8,
+        "score_pct": 53.1,
         "prediction": "HUMAN",
-        "correct": false,
-        "latency_ms": 19.79
+        "latency_ms": 66.0
       },
-      "acoustic_xgboost": {
-        "score_pct": 3.9,
-        "prediction": "SYNTHETIC",
-        "correct": true,
-        "latency_ms": 20.49
-      },
-      "ensemble_aasist_xgboost": {
-        "score_pct": 3.8,
-        "prediction": "SYNTHETIC",
-        "correct": true,
-        "latency_ms": 40.84
+      "triple_ensemble": {
+        "verdict": "human",
+        "confidence_score": 0.0858,
+        "business_action": "ALLOW_TRANSACTION (Verified Human Voice)",
+        "is_correct": false,
+        "latency_ms": 166.98
       }
     },
     {
@@ -1734,30 +1295,22 @@
       "filename": "call_d60330be1b1f_agent_0.wav",
       "duration_s": 169.3,
       "ground_truth": "human",
-      "is_ground_truth_human": true,
       "rawnet2": {
-        "score_pct": 43.4,
-        "prediction": "SYNTHETIC",
-        "correct": false,
-        "latency_ms": 16.31
+        "score_pct": 55.9,
+        "prediction": "HUMAN",
+        "latency_ms": 49.36
       },
       "aasist": {
-        "score_pct": 53.7,
+        "score_pct": 53.0,
         "prediction": "HUMAN",
-        "correct": true,
-        "latency_ms": 17.97
+        "latency_ms": 67.88
       },
-      "acoustic_xgboost": {
-        "score_pct": 97.4,
-        "prediction": "HUMAN",
-        "correct": true,
-        "latency_ms": 20.11
-      },
-      "ensemble_aasist_xgboost": {
-        "score_pct": 95.6,
-        "prediction": "HUMAN",
-        "correct": true,
-        "latency_ms": 38.35
+      "triple_ensemble": {
+        "verdict": "human",
+        "confidence_score": 0.9173,
+        "business_action": "ALLOW_TRANSACTION (Verified Human Voice)",
+        "is_correct": true,
+        "latency_ms": 151.1
       }
     },
     {
@@ -1765,30 +1318,22 @@
       "filename": "call_d88d3c23953c_agent_0.wav",
       "duration_s": 166.7,
       "ground_truth": "synthetic",
-      "is_ground_truth_human": false,
       "rawnet2": {
-        "score_pct": 42.4,
-        "prediction": "SYNTHETIC",
-        "correct": true,
-        "latency_ms": 18.88
+        "score_pct": 55.1,
+        "prediction": "HUMAN",
+        "latency_ms": 50.37
       },
       "aasist": {
-        "score_pct": 53.3,
+        "score_pct": 52.7,
         "prediction": "HUMAN",
-        "correct": false,
-        "latency_ms": 20.55
+        "latency_ms": 66.27
       },
-      "acoustic_xgboost": {
-        "score_pct": 1.7,
-        "prediction": "SYNTHETIC",
-        "correct": true,
-        "latency_ms": 20.05
-      },
-      "ensemble_aasist_xgboost": {
-        "score_pct": 3.8,
-        "prediction": "SYNTHETIC",
-        "correct": true,
-        "latency_ms": 40.45
+      "triple_ensemble": {
+        "verdict": "human",
+        "confidence_score": 0.1218,
+        "business_action": "ALLOW_TRANSACTION (Verified Human Voice)",
+        "is_correct": false,
+        "latency_ms": 155.89
       }
     },
     {
@@ -1796,30 +1341,22 @@
       "filename": "call_dc1a55102190_agent_0.wav",
       "duration_s": 160.32,
       "ground_truth": "human",
-      "is_ground_truth_human": true,
       "rawnet2": {
-        "score_pct": 90.7,
+        "score_pct": 89.2,
         "prediction": "HUMAN",
-        "correct": true,
-        "latency_ms": 16.72
+        "latency_ms": 48.39
       },
       "aasist": {
-        "score_pct": 80.8,
+        "score_pct": 73.3,
         "prediction": "HUMAN",
-        "correct": true,
-        "latency_ms": 19.2
+        "latency_ms": 65.61
       },
-      "acoustic_xgboost": {
-        "score_pct": 99.6,
-        "prediction": "HUMAN",
-        "correct": true,
-        "latency_ms": 33.34
-      },
-      "ensemble_aasist_xgboost": {
-        "score_pct": 99.6,
-        "prediction": "HUMAN",
-        "correct": true,
-        "latency_ms": 42.43
+      "triple_ensemble": {
+        "verdict": "human",
+        "confidence_score": 0.9839,
+        "business_action": "ALLOW_TRANSACTION (Verified Human Voice)",
+        "is_correct": true,
+        "latency_ms": 150.54
       }
     },
     {
@@ -1827,30 +1364,22 @@
       "filename": "call_e2d538297f0c_agent_0.wav",
       "duration_s": 206.46,
       "ground_truth": "human",
-      "is_ground_truth_human": true,
       "rawnet2": {
-        "score_pct": 97.3,
+        "score_pct": 96.3,
         "prediction": "HUMAN",
-        "correct": true,
-        "latency_ms": 18.08
+        "latency_ms": 49.12
       },
       "aasist": {
-        "score_pct": 83.5,
+        "score_pct": 73.7,
         "prediction": "HUMAN",
-        "correct": true,
-        "latency_ms": 20.5
+        "latency_ms": 64.65
       },
-      "acoustic_xgboost": {
-        "score_pct": 97.3,
-        "prediction": "HUMAN",
-        "correct": true,
-        "latency_ms": 20.15
-      },
-      "ensemble_aasist_xgboost": {
-        "score_pct": 99.2,
-        "prediction": "HUMAN",
-        "correct": true,
-        "latency_ms": 40.32
+      "triple_ensemble": {
+        "verdict": "human",
+        "confidence_score": 0.9709,
+        "business_action": "ALLOW_TRANSACTION (Verified Human Voice)",
+        "is_correct": true,
+        "latency_ms": 155.37
       }
     },
     {
@@ -1858,30 +1387,22 @@
       "filename": "call_e329faf2b6a1_agent_0.wav",
       "duration_s": 153.6,
       "ground_truth": "synthetic",
-      "is_ground_truth_human": false,
       "rawnet2": {
-        "score_pct": 22.6,
+        "score_pct": 35.3,
         "prediction": "SYNTHETIC",
-        "correct": true,
-        "latency_ms": 18.19
+        "latency_ms": 48.71
       },
       "aasist": {
-        "score_pct": 35.1,
+        "score_pct": 39.3,
         "prediction": "SYNTHETIC",
-        "correct": true,
-        "latency_ms": 20.22
+        "latency_ms": 69.32
       },
-      "acoustic_xgboost": {
-        "score_pct": 6.1,
-        "prediction": "SYNTHETIC",
-        "correct": true,
-        "latency_ms": 19.95
-      },
-      "ensemble_aasist_xgboost": {
-        "score_pct": 1.0,
-        "prediction": "SYNTHETIC",
-        "correct": true,
-        "latency_ms": 40.18
+      "triple_ensemble": {
+        "verdict": "synthetic",
+        "confidence_score": 0.0359,
+        "business_action": "BLOCK_TRANSACTION (Synthetic AI Voice Detected)",
+        "is_correct": true,
+        "latency_ms": 164.12
       }
     },
     {
@@ -1889,30 +1410,22 @@
       "filename": "call_e3f555297277_agent_0.wav",
       "duration_s": 124.52,
       "ground_truth": "synthetic",
-      "is_ground_truth_human": false,
       "rawnet2": {
-        "score_pct": 22.8,
+        "score_pct": 36.8,
         "prediction": "SYNTHETIC",
-        "correct": true,
-        "latency_ms": 18.27
+        "latency_ms": 55.02
       },
       "aasist": {
-        "score_pct": 36.5,
+        "score_pct": 42.5,
         "prediction": "SYNTHETIC",
-        "correct": true,
-        "latency_ms": 20.29
+        "latency_ms": 64.42
       },
-      "acoustic_xgboost": {
-        "score_pct": 5.0,
-        "prediction": "SYNTHETIC",
-        "correct": true,
-        "latency_ms": 19.91
-      },
-      "ensemble_aasist_xgboost": {
-        "score_pct": 1.0,
-        "prediction": "SYNTHETIC",
-        "correct": true,
-        "latency_ms": 40.25
+      "triple_ensemble": {
+        "verdict": "synthetic",
+        "confidence_score": 0.0363,
+        "business_action": "BLOCK_TRANSACTION (Synthetic AI Voice Detected)",
+        "is_correct": true,
+        "latency_ms": 186.35
       }
     },
     {
@@ -1920,30 +1433,22 @@
       "filename": "call_e58669998b76_agent_0.wav",
       "duration_s": 124.92,
       "ground_truth": "human",
-      "is_ground_truth_human": true,
       "rawnet2": {
-        "score_pct": 47.7,
-        "prediction": "SYNTHETIC",
-        "correct": false,
-        "latency_ms": 16.7
+        "score_pct": 60.5,
+        "prediction": "HUMAN",
+        "latency_ms": 49.91
       },
       "aasist": {
-        "score_pct": 53.2,
+        "score_pct": 53.3,
         "prediction": "HUMAN",
-        "correct": true,
-        "latency_ms": 18.91
+        "latency_ms": 65.21
       },
-      "acoustic_xgboost": {
-        "score_pct": 24.6,
-        "prediction": "SYNTHETIC",
-        "correct": false,
-        "latency_ms": 19.96
-      },
-      "ensemble_aasist_xgboost": {
-        "score_pct": 93.8,
-        "prediction": "HUMAN",
-        "correct": true,
-        "latency_ms": 38.84
+      "triple_ensemble": {
+        "verdict": "human",
+        "confidence_score": 0.9824,
+        "business_action": "ALLOW_TRANSACTION (Verified Human Voice)",
+        "is_correct": true,
+        "latency_ms": 161.7
       }
     },
     {
@@ -1951,30 +1456,22 @@
       "filename": "call_e9bd33cdb226_agent_0.wav",
       "duration_s": 142.82,
       "ground_truth": "human",
-      "is_ground_truth_human": true,
       "rawnet2": {
-        "score_pct": 60.3,
+        "score_pct": 69.6,
         "prediction": "HUMAN",
-        "correct": true,
-        "latency_ms": 18.56
+        "latency_ms": 53.72
       },
       "aasist": {
-        "score_pct": 61.1,
+        "score_pct": 57.8,
         "prediction": "HUMAN",
-        "correct": true,
-        "latency_ms": 20.33
+        "latency_ms": 64.92
       },
-      "acoustic_xgboost": {
-        "score_pct": 34.1,
-        "prediction": "SYNTHETIC",
-        "correct": false,
-        "latency_ms": 20.33
-      },
-      "ensemble_aasist_xgboost": {
-        "score_pct": 78.0,
-        "prediction": "HUMAN",
-        "correct": true,
-        "latency_ms": 40.38
+      "triple_ensemble": {
+        "verdict": "human",
+        "confidence_score": 0.8554,
+        "business_action": "ALLOW_TRANSACTION (Verified Human Voice)",
+        "is_correct": true,
+        "latency_ms": 153.06
       }
     },
     {
@@ -1982,30 +1479,22 @@
       "filename": "call_eed2c7389776_agent_0.wav",
       "duration_s": 184.0,
       "ground_truth": "synthetic",
-      "is_ground_truth_human": false,
       "rawnet2": {
-        "score_pct": 0.4,
+        "score_pct": 0.2,
         "prediction": "SYNTHETIC",
-        "correct": true,
-        "latency_ms": 18.42
+        "latency_ms": 48.82
       },
       "aasist": {
-        "score_pct": 0.4,
+        "score_pct": 2.2,
         "prediction": "SYNTHETIC",
-        "correct": true,
-        "latency_ms": 20.9
+        "latency_ms": 65.67
       },
-      "acoustic_xgboost": {
-        "score_pct": 2.6,
-        "prediction": "SYNTHETIC",
-        "correct": true,
-        "latency_ms": 20.01
-      },
-      "ensemble_aasist_xgboost": {
-        "score_pct": 0.8,
-        "prediction": "SYNTHETIC",
-        "correct": true,
-        "latency_ms": 40.66
+      "triple_ensemble": {
+        "verdict": "synthetic",
+        "confidence_score": 0.0187,
+        "business_action": "BLOCK_TRANSACTION (Synthetic AI Voice Detected)",
+        "is_correct": true,
+        "latency_ms": 154.18
       }
     },
     {
@@ -2013,30 +1502,22 @@
       "filename": "call_f1b82a4a46f6_agent_0.wav",
       "duration_s": 133.9,
       "ground_truth": "human",
-      "is_ground_truth_human": true,
       "rawnet2": {
-        "score_pct": 49.2,
-        "prediction": "SYNTHETIC",
-        "correct": false,
-        "latency_ms": 18.08
+        "score_pct": 61.4,
+        "prediction": "HUMAN",
+        "latency_ms": 48.84
       },
       "aasist": {
-        "score_pct": 54.1,
+        "score_pct": 54.9,
         "prediction": "HUMAN",
-        "correct": true,
-        "latency_ms": 20.42
+        "latency_ms": 64.02
       },
-      "acoustic_xgboost": {
-        "score_pct": 84.7,
-        "prediction": "HUMAN",
-        "correct": true,
-        "latency_ms": 20.02
-      },
-      "ensemble_aasist_xgboost": {
-        "score_pct": 95.4,
-        "prediction": "HUMAN",
-        "correct": true,
-        "latency_ms": 40.44
+      "triple_ensemble": {
+        "verdict": "human",
+        "confidence_score": 0.9629,
+        "business_action": "ALLOW_TRANSACTION (Verified Human Voice)",
+        "is_correct": true,
+        "latency_ms": 151.63
       }
     },
     {
@@ -2044,30 +1525,22 @@
       "filename": "call_f6ce5de7ac09_agent_0.wav",
       "duration_s": 158.64,
       "ground_truth": "synthetic",
-      "is_ground_truth_human": false,
       "rawnet2": {
-        "score_pct": 15.8,
+        "score_pct": 23.8,
         "prediction": "SYNTHETIC",
-        "correct": true,
-        "latency_ms": 18.3
+        "latency_ms": 49.56
       },
       "aasist": {
-        "score_pct": 14.1,
+        "score_pct": 34.7,
         "prediction": "SYNTHETIC",
-        "correct": true,
-        "latency_ms": 19.99
+        "latency_ms": 66.91
       },
-      "acoustic_xgboost": {
-        "score_pct": 4.8,
-        "prediction": "SYNTHETIC",
-        "correct": true,
-        "latency_ms": 20.01
-      },
-      "ensemble_aasist_xgboost": {
-        "score_pct": 1.5,
-        "prediction": "SYNTHETIC",
-        "correct": true,
-        "latency_ms": 39.95
+      "triple_ensemble": {
+        "verdict": "synthetic",
+        "confidence_score": 0.0359,
+        "business_action": "BLOCK_TRANSACTION (Synthetic AI Voice Detected)",
+        "is_correct": true,
+        "latency_ms": 168.95
       }
     },
     {
@@ -2075,30 +1548,22 @@
       "filename": "call_f9fbabf70f7e_agent_0.wav",
       "duration_s": 104.38,
       "ground_truth": "synthetic",
-      "is_ground_truth_human": false,
       "rawnet2": {
-        "score_pct": 5.0,
+        "score_pct": 4.8,
         "prediction": "SYNTHETIC",
-        "correct": true,
-        "latency_ms": 18.42
+        "latency_ms": 49.89
       },
       "aasist": {
-        "score_pct": 17.3,
+        "score_pct": 24.9,
         "prediction": "SYNTHETIC",
-        "correct": true,
-        "latency_ms": 20.69
+        "latency_ms": 66.17
       },
-      "acoustic_xgboost": {
-        "score_pct": 0.5,
-        "prediction": "SYNTHETIC",
-        "correct": true,
-        "latency_ms": 19.96
-      },
-      "ensemble_aasist_xgboost": {
-        "score_pct": 0.4,
-        "prediction": "SYNTHETIC",
-        "correct": true,
-        "latency_ms": 40.57
+      "triple_ensemble": {
+        "verdict": "synthetic",
+        "confidence_score": 0.013,
+        "business_action": "BLOCK_TRANSACTION (Synthetic AI Voice Detected)",
+        "is_correct": true,
+        "latency_ms": 151.4
       }
     },
     {
@@ -2106,30 +1571,22 @@
       "filename": "call_fa26d1186721_agent_0.wav",
       "duration_s": 125.06,
       "ground_truth": "human",
-      "is_ground_truth_human": true,
       "rawnet2": {
-        "score_pct": 43.1,
-        "prediction": "SYNTHETIC",
-        "correct": false,
-        "latency_ms": 11.38
+        "score_pct": 55.6,
+        "prediction": "HUMAN",
+        "latency_ms": 48.39
       },
       "aasist": {
-        "score_pct": 53.4,
+        "score_pct": 52.9,
         "prediction": "HUMAN",
-        "correct": true,
-        "latency_ms": 13.81
+        "latency_ms": 64.53
       },
-      "acoustic_xgboost": {
-        "score_pct": 94.0,
-        "prediction": "HUMAN",
-        "correct": true,
-        "latency_ms": 19.61
-      },
-      "ensemble_aasist_xgboost": {
-        "score_pct": 22.1,
-        "prediction": "SYNTHETIC",
-        "correct": false,
-        "latency_ms": 34.05
+      "triple_ensemble": {
+        "verdict": "human",
+        "confidence_score": 0.7666,
+        "business_action": "ALLOW_TRANSACTION (Verified Human Voice)",
+        "is_correct": true,
+        "latency_ms": 157.84
       }
     },
     {
@@ -2137,30 +1594,22 @@
       "filename": "call_fa9e18dd83dd_agent_0.wav",
       "duration_s": 141.6,
       "ground_truth": "synthetic",
-      "is_ground_truth_human": false,
       "rawnet2": {
-        "score_pct": 43.8,
-        "prediction": "SYNTHETIC",
-        "correct": true,
-        "latency_ms": 18.36
+        "score_pct": 56.3,
+        "prediction": "HUMAN",
+        "latency_ms": 48.85
       },
       "aasist": {
-        "score_pct": 53.8,
+        "score_pct": 53.1,
         "prediction": "HUMAN",
-        "correct": false,
-        "latency_ms": 19.7
+        "latency_ms": 80.02
       },
-      "acoustic_xgboost": {
-        "score_pct": 2.9,
-        "prediction": "SYNTHETIC",
-        "correct": true,
-        "latency_ms": 20.19
-      },
-      "ensemble_aasist_xgboost": {
-        "score_pct": 3.7,
-        "prediction": "SYNTHETIC",
-        "correct": true,
-        "latency_ms": 40.52
+      "triple_ensemble": {
+        "verdict": "human",
+        "confidence_score": 0.0813,
+        "business_action": "ALLOW_TRANSACTION (Verified Human Voice)",
+        "is_correct": false,
+        "latency_ms": 155.84
       }
     },
     {
@@ -2168,30 +1617,22 @@
       "filename": "call_fb1405943fed_agent_0.wav",
       "duration_s": 177.6,
       "ground_truth": "human",
-      "is_ground_truth_human": true,
       "rawnet2": {
-        "score_pct": 91.0,
+        "score_pct": 85.4,
         "prediction": "HUMAN",
-        "correct": true,
-        "latency_ms": 18.16
+        "latency_ms": 49.19
       },
       "aasist": {
-        "score_pct": 64.6,
+        "score_pct": 53.8,
         "prediction": "HUMAN",
-        "correct": true,
-        "latency_ms": 20.72
+        "latency_ms": 65.28
       },
-      "acoustic_xgboost": {
-        "score_pct": 63.4,
-        "prediction": "HUMAN",
-        "correct": true,
-        "latency_ms": 20.24
-      },
-      "ensemble_aasist_xgboost": {
-        "score_pct": 99.5,
-        "prediction": "HUMAN",
-        "correct": true,
-        "latency_ms": 40.59
+      "triple_ensemble": {
+        "verdict": "human",
+        "confidence_score": 0.9827,
+        "business_action": "ALLOW_TRANSACTION (Verified Human Voice)",
+        "is_correct": true,
+        "latency_ms": 160.81
       }
     },
     {
@@ -2199,30 +1640,22 @@
       "filename": "call_fc8bda4b3374_agent_0.wav",
       "duration_s": 193.36,
       "ground_truth": "synthetic",
-      "is_ground_truth_human": false,
       "rawnet2": {
-        "score_pct": 6.0,
+        "score_pct": 6.4,
         "prediction": "SYNTHETIC",
-        "correct": true,
-        "latency_ms": 18.63
+        "latency_ms": 49.16
       },
       "aasist": {
-        "score_pct": 11.9,
+        "score_pct": 21.5,
         "prediction": "SYNTHETIC",
-        "correct": true,
-        "latency_ms": 20.82
+        "latency_ms": 64.7
       },
-      "acoustic_xgboost": {
-        "score_pct": 9.7,
-        "prediction": "SYNTHETIC",
-        "correct": true,
-        "latency_ms": 20.12
-      },
-      "ensemble_aasist_xgboost": {
-        "score_pct": 0.6,
-        "prediction": "SYNTHETIC",
-        "correct": true,
-        "latency_ms": 40.72
+      "triple_ensemble": {
+        "verdict": "synthetic",
+        "confidence_score": 0.0175,
+        "business_action": "BLOCK_TRANSACTION (Synthetic AI Voice Detected)",
+        "is_correct": true,
+        "latency_ms": 153.14
       }
     }
   ]

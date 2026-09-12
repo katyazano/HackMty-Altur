@@ -1,21 +1,21 @@
 {
   "model_name": "Triple Multi-Model Ensemble (AASIST + RawNet2 + Acoustic XGBoost)",
-  "timestamp": "2026-09-12 03:58:44",
-  "training_time_s": 0.402,
+  "timestamp": "2026-09-12 21:16:31",
+  "training_time_s": 0.789,
   "kfold_validation": {
     "n_splits": 5,
     "total_samples": 353,
-    "dual_mean_accuracy": 0.9631,
-    "dual_std_accuracy": 0.0173,
-    "triple_mean_accuracy": 0.9688,
-    "triple_std_accuracy": 0.0141,
+    "dual_mean_accuracy": 0.9688,
+    "dual_std_accuracy": 0.0108,
+    "triple_mean_accuracy": 0.9773,
+    "triple_std_accuracy": 0.0146,
     "is_robust": true
   },
   "threshold_calibration": {
     "default_threshold": 0.5,
-    "optimal_eer_threshold": 0.9623,
+    "optimal_eer_threshold": 0.9424,
     "eer_value": 0.0847,
-    "roc_auc": 0.973,
+    "roc_auc": 0.969,
     "uncertainty_band": {
       "low": 0.4,
       "high": 0.6,
@@ -35,7 +35,7 @@
       "fn": 0
     },
     "calibrated_threshold": {
-      "threshold": 0.9623,
+      "threshold": 0.9424,
       "accuracy": 0.9155,
       "precision": 0.9118,
       "recall": 0.9118,
@@ -48,64 +48,64 @@
   },
   "top_features": [
     {
-      "feature": "aasist_emb_12",
-      "importance": 0.14928919076919556
+      "feature": "aasist_emb_31",
+      "importance": 0.15980114042758942
     },
     {
-      "feature": "aasist_emb_62",
-      "importance": 0.11958912014961243
+      "feature": "aasist_emb_87",
+      "importance": 0.12360683083534241
     },
     {
-      "feature": "aasist_emb_0",
-      "importance": 0.10208610445261002
+      "feature": "aasist_emb_36",
+      "importance": 0.09581173956394196
     },
     {
-      "feature": "aasist_emb_119",
-      "importance": 0.07691796123981476
+      "feature": "rawnet2_logit_human",
+      "importance": 0.05646182596683502
     },
     {
-      "feature": "aasist_emb_126",
-      "importance": 0.062142256647348404
+      "feature": "aasist_emb_52",
+      "importance": 0.05101048946380615
     },
     {
-      "feature": "rawnet2_prob_human",
-      "importance": 0.06178127974271774
+      "feature": "rawnet2_prob_spoof",
+      "importance": 0.029530389234423637
     },
     {
-      "feature": "aasist_emb_10",
-      "importance": 0.054411571472883224
+      "feature": "spec_bandwidth_mean",
+      "importance": 0.025191476568579674
     },
     {
-      "feature": "aasist_emb_2",
-      "importance": 0.03679528087377548
+      "feature": "aasist_emb_7",
+      "importance": 0.023953037336468697
     },
     {
-      "feature": "aasist_emb_49",
-      "importance": 0.02839622087776661
+      "feature": "aasist_emb_111",
+      "importance": 0.023735567927360535
+    },
+    {
+      "feature": "spec_centroid_mean",
+      "importance": 0.022780317813158035
+    },
+    {
+      "feature": "aasist_emb_13",
+      "importance": 0.021460147574543953
+    },
+    {
+      "feature": "aasist_emb_1",
+      "importance": 0.018682271242141724
+    },
+    {
+      "feature": "mfcc_3_std",
+      "importance": 0.017732011154294014
+    },
+    {
+      "feature": "aasist_emb_63",
+      "importance": 0.01582779362797737
     },
     {
       "feature": "aasist_emb_6",
-      "importance": 0.019219467416405678
-    },
-    {
-      "feature": "aasist_emb_74",
-      "importance": 0.017534911632537842
-    },
-    {
-      "feature": "aasist_emb_46",
-      "importance": 0.016399264335632324
-    },
-    {
-      "feature": "aasist_emb_23",
-      "importance": 0.01585150696337223
-    },
-    {
-      "feature": "mfcc_6_std",
-      "importance": 0.011681117117404938
-    },
-    {
-      "feature": "aasist_emb_122",
-      "importance": 0.0110915033146739
+      "importance": 0.014599758200347424
     }
   ]
 }

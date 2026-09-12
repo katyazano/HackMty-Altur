@@ -2,28 +2,28 @@ import io
 import base64
 import numpy as np
 import soundfile as sf
-import librosa
 from typing import Tuple
+from src.dynamic_separator import dynamic_extract_caller_speech
 
 
 def decode_and_preprocess_audio(
     base64_audio_str: str,
     target_sr: int = 16000,
-    target_samples: int = 64000
+    target_samples: int = None
 ) -> Tuple[np.ndarray, bytes, int, int]:
     """
-    Decodes Base64-encoded audio, separates Channel 0 (Caller),
-    and resamples to 16kHz for model inference.
+    Decodes Base64-encoded audio, isolates Channel 0 (Caller),
+    dynamically filters out silences/agent speaking turns using energy VAD,
+    and returns 16kHz caller speech.
 
     Returns:
-        caller_16k (np.ndarray): 1D float32 array @ 16kHz (windowed to target_samples).
+        caller_16k (np.ndarray): 1D float32 array @ 16kHz.
         raw_wav_bytes (bytes): Original audio bytes for S3 auditing.
         orig_sr (int): Original sample rate.
         num_channels (int): Number of audio channels.
     """
     # 1. Base64 Decode
     try:
-        # Strip header if present (e.g., data:audio/wav;base64,...)
         if "," in base64_audio_str:
             base64_audio_str = base64_audio_str.split(",", 1)[1]
         raw_wav_bytes = base64.b64decode(base64_audio_str)
@@ -39,35 +39,17 @@ def decode_and_preprocess_audio(
     except Exception as e:
         raise ValueError(f"Unable to decode WAV audio: {e}")
 
-    # 3. Channel Separation (Channel 0 = Caller, Channel 1 = Agent)
-    if data.ndim == 2:
-        num_channels = data.shape[1]
-        caller_audio = data[:, 0]  # Extract Channel 0 (Caller)
-    else:
-        num_channels = 1
-        caller_audio = data
+    num_channels = data.shape[1] if data.ndim == 2 else 1
 
-    # 4. Resample to target_sr (16000 Hz) if needed
-    if orig_sr != target_sr:
-        from scipy.signal import resample_poly
-        from math import gcd
-        g = gcd(int(target_sr), int(orig_sr))
-        up = int(target_sr) // g
-        down = int(orig_sr) // g
-        caller_16k = resample_poly(caller_audio, up, down).astype(np.float32)
-    else:
-        caller_16k = caller_audio
-
-    # 5. Fix length to target_samples (4.0s @ 16kHz) for low-latency inference
-    n_samples = len(caller_16k)
-    if n_samples > target_samples:
-        start_idx = (n_samples - target_samples) // 2
-        caller_16k = caller_16k[start_idx : start_idx + target_samples]
-    elif n_samples < target_samples and n_samples > 0:
-        # Repeat or zero-pad
-        repeats = int(np.ceil(target_samples / n_samples))
-        caller_16k = np.tile(caller_16k, repeats)[:target_samples]
-    elif n_samples == 0:
-        caller_16k = np.zeros(target_samples, dtype=np.float32)
+    # 3. Dynamic Channel 0 Speech Extraction with Energy VAD & Gap Bridging
+    caller_16k, intervals = dynamic_extract_caller_speech(
+        audio_data=data,
+        orig_sr=orig_sr,
+        target_sr=target_sr,
+        target_samples=target_samples,
+        top_db=32.0,
+        pad_ms=180,
+        min_silence_bridge_ms=300
+    )
 
     return caller_16k.astype(np.float32), raw_wav_bytes, orig_sr, num_channels

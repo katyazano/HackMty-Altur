@@ -124,6 +124,8 @@ The Docker setup supports both **standalone model training** and **production AP
 ### 1. Train Models Inside Docker (1-Command)
 To train all base models (AASIST, RawNet2) and the calibrated XGBoost ensemble inside an isolated Docker container:
 ```bash
+create /weights
+
 docker compose run --rm trainer
 ```
 *(All trained model weights and benchmark reports are saved directly to `./weights/` and `./Data/` on your host machine).*
