@@ -1,0 +1,22 @@
+services:
+  altur-voice-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: altur_voice_biometrics
+    ports:
+      - "${PORT:-8000}:8000"
+    volumes:
+      # Mount demo audio storage for persistence of uploaded and processed files
+      - ./demo_real_audios:/app/demo_real_audios
+      # Mount web UI folder for live frontend updates
+      - ./web:/app/web
+      # Mount sample packs directory
+      - ./sample_packs:/app/sample_packs
+      # Mount app.py and src for live backend updates
+      - ./app.py:/app/app.py
+      - ./src:/app/src
+    environment:
+      - PORT=8000
+      - PYTHONUNBUFFERED=1
+    restart: unless-stopped

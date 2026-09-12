@@ -1,5 +1,36 @@
+# Python
 __pycache__/
-*.pyc
-*.pyo
-*.pyd
+*.py[cod]
+*$py.class
+*.so
 .env
+.venv/
+env/
+venv/
+ENV/
+
+# Model checkpoints & pre-trained weights
+*.pt
+*.pth
+*.onnx
+*.bin
+*.h5
+*.safetensors
+models/weights/
+weights/
+
+# Audio Datasets, Samples & Large Archives
+*.tar.gz
+*.tar
+*.zip
+*.rar
+*.7z
+*.wav
+*.mp3
+*.ogg
+*.flac
+*.m4a
+real_audio_data/
+demo_data/
+sample_packs/
+demo_real_audios/

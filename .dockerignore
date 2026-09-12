@@ -5,3 +5,8 @@ __pycache__
 .git
 .gitignore
 .env
+.venv/
+real_audio_data/*.tar.gz
+real_audio_data/extracted/
+.idea/
+.vscode/
