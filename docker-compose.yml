@@ -11,9 +11,10 @@ services:
       - ./Data:/app/Data
       # Mount web UI folder for live frontend updates
       - ./web:/app/web
-      # Mount app.py and src for live backend updates
+      # Mount app.py, src, and weights for live backend updates
       - ./app.py:/app/app.py
       - ./src:/app/src
+      - ./weights:/app/weights
     environment:
       - PORT=8000
       - PYTHONUNBUFFERED=1

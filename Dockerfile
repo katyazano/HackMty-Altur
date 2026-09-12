@@ -27,9 +27,11 @@ RUN pip install --no-cache-dir --upgrade pip && \
 # Create runtime storage directories
 RUN mkdir -p .cache Data
 
-# Copy application source code and web assets
+# Copy application source code, weights, and web assets
 COPY src/ ./src/
+COPY weights/ ./weights/
 COPY web/ ./web/
+COPY tests/ ./tests/
 COPY app.py benchmark.py ./
 
 # Expose port

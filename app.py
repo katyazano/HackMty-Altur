@@ -1,162 +1,165 @@
-import os
-import sys
-import glob
-import json
 import time
-from pathlib import Path
-from typing import Optional, Literal, List
-import numpy as np
-import soundfile as sf
-import torch
-from fastapi import FastAPI, HTTPException, UploadFile, File, Form, status
-from fastapi.responses import HTMLResponse, FileResponse
-from pydantic import BaseModel, Field
+import uuid
+import logging
+from contextlib import asynccontextmanager
+from typing import Optional
 
-# Prevent OpenMP collision on macOS
-os.environ["KMP_DUPLICATE_LIB_OK"] = "TRUE"
-os.environ["OMP_NUM_THREADS"] = "1"
+from fastapi import FastAPI, HTTPException, status, BackgroundTasks
+from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import JSONResponse
 
-PROJECT_ROOT = os.path.dirname(__file__)
-if PROJECT_ROOT not in sys.path:
-    sys.path.insert(0, PROJECT_ROOT)
+from src.api.config import settings
+from src.api.schemas import DetectRequest, DetectResponse, HealthResponse
+from src.api.audio_utils import decode_and_preprocess_audio
+from src.api.inference_engine import InferenceEngine
+from src.api.s3_audit import s3_audit_service
 
-from src.models.rawnet2 import RawNet2
-from src.models.aasist import AASIST
-from src.models.ensemble import AASISTXGBoostEnsemble
-from src.evaluate_channel0 import evaluate_channel0_dataset
+# Configure Structured Logging
+logging.basicConfig(
+    level=logging.INFO,
+    format="%(asctime)s [%(levelname)s] [%(name)s]: %(message)s",
+)
+logger = logging.getLogger("altur.api")
 
-app = FastAPI(title="Altur Banking - Voice Anti-Spoofing Benchmark & Detection API")
 
-BASE_DIR = os.path.dirname(__file__)
-AGENT0_DIR = os.path.join(BASE_DIR, "Data", "separated_agents", "test", "agent_0")
-AGENT0_TRAIN_DIR = os.path.join(BASE_DIR, "Data", "separated_agents", "train", "agent_0")
-MANIFEST_PATH = os.path.join(BASE_DIR, "Data", "manifest.csv")
-EVAL_RESULTS_JSON = os.path.join(BASE_DIR, "Data", "channel0_evaluation_results.json")
-WEB_DIR = os.path.join(BASE_DIR, "web")
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    """
+    Lifespan context manager: Initializes the Triple Multi-Model Inference Engine
+    during application startup and stores it in app.state.
+    """
+    logger.info(f"Starting {settings.app_name} (env={settings.environment})...")
+    logger.info(f"Loading Multi-Model Ensemble weights & feature scalers into memory...")
+    t0 = time.perf_counter()
+    app.state.engine = InferenceEngine()
+    load_time = time.perf_counter() - t0
+    logger.info(f"Inference Engine warmed up successfully in {load_time:.3f}s on {app.state.engine.device}")
+    yield
+    logger.info(f"Shutting down {settings.app_name}...")
 
-# ------------------------------------------------------------------------------
-# Initialize Triple Ensemble & Model Engine
-# ------------------------------------------------------------------------------
-device = "cuda" if torch.cuda.is_available() else "cpu"
-weights_dir = Path(BASE_DIR) / "weights"
 
-aasist_m = None
-rawnet_m = None
-ensemble_m = None
+# Initialize FastAPI Application
+app = FastAPI(
+    title=settings.app_name,
+    version=settings.app_version,
+    description="Production Voice Anti-Spoofing API for Bank Telephony Streams (8kHz Stereo Base64 WAV, Channel 0 = Caller)",
+    lifespan=lifespan,
+)
 
-if (weights_dir / "aasist_best.pth").exists() and (weights_dir / "rawnet2_best.pth").exists():
-    aasist_m = AASIST().to(device)
-    aasist_m.load_state_dict(torch.load(weights_dir / "aasist_best.pth", map_location=device))
-    aasist_m.eval()
+# Enable CORS for frontend & client integration
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
-    rawnet_m = RawNet2().to(device)
-    rawnet_m.load_state_dict(torch.load(weights_dir / "rawnet2_best.pth", map_location=device))
-    rawnet_m.eval()
 
-    ensemble_m = AASISTXGBoostEnsemble(
-        aasist_model=aasist_m,
-        rawnet2_model=rawnet_m,
-        xgb_model_path=str(weights_dir / "xgboost_triple_ensemble.json"),
-        scaler_path=str(weights_dir / "triple_scaler.joblib"),
-        device=device,
-        threshold=0.9623,
-        uncertainty_low=0.40,
-        uncertainty_high=0.60
+@app.get("/", tags=["Info"])
+async def root():
+    return {
+        "service": settings.app_name,
+        "version": settings.app_version,
+        "docs": "/docs",
+        "health": "/health",
+        "detect_endpoint": "POST /detect (Stereo 8kHz Base64 WAV, Channel 0 = Caller)",
+        "calibrated_threshold": settings.calibrated_threshold,
+    }
+
+
+def get_inference_engine() -> InferenceEngine:
+    """Helper to retrieve or lazily initialize the InferenceEngine."""
+    if not hasattr(app.state, "engine") or app.state.engine is None:
+        app.state.engine = InferenceEngine()
+    return app.state.engine
+
+
+@app.get("/health", response_model=HealthResponse, tags=["Health"])
+async def health_check():
+    """Service health and telemetry status endpoint."""
+    engine = get_inference_engine()
+    return HealthResponse(
+        status="healthy",
+        service=settings.app_name,
+        version=settings.app_version,
+        calibrated_threshold=settings.calibrated_threshold,
+        model_ensemble="AASIST (GNN) + RawNet2 (Waveform) + Acoustic DSP + XGBoost",
+        device=str(engine.device) if engine else "cpu",
     )
 
 
-# ------------------------------------------------------------------------------
-# Pydantic Response Schema with Uncertainty Band
-# ------------------------------------------------------------------------------
-VerdictType = Literal["human", "synthetic", "suspicious"]
-
-class DetectionResponse(BaseModel):
-    call_id: str = Field(..., description="Unique call identifier")
-    verdict: VerdictType = Field(..., description="human, synthetic, or suspicious (uncertainty band [0.40 - 0.60])")
-    confidence_score: float = Field(..., ge=0.0, le=1.0, description="Model authenticity probability (0.0 - 1.0)")
-    spoof_risk_pct: float = Field(..., description="Estimated synthetic risk probability percentage")
-    business_action: str = Field(..., description="ALLOW, BLOCK, or TRIGGER_STEP_UP_AUTHENTICATION (SMS OTP / Biometric Prompt)")
-    calibrated_threshold: float = Field(..., description="EER-calibrated decision threshold")
-    uncertainty_band: List[float] = Field(default=[0.40, 0.60])
-    processing_time_ms: int = Field(..., description="Inference latency in milliseconds")
-
-
-@app.post("/detect", response_model=DetectionResponse, summary="Detect Voice Spoofing with Calibrated EER & Uncertainty Band")
-async def detect_spoofing(
-    file: UploadFile = File(..., description="Audio recording (.wav)"),
-    call_id: Optional[str] = Form(None)
+@app.post(
+    "/detect",
+    response_model=DetectResponse,
+    status_code=status.HTTP_200_OK,
+    summary="Detect Synthetic AI Voices in Bank Call Audio",
+    tags=["Anti-Spoofing"],
+)
+async def detect_synthetic_voice(
+    request: DetectRequest,
+    background_tasks: BackgroundTasks
 ):
-    start_time = time.perf_counter()
-    assigned_call_id = call_id or f"call_{Path(file.filename).stem}"
+    """
+    **Voice Anti-Spoofing Detection Endpoint**:
+    - **Input**: Stereo 8kHz Base64-encoded WAV audio clip.
+      - **Channel 0**: Caller voice (evaluated for deepfake / synthetic speech).
+      - **Channel 1**: Agent voice (separated / excluded).
+    - **Returns**: Strict binary verdict on the caller:
+      ```json
+      {
+        "is_synthetic": true,
+        "confidence": 0.87
+      }
+      ```
+    """
+    call_id = request.call_id or f"call_{uuid.uuid4().hex[:12]}"
 
-    # Read binary bytes
-    audio_bytes = await file.read()
-    if len(audio_bytes) == 0:
-        raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail="Empty audio payload")
+    # 1. Decode Base64, separate Channel 0, resample to 16kHz, and window audio
+    try:
+        caller_16k, raw_wav_bytes, orig_sr, channels = decode_and_preprocess_audio(
+            base64_audio_str=request.audio,
+            target_sr=settings.target_sample_rate
+        )
+    except ValueError as val_err:
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail=str(val_err)
+        )
+    except Exception as err:
+        logger.error(f"Error preprocessing audio for {call_id}: {err}", exc_info=True)
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail="Failed to process input audio."
+        )
 
-    import io
-    data, sr = sf.read(io.BytesIO(audio_bytes), dtype="float32")
-    if data.ndim > 1:
-        data = data[:, 0]
+    # 2. Schedule non-blocking S3 audit logging in background
+    if settings.enable_s3_audit:
+        background_tasks.add_task(s3_audit_service.upload_audio_async, raw_wav_bytes, call_id)
 
-    t_in = torch.tensor(data, dtype=torch.float32).unsqueeze(0).to(device)
+    # 3. Execute Multi-Model Anti-Spoofing Inference
+    engine: InferenceEngine = get_inference_engine()
+    try:
+        is_synthetic, confidence = engine.predict(caller_16k)
+    except Exception as inf_err:
+        logger.error(f"Inference error for {call_id}: {inf_err}", exc_info=True)
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail="Inference model execution failed."
+        )
 
-    if ensemble_m is not None:
-        res = ensemble_m.predict_spoof(t_in, sample_rate=sr)
-        verdict = res["verdict"]
-        business_action = res["business_action"]
-        conf = res["confidence_score"]
-        risk = res["spoof_risk_pct"]
-        thresh = res["calibrated_threshold"]
-    else:
-        verdict = "human"
-        business_action = "ALLOW_TRANSACTION"
-        conf = 0.95
-        risk = 5.0
-        thresh = 0.50
-
-    elapsed_ms = int((time.perf_counter() - start_time) * 1000)
-
-    return DetectionResponse(
-        call_id=assigned_call_id,
-        verdict=verdict,
-        confidence_score=round(conf, 4),
-        spoof_risk_pct=round(risk, 2),
-        business_action=business_action,
-        calibrated_threshold=thresh,
-        uncertainty_band=[0.40, 0.60],
-        processing_time_ms=elapsed_ms
+    # 4. Return exact required contract
+    return DetectResponse(
+        is_synthetic=is_synthetic,
+        confidence=confidence
     )
 
-
-@app.get("/", response_class=HTMLResponse)
-async def serve_dashboard():
-    index_path = os.path.join(WEB_DIR, "index.html")
-    if not os.path.exists(index_path):
-        raise HTTPException(status_code=404, detail="Dashboard UI not found")
-    with open(index_path, "r", encoding="utf-8") as f:
-        return f.read()
-
-@app.get("/api/data")
-async def get_dashboard_data():
-    if os.path.exists(EVAL_RESULTS_JSON):
-        try:
-            with open(EVAL_RESULTS_JSON, "r", encoding="utf-8") as f:
-                return json.load(f)
-        except Exception:
-            pass
-    return evaluate_channel0_dataset(agent0_dir=AGENT0_DIR, manifest_path=MANIFEST_PATH, output_json=EVAL_RESULTS_JSON)
-
-@app.get("/audio/agent_0/{filename}")
-async def serve_agent0_audio(filename: str):
-    safe_name = os.path.basename(filename)
-    audio_path = os.path.join(AGENT0_DIR, safe_name)
-    if not os.path.exists(audio_path):
-        audio_path = os.path.join(AGENT0_TRAIN_DIR, safe_name)
-    if not os.path.exists(audio_path):
-        raise HTTPException(status_code=404, detail="Audio file not found")
-    return FileResponse(audio_path, media_type="audio/wav")
 
 if __name__ == "__main__":
     import uvicorn
-    uvicorn.run("app:app", host="0.0.0.0", port=8000, reload=True)
+    uvicorn.run(
+        "app:app",
+        host=settings.host,
+        port=settings.port,
+        reload=(settings.environment == "development")
+    )
