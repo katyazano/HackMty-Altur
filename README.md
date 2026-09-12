@@ -78,32 +78,68 @@ The system analyzes inbound 2-party bank telephony audio (8kHz narrowband stereo
 
 ---
 
-## 📋 Quickstart & Installation
+## 📋 Quickstart & Local Environment (`.venv`)
 
-### 1. Clone the Repository
+### 1. Clone & System Dependencies
+* **macOS**: `brew install libsndfile ffmpeg libomp`
+* **Ubuntu / Debian**: `sudo apt-get update && sudo apt-get install -y libsndfile1 ffmpeg libomp-dev curl`
+
+### 2. Setup Virtual Environment
 ```bash
 git clone https://github.com/katyazano/HackMty-Altur.git
 cd HackMty-Altur
-```
 
-### 2. System Audio Dependencies
-* **macOS (Homebrew)**:
-  ```bash
-  brew install libsndfile ffmpeg libomp
-  ```
-* **Ubuntu / Debian Linux**:
-  ```bash
-  sudo apt-get update && sudo apt-get install -y libsndfile1 ffmpeg libomp-dev curl
-  ```
-
-### 3. Create Virtual Environment & Install Requirements
-```bash
 python3 -m venv .venv
 source .venv/bin/activate  # On Windows: .venv\Scripts\activate
 
 pip install --upgrade pip
 pip install -r requirements.txt
 ```
+
+### 3. Model Training & Benchmarking (Local `.venv`)
+If you are starting from scratch or retraining:
+```bash
+# Optional 1-command dataset prep (manifest split, audio sorting, Channel 0 isolation)
+python src/setup_dataset.py
+
+# 1-Command Full Training Suite (Trains AASIST + RawNet2 + Triple XGBoost with 5-Fold CV & EER Calibration)
+python src/train_and_benchmark.py
+```
+> Trained checkpoints (`aasist_best.pth`, `rawnet2_best.pth`, `xgboost_triple_ensemble.json`, `triple_scaler.joblib`) are automatically exported to `weights/`.
+
+### 4. Start Local FastAPI Server & Web UI
+```bash
+PORT=8080 python app.py
+```
+* **Interactive UI**: [http://localhost:8080/](http://localhost:8080/)
+* **Swagger API Docs**: [http://localhost:8080/docs](http://localhost:8080/docs)
+* **Health Check**: [http://localhost:8080/health](http://localhost:8080/health)
+
+---
+
+## 🐳 Docker Containerization & Training
+
+The Docker setup supports both **standalone model training** and **production API serving** with volume mounts so weights persist directly to your host machine:
+
+### 1. Train Models Inside Docker (1-Command)
+To train all base models (AASIST, RawNet2) and the calibrated XGBoost ensemble inside an isolated Docker container:
+```bash
+docker compose run --rm trainer
+```
+*(All trained model weights and benchmark reports are saved directly to `./weights/` and `./Data/` on your host machine).*
+
+### 2. Run the Full API & Web UI Inside Docker
+```bash
+# Build and launch API container in background
+docker compose up --build -d
+
+# Inspect live container logs
+docker compose logs -f altur-voice-api
+
+# Stop container
+docker compose down
+```
+> **Self-Healing Bootstrap**: If `docker compose up` is executed when `weights/` is empty, the container **automatically detects missing weights and triggers training upon boot** before serving traffic.
 
 ---
 
@@ -122,31 +158,6 @@ The repository includes a comprehensive, interactive Jupyter Notebook ([`multimo
 To re-run and render all cells from the command line:
 ```bash
 jupyter nbconvert --to notebook --execute multimodel_analysis.ipynb --output multimodel_analysis_executed.ipynb
-```
-
----
-
-## 🚀 Running the FastAPI & Interactive Web UI
-
-### Option 1: Run with Python Locally
-```bash
-# Launch server on port 8080 (or your custom $PORT)
-PORT=8080 .venv/bin/python app.py
-```
-* **Interactive Web Dashboard**: [http://localhost:8080/](http://localhost:8080/)
-* **Interactive Swagger UI**: [http://localhost:8080/docs](http://localhost:8080/docs)
-* **Health & Telemetry**: [http://localhost:8080/health](http://localhost:8080/health)
-
-### Option 2: Run with Docker Compose
-```bash
-# Build and start container in the background
-docker compose up --build -d
-
-# Check live logs
-docker compose logs -f
-
-# Stop container
-docker compose down
 ```
 
 ---

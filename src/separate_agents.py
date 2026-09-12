@@ -4,7 +4,7 @@ import glob
 import json
 import argparse
 from concurrent.futures import ThreadPoolExecutor
-from typing import Optional
+from typing import Optional, List
 import numpy as np
 import soundfile as sf
 import librosa

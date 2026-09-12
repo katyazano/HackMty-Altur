@@ -38,8 +38,15 @@ class InferenceEngine:
         self.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
         self.calibrated_threshold = settings.calibrated_threshold
 
-        logger.info(f"Initializing InferenceEngine on device: {self.device}")
-        logger.info(f"Calibrated Decision Threshold: {self.calibrated_threshold}")
+        # Ensure weights exist; if missing and dataset is present, auto-train
+        if not os.path.exists(settings.xgb_model_path) and (PROJECT_ROOT / "Data" / "separated_agents").exists():
+            logger.info("⚠️ Model weights not found in weights/. Auto-training Triple Multi-Model Ensemble on startup...")
+            try:
+                from src.xgboost_trainer import train_and_evaluate_triple_xgboost
+                train_and_evaluate_triple_xgboost(epochs_base=15, n_splits=5, verbose=True)
+                logger.info("✓ Auto-training completed successfully!")
+            except Exception as train_err:
+                logger.error(f"Failed to auto-train model weights: {train_err}", exc_info=True)
 
         # 1. Load AASIST
         self.aasist_model = AASIST().to(self.device)
