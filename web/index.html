@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Altur Banking - Voice Biometrics & Anti-Spoofing Benchmark</title>
+  <title>Altur Banking - Voice Anti-Spoofing Benchmark</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
@@ -27,7 +27,7 @@
         </div>
         <div>
           <h1 class="text-lg font-bold tracking-tight text-white">Altur Banking</h1>
-          <p class="text-xs text-blue-400 font-medium">Voice Biometrics & Anti-Spoofing Benchmark Suite</p>
+          <p class="text-xs text-blue-400 font-medium">AI Voice Anti-Spoofing & Deepfake Detection Benchmark</p>
         </div>
       </div>
       <div class="flex items-center space-x-3">
@@ -41,110 +41,8 @@
   <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6">
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
 
-      <!-- LEFT COLUMN: HYPERPARAMETER CONTROLS & UPLOAD & SAMPLE PACKS (4 cols) -->
+      <!-- LEFT COLUMN: AUDIO UPLOAD (4 cols) -->
       <div class="lg:col-span-4 space-y-6">
-        
-        <!-- Preset Sample Packs Card -->
-        <div class="bg-slate-800 rounded-xl border border-indigo-500/30 p-5 shadow-lg space-y-3">
-          <div class="flex items-center justify-between border-b border-slate-700 pb-2.5">
-            <h2 class="font-bold text-white text-sm flex items-center gap-2">
-              <i class="fa-solid fa-database text-indigo-400"></i> Benchmark Sample Packs
-            </h2>
-            <span class="text-[10px] bg-indigo-500/20 text-indigo-300 px-2 py-0.5 rounded font-mono">1-Click Load</span>
-          </div>
-          <p class="text-xs text-slate-400">Load authentic benchmark audio datasets with ground-truth verification labels:</p>
-          <div class="space-y-2 pt-1">
-            <button onclick="loadSamplePack('asvspoof')" id="btn-load-asv" class="w-full py-2.5 px-3 bg-slate-900 hover:bg-slate-700/80 border border-slate-700 hover:border-indigo-500/60 rounded-lg text-xs font-semibold text-white transition flex items-center justify-between group">
-              <span class="flex items-center gap-2">
-                <i class="fa-solid fa-cloud-arrow-down text-indigo-400 group-hover:scale-110 transition"></i>
-                <span>ASVspoof 2019/2021 LA</span>
-              </span>
-              <span class="text-[10px] text-slate-400 font-mono">Real vs. AI Deepfakes</span>
-            </button>
-          </div>
-        </div>
-
-        <!-- Hyperparameters Card -->
-        <div class="bg-slate-800 rounded-xl border border-slate-700 p-5 shadow-lg space-y-5">
-          <div class="flex items-center justify-between border-b border-slate-700 pb-3">
-            <h2 class="font-bold text-white flex items-center gap-2">
-              <i class="fa-solid fa-sliders text-blue-400"></i> Signal Hyperparameters
-            </h2>
-            <button id="btn-reset-all" class="text-xs text-slate-400 hover:text-white bg-slate-700/60 hover:bg-slate-700 px-2.5 py-1 rounded transition flex items-center gap-1">
-              <i class="fa-solid fa-rotate-left text-[10px]"></i> Reset All
-            </button>
-          </div>
-
-          <!-- Parameter: VAD Threshold (top_db) -->
-          <div class="space-y-1.5">
-            <div class="flex justify-between items-center text-xs">
-              <span class="font-semibold text-slate-300">VAD Silence Threshold (<code class="text-blue-400">top_db</code>)</span>
-              <div class="flex items-center gap-2">
-                <span id="val-top-db" class="font-mono text-blue-400 bg-slate-900 px-2 py-0.5 rounded border border-slate-700">24 dB</span>
-                <button onclick="resetParam('top_db')" title="Reset to default" class="text-slate-400 hover:text-blue-400 text-xs"><i class="fa-solid fa-rotate-left"></i></button>
-              </div>
-            </div>
-            <input type="range" id="input-top-db" min="10" max="50" step="1" value="24" class="w-full cursor-pointer">
-            <p class="text-[11px] text-slate-400">Lower = aggressive silence cut; Higher = keeps softer words.</p>
-          </div>
-
-          <!-- Parameter: Noise Reduction (prop_decrease) -->
-          <div class="space-y-1.5">
-            <div class="flex justify-between items-center text-xs">
-              <span class="font-semibold text-slate-300">Denoising Subtraction (<code class="text-blue-400">prop_decrease</code>)</span>
-              <div class="flex items-center gap-2">
-                <span id="val-prop-decrease" class="font-mono text-blue-400 bg-slate-900 px-2 py-0.5 rounded border border-slate-700">0.72</span>
-                <button onclick="resetParam('prop_decrease')" title="Reset to default" class="text-slate-400 hover:text-blue-400 text-xs"><i class="fa-solid fa-rotate-left"></i></button>
-              </div>
-            </div>
-            <input type="range" id="input-prop-decrease" min="0" max="1" step="0.02" value="0.72" class="w-full cursor-pointer">
-            <p class="text-[11px] text-slate-400">Spectral gating fraction to subtract background room chatter.</p>
-          </div>
-
-          <!-- Parameter: Bandpass Lowcut -->
-          <div class="space-y-1.5">
-            <div class="flex justify-between items-center text-xs">
-              <span class="font-semibold text-slate-300">Bandpass Low Cutoff (<code class="text-blue-400">lowcut</code>)</span>
-              <div class="flex items-center gap-2">
-                <span id="val-lowcut" class="font-mono text-blue-400 bg-slate-900 px-2 py-0.5 rounded border border-slate-700">90 Hz</span>
-                <button onclick="resetParam('lowcut')" title="Reset to default" class="text-slate-400 hover:text-blue-400 text-xs"><i class="fa-solid fa-rotate-left"></i></button>
-              </div>
-            </div>
-            <input type="range" id="input-lowcut" min="50" max="300" step="5" value="90" class="w-full cursor-pointer">
-            <p class="text-[11px] text-slate-400">Cuts out sub-bass room rumbles and table thumps.</p>
-          </div>
-
-          <!-- Parameter: Bandpass Highcut -->
-          <div class="space-y-1.5">
-            <div class="flex justify-between items-center text-xs">
-              <span class="font-semibold text-slate-300">Bandpass High Cutoff (<code class="text-blue-400">highcut</code>)</span>
-              <div class="flex items-center gap-2">
-                <span id="val-highcut" class="font-mono text-blue-400 bg-slate-900 px-2 py-0.5 rounded border border-slate-700">3900 Hz</span>
-                <button onclick="resetParam('highcut')" title="Reset to default" class="text-slate-400 hover:text-blue-400 text-xs"><i class="fa-solid fa-rotate-left"></i></button>
-              </div>
-            </div>
-            <input type="range" id="input-highcut" min="2000" max="6000" step="50" value="3900" class="w-full cursor-pointer">
-            <p class="text-[11px] text-slate-400">Upper speech boundary filter for telephone formants.</p>
-          </div>
-
-          <!-- Parameter: Speaker Similarity Threshold -->
-          <div class="space-y-1.5">
-            <div class="flex justify-between items-center text-xs">
-              <span class="font-semibold text-slate-300">Biometric Match Threshold</span>
-              <div class="flex items-center gap-2">
-                <span id="val-threshold" class="font-mono text-blue-400 bg-slate-900 px-2 py-0.5 rounded border border-slate-700">0.985</span>
-                <button onclick="resetParam('similarity_threshold')" title="Reset to default" class="text-slate-400 hover:text-blue-400 text-xs"><i class="fa-solid fa-rotate-left"></i></button>
-              </div>
-            </div>
-            <input type="range" id="input-threshold" min="0.50" max="0.999" step="0.005" value="0.985" class="w-full cursor-pointer">
-            <p class="text-[11px] text-slate-400">Cosine threshold for authorizing speaker identity.</p>
-          </div>
-
-          <!-- Action Button -->
-          <button id="btn-process" class="w-full py-3 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white font-bold rounded-lg shadow-md transition flex items-center justify-center gap-2">
-            <i class="fa-solid fa-bolt"></i> Run Audio Processing & Benchmark
-          </button>
-        </div>
 
         <!-- Audio Upload Card -->
         <div class="bg-slate-800 rounded-xl border border-slate-700 p-5 shadow-lg space-y-4">
@@ -179,7 +77,7 @@
       <!-- RIGHT COLUMN: PLAYERS & RESULTS TABLES (8 cols) -->
       <div class="lg:col-span-8 space-y-6">
 
-        <!-- 3-Way Model Benchmark Card (DSP vs RawNet2 vs AASIST) -->
+        <!-- 2-Way Model Benchmark Card (RawNet2 vs AASIST) -->
         <div class="bg-slate-800 rounded-xl border border-indigo-500/40 p-5 shadow-xl space-y-4">
           <div class="flex items-center justify-between border-b border-slate-700 pb-3">
             <div class="flex items-center gap-2">
@@ -187,13 +85,18 @@
                 <i class="fa-solid fa-chart-simple text-sm"></i>
               </div>
               <div>
-                <h2 class="font-bold text-white text-base">Anti-Spoofing Multi-Model Benchmark</h2>
+                <h2 class="font-bold text-white text-base">Anti-Spoofing Deep Learning Benchmark</h2>
                 <p class="text-xs text-slate-400">Comparing Predictions against Ground Truth (Correct Answer)</p>
               </div>
             </div>
-            <span class="px-2.5 py-0.5 bg-indigo-500/20 text-indigo-300 border border-indigo-500/30 rounded text-xs font-mono font-semibold">
-              3 Models Active
-            </span>
+            <div class="flex items-center gap-3">
+              <span class="px-2.5 py-0.5 bg-indigo-500/20 text-indigo-300 border border-indigo-500/30 rounded text-xs font-mono font-semibold">
+                2 Models Active
+              </span>
+              <button id="btn-delete-all" class="text-xs text-rose-400 hover:text-white bg-rose-500/10 hover:bg-rose-600 border border-rose-500/30 px-2.5 py-1 rounded transition flex items-center gap-1">
+                <i class="fa-solid fa-trash-can text-[10px]"></i> Delete All
+              </button>
+            </div>
           </div>
 
           <div class="overflow-x-auto">
@@ -201,60 +104,14 @@
               <thead class="bg-slate-900/80 text-slate-400 uppercase font-semibold border-b border-slate-700">
                 <tr>
                   <th class="py-2.5 px-3">Audio Sample</th>
-                  <th class="py-2.5 px-3 text-purple-400">Correct Answer</th>
-                  <th class="py-2.5 px-3 text-cyan-400">1. DSP Baseline</th>
-                  <th class="py-2.5 px-3 text-amber-400">2. RawNet2</th>
-                  <th class="py-2.5 px-3 text-emerald-400">3. AASIST-L</th>
+                  <th class="py-2.5 px-3">Listen</th>
+                  <th class="py-2.5 px-3 text-purple-400">Ground Truth</th>
+                  <th class="py-2.5 px-3 text-amber-400">1. RawNet2</th>
+                  <th class="py-2.5 px-3 text-emerald-400">2. AASIST-L</th>
+                  <th class="py-2.5 px-3 text-right">Action</th>
                 </tr>
               </thead>
               <tbody id="benchmark-table-body" class="divide-y divide-slate-700/50">
-                <!-- Populated dynamically -->
-              </tbody>
-            </table>
-          </div>
-        </div>
-
-        <!-- Audio Comparison Players Card -->
-        <div class="bg-slate-800 rounded-xl border border-slate-700 p-5 shadow-lg space-y-4">
-          <div class="flex items-center justify-between border-b border-slate-700 pb-3">
-            <h2 class="font-bold text-white flex items-center gap-2">
-              <i class="fa-solid fa-headphones text-cyan-400"></i> Audio Comparison (Raw vs. Processed)
-            </h2>
-            <div class="flex items-center gap-2">
-              <button id="btn-delete-all" class="text-xs text-rose-400 hover:text-white bg-rose-500/10 hover:bg-rose-600 border border-rose-500/30 px-2.5 py-1 rounded transition flex items-center gap-1">
-                <i class="fa-solid fa-trash-can text-[10px]"></i> Delete All Audios
-              </button>
-            </div>
-          </div>
-
-          <div id="audio-cards-container" class="space-y-4">
-            <!-- Populated dynamically via JS -->
-            <div class="text-center py-8 text-slate-400">No audio recordings loaded. Click "Load ASVspoof Benchmark" or upload an audio to get started!</div>
-          </div>
-        </div>
-
-        <!-- Biometric Verification Results Table -->
-        <div class="bg-slate-800 rounded-xl border border-slate-700 p-5 shadow-lg space-y-4">
-          <div class="flex items-center justify-between border-b border-slate-700 pb-3">
-            <h2 class="font-bold text-white flex items-center gap-2">
-              <i class="fa-solid fa-fingerprint text-emerald-400"></i> Voice Biometrics Verification Table
-            </h2>
-            <span class="text-xs text-slate-400">Enrolled Reference: <b class="text-blue-400 font-mono" id="enrolled-badge">None</b></span>
-          </div>
-
-          <div class="overflow-x-auto">
-            <table class="w-full text-left text-xs text-slate-300">
-              <thead class="bg-slate-900/60 text-slate-400 uppercase font-semibold border-b border-slate-700">
-                <tr>
-                  <th class="py-2.5 px-3">Candidate Audio</th>
-                  <th class="py-2.5 px-3 text-purple-400">Expected Match</th>
-                  <th class="py-2.5 px-3">Cosine Similarity</th>
-                  <th class="py-2.5 px-3">Confidence</th>
-                  <th class="py-2.5 px-3">Access Decision</th>
-                  <th class="py-2.5 px-3">Accuracy</th>
-                </tr>
-              </thead>
-              <tbody id="biometrics-table-body" class="divide-y divide-slate-700/50">
                 <!-- Populated dynamically -->
               </tbody>
             </table>
@@ -267,54 +124,6 @@
   </main>
 
   <script>
-    // Default baseline parameter values
-    const DEFAULTS = {
-      top_db: 24,
-      prop_decrease: 0.72,
-      lowcut: 90,
-      highcut: 3900,
-      similarity_threshold: 0.985
-    };
-
-    // Live slider bindings
-    const sliderMap = {
-      top_db: { input: 'input-top-db', val: 'val-top-db', suffix: ' dB' },
-      prop_decrease: { input: 'input-prop-decrease', val: 'val-prop-decrease', suffix: '' },
-      lowcut: { input: 'input-lowcut', val: 'val-lowcut', suffix: ' Hz' },
-      highcut: { input: 'input-highcut', val: 'val-highcut', suffix: ' Hz' },
-      similarity_threshold: { input: 'input-threshold', val: 'val-threshold', suffix: '' }
-    };
-
-    Object.keys(sliderMap).forEach(key => {
-      const conf = sliderMap[key];
-      const el = document.getElementById(conf.input);
-      el.addEventListener('input', (e) => {
-        document.getElementById(conf.val).textContent = e.target.value + conf.suffix;
-      });
-    });
-
-    function resetParam(key) {
-      if (DEFAULTS[key] !== undefined) {
-        const conf = sliderMap[key];
-        document.getElementById(conf.input).value = DEFAULTS[key];
-        document.getElementById(conf.val).textContent = DEFAULTS[key] + conf.suffix;
-      }
-    }
-
-    document.getElementById('btn-reset-all').addEventListener('click', () => {
-      Object.keys(DEFAULTS).forEach(resetParam);
-    });
-
-    function getParams() {
-      return {
-        top_db: parseInt(document.getElementById('input-top-db').value),
-        prop_decrease: parseFloat(document.getElementById('input-prop-decrease').value),
-        lowcut: parseFloat(document.getElementById('input-lowcut').value),
-        highcut: parseFloat(document.getElementById('input-highcut').value),
-        similarity_threshold: parseFloat(document.getElementById('input-threshold').value)
-      };
-    }
-
     // Fetch and render data
     async function loadData() {
       try {
@@ -325,65 +134,6 @@
         console.error('Error fetching data:', err);
       }
     }
-
-    // Load Sample Pack
-    async function loadSamplePack(packName) {
-      const btn = document.getElementById('btn-load-asv');
-      btn.disabled = true;
-      btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Loading ASVspoof...';
-      try {
-        const res = await fetch('/api/samples/load', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ pack: packName })
-        });
-        const data = await res.json();
-        renderDashboard(data);
-      } catch (err) {
-        console.error('Error loading sample pack:', err);
-      } finally {
-        btn.disabled = false;
-        btn.innerHTML = `
-          <span class="flex items-center gap-2">
-            <i class="fa-solid fa-cloud-arrow-down text-indigo-400 group-hover:scale-110 transition"></i>
-            <span>ASVspoof 2019/2021 LA</span>
-          </span>
-          <span class="text-[10px] text-slate-400 font-mono">Real vs. AI Deepfakes</span>
-        `;
-      }
-    }
-
-    // Reprocess pipeline
-    async function reprocessPipeline() {
-      const btn = document.getElementById('btn-process');
-      const badge = document.getElementById('status-badge');
-      btn.disabled = true;
-      btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Running Multi-Model Benchmark...';
-      badge.className = 'px-3 py-1 bg-amber-500/20 text-amber-400 border border-amber-500/30 rounded-full text-xs font-semibold flex items-center gap-1.5';
-      badge.innerHTML = '<span class="w-2 h-2 bg-amber-400 rounded-full animate-pulse"></span> Benchmarking...';
-
-      try {
-        const params = getParams();
-        const res = await fetch('/api/reprocess', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(params)
-        });
-        const data = await res.json();
-        renderDashboard(data);
-        badge.className = 'px-3 py-1 bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 rounded-full text-xs font-semibold flex items-center gap-1.5';
-        badge.innerHTML = '<span class="w-2 h-2 bg-emerald-400 rounded-full animate-pulse"></span> Ready';
-      } catch (err) {
-        console.error('Reprocessing failed:', err);
-        badge.className = 'px-3 py-1 bg-rose-500/20 text-rose-400 border border-rose-500/30 rounded-full text-xs font-semibold flex items-center gap-1.5';
-        badge.innerHTML = '<span class="w-2 h-2 bg-rose-400 rounded-full"></span> Error';
-      } finally {
-        btn.disabled = false;
-        btn.innerHTML = '<i class="fa-solid fa-bolt"></i> Run Audio Processing & Benchmark';
-      }
-    }
-
-    document.getElementById('btn-process').addEventListener('click', reprocessPipeline);
 
     // Delete Single Audio
     async function deleteSingleAudio(filename) {
@@ -450,33 +200,22 @@
     });
 
     function renderDashboard(data) {
-      const container = document.getElementById('audio-cards-container');
-      const bioTable = document.getElementById('biometrics-table-body');
       const benchmarkTable = document.getElementById('benchmark-table-body');
-
-      container.innerHTML = '';
-      bioTable.innerHTML = '';
       benchmarkTable.innerHTML = '';
 
       const audios = data.audios || [];
-      const biometrics = data.biometrics || [];
-      const enrolledKey = data.enrolled_key || '';
-      document.getElementById('enrolled-badge').textContent = enrolledKey || 'None';
 
       if (audios.length === 0) {
-        container.innerHTML = '<div class="text-center py-10 text-slate-400 bg-slate-900/50 rounded-lg border border-dashed border-slate-700"><i class="fa-solid fa-microphone-slash text-2xl mb-2 text-slate-500"></i><p>No audio files loaded yet.</p><p class="text-xs text-slate-500 mt-1">Click <b>"ASVspoof 2019/2021 LA"</b> on the left or upload an audio file to start!</p></div>';
-        benchmarkTable.innerHTML = '<tr><td colspan="5" class="py-6 text-center text-slate-500">No data available. Load a benchmark sample pack or upload an audio file.</td></tr>';
-        bioTable.innerHTML = '<tr><td colspan="6" class="py-6 text-center text-slate-500">No recordings available for biometric verification.</td></tr>';
+        benchmarkTable.innerHTML = '<tr><td colspan="6" class="py-10 text-center text-slate-500"><i class="fa-solid fa-microphone-slash text-2xl mb-2 text-slate-600 block"></i>No data available. Upload an audio file to start benchmarking!</td></tr>';
         return;
       }
 
-      // 1. Render Benchmark Table with Ground Truth (Correct Answer)
+      // Render Benchmark Table
       audios.forEach(item => {
         const gt = item.ground_truth || 'UNKNOWN';
         const gtClass = gt === 'REAL_HUMAN' ? 'bg-emerald-500/20 text-emerald-400 border-emerald-500/30' : (gt === 'FAKE_SPOOF' ? 'bg-rose-500/20 text-rose-400 border-rose-500/30' : 'bg-slate-700 text-slate-300 border-slate-600');
         const gtText = gt === 'REAL_HUMAN' ? 'REAL VOICE' : (gt === 'FAKE_SPOOF' ? 'FAKE / SPOOF' : 'UNKNOWN');
 
-        const dsp = item.anti_spoof || {};
         const raw = item.rawnet2 || {};
         const aas = item.aasist || {};
 
@@ -485,16 +224,13 @@
             ? modelData.is_real 
             : (modelData.is_spoof !== undefined ? !modelData.is_spoof : true);
 
-          // Authenticity score: 100% is Real Human, 0% is Spoof
           let realScore = modelData.real_score_pct !== undefined 
             ? modelData.real_score_pct 
             : (modelData.real_score_percentage !== undefined 
                 ? modelData.real_score_percentage 
                 : (modelData.spoof_risk_pct !== undefined 
                     ? (100 - modelData.spoof_risk_pct) 
-                    : (modelData.risk_score_percentage !== undefined 
-                        ? (100 - modelData.risk_score_percentage) 
-                        : defaultScore)));
+                    : defaultScore));
           realScore = Number(realScore).toFixed(1);
           const isCorr = modelData.is_correct;
           const lat = modelData.latency_ms || 0.5;
@@ -511,93 +247,25 @@
 
         const tr = document.createElement('tr');
         tr.innerHTML = `
-          <td class="py-2.5 px-3 font-semibold text-white">${item.label}</td>
+          <td class="py-2.5 px-3 font-semibold text-white">
+            <div>${item.label}</div>
+            <div class="text-[10px] text-slate-500 font-mono">${item.filename} (${item.raw_duration}s)</div>
+          </td>
+          <td class="py-2.5 px-3">
+            <audio controls src="${item.raw_url}?t=${Date.now()}" class="w-36 h-8"></audio>
+          </td>
           <td class="py-2.5 px-3"><span class="px-2 py-0.5 rounded text-[10px] font-bold border ${gtClass}">${gtText}</span></td>
-          <td class="py-2.5 px-3">${makeModelBadge(dsp, 0)}</td>
           <td class="py-2.5 px-3">${makeModelBadge(raw, 0)}</td>
           <td class="py-2.5 px-3">${makeModelBadge(aas, 0)}</td>
+          <td class="py-2.5 px-3 text-right">
+            <button onclick="deleteSingleAudio('${item.raw_filename}')" title="Delete audio" class="text-slate-400 hover:text-rose-400 bg-slate-900 hover:bg-rose-500/20 border border-slate-700 hover:border-rose-500/30 p-1.5 rounded transition text-xs">
+              <i class="fa-solid fa-trash-can"></i>
+            </button>
+          </td>
         `;
         benchmarkTable.appendChild(tr);
       });
-
-      // 2. Render Audio Cards
-      audios.forEach(item => {
-        const timeReduction = Math.max(0, (item.raw_duration - item.processed_duration)).toFixed(2);
-        const card = document.createElement('div');
-        card.className = 'bg-slate-900/80 border border-slate-700/80 rounded-lg p-4 space-y-3 relative group';
-        card.innerHTML = `
-          <div class="flex flex-wrap items-center justify-between gap-2">
-            <div class="flex items-center gap-2">
-              <span class="font-bold text-sm text-white">${item.label.toUpperCase()}</span>
-              ${item.key === enrolledKey ? '<span class="px-2 py-0.5 text-[10px] font-bold bg-blue-500/20 text-blue-400 border border-blue-500/30 rounded">ENROLLED</span>' : ''}
-              <span class="text-[10px] font-bold px-2 py-0.5 rounded ${item.ground_truth === 'REAL_HUMAN' ? 'bg-emerald-500/10 text-emerald-400' : 'bg-rose-500/10 text-rose-400'} border border-slate-700">Truth: ${item.ground_truth}</span>
-            </div>
-            <div class="flex items-center gap-3">
-              <div class="flex items-center gap-2 text-xs font-mono">
-                <span class="text-slate-400 bg-slate-800 px-2 py-0.5 rounded border border-slate-700">Raw: ${item.raw_duration}s</span>
-                <span class="text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded border border-emerald-500/20">Clean: ${item.processed_duration}s (-${timeReduction}s)</span>
-              </div>
-              <button onclick="deleteSingleAudio('${item.raw_filename}')" title="Delete this audio" class="text-slate-400 hover:text-rose-400 bg-slate-800 hover:bg-rose-500/20 border border-slate-700 hover:border-rose-500/30 p-1.5 rounded transition text-xs">
-                <i class="fa-solid fa-trash-can"></i>
-              </button>
-            </div>
-          </div>
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-3 pt-1">
-            <div class="space-y-1">
-              <div class="text-[11px] text-slate-400 font-semibold flex items-center gap-1">
-                <i class="fa-solid fa-ear-listen text-slate-400"></i> Original Raw Audio
-              </div>
-              <audio controls src="${item.raw_url}?t=${Date.now()}"></audio>
-            </div>
-            <div class="space-y-1">
-              <div class="text-[11px] text-emerald-400 font-semibold flex items-center gap-1">
-                <i class="fa-solid fa-wand-magic-sparkles text-emerald-400"></i> Cleaned & Processed Audio
-              </div>
-              <audio controls src="${item.processed_url}?t=${Date.now()}"></audio>
-            </div>
-          </div>
-        `;
-        container.appendChild(card);
-      });
-
-      // 3. Render Biometrics Table with Expected Match Column
-      if (biometrics.length === 0) {
-        bioTable.innerHTML = '<tr><td colspan="6" class="py-4 text-center text-slate-500">Need at least 2 audio recordings to compare against the enrolled voice.</td></tr>';
-      } else {
-        biometrics.forEach(item => {
-          const isMatch = item.is_match;
-          const badgeClass = isMatch 
-            ? 'bg-emerald-500/20 text-emerald-400 border-emerald-500/30' 
-            : 'bg-rose-500/20 text-rose-400 border-rose-500/30';
-          const badgeText = isMatch ? 'AUTHORIZED' : 'DENIED (Impostor)';
-
-          const expected = item.ground_truth || (item.candidate_key && item.candidate_key.includes('rec2') ? 'SAME_SPEAKER' : 'DIFFERENT_SPEAKER');
-          const expectedText = expected === 'SAME_SPEAKER' ? 'SAME SPEAKER' : 'DIFFERENT SPEAKER';
-          const expectedClass = expected === 'SAME_SPEAKER' ? 'text-emerald-400 font-bold' : 'text-slate-400';
-          
-          let accIcon = '<span class="text-slate-500">-</span>';
-          if (item.is_correct !== undefined && item.is_correct !== null) {
-            accIcon = item.is_correct 
-              ? '<span class="text-emerald-400 font-bold">✓ Match</span>' 
-              : '<span class="text-rose-400 font-bold">✗ Error</span>';
-          }
-
-          const tr = document.createElement('tr');
-          tr.innerHTML = `
-            <td class="py-2.5 px-3 font-semibold text-white">${item.candidate_label}</td>
-            <td class="py-2.5 px-3 font-mono ${expectedClass}">${expectedText}</td>
-            <td class="py-2.5 px-3 font-mono text-blue-400 font-bold">${item.similarity_score}</td>
-            <td class="py-2.5 px-3 font-mono">${item.confidence_percentage}%</td>
-            <td class="py-2.5 px-3">
-              <span class="px-2.5 py-0.5 rounded text-[11px] font-bold border ${badgeClass}">${badgeText}</span>
-            </td>
-            <td class="py-2.5 px-3 font-mono text-xs">${accIcon}</td>
-          `;
-          bioTable.appendChild(tr);
-        });
-      }
     }
-
 
     // Initial load on page ready
     window.addEventListener('DOMContentLoaded', loadData);

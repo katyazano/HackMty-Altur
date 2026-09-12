@@ -28,12 +28,12 @@ weights/
 real_audio_data/
 demo_data/
 demo_real_audios/
+Data/
+data/
 
-# Ignore loose audio files except the bundled benchmark sample_packs
+# Audio files
 *.wav
 *.mp3
 *.ogg
 *.flac
 *.m4a
-!sample_packs/
-!sample_packs/**
