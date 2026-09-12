@@ -105,7 +105,19 @@ class AASIST(nn.Module):
         with torch.no_grad():
             if waveform_tensor.dim() == 1:
                 waveform_tensor = waveform_tensor.unsqueeze(0)
-            logits = self.forward(waveform_tensor)
+
+            # Standard ASVspoof 4-second representation (64,000 samples @ 16kHz)
+            nb_samples = waveform_tensor.shape[-1]
+            target_samples = 64000
+            if nb_samples > target_samples:
+                mid = nb_samples // 2
+                waveform_in = waveform_tensor[:, mid - 32000 : mid + 32000]
+            elif nb_samples < target_samples:
+                waveform_in = F.pad(waveform_tensor, (0, target_samples - nb_samples))
+            else:
+                waveform_in = waveform_tensor
+
+            logits = self.forward(waveform_in)
             probs = F.softmax(logits, dim=1)
             # Class 0: Bonafide (Real), Class 1: Spoof (Synthetic)
             real_prob = float(probs[0, 0].item())

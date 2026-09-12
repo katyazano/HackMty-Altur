@@ -91,23 +91,38 @@ class RawNet2(nn.Module):
         with torch.no_grad():
             if waveform_tensor.dim() == 1:
                 waveform_tensor = waveform_tensor.unsqueeze(0)
-            if waveform_tensor.dim() == 2:
-                waveform_in = waveform_tensor.unsqueeze(1)
+
+            # Standard ASVspoof 4-second representation (64,000 samples @ 16kHz)
+            nb_samples = waveform_tensor.shape[-1]
+            target_samples = 64000
+            if nb_samples > target_samples:
+                mid = nb_samples // 2
+                waveform_in = waveform_tensor[:, mid - 32000 : mid + 32000]
+            elif nb_samples < target_samples:
+                waveform_in = F.pad(waveform_tensor, (0, target_samples - nb_samples))
             else:
                 waveform_in = waveform_tensor
 
+            if waveform_in.dim() == 2:
+                waveform_conv = waveform_in.unsqueeze(1)
+            else:
+                waveform_conv = waveform_in
+
             # 1. SincNet subband features
-            sinc_out = torch.abs(self.sinc_conv(waveform_in))  # [1, 128, time]
+            sinc_out = torch.abs(self.sinc_conv(waveform_conv))  # [1, 128, time]
             low_band = torch.mean(sinc_out[:, :40, :]).item()
             high_band = torch.mean(sinc_out[:, 55:, :]).item()
             subband_ratio = high_band / (low_band + 1e-6)
             temp_var = float(torch.std(sinc_out, dim=2).mean().item())
 
-            # 2. Raw waveform acoustic metrics
-            y_np = waveform_tensor.squeeze().cpu().numpy()
-            centroid = float(np.mean(librosa.feature.spectral_centroid(y=y_np, sr=16000))) if len(y_np) > 100 else 1500.0
-            rolloff = float(np.mean(librosa.feature.spectral_rolloff(y=y_np, sr=16000, roll_percent=0.85))) if len(y_np) > 100 else 1500.0
-            flatness = float(np.mean(librosa.feature.spectral_flatness(y=y_np))) if len(y_np) > 100 else 0.0001
+            # 2. Fast acoustic logit projection
+            y_np = waveform_in.squeeze().cpu().numpy()
+            # Fast spectral centroid & flatness via STFT
+            fft_mag = np.abs(np.fft.rfft(y_np[:16000]))
+            freqs = np.fft.rfftfreq(16000, 1.0 / 16000)
+            centroid = float(np.sum(freqs * fft_mag) / (np.sum(fft_mag) + 1e-9))
+            flatness = float(np.exp(np.mean(np.log(fft_mag + 1e-9))) / (np.mean(fft_mag) + 1e-9))
+            rolloff = centroid * 1.5
 
             # 3. Calibrated logit projection
             bonafide_logit = 3.2 - (rolloff / 650.0) - (centroid / 450.0) - (flatness * 4000.0) + (temp_var * 0.5)

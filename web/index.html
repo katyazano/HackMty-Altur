@@ -3,271 +3,304 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Altur Banking - Voice Anti-Spoofing Benchmark</title>
+  <title>Altur Banking - Voice Anti-Spoofing Benchmark (Channel 0)</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
-    input[type=range] {
-      accent-color: #3b82f6;
-    }
     audio {
-      width: 100%;
-      height: 38px;
+      height: 32px;
+      width: 170px;
+    }
+    audio::-webkit-media-controls-panel {
+      background-color: #1e293b;
     }
   </style>
 </head>
-<body class="bg-slate-900 text-slate-100 min-h-screen font-sans pb-12">
+<body class="bg-slate-950 text-slate-100 min-h-screen font-sans pb-16">
 
-  <!-- Navigation Bar -->
-  <header class="bg-slate-800/80 backdrop-blur border-b border-slate-700 sticky top-0 z-50">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex items-center justify-between">
+  <!-- Header -->
+  <header class="bg-slate-900/90 backdrop-blur border-b border-slate-800 sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3.5 flex items-center justify-between">
       <div class="flex items-center space-x-3">
-        <div class="bg-blue-600 p-2 rounded-lg text-white">
-          <i class="fa-solid fa-shield-halved text-xl"></i>
+        <div class="bg-indigo-600 p-2.5 rounded-xl text-white shadow-md shadow-indigo-500/20">
+          <i class="fa-solid fa-shield-halved text-lg"></i>
         </div>
         <div>
-          <h1 class="text-lg font-bold tracking-tight text-white">Altur Banking</h1>
-          <p class="text-xs text-blue-400 font-medium">AI Voice Anti-Spoofing & Deepfake Detection Benchmark</p>
+          <h1 class="text-base font-bold text-white tracking-tight flex items-center gap-2">
+            Altur Voice Anti-Spoofing Benchmark
+            <span class="px-2 py-0.5 bg-indigo-500/20 text-indigo-400 border border-indigo-500/30 rounded text-xs font-mono font-medium">Channel 0 (Agent 0)</span>
+          </h1>
+          <p class="text-xs text-slate-400">Deepfake Detection Evaluation: RawNet2 vs AASIST-L</p>
         </div>
       </div>
       <div class="flex items-center space-x-3">
-        <span id="status-badge" class="px-3 py-1 bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 rounded-full text-xs font-semibold flex items-center gap-1.5">
-          <span class="w-2 h-2 bg-emerald-400 rounded-full animate-pulse"></span> Ready
-        </span>
+        <button id="btn-refresh" onclick="loadData()" class="px-3 py-1.5 bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white border border-slate-700 rounded-lg text-xs font-semibold transition flex items-center gap-1.5">
+          <i class="fa-solid fa-arrows-rotate"></i> Refresh
+        </button>
+        <button id="btn-reeval" onclick="reEvaluate()" class="px-3 py-1.5 bg-indigo-600 hover:bg-indigo-500 text-white rounded-lg text-xs font-semibold transition flex items-center gap-1.5 shadow-md shadow-indigo-600/30">
+          <i class="fa-solid fa-bolt"></i> Re-Run Benchmark
+        </button>
       </div>
     </div>
   </header>
 
-  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6">
-    <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 space-y-6">
 
-      <!-- LEFT COLUMN: AUDIO UPLOAD (4 cols) -->
-      <div class="lg:col-span-4 space-y-6">
-
-        <!-- Audio Upload Card -->
-        <div class="bg-slate-800 rounded-xl border border-slate-700 p-5 shadow-lg space-y-4">
-          <h2 class="font-bold text-white flex items-center gap-2 border-b border-slate-700 pb-3">
-            <i class="fa-solid fa-cloud-arrow-up text-indigo-400"></i> Add New Audio File
-          </h2>
-          <form id="upload-form" class="space-y-3">
-            <div>
-              <label class="block text-xs font-semibold text-slate-300 mb-1">Speaker Tag / Name</label>
-              <input type="text" id="upload-label" placeholder="e.g., test_voice_sample" required class="w-full px-3 py-1.5 text-sm bg-slate-900 border border-slate-700 rounded-md focus:outline-none focus:border-blue-500 text-white">
-            </div>
-            <div>
-              <label class="block text-xs font-semibold text-slate-300 mb-1">Ground Truth (Correct Answer)</label>
-              <select id="upload-gt" class="w-full px-3 py-1.5 text-xs bg-slate-900 border border-slate-700 rounded-md focus:outline-none focus:border-blue-500 text-white">
-                <option value="AUTO">Auto-Detect from Name</option>
-                <option value="REAL_HUMAN">Real Human Voice (Bonafide)</option>
-                <option value="FAKE_SPOOF">Fake / Synthetic AI Voice (Spoof)</option>
-              </select>
-            </div>
-            <div>
-              <label class="block text-xs font-semibold text-slate-300 mb-1">Select Audio File (.ogg, .wav, .mp3, .flac)</label>
-              <input type="file" id="upload-file" accept="audio/*" required class="w-full text-xs text-slate-400 file:mr-3 file:py-1.5 file:px-3 file:rounded-md file:border-0 file:text-xs file:font-semibold file:bg-blue-600 file:text-white hover:file:bg-blue-500 cursor-pointer">
-            </div>
-            <button type="submit" id="btn-upload" class="w-full py-2 bg-slate-700 hover:bg-slate-600 text-white font-semibold text-sm rounded-lg transition flex items-center justify-center gap-1.5">
-              <i class="fa-solid fa-plus"></i> Upload & Add to Pipeline
-            </button>
-          </form>
+    <!-- KPI Metric Cards -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+      <div class="bg-slate-900 border border-slate-800 rounded-xl p-4 shadow-sm">
+        <div class="flex items-center justify-between">
+          <span class="text-xs font-medium text-slate-400 uppercase tracking-wider">Total Evaluated</span>
+          <div class="p-1.5 bg-blue-500/10 text-blue-400 rounded-lg">
+            <i class="fa-solid fa-headphones text-sm"></i>
+          </div>
         </div>
-
+        <div class="mt-2 flex items-baseline gap-2">
+          <span id="metric-total" class="text-2xl font-bold text-white">0</span>
+          <span class="text-xs text-slate-400">Channel 0 files</span>
+        </div>
       </div>
 
-      <!-- RIGHT COLUMN: PLAYERS & RESULTS TABLES (8 cols) -->
-      <div class="lg:col-span-8 space-y-6">
-
-        <!-- 2-Way Model Benchmark Card (RawNet2 vs AASIST) -->
-        <div class="bg-slate-800 rounded-xl border border-indigo-500/40 p-5 shadow-xl space-y-4">
-          <div class="flex items-center justify-between border-b border-slate-700 pb-3">
-            <div class="flex items-center gap-2">
-              <div class="bg-indigo-600/30 text-indigo-400 p-1.5 rounded-lg">
-                <i class="fa-solid fa-chart-simple text-sm"></i>
-              </div>
-              <div>
-                <h2 class="font-bold text-white text-base">Anti-Spoofing Deep Learning Benchmark</h2>
-                <p class="text-xs text-slate-400">Comparing Predictions against Ground Truth (Correct Answer)</p>
-              </div>
-            </div>
-            <div class="flex items-center gap-3">
-              <span class="px-2.5 py-0.5 bg-indigo-500/20 text-indigo-300 border border-indigo-500/30 rounded text-xs font-mono font-semibold">
-                2 Models Active
-              </span>
-              <button id="btn-delete-all" class="text-xs text-rose-400 hover:text-white bg-rose-500/10 hover:bg-rose-600 border border-rose-500/30 px-2.5 py-1 rounded transition flex items-center gap-1">
-                <i class="fa-solid fa-trash-can text-[10px]"></i> Delete All
-              </button>
-            </div>
-          </div>
-
-          <div class="overflow-x-auto">
-            <table class="w-full text-left text-xs text-slate-300">
-              <thead class="bg-slate-900/80 text-slate-400 uppercase font-semibold border-b border-slate-700">
-                <tr>
-                  <th class="py-2.5 px-3">Audio Sample</th>
-                  <th class="py-2.5 px-3">Listen</th>
-                  <th class="py-2.5 px-3 text-purple-400">Ground Truth</th>
-                  <th class="py-2.5 px-3 text-amber-400">1. RawNet2</th>
-                  <th class="py-2.5 px-3 text-emerald-400">2. AASIST-L</th>
-                  <th class="py-2.5 px-3 text-right">Action</th>
-                </tr>
-              </thead>
-              <tbody id="benchmark-table-body" class="divide-y divide-slate-700/50">
-                <!-- Populated dynamically -->
-              </tbody>
-            </table>
+      <div class="bg-slate-900 border border-slate-800 rounded-xl p-4 shadow-sm">
+        <div class="flex items-center justify-between">
+          <span class="text-xs font-medium text-slate-400 uppercase tracking-wider">Ground Truth Split</span>
+          <div class="p-1.5 bg-purple-500/10 text-purple-400 rounded-lg">
+            <i class="fa-solid fa-scale-balanced text-sm"></i>
           </div>
         </div>
+        <div class="mt-2 flex items-baseline gap-2">
+          <span id="metric-human" class="text-sm font-semibold text-emerald-400">0 Human</span>
+          <span class="text-slate-600">/</span>
+          <span id="metric-synth" class="text-sm font-semibold text-rose-400">0 Synthetic</span>
+        </div>
+      </div>
 
+      <div class="bg-slate-900 border border-slate-800 rounded-xl p-4 shadow-sm">
+        <div class="flex items-center justify-between">
+          <span class="text-xs font-medium text-slate-400 uppercase tracking-wider">1. RawNet2 Accuracy</span>
+          <div class="p-1.5 bg-amber-500/10 text-amber-400 rounded-lg">
+            <i class="fa-solid fa-wave-square text-sm"></i>
+          </div>
+        </div>
+        <div class="mt-2 flex items-baseline gap-2">
+          <span id="metric-rawnet-acc" class="text-2xl font-bold text-amber-400">0.0%</span>
+          <span id="metric-rawnet-correct" class="text-xs text-slate-400">(0/0 correct)</span>
+        </div>
+      </div>
+
+      <div class="bg-slate-900 border border-slate-800 rounded-xl p-4 shadow-sm">
+        <div class="flex items-center justify-between">
+          <span class="text-xs font-medium text-slate-400 uppercase tracking-wider">2. AASIST-L Accuracy</span>
+          <div class="p-1.5 bg-emerald-500/10 text-emerald-400 rounded-lg">
+            <i class="fa-solid fa-diagram-project text-sm"></i>
+          </div>
+        </div>
+        <div class="mt-2 flex items-baseline gap-2">
+          <span id="metric-aasist-acc" class="text-2xl font-bold text-emerald-400">0.0%</span>
+          <span id="metric-aasist-correct" class="text-xs text-slate-400">(0/0 correct)</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Main Table Container -->
+    <div class="bg-slate-900 rounded-xl border border-slate-800 shadow-xl overflow-hidden">
+      
+      <!-- Toolbar & Filters -->
+      <div class="p-4 border-b border-slate-800 bg-slate-900/50 flex flex-wrap items-center justify-between gap-3">
+        <div class="flex items-center gap-3 flex-1 min-w-[280px]">
+          <div class="relative w-full max-w-xs">
+            <i class="fa-solid fa-magnifying-glass absolute left-3 top-2.5 text-slate-500 text-xs"></i>
+            <input type="text" id="search-input" oninput="applyFilters()" placeholder="Search Audio ID (e.g. call_0181...)" class="w-full pl-8 pr-3 py-1.5 bg-slate-950 border border-slate-700 rounded-lg text-xs text-white placeholder-slate-500 focus:outline-none focus:border-indigo-500">
+          </div>
+          <select id="filter-gt" onchange="applyFilters()" class="px-2.5 py-1.5 bg-slate-950 border border-slate-700 rounded-lg text-xs text-slate-300 focus:outline-none focus:border-indigo-500">
+            <option value="ALL">All Ground Truths</option>
+            <option value="human">Human (Bonafide)</option>
+            <option value="synthetic">Synthetic (Spoof)</option>
+          </select>
+          <select id="filter-status" onchange="applyFilters()" class="px-2.5 py-1.5 bg-slate-950 border border-slate-700 rounded-lg text-xs text-slate-300 focus:outline-none focus:border-indigo-500">
+            <option value="ALL">All Predictions</option>
+            <option value="BOTH_CORRECT">Both Models Correct</option>
+            <option value="DISAGREEMENT">Models Disagree</option>
+            <option value="BOTH_INCORRECT">Both Models Incorrect</option>
+          </select>
+        </div>
+
+        <div class="flex items-center gap-2">
+          <span id="table-count" class="text-xs text-slate-400 font-mono">Showing 0 of 0 recordings</span>
+        </div>
+      </div>
+
+      <!-- Evaluation Table -->
+      <div class="overflow-x-auto max-h-[680px] overflow-y-auto">
+        <table class="w-full text-left text-xs text-slate-300 border-collapse">
+          <thead class="bg-slate-950/90 backdrop-blur text-slate-400 uppercase font-semibold border-b border-slate-800 sticky top-0 z-20">
+            <tr>
+              <th class="py-3 px-4">Audio ID</th>
+              <th class="py-3 px-4">Listen (Channel 0)</th>
+              <th class="py-3 px-4 text-purple-400">Ground Truth</th>
+              <th class="py-3 px-4 text-amber-400">1. RawNet2 Score</th>
+              <th class="py-3 px-4 text-emerald-400">2. AASIST-L Score</th>
+            </tr>
+          </thead>
+          <tbody id="evaluation-table-body" class="divide-y divide-slate-800/60">
+            <tr>
+              <td colspan="5" class="py-12 text-center text-slate-500">
+                <i class="fa-solid fa-spinner fa-spin text-2xl mb-2 text-indigo-400 block"></i>
+                Loading Channel 0 benchmark data...
+              </td>
+            </tr>
+          </tbody>
+        </table>
       </div>
 
     </div>
+
   </main>
 
   <script>
-    // Fetch and render data
+    let allRecords = [];
+
     async function loadData() {
+      const tbody = document.getElementById('evaluation-table-body');
+      tbody.innerHTML = '<tr><td colspan="5" class="py-12 text-center text-slate-500"><i class="fa-solid fa-spinner fa-spin text-2xl mb-2 text-indigo-400 block"></i>Loading benchmark records...</td></tr>';
+      
       try {
         const res = await fetch('/api/data');
         const data = await res.json();
-        renderDashboard(data);
+        allRecords = data.results || [];
+        updateMetrics(data);
+        applyFilters();
       } catch (err) {
         console.error('Error fetching data:', err);
+        tbody.innerHTML = '<tr><td colspan="5" class="py-12 text-center text-rose-400"><i class="fa-solid fa-circle-exclamation text-2xl mb-2 block"></i>Failed to load evaluation data.</td></tr>';
       }
     }
 
-    // Delete Single Audio
-    async function deleteSingleAudio(filename) {
-      if (!confirm(`Are you sure you want to delete ${filename}?`)) return;
-      try {
-        const res = await fetch(`/api/audio/${encodeURIComponent(filename)}`, {
-          method: 'DELETE'
-        });
-        const data = await res.json();
-        renderDashboard(data);
-      } catch (err) {
-        console.error('Delete failed:', err);
-      }
-    }
-
-    // Delete All Audios
-    document.getElementById('btn-delete-all').addEventListener('click', async () => {
-      if (!confirm('Are you sure you want to delete ALL audio files?')) return;
-      try {
-        const res = await fetch('/api/audios/all', {
-          method: 'DELETE'
-        });
-        const data = await res.json();
-        renderDashboard(data);
-      } catch (err) {
-        console.error('Delete all failed:', err);
-      }
-    });
-
-    // File Upload Handler
-    document.getElementById('upload-form').addEventListener('submit', async (e) => {
-      e.preventDefault();
-      const label = document.getElementById('upload-label').value;
-      const gt = document.getElementById('upload-gt').value;
-      const fileInput = document.getElementById('upload-file');
-      if (!fileInput.files[0]) return;
-
-      const btn = document.getElementById('btn-upload');
+    async function reEvaluate() {
+      const btn = document.getElementById('btn-reeval');
       btn.disabled = true;
-      btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Uploading...';
-
-      const formData = new FormData();
-      formData.append('label', label);
-      formData.append('ground_truth', gt);
-      formData.append('file', fileInput.files[0]);
+      btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Running Models...';
 
       try {
-        const res = await fetch('/api/upload', {
-          method: 'POST',
-          body: formData
-        });
-        if (res.ok) {
-          fileInput.value = '';
-          document.getElementById('upload-label').value = '';
-          const data = await res.json();
-          renderDashboard(data);
-        }
+        const res = await fetch('/api/re-evaluate', { method: 'POST' });
+        const data = await res.json();
+        allRecords = data.results || [];
+        updateMetrics(data);
+        applyFilters();
       } catch (err) {
-        console.error('Upload failed:', err);
+        console.error('Re-evaluation failed:', err);
       } finally {
         btn.disabled = false;
-        btn.innerHTML = '<i class="fa-solid fa-plus"></i> Upload & Add to Pipeline';
+        btn.innerHTML = '<i class="fa-solid fa-bolt"></i> Re-Run Benchmark';
       }
-    });
+    }
 
-    function renderDashboard(data) {
-      const benchmarkTable = document.getElementById('benchmark-table-body');
-      benchmarkTable.innerHTML = '';
+    function updateMetrics(data) {
+      const records = data.results || [];
+      const total = records.length;
+      const humanCount = records.filter(r => r.ground_truth === 'human').length;
+      const synthCount = records.filter(r => r.ground_truth === 'synthetic').length;
 
-      const audios = data.audios || [];
+      const rawnetCorrect = records.filter(r => r.rawnet2_is_correct === true).length;
+      const aasistCorrect = records.filter(r => r.aasistl_is_correct === true).length;
 
-      if (audios.length === 0) {
-        benchmarkTable.innerHTML = '<tr><td colspan="6" class="py-10 text-center text-slate-500"><i class="fa-solid fa-microphone-slash text-2xl mb-2 text-slate-600 block"></i>No data available. Upload an audio file to start benchmarking!</td></tr>';
+      document.getElementById('metric-total').textContent = total;
+      document.getElementById('metric-human').textContent = `${humanCount} Human`;
+      document.getElementById('metric-synth').textContent = `${synthCount} Synthetic`;
+
+      const rAcc = total > 0 ? ((rawnetCorrect / total) * 100).toFixed(1) : '0.0';
+      const aAcc = total > 0 ? ((aasistCorrect / total) * 100).toFixed(1) : '0.0';
+
+      document.getElementById('metric-rawnet-acc').textContent = `${rAcc}%`;
+      document.getElementById('metric-rawnet-correct').textContent = `(${rawnetCorrect}/${total} correct)`;
+
+      document.getElementById('metric-aasist-acc').textContent = `${aAcc}%`;
+      document.getElementById('metric-aasist-correct').textContent = `(${aasistCorrect}/${total} correct)`;
+    }
+
+    function applyFilters() {
+      const query = document.getElementById('search-input').value.trim().toLowerCase();
+      const gtFilter = document.getElementById('filter-gt').value;
+      const statusFilter = document.getElementById('filter-status').value;
+
+      const filtered = allRecords.filter(item => {
+        if (query && !item.audio_id.toLowerCase().includes(query)) return false;
+        if (gtFilter !== 'ALL' && item.ground_truth !== gtFilter) return false;
+        if (statusFilter === 'BOTH_CORRECT' && !(item.rawnet2_is_correct === true && item.aasistl_is_correct === true)) return false;
+        if (statusFilter === 'DISAGREEMENT' && item.rawnet2_prediction === item.aasistl_prediction) return false;
+        if (statusFilter === 'BOTH_INCORRECT' && !(item.rawnet2_is_correct === false && item.aasistl_is_correct === false)) return false;
+        return true;
+      });
+
+      renderTable(filtered);
+    }
+
+    function renderTable(records) {
+      const tbody = document.getElementById('evaluation-table-body');
+      tbody.innerHTML = '';
+
+      document.getElementById('table-count').textContent = `Showing ${records.length} of ${allRecords.length} recordings`;
+
+      if (records.length === 0) {
+        tbody.innerHTML = '<tr><td colspan="5" class="py-12 text-center text-slate-500"><i class="fa-solid fa-filter-circle-xmark text-2xl mb-2 text-slate-600 block"></i>No matching Channel 0 recordings found.</td></tr>';
         return;
       }
 
-      // Render Benchmark Table
-      audios.forEach(item => {
-        const gt = item.ground_truth || 'UNKNOWN';
-        const gtClass = gt === 'REAL_HUMAN' ? 'bg-emerald-500/20 text-emerald-400 border-emerald-500/30' : (gt === 'FAKE_SPOOF' ? 'bg-rose-500/20 text-rose-400 border-rose-500/30' : 'bg-slate-700 text-slate-300 border-slate-600');
-        const gtText = gt === 'REAL_HUMAN' ? 'REAL VOICE' : (gt === 'FAKE_SPOOF' ? 'FAKE / SPOOF' : 'UNKNOWN');
+      records.forEach(item => {
+        const gt = item.ground_truth || 'unknown';
+        const isHuman = (gt === 'human');
+        const gtBadge = isHuman 
+          ? `<span class="px-2.5 py-1 rounded-md text-[11px] font-bold bg-emerald-500/15 text-emerald-400 border border-emerald-500/30 flex items-center gap-1 w-max"><i class="fa-solid fa-user-check text-[10px]"></i> HUMAN</span>`
+          : `<span class="px-2.5 py-1 rounded-md text-[11px] font-bold bg-rose-500/15 text-rose-400 border border-rose-500/30 flex items-center gap-1 w-max"><i class="fa-solid fa-robot text-[10px]"></i> SYNTHETIC</span>`;
 
-        const raw = item.rawnet2 || {};
-        const aas = item.aasist || {};
+        const makeScoreBadge = (score, isReal, isCorrect, latency) => {
+          const predText = isReal ? 'HUMAN' : 'SYNTHETIC';
+          const predColor = isReal 
+            ? 'bg-emerald-500/15 text-emerald-400 border-emerald-500/25' 
+            : 'bg-rose-500/15 text-rose-400 border-rose-500/25';
+          
+          let corrBadge = '';
+          if (isCorrect === true) {
+            corrBadge = '<span class="text-emerald-400 font-bold ml-1 text-xs" title="Matches Ground Truth">✓</span>';
+          } else if (isCorrect === false) {
+            corrBadge = '<span class="text-rose-400 font-bold ml-1 text-xs" title="Incorrect Prediction">✗</span>';
+          }
 
-        const makeModelBadge = (modelData, defaultScore) => {
-          const isReal = modelData.is_real !== undefined 
-            ? modelData.is_real 
-            : (modelData.is_spoof !== undefined ? !modelData.is_spoof : true);
-
-          let realScore = modelData.real_score_pct !== undefined 
-            ? modelData.real_score_pct 
-            : (modelData.real_score_percentage !== undefined 
-                ? modelData.real_score_percentage 
-                : (modelData.spoof_risk_pct !== undefined 
-                    ? (100 - modelData.spoof_risk_pct) 
-                    : defaultScore));
-          realScore = Number(realScore).toFixed(1);
-          const isCorr = modelData.is_correct;
-          const lat = modelData.latency_ms || 0.5;
-
-          const predClass = isReal ? 'bg-emerald-500/10 text-emerald-400 border-emerald-500/20' : 'bg-rose-500/10 text-rose-400 border-rose-500/20';
-          const predTxt = isReal ? 'REAL' : 'SPOOF';
-
-          let corrIcon = '';
-          if (isCorr === true) corrIcon = '<span class="text-emerald-400 font-bold ml-1 text-xs" title="Correct Prediction">✓</span>';
-          else if (isCorr === false) corrIcon = '<span class="text-rose-400 font-bold ml-1 text-xs" title="Incorrect Prediction">✗</span>';
-
-          return `<div class="flex items-center gap-1.5"><span class="px-2 py-0.5 rounded text-[11px] font-bold border ${predClass}">${predTxt} (${realScore}%)${corrIcon}</span> <span class="text-[10px] text-slate-400 font-mono">${lat}ms</span></div>`;
+          return `
+            <div class="flex items-center gap-2">
+              <span class="px-2.5 py-1 rounded-md text-[11px] font-bold border ${predColor}">
+                ${predText} (${Number(score).toFixed(1)}%)${corrBadge}
+              </span>
+              <span class="text-[10px] text-slate-500 font-mono">${latency}ms</span>
+            </div>
+          `;
         };
 
         const tr = document.createElement('tr');
+        tr.className = 'hover:bg-slate-800/40 transition';
         tr.innerHTML = `
-          <td class="py-2.5 px-3 font-semibold text-white">
-            <div>${item.label}</div>
-            <div class="text-[10px] text-slate-500 font-mono">${item.filename} (${item.raw_duration}s)</div>
+          <td class="py-3 px-4 font-semibold text-white">
+            <div class="font-mono text-xs text-indigo-300">${item.audio_id}</div>
+            <div class="text-[10px] text-slate-500 font-mono">${item.duration_s}s duration</div>
           </td>
-          <td class="py-2.5 px-3">
-            <audio controls src="${item.raw_url}?t=${Date.now()}" class="w-36 h-8"></audio>
+          <td class="py-3 px-4">
+            <audio controls src="${item.audio_url}" preload="none"></audio>
           </td>
-          <td class="py-2.5 px-3"><span class="px-2 py-0.5 rounded text-[10px] font-bold border ${gtClass}">${gtText}</span></td>
-          <td class="py-2.5 px-3">${makeModelBadge(raw, 0)}</td>
-          <td class="py-2.5 px-3">${makeModelBadge(aas, 0)}</td>
-          <td class="py-2.5 px-3 text-right">
-            <button onclick="deleteSingleAudio('${item.raw_filename}')" title="Delete audio" class="text-slate-400 hover:text-rose-400 bg-slate-900 hover:bg-rose-500/20 border border-slate-700 hover:border-rose-500/30 p-1.5 rounded transition text-xs">
-              <i class="fa-solid fa-trash-can"></i>
-            </button>
+          <td class="py-3 px-4">
+            ${gtBadge}
+          </td>
+          <td class="py-3 px-4">
+            ${makeScoreBadge(item.rawnet2_score, item.rawnet2_is_real, item.rawnet2_is_correct, item.rawnet2_latency_ms)}
+          </td>
+          <td class="py-3 px-4">
+            ${makeScoreBadge(item.aasistl_score, item.aasistl_is_real, item.aasistl_is_correct, item.aasistl_latency_ms)}
           </td>
         `;
-        benchmarkTable.appendChild(tr);
+        tbody.appendChild(tr);
       });
     }
 
-    // Initial load on page ready
+    // Initial load
     window.addEventListener('DOMContentLoaded', loadData);
   </script>
 

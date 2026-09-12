@@ -25,12 +25,11 @@ RUN pip install --no-cache-dir --upgrade pip && \
     pip install --no-cache-dir -r requirements.txt
 
 # Create runtime storage directories
-RUN mkdir -p demo_real_audios/processed_output sample_packs demo_data .cache
+RUN mkdir -p .cache Data
 
-# Copy application source code, web assets, and bundled sample packs
+# Copy application source code and web assets
 COPY src/ ./src/
 COPY web/ ./web/
-COPY sample_packs/ ./sample_packs/
 COPY app.py benchmark.py ./
 
 # Expose port
