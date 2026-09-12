@@ -1,57 +1,96 @@
-# 🎙️ Altur Voice Biometrics & Anti-Spoofing Engine
+# 🎙️ Altur Voice Anti-Spoofing & Deepfake Detection Engine
 
 [![FastAPI](https://img.shields.io/badge/FastAPI-0.115-009688?logo=fastapi&logoColor=white)](https://fastapi.tiangolo.com/)
 [![PyTorch](https://img.shields.io/badge/PyTorch-CPU-EE4C2C?logo=pytorch&logoColor=white)](https://pytorch.org/)
 [![Docker](https://img.shields.io/badge/Docker-Compose-2496ED?logo=docker&logoColor=white)](https://www.docker.com/)
 [![HackMTY](https://img.shields.io/badge/HackMTY-Altur%20Challenge-blueviolet)](https://hackmty.com/)
 
-An end-to-end **Voice Biometrics (Speaker Verification)** and **Deepfake / AI Voice Anti-Spoofing Detection** platform developed for the **Altur Banking Challenge at HackMTY**.
+An end-to-end **AI Voice Anti-Spoofing & Deepfake Detection Platform** developed for the **Altur Banking Challenge at HackMTY**.
 
-The system features real-time audio signal processing (ASP), multi-model anti-spoofing benchmarking (DSP Baseline vs. RawNet2 vs. AASIST-L), and an interactive web dashboard with live hyperparameter tuning and ground-truth validation.
+The platform ingests 2-party call recordings, extracts Channel 0 (Agent 0 - evaluation target) using turn metadata, and benchmarks deep learning models (`RawNet2` and `AASIST-L`) against ground-truth human vs. synthetic speech labels.
 
 ---
 
-## 🚀 Docker Quickstart
+## ⚡ 1-Command Dataset Setup
 
-The entire project is containerized with Docker and Docker Compose. All dependencies (Python 3.12, PyTorch CPU, FFmpeg, libsndfile) and runtime directories are handled automatically inside the container.
-
-### 1. Build and Run
+If you have raw data in `Data/` (with loose `.wav` recordings, `manifest.csv`, and `turns/*.json`), organize and slice the full dataset in one command:
 
 ```bash
-docker compose up --build
+python src/setup_dataset.py
 ```
 
-### 2. Open the Dashboard
+### What `setup_dataset.py` does automatically:
+1. **Splits Manifest**: Generates `train_manifest.csv` (282 calls) and `test_manifest.csv` (71 calls).
+2. **Organizes Audios & Turns**: Moves loose recordings and JSON files into `Data/audio/train/`, `Data/audio/test/`, `Data/turns/train/`, and `Data/turns/test/`.
+3. **Channel Separation**: Slices stereo calls into isolated Agent 0 audio tracks inside `Data/separated_agents/train/agent_0/` and `Data/separated_agents/test/agent_0/`.
 
-Open your browser and navigate to:
+---
+
+## 📦 Large File Management (Git LFS Instructions)
+
+To track `.wav` audio files and `.pth` model checkpoints in Git without bloating repository size:
+
+### 1. Install & Initialize Git LFS
+```bash
+# Run once on your system
+git lfs install
+```
+
+### 2. Track Audio Files & Weights
+```bash
+git lfs track "*.wav"
+git lfs track "*.pth"
+git add .gitattributes
+git commit -m "Track audio and model checkpoints with Git LFS"
+```
+
+### 3. Cloning or Pulling with Git LFS
+When team members clone or pull the repository:
+```bash
+git clone https://github.com/katyazano/HackMty-Altur.git
+git lfs pull
+```
+*(Git LFS will automatically place all audio files into their exact target folders).*
+
+---
+
+## 🚀 Running with Docker
+
+### 1. Build and Run
+```bash
+docker compose up --build -d
+```
+
+### 2. Open the Interactive Benchmark Dashboard
+Open your browser to:
 ```
 http://localhost:8000
 ```
 
-### 3. Stop the Container
+---
 
-```bash
-docker compose down
+## 🧠 Training & Benchmarking Models
+
+### Train Any Model in 1 Line of Code ([`src/trainer.py`](file:///c:/Users/kathe/Desktop/HackMTY/src/trainer.py))
+```python
+from src.trainer import train_model
+from src.models.aasist import AASIST
+
+# Train AASIST model with in-memory dataset caching
+model = AASIST()
+results = train_model(model=model, epochs=15, batch_size=16)
 ```
 
----
+**Terminal CLI Training**:
+```bash
+python src/trainer.py --model aasist --epochs 15
+python src/trainer.py --model rawnet2 --epochs 15
+```
 
-## 🔬 Anti-Spoofing Models Benchmark
-
-| Model | Architecture | Parameters | CPU Latency | Key Strengths |
-| :--- | :--- | :--- | :--- | :--- |
-| **DSP Baseline** | Rule-based Signal Processing | 0 (Rule-based) | < 5 ms | Ultra-fast, catches basic spectral anomalies. |
-| **RawNet2** | Raw Waveform (SincNet + ResNet-GRU) | ~10.3M | ~1,200 ms | Time-domain analysis without spectrogram quantization loss. |
-| **AASIST-L** | Spectro-Temporal Graph Attention | **~47.6K** | **~80 ms** | **Lightweight & fast SOTA**, captures subtle synthetic vocoder artifacts. |
-
----
-
-## 🖥️ Web Dashboard Features
-
-- **Live ASP Controls:** Sliders for VAD Threshold (`top_db`), Spectral Noise Reduction (`prop_decrease`), Bandpass Filtering (`lowcut`/`highcut`), and Speaker Similarity Threshold.
-- **Dual Audio Player:** Compare Original Raw Audio (🎧) vs. Cleaned Output (🔊) in real-time.
-- **1-Click ASVspoof Benchmark:** Load verified real human and synthetic deepfake samples with ground-truth accuracy indicators (`✓ Correct` / `✗ Miss`).
-- **Audio Management:** Upload custom recordings, delete individual tracks, or clear the entire library.
+### Benchmark Any Model on Test Dataset ([`src/evaluator.py`](file:///c:/Users/kathe/Desktop/HackMTY/src/evaluator.py))
+```bash
+python src/evaluator.py --model aasist --weights weights/aasist_best.pth
+```
 
 ---
 
@@ -59,33 +98,24 @@ docker compose down
 
 ```
 HackMTY/
-├── app.py                 # FastAPI backend & web server
-├── benchmark.py           # CLI side-by-side benchmark runner
-├── Dockerfile             # Multi-stage Python 3.12 slim container
-├── docker-compose.yml     # Orchestration with live volume mounts
-├── requirements.txt       # Python dependencies
+├── app.py                     # FastAPI server & benchmark API
+├── Dockerfile                 # Multi-stage Python 3.12 slim container
+├── docker-compose.yml         # Container orchestration with Data volume mount
+├── requirements.txt           # Python dependencies
 ├── src/
-│   ├── audio_processor.py # ASP pipeline (Denoising, Bandpass, VAD, MFCC/LFCC)
-│   ├── biometrics.py      # Voice biometrics & DSP anti-spoofing engine
+│   ├── setup_dataset.py       # Master 1-command dataset setup script
+│   ├── separate_agents.py     # Agent turn extraction (Channel 0 / Channel 1)
+│   ├── split_audio_files.py   # Train / Test audio set organizer
+│   ├── split_turns_files.py   # Train / Test turns metadata organizer
+│   ├── split_manifest.py      # Train / Test manifest splitter
+│   ├── evaluate_channel0.py   # Test dataset benchmark pipeline
+│   ├── trainer.py             # Universal PyTorch model trainer with RAM caching
+│   ├── evaluator.py           # Universal PyTorch model benchmark evaluator
+│   ├── audio_processor.py     # ASP pipeline (Denoising, Bandpass, VAD)
 │   └── models/
-│       ├── sincnet.py     # Learnable SincNet raw filterbanks
-│       ├── rawnet2.py     # RawNet2 deepfake detector
-│       └── aasist.py      # AASIST-L Graph Attention Network
+│       ├── sincnet.py         # Learnable SincNet raw filterbank frontend
+│       ├── rawnet2.py         # RawNet2 raw waveform deepfake detector
+│       └── aasist.py          # AASIST-L Graph Attention Network
 └── web/
-    └── index.html         # Interactive web interface
+    └── index.html             # Interactive Channel 0 benchmark web interface
 ```
-
----
-
-## 🔌 API Summary
-
-| Method | Endpoint | Description |
-| :--- | :--- | :--- |
-| `GET` | `/` | Serves the web control center |
-| `POST` | `/api/process` | Re-evaluates all audios with updated ASP parameters |
-| `POST` | `/api/upload` | Uploads a new audio sample |
-| `POST` | `/api/load-sample-pack` | Ingests the benchmark audio suite |
-| `DELETE` | `/api/audios/{key}` | Deletes a single audio recording |
-| `DELETE` | `/api/audios-all` | Removes all audio recordings |
-| `GET` | `/audio/raw/{file}` | Streams the original untouched audio |
-| `GET` | `/audio/processed/{file}` | Streams the cleaned & filtered audio |
