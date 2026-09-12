@@ -24,7 +24,8 @@ from src.evaluate_channel0 import evaluate_channel0_dataset
 app = FastAPI(title="Altur Banking - Voice Anti-Spoofing Benchmark")
 
 BASE_DIR = os.path.dirname(__file__)
-AGENT0_DIR = os.path.join(BASE_DIR, "Data", "separated_agents", "train", "agent_0")
+AGENT0_DIR = os.path.join(BASE_DIR, "Data", "separated_agents", "test", "agent_0")
+AGENT0_TRAIN_DIR = os.path.join(BASE_DIR, "Data", "separated_agents", "train", "agent_0")
 MANIFEST_PATH = os.path.join(BASE_DIR, "Data", "manifest.csv")
 EVAL_RESULTS_JSON = os.path.join(BASE_DIR, "Data", "channel0_evaluation_results.json")
 WEB_DIR = os.path.join(BASE_DIR, "web")
@@ -85,6 +86,8 @@ async def serve_agent0_audio(filename: str):
     """
     safe_name = os.path.basename(filename)
     audio_path = os.path.join(AGENT0_DIR, safe_name)
+    if not os.path.exists(audio_path):
+        audio_path = os.path.join(AGENT0_TRAIN_DIR, safe_name)
     if not os.path.exists(audio_path):
         raise HTTPException(status_code=404, detail="Audio file not found")
     return FileResponse(audio_path, media_type="audio/wav")

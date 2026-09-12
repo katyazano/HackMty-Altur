@@ -45,7 +45,7 @@ def evaluate_channel0_dataset(
     max_workers: int = 8
 ) -> List[dict]:
     if agent0_dir is None:
-        agent0_dir = str(PROJECT_ROOT / "Data" / "separated_agents" / "train" / "agent_0")
+        agent0_dir = str(PROJECT_ROOT / "Data" / "separated_agents" / "test" / "agent_0")
     if manifest_path is None:
         manifest_path = str(PROJECT_ROOT / "Data" / "manifest.csv")
     if output_json is None:
@@ -196,4 +196,20 @@ def evaluate_channel0_dataset(
     return results
 
 if __name__ == "__main__":
-    evaluate_channel0_dataset()
+    import argparse
+    parser = argparse.ArgumentParser(description="Evaluate Channel 0 audios against anti-spoofing deep learning models.")
+    parser.add_argument("--split", type=str, default="test", choices=["test", "train"], help="Dataset split to evaluate ('test' or 'train')")
+    parser.add_argument("--agent0_dir", type=str, default=None, help="Directory containing Agent 0 audio files")
+    parser.add_argument("--manifest", type=str, default=None, help="Path to manifest.csv")
+    parser.add_argument("--workers", type=int, default=8, help="Number of worker threads")
+    args = parser.parse_args()
+
+    agent0_dir = args.agent0_dir
+    if agent0_dir is None:
+        agent0_dir = str(PROJECT_ROOT / "Data" / "separated_agents" / args.split / "agent_0")
+
+    evaluate_channel0_dataset(
+        agent0_dir=agent0_dir,
+        manifest_path=args.manifest,
+        max_workers=args.workers
+    )
