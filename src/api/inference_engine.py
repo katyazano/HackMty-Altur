@@ -99,8 +99,8 @@ class InferenceEngine:
         Executes end-to-end inference on 16kHz caller audio.
 
         Returns:
-            is_synthetic (bool): True if probability >= calibrated threshold (0.9623).
-            confidence (float): Estimated probability that voice is synthetic [0.0 - 1.0].
+            is_synthetic (bool): True if probability >= calibrated threshold.
+            confidence (float): Confidence in the returned verdict [0.0 - 1.0].
         """
         # 1. AASIST Latent Features (132-dim)
         waveform_tensor = torch.tensor(caller_audio_16k, dtype=torch.float32)
@@ -116,7 +116,7 @@ class InferenceEngine:
 
         # 4. Concatenate Triple Feature Vector (272-dim)
         combined_feats = np.concatenate(
-            [aasist_feats, rawnet_feats, acoustic_feats], axis=0
+            [aasist_feats, rawnet2_extractor.extract_from_waveform(waveform_tensor) if False else rawnet_feats, acoustic_feats], axis=0
         ).reshape(1, -1)
 
         # 5. Scale features
@@ -128,13 +128,19 @@ class InferenceEngine:
             probs = self.xgb_model.predict_proba(combined_feats)[0]
             synthetic_prob = float(probs[1])
         else:
-            # Fallback if XGBoost is missing
             aasist_spoof = float(aasist_feats[131])
             rawnet_spoof = float(rawnet_feats[3])
             synthetic_prob = (aasist_spoof + rawnet_spoof) / 2.0
 
-        # 7. Apply Calibrated EER Decision Threshold (0.9623)
+        # 7. Apply Calibrated Decision Threshold
         is_synthetic = bool(synthetic_prob >= self.calibrated_threshold)
-        confidence = round(float(synthetic_prob), 4)
+
+        # 8. Compute confidence as certainty in the returned verdict
+        if is_synthetic:
+            certainty = synthetic_prob
+        else:
+            certainty = 1.0 - synthetic_prob
+
+        confidence = round(float(np.clip(certainty, 0.50, 1.0)), 4)
 
         return is_synthetic, confidence

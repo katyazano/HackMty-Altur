@@ -13,7 +13,7 @@ class Settings(BaseModel):
     port: int = int(os.getenv("PORT", "8000"))
 
     # Calibrated decision threshold (Equal Error Rate operating point)
-    calibrated_threshold: float = float(os.getenv("CALIBRATED_THRESHOLD", "0.9623"))
+    calibrated_threshold: float = float(os.getenv("CALIBRATED_THRESHOLD", "0.35"))
 
     # Audio specifications
     target_sample_rate: int = int(os.getenv("TARGET_SAMPLE_RATE", "16000"))

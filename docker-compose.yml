@@ -5,12 +5,12 @@ services:
       dockerfile: Dockerfile
     container_name: altur_voice_anti_spoofing
     ports:
-      - "${PORT:-8080}:8000"
+      - "${PORT:-8000}:8000"
     environment:
       - PORT=8000
       - HOST=0.0.0.0
       - ENVIRONMENT=production
-      - CALIBRATED_THRESHOLD=0.9623
+      - CALIBRATED_THRESHOLD=0.35
       - TARGET_SAMPLE_RATE=16000
       - TELEPHONY_SAMPLE_RATE=8000
       - MAX_AUDIO_SIZE_MB=15
@@ -25,6 +25,7 @@ services:
       - ./weights:/app/weights
       - ./web:/app/web
       - ./Data:/app/Data
+      - ./scripts:/app/scripts
       - ./app.py:/app/app.py
     restart: unless-stopped
     healthcheck:
