@@ -37,7 +37,7 @@ python -m venv .venv
 .venv\Scripts\activate        # Windows (usar `source .venv/bin/activate` en Linux/Mac)
 
 # 2) Dependencias
-pip install -r Requirements.TXT
+pip install -r requirements.txt
 
 # 3) Levantar la API (desde la raíz del repo)
 uvicorn src.api.main:app --host 0.0.0.0 --port 8000
@@ -208,7 +208,7 @@ primera petición del juez no la sufra.
 ```bash
 python -m venv .venv
 .venv\Scripts\activate        # Windows (usar `source .venv/bin/activate` en Linux/Mac)
-pip install -r Requirements.TXT
+pip install -r requirements.txt
 ```
 
 El dataset de audio (`altur-challenge-audio.zip`, ~640 MB) **no está en git**

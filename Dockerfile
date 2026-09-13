@@ -11,8 +11,8 @@ WORKDIR /app
 RUN pip install --no-cache-dir torch --index-url https://download.pytorch.org/whl/cpu
 
 # 2. Install lean application dependencies
-COPY Requirements.TXT .
-RUN pip install --no-cache-dir -r Requirements.TXT
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
 
 # 3. Copy application code and model artifacts
 COPY . .
