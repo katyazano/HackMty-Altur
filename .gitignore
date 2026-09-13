@@ -1,0 +1,41 @@
+# Entorno virtual
+.venv/
+venv/
+ENV/
+env/
+
+# Python
+__pycache__/
+*.py[cod]
+*.so
+build/
+dist/
+*.egg-info/
+
+# IDE
+.vscode/
+.idea/
+.DS_Store
+
+# Dataset de audio (pesado, no se sube)
+audio/
+Data/
+*.wav
+*.mp3
+*.m4a
+*.ogg
+*.zip
+
+# Repo clonado del reto (tiene su propio git, no se anida)
+repo/
+
+# Cache de features (se regenera con train.py / train_neural.py)
+features_cache_v2.npz
+neural_cache.npz
+val_scores.npz
+
+# Archivos temporales de prueba
+audio_prueba.wav
+test_download.txt
+*.log
+tmp/

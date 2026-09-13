@@ -1,0 +1,6 @@
+{
+  "val_auc": 1.0,
+  "val_auc_degraded": 1.0,
+  "val_eer_degraded": 0.0,
+  "params": 154321
+}
