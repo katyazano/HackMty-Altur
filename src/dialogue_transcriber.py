@@ -35,9 +35,8 @@ class ConversationalTurnTranscriber:
             from faster_whisper import WhisperModel
             self._asr_engine = WhisperModel(self.asr_model_size, device=self.device, compute_type="int8", cpu_threads=4)
             self._asr_type = "faster_whisper"
-            print(f"✓ Loaded faster-whisper ({self.asr_model_size}) on {self.device}")
             return
-        except ImportError:
+        except Exception:
             pass
 
         # 2. Try standard OpenAI Whisper
@@ -45,9 +44,8 @@ class ConversationalTurnTranscriber:
             import whisper
             self._asr_engine = whisper.load_model(self.asr_model_size, device=self.device)
             self._asr_type = "openai_whisper"
-            print(f"✓ Loaded openai-whisper ({self.asr_model_size}) on {self.device}")
             return
-        except ImportError:
+        except Exception:
             pass
 
         # 3. Try HuggingFace Transformers pipeline
@@ -59,12 +57,10 @@ class ConversationalTurnTranscriber:
                 device=self.device
             )
             self._asr_type = "transformers"
-            print(f"✓ Loaded HuggingFace transformers pipeline (whisper-{self.asr_model_size})")
             return
-        except ImportError:
+        except Exception:
             pass
 
-        print("⚠️ No ASR engine installed (faster-whisper, whisper, or transformers). Install with: pip install faster-whisper")
         self._asr_type = None
 
     def transcribe_audio_segment(self, audio_16k: np.ndarray) -> str:
@@ -243,15 +239,86 @@ class ConversationalTurnTranscriber:
             print(f"[{t['start']:05.1f}s - {t['end']:05.1f}s] {prefix}: {text}")
             transcript_dialogue.append(t)
 
-        print("-" * 80)
-
         return {
             "call_id": Path(audio_path).stem,
             "total_duration_s": round(total_duration, 2),
+            "is_stereo": (data.ndim == 2 and data.shape[1] >= 2),
             "total_turns": len(transcript_dialogue),
             "dialogue": transcript_dialogue,
-            "caller_transcript": " ".join(caller_full_text).strip(),
-            "agent_transcript": " ".join(agent_full_text).strip()
+            "caller_transcript": " ".join([t for t in caller_full_text if t]).strip(),
+            "agent_transcript": " ".join([t for t in agent_full_text if t]).strip()
+        }
+
+    def process_audio_bytes(
+        self,
+        wav_bytes: bytes,
+        call_id: str = "uploaded_call"
+    ) -> Dict[str, Any]:
+        """
+        In-memory processing: takes raw WAV bytes, segments into turns for Channel 0 (Caller)
+        and Channel 1 (Agent), and transcribes each turn.
+        """
+        import io
+        bio = io.BytesIO(wav_bytes)
+        data, sr = sf.read(bio, dtype="float32")
+        total_duration = len(data) / sr
+
+        # Resample full audio to 16kHz for ASR
+        if sr != 16000:
+            import librosa
+            if data.ndim == 2:
+                ch0_16k = librosa.resample(data[:, 0], orig_sr=sr, target_sr=16000)
+                ch1_16k = librosa.resample(data[:, 1], orig_sr=sr, target_sr=16000)
+                data_16k = np.stack([ch0_16k, ch1_16k], axis=-1)
+            else:
+                data_16k = librosa.resample(data, orig_sr=sr, target_sr=16000)
+            work_sr = 16000
+        else:
+            data_16k = data
+            work_sr = sr
+
+        # 1. Identify Speaker Turns
+        turns = self.extract_turns_from_audio(data, sr=sr)
+
+        # 2. Slice and Transcribe each turn
+        transcript_dialogue = []
+        caller_full_text = []
+        agent_full_text = []
+
+        for idx, t in enumerate(turns, 1):
+            ch = t["channel"]
+            start_idx = int(t["start"] * work_sr)
+            end_idx = int(t["end"] * work_sr)
+
+            if end_idx <= start_idx:
+                continue
+
+            if data_16k.ndim == 2:
+                segment_audio = data_16k[start_idx:end_idx, ch]
+            else:
+                segment_audio = data_16k[start_idx:end_idx]
+
+            # Transcribe
+            text = self.transcribe_audio_segment(segment_audio) if self._asr_engine else ""
+            t["text"] = text
+            t["role"] = "caller" if ch == 0 else "agent"
+            t["speaker_name"] = "Caller (Customer)" if ch == 0 else "Bank Representative"
+
+            if ch == 0:
+                caller_full_text.append(text)
+            else:
+                agent_full_text.append(text)
+
+            transcript_dialogue.append(t)
+
+        return {
+            "call_id": call_id,
+            "total_duration_s": round(total_duration, 2),
+            "is_stereo": (data.ndim == 2 and data.shape[1] >= 2),
+            "total_turns": len(transcript_dialogue),
+            "dialogue": transcript_dialogue,
+            "caller_transcript": " ".join([t for t in caller_full_text if t]).strip(),
+            "agent_transcript": " ".join([t for t in agent_full_text if t]).strip()
         }
 
 

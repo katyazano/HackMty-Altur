@@ -198,6 +198,49 @@ async def detect_synthetic_voice(
     )
 
 
+def get_dialogue_transcriber():
+    """Helper to lazily initialize ConversationalTurnTranscriber."""
+    if not hasattr(app.state, "transcriber") or app.state.transcriber is None:
+        from src.dialogue_transcriber import ConversationalTurnTranscriber
+        app.state.transcriber = ConversationalTurnTranscriber(asr_model_size="tiny", device="cpu")
+    return app.state.transcriber
+
+
+@app.post(
+    "/api/dialogue",
+    summary="Transcribe 2-party stereo conversation turns (Channel 0 = Caller vs Channel 1 = Agent)",
+    tags=["UI Dialogue"]
+)
+async def transcribe_dialogue_turns(request: DetectRequest):
+    """
+    Web UI helper endpoint: Takes stereo call audio, isolates Channel 0 and Channel 1,
+    detects speaking intervals for each party, and produces chronological conversation turns.
+    """
+    call_id = request.call_id or f"call_{uuid.uuid4().hex[:12]}"
+    try:
+        _, raw_wav_bytes, orig_sr, channels = decode_and_preprocess_audio(
+            base64_audio_str=request.audio,
+            target_sr=settings.target_sample_rate
+        )
+    except Exception as e:
+        raise HTTPException(status_code=400, detail=f"Invalid audio: {e}")
+
+    try:
+        transcriber = get_dialogue_transcriber()
+        result = transcriber.process_audio_bytes(raw_wav_bytes, call_id=call_id)
+        return JSONResponse(content=result)
+    except Exception as err:
+        logger.error(f"Dialogue transcription error for {call_id}: {err}", exc_info=True)
+        return JSONResponse(content={
+            "call_id": call_id,
+            "total_duration_s": 0.0,
+            "is_stereo": False,
+            "total_turns": 0,
+            "dialogue": [],
+            "error": str(err)
+        })
+
+
 if __name__ == "__main__":
     import uvicorn
     uvicorn.run(

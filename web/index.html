@@ -261,6 +261,45 @@
           </div>
         </div>
 
+        <!-- Dynamic Multi-Channel Conversation Card (Only shown for Web Uploads) -->
+        <div id="dialogue-card" class="hidden glass-card rounded-2xl p-5 space-y-4 shadow-xl border border-indigo-500/30 transition-all">
+          <div class="flex items-center justify-between border-b border-slate-800 pb-3">
+            <div class="flex items-center gap-2.5">
+              <div class="h-8 w-8 rounded-xl bg-indigo-500/20 text-indigo-400 flex items-center justify-center text-sm">
+                <i class="fa-solid fa-comments"></i>
+              </div>
+              <div>
+                <h3 class="text-sm font-bold text-slate-200 flex items-center gap-2">
+                  Telephony Dialogue Stream
+                  <span class="text-[10px] px-2 py-0.5 rounded bg-indigo-500/20 text-indigo-300 font-semibold border border-indigo-500/30">STEREO DIARIZED</span>
+                </h3>
+                <p class="text-[11px] text-slate-400">Separated Channel 0 (Caller) vs Channel 1 (Bank Agent)</p>
+              </div>
+            </div>
+            <div id="dialogue-channel-badge" class="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-slate-800 text-[11px] font-mono text-slate-300 border border-slate-700">
+              <span class="h-2 w-2 rounded-full bg-emerald-400 animate-pulse"></span>
+              <span id="dialogue-turns-count">0 turns</span>
+            </div>
+          </div>
+
+          <!-- Loading state for dialogue -->
+          <div id="dialogue-loading" class="hidden py-8 text-center space-y-3">
+            <div class="inline-block h-8 w-8 rounded-full border-2 border-indigo-500/20 border-t-indigo-400 animate-spin"></div>
+            <p class="text-xs text-slate-400 font-mono">Diarizing channels & transcribing conversational turns...</p>
+          </div>
+
+          <!-- Conversation Chat Feed -->
+          <div id="dialogue-feed" class="space-y-3.5 max-h-[380px] overflow-y-auto pr-1">
+            <!-- Dynamic turns injected via JS -->
+          </div>
+
+          <!-- Empty state when no turns found -->
+          <div id="dialogue-empty" class="hidden py-6 text-center text-xs text-slate-500">
+            <i class="fa-regular fa-comment-dots text-2xl mb-2 block text-slate-600"></i>
+            No active conversational speech turns detected in this audio file.
+          </div>
+        </div>
+
       </div>
 
       <!-- RIGHT COLUMN: Real-Time Detection Results (5 Cols) -->
@@ -373,6 +412,7 @@
     let currentAudioBytes = null;
     let currentBase64 = null;
     let currentCallId = null;
+    let currentInputSource = 'upload'; // 'upload' | 'presets' | 'mic'
     let audioContext = null;
     let audioBuffer = null;
     let audioSourceNode = null;
@@ -390,9 +430,15 @@
 
     // Switch Input Source Tabs
     function switchTab(tab) {
+      currentInputSource = tab;
       document.getElementById('panel-upload').classList.toggle('hidden', tab !== 'upload');
       document.getElementById('panel-presets').classList.toggle('hidden', tab !== 'presets');
       document.getElementById('panel-mic').classList.toggle('hidden', tab !== 'mic');
+
+      // Only show dialogue card if tab is 'upload'
+      if (tab !== 'upload') {
+        document.getElementById('dialogue-card').classList.add('hidden');
+      }
 
       const btnUp = document.getElementById('tab-upload');
       const btnPre = document.getElementById('tab-presets');
@@ -411,12 +457,14 @@
       e.preventDefault();
       dropZone.classList.remove('border-indigo-500', 'bg-slate-900/80');
       if (e.dataTransfer.files.length > 0) {
+        currentInputSource = 'upload';
         processRawFile(e.dataTransfer.files[0]);
       }
     });
 
     function handleFileSelect(e) {
       if (e.target.files.length > 0) {
+        currentInputSource = 'upload';
         processRawFile(e.target.files[0]);
       }
     }
@@ -443,6 +491,8 @@
 
     // Load Sample Preset Call
     async function loadSamplePreset(callId, expectedLabel) {
+      currentInputSource = 'presets';
+      document.getElementById('dialogue-card').classList.add('hidden');
       document.getElementById('loaded-file-name').textContent = `${callId}.wav (${expectedLabel})`;
       currentCallId = callId;
       try {
@@ -577,6 +627,8 @@
 
           mediaRecorder.ondataavailable = (e) => { if (e.data.size > 0) audioChunks.push(e.data); };
           mediaRecorder.onstop = async () => {
+            currentInputSource = 'mic';
+            document.getElementById('dialogue-card').classList.add('hidden');
             const blob = new Blob(audioChunks, { type: 'audio/wav' });
             processRawFile(new File([blob], "mic_recording.wav", { type: "audio/wav" }));
           };
@@ -603,7 +655,7 @@
       }
     }
 
-    // Run Anti-Spoofing Analysis via POST /detect
+    // Run Anti-Spoofing Analysis via POST /detect (and Dialogue extraction if uploaded file)
     async function analyzeLoadedAudio() {
       if (!currentBase64) return;
 
@@ -617,9 +669,25 @@
       viewLoading.classList.remove('hidden');
       btnAnalyze.disabled = true;
 
+      const isUpload = (currentInputSource === 'upload');
+      const dialogueCard = document.getElementById('dialogue-card');
+      const dialogueLoading = document.getElementById('dialogue-loading');
+      const dialogueFeed = document.getElementById('dialogue-feed');
+      const dialogueEmpty = document.getElementById('dialogue-empty');
+
+      if (isUpload) {
+        dialogueCard.classList.remove('hidden');
+        dialogueLoading.classList.remove('hidden');
+        dialogueFeed.classList.add('hidden');
+        dialogueEmpty.classList.add('hidden');
+      } else {
+        dialogueCard.classList.add('hidden');
+      }
+
       const t0 = performance.now();
 
       try {
+        // 1. Run official Anti-Spoofing Detection
         const response = await fetch('/detect', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
@@ -638,13 +706,126 @@
         const data = await response.json();
         renderResult(data, elapsedMs);
 
+        // 2. ONLY IF file was uploaded from web: fetch and render dialogue conversation turns
+        if (isUpload) {
+          try {
+            const dialRes = await fetch('/api/dialogue', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({
+                audio: currentBase64,
+                call_id: currentCallId || `call_${Date.now()}`
+              })
+            });
+            if (dialRes.ok) {
+              const dialData = await dialRes.json();
+              renderDialogueTurns(dialData, data.is_synthetic);
+            } else {
+              dialogueLoading.classList.add('hidden');
+              dialogueEmpty.classList.remove('hidden');
+            }
+          } catch (dialErr) {
+            console.warn("Dialogue fetch error:", dialErr);
+            dialogueLoading.classList.add('hidden');
+            dialogueEmpty.classList.remove('hidden');
+          }
+        }
+
       } catch (err) {
         alert("Detection Error: " + err.message);
         viewLoading.classList.add('hidden');
         viewIdle.classList.remove('hidden');
+        if (isUpload) dialogueCard.classList.add('hidden');
       } finally {
         btnAnalyze.disabled = false;
       }
+    }
+
+    // Render Conversation Dialogue Turns
+    function renderDialogueTurns(data, isSynth) {
+      const dialogueLoading = document.getElementById('dialogue-loading');
+      const dialogueFeed = document.getElementById('dialogue-feed');
+      const dialogueEmpty = document.getElementById('dialogue-empty');
+      const turnsCount = document.getElementById('dialogue-turns-count');
+
+      dialogueLoading.classList.add('hidden');
+      dialogueFeed.innerHTML = '';
+
+      const turns = data.dialogue || [];
+      turnsCount.textContent = `${turns.length} turn${turns.length === 1 ? '' : 's'}`;
+
+      if (turns.length === 0) {
+        dialogueFeed.classList.add('hidden');
+        dialogueEmpty.classList.remove('hidden');
+        return;
+      }
+
+      dialogueEmpty.classList.add('hidden');
+      dialogueFeed.classList.remove('hidden');
+
+      turns.forEach((turn) => {
+        const isCaller = (turn.channel === 0);
+        const startStr = formatTime(turn.start);
+        const endStr = formatTime(turn.end);
+        const text = turn.text && turn.text.trim().length > 0 ? turn.text : '[Speech detected - acoustic energy burst]';
+
+        const turnDiv = document.createElement('div');
+
+        if (isCaller) {
+          // Caller message (Right aligned)
+          const badgeColor = isSynth 
+            ? 'bg-rose-500/20 text-rose-300 border-rose-500/30' 
+            : 'bg-emerald-500/20 text-emerald-300 border-emerald-500/30';
+          const bubbleBorder = isSynth 
+            ? 'border-rose-500/40 bg-rose-950/30 text-rose-100' 
+            : 'border-emerald-500/40 bg-emerald-950/30 text-emerald-100';
+          const statusIcon = isSynth ? 'fa-triangle-exclamation text-rose-400' : 'fa-check text-emerald-400';
+          const statusLabel = isSynth ? 'AI Spoof' : 'Human';
+
+          turnDiv.className = 'flex items-start gap-2.5 justify-end ml-6';
+          turnDiv.innerHTML = `
+            <div class="space-y-1 max-w-[85%] text-right">
+              <div class="flex items-center justify-end gap-2 text-[10px]">
+                <span class="font-mono text-slate-500 bg-slate-900 px-1.5 py-0.5 rounded border border-slate-800">Ch 0 • ${startStr} - ${endStr}</span>
+                <span class="font-bold text-slate-300 flex items-center gap-1">Caller (User)</span>
+                <span class="px-1.5 py-0.5 rounded-full border text-[9px] font-semibold flex items-center gap-1 ${badgeColor}">
+                  <i class="fa-solid ${statusIcon}"></i> ${statusLabel}
+                </span>
+              </div>
+              <div class="p-3 rounded-2xl rounded-tr-none border ${bubbleBorder} text-xs shadow-md leading-relaxed text-left">
+                ${escapeHtml(text)}
+              </div>
+            </div>
+            <div class="h-8 w-8 rounded-xl bg-slate-800 border ${isSynth ? 'border-rose-500/40 text-rose-400' : 'border-emerald-500/40 text-emerald-400'} flex items-center justify-center shrink-0 text-xs shadow">
+              <i class="fa-solid fa-user"></i>
+            </div>
+          `;
+        } else {
+          // Bank Agent message (Left aligned)
+          turnDiv.className = 'flex items-start gap-2.5 justify-start mr-6';
+          turnDiv.innerHTML = `
+            <div class="h-8 w-8 rounded-xl bg-slate-800 border border-slate-700 text-indigo-400 flex items-center justify-center shrink-0 text-xs shadow">
+              <i class="fa-solid fa-headset"></i>
+            </div>
+            <div class="space-y-1 max-w-[85%] text-left">
+              <div class="flex items-center gap-2 text-[10px]">
+                <span class="font-bold text-indigo-300">Bank Representative</span>
+                <span class="font-mono text-slate-500 bg-slate-900 px-1.5 py-0.5 rounded border border-slate-800">Ch 1 • ${startStr} - ${endStr}</span>
+                <span class="px-1.5 py-0.5 rounded-full bg-indigo-500/10 text-indigo-300 border border-indigo-500/20 text-[9px] font-semibold">Agent (Excluded)</span>
+              </div>
+              <div class="p-3 rounded-2xl rounded-tl-none bg-slate-900/90 border border-slate-800 text-xs text-slate-200 shadow-md leading-relaxed">
+                ${escapeHtml(text)}
+              </div>
+            </div>
+          `;
+        }
+
+        dialogueFeed.appendChild(turnDiv);
+      });
+    }
+
+    function escapeHtml(str) {
+      return str.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#039;");
     }
 
     // Render Detection Result
