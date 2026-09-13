@@ -2,8 +2,8 @@
   "call_summary": {
     "caller_duration_sec": 129.44,
     "agent_duration_sec": 129.44,
-    "processing_time_sec": 14.099,
-    "real_time_factor": 0.054,
+    "processing_time_sec": 16.159,
+    "real_time_factor": 0.062,
     "total_dialogue_turns": 31
   },
   "anti_spoofing_verdict": {

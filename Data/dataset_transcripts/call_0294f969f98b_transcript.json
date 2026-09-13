@@ -2,8 +2,8 @@
   "call_summary": {
     "caller_duration_sec": 108.78,
     "agent_duration_sec": 108.78,
-    "processing_time_sec": 12.545,
-    "real_time_factor": 0.058,
+    "processing_time_sec": 16.27,
+    "real_time_factor": 0.075,
     "total_dialogue_turns": 25
   },
   "anti_spoofing_verdict": {
@@ -17,8 +17,8 @@
     "total_words": 57,
     "filler_density": 0.0351,
     "detected_human_fillers": [
-      "a ver",
-      "ajá"
+      "ajá",
+      "a ver"
     ],
     "robotic_phrases_found": 0,
     "lexical_diversity_ttr": 0.6316,

@@ -2,8 +2,8 @@
   "call_summary": {
     "caller_duration_sec": 159.0,
     "agent_duration_sec": 159.0,
-    "processing_time_sec": 15.105,
-    "real_time_factor": 0.048,
+    "processing_time_sec": 16.296,
+    "real_time_factor": 0.051,
     "total_dialogue_turns": 28
   },
   "anti_spoofing_verdict": {
@@ -18,11 +18,11 @@
     "filler_density": 0.0417,
     "detected_human_fillers": [
       "verdad",
-      "pues",
       "a ver",
-      "ajá",
       "ah",
-      "o sea"
+      "ajá",
+      "o sea",
+      "pues"
     ],
     "robotic_phrases_found": 0,
     "lexical_diversity_ttr": 0.6094,
