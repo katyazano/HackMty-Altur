@@ -1,0 +1,306 @@
+{
+  "call_summary": {
+    "caller_duration_sec": 177.6,
+    "agent_duration_sec": 177.6,
+    "processing_time_sec": 21.892,
+    "real_time_factor": 0.062,
+    "total_dialogue_turns": 30
+  },
+  "anti_spoofing_verdict": {
+    "is_synthetic": false,
+    "confidence": 0.9552,
+    "decision_threshold": 0.35,
+    "risk_level": "AUTHENTIC"
+  },
+  "semantic_nlp_profile": {
+    "detected_language": "es-MX",
+    "total_words": 137,
+    "filler_density": 0.0,
+    "detected_human_fillers": [],
+    "robotic_phrases_found": 0,
+    "lexical_diversity_ttr": 0.1533,
+    "semantic_authenticity_score": 0.5
+  },
+  "conversational_dynamics": {
+    "timeline_synchronized": false,
+    "turn_taking_latency": null,
+    "cross_talk_duration_sec": 0.0,
+    "note": "Audio files were processed as independent continuous speech streams."
+  },
+  "transcript": [
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 0.0,
+      "end_time": 7.8,
+      "duration": 7.8,
+      "text": "Buen día gracias por llamar a Banco Al Tour, le atiende Marina, le comento que estar llamada se graba para fines de calidad en que le puedo ayudar.",
+      "avg_logprob": -0.241
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 7.8,
+      "end_time": 21.37,
+      "duration": 13.57,
+      "text": "Clado Diego, nada más para confirmar si estoy hablando con el titular de la tarjeta, me podría proporcionar su número de referencia por favor, así le ha ayudado con la consulta.",
+      "avg_logprob": -0.241
+    },
+    {
+      "speaker": "Caller",
+      "channel": 0,
+      "start_time": 8.62,
+      "end_time": 51.51,
+      "duration": 42.89,
+      "text": "Quiero saber cuánto debo y cuánto tengo que pagar de mi tarjeta. No me llamo Diego. No veinte, cuenta y siete, treinta y ocho dos.",
+      "avg_logprob": -0.26,
+      "no_speech_prob": 0.071,
+      "compression_ratio": 4.1
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 21.37,
+      "end_time": 33.25,
+      "duration": 11.88,
+      "text": "Hay disculto, me podría indicar su nombre por favor. Así, lo registro correctamente antes de continuar con su consulta sobre el saldo y pago de su tarjeta.",
+      "avg_logprob": -0.241
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 33.25,
+      "end_time": 45.82,
+      "duration": 12.57,
+      "text": "Gracias, me puede dictar su número de referencia por favor, es el que aparecen sus estados de cuenta o en la app,",
+      "avg_logprob": -0.241
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 45.82,
+      "end_time": 48.34,
+      "duration": 2.52,
+      "text": "solo en 0, 8 dijitos cuando guste.",
+      "avg_logprob": -0.403
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 48.34,
+      "end_time": 58.76,
+      "duration": 10.42,
+      "text": "Perfecto, entonces tengo 9, 0, 9, 0, 5, 7, 30 y 9, 12.",
+      "avg_logprob": -0.403
+    },
+    {
+      "speaker": "Caller",
+      "channel": 0,
+      "start_time": 51.51,
+      "end_time": 177.45,
+      "duration": 125.94,
+      "text": "No, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no",
+      "avg_logprob": -0.157,
+      "no_speech_prob": 0.235,
+      "compression_ratio": 26.235
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 58.76,
+      "end_time": 64.69,
+      "duration": 5.93,
+      "text": "Así es, perdón, me equivoque, me lo puede repetir por favor,",
+      "avg_logprob": -0.403
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 64.69,
+      "end_time": 73.82,
+      "duration": 9.13,
+      "text": "diga, me lo dijito por dijito para que lo registre bien.",
+      "avg_logprob": -0.403
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 73.82,
+      "end_time": 75.14,
+      "duration": 1.32,
+      "text": "Gracias, ya lo tengo.",
+      "avg_logprob": -0.403
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 75.14,
+      "end_time": 78.24,
+      "duration": 3.1,
+      "text": "Para poder ayudarle mejor, me puede platicar un poquito más",
+      "avg_logprob": -0.403
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 78.24,
+      "end_time": 79.64,
+      "duration": 1.4,
+      "text": "que es lo que necesita.",
+      "avg_logprob": -0.403
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 79.64,
+      "end_time": 82.14,
+      "duration": 2.5,
+      "text": "Y eres abriecta cuánto debe pagar este mes",
+      "avg_logprob": -0.403
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 82.14,
+      "end_time": 84.94,
+      "duration": 2.8,
+      "text": "o tiene alguna duda sobre algún movimiento de en su tarjeta.",
+      "avg_logprob": -0.403
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 84.94,
+      "end_time": 94.99,
+      "duration": 10.05,
+      "text": "Cuénteme un poco más por favor.",
+      "avg_logprob": -0.403
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 94.99,
+      "end_time": 99.91,
+      "duration": 4.92,
+      "text": "Perdón que lo interrumpa. El pago de 1500 pesos que menciona lo realizó directamente desde",
+      "avg_logprob": -0.374
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 99.91,
+      "end_time": 103.87,
+      "duration": 3.96,
+      "text": "la app del banco o fue en ventanilla. Sólamente para dejarlo bien ha notado.",
+      "avg_logprob": -0.374
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 103.87,
+      "end_time": 111.41,
+      "duration": 7.54,
+      "text": "Ah, perfecto, ya lo registría así. Esto es sobre su cuenta nomina Plus o sobre su crédito",
+      "avg_logprob": -0.374
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 111.41,
+      "end_time": 121.92,
+      "duration": 10.51,
+      "text": "verde. ¿Qué? Me podría confirmar de nuevo su número de referencia completo por favor.",
+      "avg_logprob": -0.374
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 121.92,
+      "end_time": 130.3,
+      "duration": 8.38,
+      "text": "Dígame lo digital por digital para que quede registrado correctamente.",
+      "avg_logprob": -0.374
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 130.3,
+      "end_time": 135.26,
+      "duration": 4.96,
+      "text": "Perfecto, entonces quedó registrado. 9, 0, 5, 7, 3, 8, 1, 2.",
+      "avg_logprob": -0.374
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 135.26,
+      "end_time": 141.62,
+      "duration": 6.36,
+      "text": "Así es, listo ya que he dado registrado sus casos para su crédito verde.",
+      "avg_logprob": -0.264
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 141.62,
+      "end_time": 144.52,
+      "duration": 2.9,
+      "text": "El saldo apagar es de 149 pesos.",
+      "avg_logprob": -0.264
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 144.52,
+      "end_time": 148.58,
+      "duration": 4.06,
+      "text": "La fecha limite para no generar intereses es el sábado, 12 de septiembre.",
+      "avg_logprob": -0.264
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 148.58,
+      "end_time": 153.52,
+      "duration": 4.94,
+      "text": "El detalle y el monto exacto se lo vamos a enviar hoy mismo por mensaje al número que tenga registrado.",
+      "avg_logprob": -0.264
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 153.52,
+      "end_time": 157.62,
+      "duration": 4.1,
+      "text": "Su folio de atención es 4, 6, 1, 2, 8, 5.",
+      "avg_logprob": -0.264
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 157.62,
+      "end_time": 163.42,
+      "duration": 5.8,
+      "text": "La consulta queda registrada y en caso de aclaración, el área correspondiente le responde en el transcurso del día.",
+      "avg_logprob": -0.264
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 163.42,
+      "end_time": 172.74,
+      "duration": 9.32,
+      "text": "Hay algo más en lo que le pueda ayudar, sino le agradezco mucho su llamada y le deseo un buen día.",
+      "avg_logprob": -0.277
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 172.74,
+      "end_time": 177.74,
+      "duration": 5.0,
+      "text": "Perfecto, le agradezco mucho su llamada, que tenga un excelente día. Hasta luego.",
+      "avg_logprob": -0.277
+    }
+  ]
+}

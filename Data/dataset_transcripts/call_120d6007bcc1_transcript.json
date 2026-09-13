@@ -1,0 +1,312 @@
+{
+  "call_summary": {
+    "caller_duration_sec": 157.28,
+    "agent_duration_sec": 157.28,
+    "processing_time_sec": 15.879,
+    "real_time_factor": 0.05,
+    "total_dialogue_turns": 27
+  },
+  "anti_spoofing_verdict": {
+    "is_synthetic": true,
+    "confidence": 0.9864,
+    "decision_threshold": 0.35,
+    "risk_level": "CRITICAL"
+  },
+  "semantic_nlp_profile": {
+    "detected_language": "es-MX",
+    "total_words": 169,
+    "filler_density": 0.0178,
+    "detected_human_fillers": [
+      "verdad",
+      "este"
+    ],
+    "robotic_phrases_found": 0,
+    "lexical_diversity_ttr": 0.5917,
+    "semantic_authenticity_score": 0.5445
+  },
+  "conversational_dynamics": {
+    "timeline_synchronized": true,
+    "turn_taking_latency": {
+      "mean_ms": -22562.5,
+      "median_ms": -13585.0,
+      "samples_evaluated": 4
+    },
+    "cross_talk_duration_sec": 118.23,
+    "note": "Turn-taking latency and cross-talk evaluated on synchronized timeline."
+  },
+  "transcript": [
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 0.0,
+      "end_time": 68.94,
+      "duration": 68.94,
+      "text": "Buen día, gracias por llamar a Banco Al Tour, le atiende Marina. Le comento que esta llamada se graba para fines de calidad, en qué le puedo ayudar. Claro, adelante, me entiendo, gracias por explicarme. Nada más para poder dejarle el registro. Me puede dar su número de referencia de cliente por favor, así verifico la información de su caso. Perfecto, permita me confirmar. 3, 3, 0, 6, 9, 2, 8, 0, así es. Gracias por la correctión de la disculprio. Ahora, me puede platicar un poco más a detalle desde cuando se",
+      "avg_logprob": -0.333
+    },
+    {
+      "speaker": "Caller",
+      "channel": 0,
+      "start_time": 9.55,
+      "end_time": 26.23,
+      "duration": 16.68,
+      "text": "Hola, Marina, buen día. Mire, le explico un poquito. Tengo un pago pendiente con ustedes. Vense el 10 de septiembre por 4200 pesos. Pero la verdad es que este mes se me complico y no me va a alcanzar. Quería saber si hay forma de pagar unos días después.",
+      "avg_logprob": -0.316,
+      "no_speech_prob": 0.105,
+      "compression_ratio": 1.351
+    },
+    {
+      "speaker": "Caller",
+      "channel": 0,
+      "start_time": 26.23,
+      "end_time": 28.63,
+      "duration": 2.4,
+      "text": "más o menos el 20 de septiembre,",
+      "avg_logprob": -0.301,
+      "no_speech_prob": 0.141,
+      "compression_ratio": 1.599
+    },
+    {
+      "speaker": "Caller",
+      "channel": 0,
+      "start_time": 28.63,
+      "end_time": 31.75,
+      "duration": 3.12,
+      "text": "sin que me cobre en recargos o interés de sexo.",
+      "avg_logprob": -0.301,
+      "no_speech_prob": 0.141,
+      "compression_ratio": 1.599
+    },
+    {
+      "speaker": "Caller",
+      "channel": 0,
+      "start_time": 31.75,
+      "end_time": 44.22,
+      "duration": 12.47,
+      "text": "Eso se puede.",
+      "avg_logprob": -0.301,
+      "no_speech_prob": 0.141,
+      "compression_ratio": 1.599
+    },
+    {
+      "speaker": "Caller",
+      "channel": 0,
+      "start_time": 44.22,
+      "end_time": 48.74,
+      "duration": 4.52,
+      "text": "Sí, claro, es el 3, 3, 0, 6, 9, 2, 8, 1.",
+      "avg_logprob": -0.301,
+      "no_speech_prob": 0.141,
+      "compression_ratio": 1.599
+    },
+    {
+      "speaker": "Caller",
+      "channel": 0,
+      "start_time": 48.74,
+      "end_time": 61.38,
+      "duration": 12.64,
+      "text": "No, es 3, 0, 6, 9, 2, 8, 1.",
+      "avg_logprob": -0.301,
+      "no_speech_prob": 0.141,
+      "compression_ratio": 1.599
+    },
+    {
+      "speaker": "Caller",
+      "channel": 0,
+      "start_time": 61.38,
+      "end_time": 73.92,
+      "duration": 12.54,
+      "text": "El último es uno, no es 0.",
+      "avg_logprob": -0.301,
+      "no_speech_prob": 0.141,
+      "compression_ratio": 1.599
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 68.94,
+      "end_time": 73.34,
+      "duration": 4.4,
+      "text": "explicó la situación o si ya había solicitado prórroga antes. Algo relevante que deba",
+      "avg_logprob": -0.297
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 73.34,
+      "end_time": 95.3,
+      "duration": 21.96,
+      "text": "notar, perfecto, muchas gracias por confirmarlo y por el número. Esto es sobre su cuenta",
+      "avg_logprob": -0.297
+    },
+    {
+      "speaker": "Caller",
+      "channel": 0,
+      "start_time": 73.92,
+      "end_time": 75.9,
+      "duration": 1.98,
+      "text": "Sí, claro.",
+      "avg_logprob": -0.301,
+      "no_speech_prob": 0.141,
+      "compression_ratio": 1.599
+    },
+    {
+      "speaker": "Caller",
+      "channel": 0,
+      "start_time": 75.9,
+      "end_time": 78.34,
+      "duration": 2.44,
+      "text": "Nada más eso que es la primera vez que me pasa",
+      "avg_logprob": -0.301,
+      "no_speech_prob": 0.141,
+      "compression_ratio": 1.599
+    },
+    {
+      "speaker": "Caller",
+      "channel": 0,
+      "start_time": 78.34,
+      "end_time": 80.74,
+      "duration": 2.4,
+      "text": "y que sí quiero pagar solo que necesito esos días",
+      "avg_logprob": -0.301,
+      "no_speech_prob": 0.141,
+      "compression_ratio": 1.599
+    },
+    {
+      "speaker": "Caller",
+      "channel": 0,
+      "start_time": 80.74,
+      "end_time": 82.7,
+      "duration": 1.96,
+      "text": "porque este mes estuvo complicado.",
+      "avg_logprob": -0.301,
+      "no_speech_prob": 0.141,
+      "compression_ratio": 1.599
+    },
+    {
+      "speaker": "Caller",
+      "channel": 0,
+      "start_time": 82.7,
+      "end_time": 86.66,
+      "duration": 3.96,
+      "text": "Si necesitan contactarme el número desde el que llamo es 87,",
+      "avg_logprob": -0.301,
+      "no_speech_prob": 0.141,
+      "compression_ratio": 1.599
+    },
+    {
+      "speaker": "Caller",
+      "channel": 0,
+      "start_time": 86.66,
+      "end_time": 115.22,
+      "duration": 28.56,
+      "text": "14, 83, 0, 0, 0, 1 sobre mi crédito verde. Si, como nos, es 3, 0, 6,",
+      "avg_logprob": -0.497,
+      "no_speech_prob": 0.428,
+      "compression_ratio": 1.182
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 95.3,
+      "end_time": 107.64,
+      "duration": 12.34,
+      "text": "nomina Plus o sobre su crédito verde. Ok, le pido que me confirme nuevamente es un número",
+      "avg_logprob": -0.297
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 107.64,
+      "end_time": 118.91,
+      "duration": 11.27,
+      "text": "de referencia por favor, diga me lo completo para dejarlo registrado correctamente. Gracias.",
+      "avg_logprob": -0.297
+    },
+    {
+      "speaker": "Caller",
+      "channel": 0,
+      "start_time": 115.22,
+      "end_time": 124.07,
+      "duration": 8.85,
+      "text": "guión 9, 2, 8, 1. Remítame el repito.",
+      "avg_logprob": -0.497,
+      "no_speech_prob": 0.428,
+      "compression_ratio": 1.182
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 118.91,
+      "end_time": 129.86,
+      "duration": 10.95,
+      "text": "Entonces tengo 3, 3, 4, 6, 9, 2, 8, 1. Sí, claro adelante por favor, les, perfecto, muchas gracias",
+      "avg_logprob": -0.297
+    },
+    {
+      "speaker": "Caller",
+      "channel": 0,
+      "start_time": 124.07,
+      "end_time": 127.78,
+      "duration": 3.71,
+      "text": "E, correcto. Así es, 9, 2, 8, 1.",
+      "avg_logprob": -0.497,
+      "no_speech_prob": 0.428,
+      "compression_ratio": 1.182
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 129.86,
+      "end_time": 135.24,
+      "duration": 5.38,
+      "text": "por confirmarlo. ¿Qué ha registrado? Solicitud de prórroga para su pago de 4200 pesos",
+      "avg_logprob": -0.321
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 135.24,
+      "end_time": 142.46,
+      "duration": 7.22,
+      "text": "de su crédito verde, convencimiento del 10 de septiembre. El folio de sujeciones 6 2 4 9 1 7.",
+      "avg_logprob": -0.321
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 142.46,
+      "end_time": 147.54,
+      "duration": 5.08,
+      "text": "La respuesta se le dará en máximo 15 días y mientras tanto no se genera reporte negativo,",
+      "avg_logprob": -0.321
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 147.54,
+      "end_time": 150.42,
+      "duration": 2.88,
+      "text": "si la prórroga se solicita antes de la fecha límite.",
+      "avg_logprob": -0.321
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 150.42,
+      "end_time": 153.9,
+      "duration": 3.48,
+      "text": "Hay algo más en lo que le pueda ayudar, le agradezco mucho su llamada. ¿Cuál quiero",
+      "avg_logprob": -0.321
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 153.9,
+      "end_time": 156.4,
+      "duration": 2.5,
+      "text": "otra cosa estamos para servirle. ¿Qué tenga buen día?",
+      "avg_logprob": -0.512
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "total_calls_evaluated": 71,
+  "accuracy_percent": 97.18,
+  "balanced_accuracy_percent": 97.3,
+  "synthetic_detection_rate_percent": 100.0,
+  "human_bona_fide_pass_rate_percent": 94.59,
+  "average_confidence_percent": 92.87,
+  "average_rtf": 0.0287,
+  "total_processing_time_sec": 637.42
+}

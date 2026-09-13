@@ -1,0 +1,266 @@
+{
+  "call_summary": {
+    "caller_duration_sec": 153.26,
+    "agent_duration_sec": 153.26,
+    "processing_time_sec": 13.345,
+    "real_time_factor": 0.044,
+    "total_dialogue_turns": 24
+  },
+  "anti_spoofing_verdict": {
+    "is_synthetic": true,
+    "confidence": 0.9862,
+    "decision_threshold": 0.35,
+    "risk_level": "CRITICAL"
+  },
+  "semantic_nlp_profile": {
+    "detected_language": "es-MX",
+    "total_words": 120,
+    "filler_density": 0.0083,
+    "detected_human_fillers": [
+      "verdad"
+    ],
+    "robotic_phrases_found": 0,
+    "lexical_diversity_ttr": 0.6,
+    "semantic_authenticity_score": 0.5208
+  },
+  "conversational_dynamics": {
+    "timeline_synchronized": true,
+    "turn_taking_latency": {
+      "mean_ms": -8224.0,
+      "median_ms": -6680.0,
+      "samples_evaluated": 5
+    },
+    "cross_talk_duration_sec": 111.5,
+    "note": "Turn-taking latency and cross-talk evaluated on synchronized timeline."
+  },
+  "transcript": [
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 0.0,
+      "end_time": 27.3,
+      "duration": 27.3,
+      "text": "Buen día, gracias por llamar a Banco Al Tour, le atiende Marina. Le comento que esta llamada se graba para fines de calidad. En qué le puedo ayudar. Entiendo, gracias por comentar. Me podría dar su nombre, por favor.",
+      "avg_logprob": -0.26
+    },
+    {
+      "speaker": "Caller",
+      "channel": 0,
+      "start_time": 12.75,
+      "end_time": 21.71,
+      "duration": 8.96,
+      "text": "Lo que pasa es que mi pago vence hoy y no me va a alcanzar el dinero. Querías saber si puedo pagar unos días después sin que me cobre en comisión o algo de más.",
+      "avg_logprob": -0.346,
+      "no_speech_prob": 0.591,
+      "compression_ratio": 1.45
+    },
+    {
+      "speaker": "Caller",
+      "channel": 0,
+      "start_time": 21.71,
+      "end_time": 62.69,
+      "duration": 40.98,
+      "text": "Pred Rodrigo Anaya Castellanos, mi número de referencia es 33, 0, 0, 92, 81. Al final es 81, 33, 0, 92, 81.",
+      "avg_logprob": -0.346,
+      "no_speech_prob": 0.591,
+      "compression_ratio": 1.45
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 27.3,
+      "end_time": 68.74,
+      "duration": 41.44,
+      "text": "Y para poder revisar su caso, me facilita su número de referencia de cliente. Muchas gracias Rodrigo. Permítame confirmar su número de referencia por favor. 33, 0, 0, 92, 80, 0, así es. Pero aunque lo interrumpa, mencionó que su pago vence hoy, el 10 de septiembre de verdad.",
+      "avg_logprob": -0.26
+    },
+    {
+      "speaker": "Caller",
+      "channel": 0,
+      "start_time": 62.69,
+      "end_time": 89.34,
+      "duration": 26.65,
+      "text": "Sí, es correcto, vence hoy de septiembre. La verdad estoy confundido, pero es por el pago de 4,200",
+      "avg_logprob": -0.346,
+      "no_speech_prob": 0.591,
+      "compression_ratio": 1.45
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 68.74,
+      "end_time": 70.74,
+      "duration": 2.0,
+      "text": "Si me confirma esa fecha lo dejó registrado.",
+      "avg_logprob": -0.346
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 70.74,
+      "end_time": 81.6,
+      "duration": 10.86,
+      "text": "Gracias Rodrigo, esto es sobre su cuenta nomina Plus o sobre su crédito verde.",
+      "avg_logprob": -0.346
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 81.6,
+      "end_time": 94.65,
+      "duration": 13.05,
+      "text": "Ah, ok, entonces lo veo por su referencia.",
+      "avg_logprob": -0.346
+    },
+    {
+      "speaker": "Caller",
+      "channel": 0,
+      "start_time": 89.34,
+      "end_time": 113.66,
+      "duration": 24.32,
+      "text": "pesos que le confirma. Muy bien, que procede. Si de nada se va a poder pagar, le escucho.",
+      "avg_logprob": -0.406,
+      "no_speech_prob": 0.259,
+      "compression_ratio": 1.448
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 94.65,
+      "end_time": 102.5,
+      "duration": 7.85,
+      "text": "Ok. Me puede confirmarnos. Perfecto, quedó confirmado su número de referencias.",
+      "avg_logprob": -0.346
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 102.5,
+      "end_time": 106.26,
+      "duration": 3.76,
+      "text": "Le copo. Muchas gracias Rodrigo por confirmarlo.",
+      "avg_logprob": -0.346
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 106.26,
+      "end_time": 109.06,
+      "duration": 2.8,
+      "text": "Gracias por preguntar Rodrigo.",
+      "avg_logprob": -0.346
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 109.06,
+      "end_time": 113.62,
+      "duration": 4.56,
+      "text": "¿Lo que? Así es Rodrigo.",
+      "avg_logprob": -0.346
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 113.62,
+      "end_time": 120.34,
+      "duration": 6.72,
+      "text": "Le haga descomo mucho la llamada Rodrigo.",
+      "avg_logprob": -0.346
+    },
+    {
+      "speaker": "Caller",
+      "channel": 0,
+      "start_time": 113.66,
+      "end_time": 122.13,
+      "duration": 8.47,
+      "text": "Entonces se va a poder pagar el veí, pero me van a cobrar de más por pagar el veí",
+      "avg_logprob": -0.406,
+      "no_speech_prob": 0.259,
+      "compression_ratio": 1.448
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 120.34,
+      "end_time": 121.34,
+      "duration": 1.0,
+      "text": "Así es Rodrigo.",
+      "avg_logprob": -0.346
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 121.34,
+      "end_time": 130.66,
+      "duration": 9.32,
+      "text": "O Rodrigo, no le van a cobrar monto extra ni comisión, porque su solicitud de prórroga",
+      "avg_logprob": -0.368
+    },
+    {
+      "speaker": "Caller",
+      "channel": 0,
+      "start_time": 122.13,
+      "end_time": 124.25,
+      "duration": 2.12,
+      "text": "de septiembre o me da algún folio.",
+      "avg_logprob": -0.406,
+      "no_speech_prob": 0.259,
+      "compression_ratio": 1.448
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 130.66,
+      "end_time": 132.94,
+      "duration": 2.28,
+      "text": "que dorregistrada antes de la fecha límite.",
+      "avg_logprob": -0.368
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 132.94,
+      "end_time": 137.78,
+      "duration": 4.84,
+      "text": "Pueda pagar hasta el 25 de septiembre sin cargo tradicionales ni afectación a su historial.",
+      "avg_logprob": -0.368
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 137.78,
+      "end_time": 142.78,
+      "duration": 5.0,
+      "text": "El folio que le corresponde por este registro es 2, 6, 4, 7, 1, 5.",
+      "avg_logprob": -0.368
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 142.78,
+      "end_time": 146.58,
+      "duration": 3.8,
+      "text": "Hay algo más en lo que le pueda ayudar, le haga de como mucho su llamada Rodrigo.",
+      "avg_logprob": -0.368
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 146.58,
+      "end_time": 151.7,
+      "duration": 5.12,
+      "text": "Si necesita cualquier otra cosa, estamos para servirle en Banco Al Tour, que tenga excelente tarde.",
+      "avg_logprob": -0.368
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 151.7,
+      "end_time": 152.5,
+      "duration": 0.8,
+      "text": "Hasta luego.",
+      "avg_logprob": -0.368
+    }
+  ]
+}

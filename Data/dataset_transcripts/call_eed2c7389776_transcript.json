@@ -1,0 +1,306 @@
+{
+  "call_summary": {
+    "caller_duration_sec": 184.0,
+    "agent_duration_sec": 184.0,
+    "processing_time_sec": 19.229,
+    "real_time_factor": 0.052,
+    "total_dialogue_turns": 28
+  },
+  "anti_spoofing_verdict": {
+    "is_synthetic": true,
+    "confidence": 0.9835,
+    "decision_threshold": 0.35,
+    "risk_level": "CRITICAL"
+  },
+  "semantic_nlp_profile": {
+    "detected_language": "es-MX",
+    "total_words": 174,
+    "filler_density": 0.023,
+    "detected_human_fillers": [
+      "o sea",
+      "verdad",
+      "pues"
+    ],
+    "robotic_phrases_found": 0,
+    "lexical_diversity_ttr": 0.5805,
+    "semantic_authenticity_score": 0.5575
+  },
+  "conversational_dynamics": {
+    "timeline_synchronized": false,
+    "turn_taking_latency": null,
+    "cross_talk_duration_sec": 0.0,
+    "note": "Audio files were processed as independent continuous speech streams."
+  },
+  "transcript": [
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 0.05,
+      "end_time": 30.46,
+      "duration": 30.41,
+      "text": "Buen día, gracias por llamar a Banco Al Tour, le atiende Marina. Le comento que esta llamada se graba para fines de calidad en que le puedo ayudar. Muy buenas. Claro, con gusto le ayuda a revisar el estatus de su tarjeta. Me puedo dar su nombre por favor y si tiene a la mano su número de referencia de cliente, mucho mejor.",
+      "avg_logprob": -0.244
+    },
+    {
+      "speaker": "Caller",
+      "channel": 0,
+      "start_time": 11.92,
+      "end_time": 20.92,
+      "duration": 9.0,
+      "text": "Hola, Marina, buenas tardes. Hoy es pues hablo porque hace como 12 semanas, pero de una tarjeta nueva y todavía no me llega, quería ver que onda con eso, si me puedes ayudar a revisar que pasó.",
+      "avg_logprob": -0.399,
+      "no_speech_prob": 0.071,
+      "compression_ratio": 2.34
+    },
+    {
+      "speaker": "Caller",
+      "channel": 0,
+      "start_time": 20.92,
+      "end_time": 40.26,
+      "duration": 19.34,
+      "text": "si claro, soy Ernesto Villalobos Prieto y el número de referencia es el 1198, 66,",
+      "avg_logprob": -0.524,
+      "no_speech_prob": 0.46,
+      "compression_ratio": 1.73
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 30.46,
+      "end_time": 45.82,
+      "duration": 15.36,
+      "text": "A, perdón, me lo puedo repetir completo por favor, dijito por díjito.",
+      "avg_logprob": -0.401
+    },
+    {
+      "speaker": "Caller",
+      "channel": 0,
+      "start_time": 40.26,
+      "end_time": 71.93,
+      "duration": 31.67,
+      "text": "30, sí, exacto, es uno a 9, 8, 6, 6, 3, 0, no, de eso termina en 0, o sea, uno no",
+      "avg_logprob": -0.524,
+      "no_speech_prob": 0.46,
+      "compression_ratio": 1.73
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 45.82,
+      "end_time": 61.02,
+      "duration": 15.2,
+      "text": "Solo para estar segura, es 6, 3, 0. Perfecto, Ernesto.",
+      "avg_logprob": -0.401
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 61.02,
+      "end_time": 66.02,
+      "duration": 5.0,
+      "text": "Entonces, para confirmar, tengo uno, uno, 9, 8, 6, 3, 1.",
+      "avg_logprob": -0.401
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 66.02,
+      "end_time": 78.37,
+      "duration": 12.35,
+      "text": "¿Adiós? Gracias por la corrección Ernesto.",
+      "avg_logprob": -0.401
+    },
+    {
+      "speaker": "Caller",
+      "channel": 0,
+      "start_time": 71.93,
+      "end_time": 93.82,
+      "duration": 21.89,
+      "text": "no no no, no, no, no, no, no, no, no, no, no, no, no, no, no me llegó ningún aquí, a ni nada",
+      "avg_logprob": -0.524,
+      "no_speech_prob": 0.46,
+      "compression_ratio": 1.73
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 78.37,
+      "end_time": 83.17,
+      "duration": 4.8,
+      "text": "Ahora si lo tengo bien anotado, me puedo platicar con detalle que pasó desde que solicitó la tarjeta.",
+      "avg_logprob": -0.401
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 83.17,
+      "end_time": 87.49,
+      "duration": 4.32,
+      "text": "Por ejemplo, si le llegó algún mensaje de confirmación, no si le dijeron alguna guía de rastreo,",
+      "avg_logprob": -0.401
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 87.49,
+      "end_time": 109.26,
+      "duration": 21.77,
+      "text": "Pero aunque lo interrumpa Ernesto, el 19 de agosto fue cuando hizo la solicitud en su curso al o la hizo por teléfono,",
+      "avg_logprob": -0.288
+    },
+    {
+      "speaker": "Caller",
+      "channel": 0,
+      "start_time": 93.82,
+      "end_time": 98.42,
+      "duration": 4.6,
+      "text": "de mensaje, la pedía el que si no, de agosto y me dijeron que me llegaba en unos días a mi casa,",
+      "avg_logprob": -0.524,
+      "no_speech_prob": 0.46,
+      "compression_ratio": 1.73
+    },
+    {
+      "speaker": "Caller",
+      "channel": 0,
+      "start_time": 98.42,
+      "end_time": 126.65,
+      "duration": 28.23,
+      "text": "pero pues no ha llegado nada de nada, la verdad por teléfono sí, ya me se día para pedirla.",
+      "avg_logprob": -0.524,
+      "no_speech_prob": 0.46,
+      "compression_ratio": 1.73
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 109.26,
+      "end_time": 123.1,
+      "duration": 13.84,
+      "text": "entiendo muchas gracias por aclararlo, esto es sobre su cuenta nomina plus o sobre su crédito verde.",
+      "avg_logprob": -0.288
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 123.1,
+      "end_time": 136.04,
+      "duration": 12.94,
+      "text": "Ah, ok, entonces lo veo por su referencia de cliente, no se preocupé.",
+      "avg_logprob": -0.288
+    },
+    {
+      "speaker": "Caller",
+      "channel": 0,
+      "start_time": 126.65,
+      "end_time": 140.77,
+      "duration": 14.12,
+      "text": "de mi cuenta normal, la de devito. No sé cuál de esa sea. Sal, gracias, mi abitos.",
+      "avg_logprob": -0.545,
+      "no_speech_prob": 0.114,
+      "compression_ratio": 1.295
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 136.04,
+      "end_time": 147.13,
+      "duration": 11.09,
+      "text": "Ernesto me puede confirmar nuevamente.",
+      "avg_logprob": -0.288
+    },
+    {
+      "speaker": "Caller",
+      "channel": 0,
+      "start_time": 140.77,
+      "end_time": 182.6,
+      "duration": 41.83,
+      "text": "Si aquí espero, no sería todo de mi parte. Muchas gracias por la ayuda Marina, que tengas",
+      "avg_logprob": -0.545,
+      "no_speech_prob": 0.114,
+      "compression_ratio": 1.295
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 147.13,
+      "end_time": 150.05,
+      "duration": 2.92,
+      "text": "Perfecto ya que he doregistrado correctamente.",
+      "avg_logprob": -0.288
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 150.05,
+      "end_time": 155.05,
+      "duration": 5.0,
+      "text": "Entonces Ernesto quedó han otado su reporte por la tarjeta que solicito el 19 de agosto,",
+      "avg_logprob": -0.288
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 155.05,
+      "end_time": 156.05,
+      "duration": 1.0,
+      "text": "y que no ha llegado.",
+      "avg_logprob": -0.288
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 156.05,
+      "end_time": 159.69,
+      "duration": 3.64,
+      "text": "El tiempo de entrega normal es de 7 a 10 días a 10 a 10, pero en este caso vamos a",
+      "avg_logprob": -0.367
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 159.69,
+      "end_time": 163.97,
+      "duration": 4.28,
+      "text": "restriar su envío y si hace falta se puede reambiar a su domicilio o a la",
+      "avg_logprob": -0.367
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 163.97,
+      "end_time": 170.05,
+      "duration": 6.08,
+      "text": "su cursar que prefiera. Su folio de seguimiento es el 0, 8, 4, 2, 1, 9. La respuesta",
+      "avg_logprob": -0.367
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 170.05,
+      "end_time": 173.89,
+      "duration": 3.84,
+      "text": "la tendrá en máximos 5 días a 10, 4 mensaje al número que tenemos registrado.",
+      "avg_logprob": -0.367
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 173.89,
+      "end_time": 175.61,
+      "duration": 1.72,
+      "text": "Hay algo más en que le pueda apoyar hoy.",
+      "avg_logprob": -0.367
+    },
+    {
+      "speaker": "Caller",
+      "channel": 0,
+      "start_time": 182.6,
+      "end_time": 183.16,
+      "duration": 0.56,
+      "text": "buena tarde.",
+      "avg_logprob": -0.545,
+      "no_speech_prob": 0.114,
+      "compression_ratio": 1.295
+    }
+  ]
+}

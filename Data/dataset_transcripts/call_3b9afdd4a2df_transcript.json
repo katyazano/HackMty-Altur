@@ -1,0 +1,259 @@
+{
+  "call_summary": {
+    "caller_duration_sec": 156.28,
+    "agent_duration_sec": 156.28,
+    "processing_time_sec": 16.463,
+    "real_time_factor": 0.053,
+    "total_dialogue_turns": 23
+  },
+  "anti_spoofing_verdict": {
+    "is_synthetic": false,
+    "confidence": 0.9666,
+    "decision_threshold": 0.35,
+    "risk_level": "AUTHENTIC"
+  },
+  "semantic_nlp_profile": {
+    "detected_language": "es-MX",
+    "total_words": 56,
+    "filler_density": 0.0,
+    "detected_human_fillers": [],
+    "robotic_phrases_found": 0,
+    "lexical_diversity_ttr": 0.7143,
+    "semantic_authenticity_score": 0.5
+  },
+  "conversational_dynamics": {
+    "timeline_synchronized": true,
+    "turn_taking_latency": {
+      "mean_ms": -12736.7,
+      "median_ms": -8935.0,
+      "samples_evaluated": 6
+    },
+    "cross_talk_duration_sec": 144.65,
+    "note": "Turn-taking latency and cross-talk evaluated on synchronized timeline."
+  },
+  "transcript": [
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 0.24,
+      "end_time": 7.23,
+      "duration": 6.99,
+      "text": "Buen día gracias por llamar a Banco Al Tour, al Tour se atiende Marina Rosales, ¿en qué puedo ayudarle hoy?",
+      "avg_logprob": -0.311
+    },
+    {
+      "speaker": "Caller",
+      "channel": 0,
+      "start_time": 1.14,
+      "end_time": 15.12,
+      "duration": 13.98,
+      "text": "Hola. Soy Xavier Apeñar de Vete.",
+      "avg_logprob": -0.686,
+      "no_speech_prob": 0.191,
+      "compression_ratio": 1.331
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 7.23,
+      "end_time": 28.18,
+      "duration": 20.95,
+      "text": "Hola, Buen día. Gracias de señora Javier. En qué le puedo apoyar hoy? Cuénteme por favor. Perfecto, señora Javier. Me podría dar su número de referencia de cliente por favor.",
+      "avg_logprob": -0.311
+    },
+    {
+      "speaker": "Caller",
+      "channel": 0,
+      "start_time": 15.12,
+      "end_time": 55.42,
+      "duration": 40.3,
+      "text": "Parbo de 1500 pesos en 12 de agosto. 0.573 o 1.2. Incorrector. 0.573 o 1.2.",
+      "avg_logprob": -0.686,
+      "no_speech_prob": 0.191,
+      "compression_ratio": 1.331
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 28.18,
+      "end_time": 48.15,
+      "duration": 19.97,
+      "text": "Es para poder registrar bien su caso. Gracias. Permítame confirmarles su número de referencias. 9, 0, 0, 5, 7, 3, 8, 2, 3. Así es. Gracias por aclarar lo señora Javier.",
+      "avg_logprob": -0.311
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 48.15,
+      "end_time": 94.76,
+      "duration": 46.61,
+      "text": "me lo puedo repetir por favor para que lo registre correctamente listo 9, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0",
+      "avg_logprob": -0.097
+    },
+    {
+      "speaker": "Caller",
+      "channel": 0,
+      "start_time": 55.42,
+      "end_time": 70.02,
+      "duration": 14.6,
+      "text": "¿Qué me gora a 1.2?",
+      "avg_logprob": -0.686,
+      "no_speech_prob": 0.191,
+      "compression_ratio": 1.331
+    },
+    {
+      "speaker": "Caller",
+      "channel": 0,
+      "start_time": 70.02,
+      "end_time": 83.88,
+      "duration": 13.86,
+      "text": "No, nada más quiero saber cuánto de hoy cuando tengo que pagar.",
+      "avg_logprob": -0.686,
+      "no_speech_prob": 0.191,
+      "compression_ratio": 1.331
+    },
+    {
+      "speaker": "Caller",
+      "channel": 0,
+      "start_time": 83.88,
+      "end_time": 105.06,
+      "duration": 21.18,
+      "text": "¿Qué que lo que os acordó? 0.573.",
+      "avg_logprob": -0.686,
+      "no_speech_prob": 0.191,
+      "compression_ratio": 1.331
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 94.76,
+      "end_time": 104.06,
+      "duration": 9.3,
+      "text": "a ver, así lo registro correctamente antes de continuar. Gracias de señora Javierá, me puede dar el número completo por favor,",
+      "avg_logprob": -0.312
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 104.06,
+      "end_time": 116.84,
+      "duration": 12.78,
+      "text": "el que me había comentado antes será 9. ¿Está bien? No se preocupes. A ver, señora Javierá, para poder avanzar, necesito el número de referencia completo, normalmente son 8 digitos.",
+      "avg_logprob": -0.312
+    },
+    {
+      "speaker": "Caller",
+      "channel": 0,
+      "start_time": 105.06,
+      "end_time": 128.78,
+      "duration": 23.72,
+      "text": "0.574.",
+      "avg_logprob": -0.686,
+      "no_speech_prob": 0.191,
+      "compression_ratio": 1.331
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 116.84,
+      "end_time": 126.84,
+      "duration": 10.0,
+      "text": "El que me dio antes fue 9, cero 5, 7, 3, 8, 1, 2, ese es el correcto, sino por favor digame lo completo y despacio para dejarlo bien registrado.",
+      "avg_logprob": -0.312
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 126.84,
+      "end_time": 133.14,
+      "duration": 6.3,
+      "text": "Perfecto, entonces con muy bien señora Javierá, que dor registrado su caso con la referencia",
+      "avg_logprob": -0.358
+    },
+    {
+      "speaker": "Caller",
+      "channel": 0,
+      "start_time": 128.78,
+      "end_time": 144.79,
+      "duration": 16.01,
+      "text": "¿Vos son?",
+      "avg_logprob": -1.535,
+      "no_speech_prob": 0.353,
+      "compression_ratio": 0.692
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 133.14,
+      "end_time": 136.18,
+      "duration": 3.04,
+      "text": "9.0, 5.7.3.8.1.2.",
+      "avg_logprob": -0.358
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 136.18,
+      "end_time": 141.54,
+      "duration": 5.36,
+      "text": "Sobre su duda, por política no puedo dictarle el saldo exacto por teléfono, pero en el transcurso",
+      "avg_logprob": -0.358
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 141.54,
+      "end_time": 146.58,
+      "duration": 5.04,
+      "text": "del día se le enviará por mensaje su saldo y el monta a pagar al número que tiene registrado",
+      "avg_logprob": -0.358
+    },
+    {
+      "speaker": "Caller",
+      "channel": 0,
+      "start_time": 144.79,
+      "end_time": 145.79,
+      "duration": 1.0,
+      "text": "¿Tran?",
+      "avg_logprob": -1.535,
+      "no_speech_prob": 0.353,
+      "compression_ratio": 0.692
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 146.58,
+      "end_time": 147.58,
+      "duration": 1.0,
+      "text": "con nosotros.",
+      "avg_logprob": -0.358
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 147.58,
+      "end_time": 151.54,
+      "duration": 3.96,
+      "text": "Hay algo más en lo que le pueda apoyar hoy, le agradezco mucho su llamada señora Javierá,",
+      "avg_logprob": -0.358
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 151.54,
+      "end_time": 154.26,
+      "duration": 2.72,
+      "text": "cualquiera te acosta que necesite estamos a sus órdenes.",
+      "avg_logprob": -0.358
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 154.26,
+      "end_time": 155.46,
+      "duration": 1.2,
+      "text": "¿Qué tenga un excelente día?",
+      "avg_logprob": -0.358
+    }
+  ]
+}

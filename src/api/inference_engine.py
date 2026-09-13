@@ -2,7 +2,7 @@ import os
 import sys
 import logging
 from pathlib import Path
-from typing import Tuple
+from typing import Tuple, List, Dict, Any, Optional, Union
 import numpy as np
 import torch
 import xgboost as xgb
@@ -21,7 +21,8 @@ from src.models.rawnet2 import RawNet2
 from src.features import (
     AcousticFeatureExtractor,
     AASISTEmbeddingExtractor,
-    RawNet2ScoreExtractor
+    RawNet2ScoreExtractor,
+    WhisperMultimodalExtractor
 )
 from src.api.config import settings
 
@@ -30,23 +31,13 @@ logger = logging.getLogger("altur.inference")
 
 class InferenceEngine:
     """
-    Production-grade Triple Multi-Model Inference Engine.
-    Combines AASIST (GNN), RawNet2 (Raw Waveform), and Acoustic DSP into XGBoost.
+    Production-grade 4-Pillar Multimodal Biometric Inference Engine.
+    Combines AASIST (GNN), RawNet2 (Raw Waveform), Acoustic DSP, and Whisper Multimodal into XGBoost.
     """
 
     def __init__(self):
         self.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
         self.calibrated_threshold = settings.calibrated_threshold
-
-        # Ensure weights exist; if missing and dataset is present, auto-train
-        if not os.path.exists(settings.xgb_model_path) and (PROJECT_ROOT / "Data" / "separated_agents").exists():
-            logger.info("⚠️ Model weights not found in weights/. Auto-training Triple Multi-Model Ensemble on startup...")
-            try:
-                from src.xgboost_trainer import train_and_evaluate_triple_xgboost
-                train_and_evaluate_triple_xgboost(epochs_base=15, n_splits=5, verbose=True)
-                logger.info("✓ Auto-training completed successfully!")
-            except Exception as train_err:
-                logger.error(f"Failed to auto-train model weights: {train_err}", exc_info=True)
 
         # 1. Load AASIST
         self.aasist_model = AASIST().to(self.device)
@@ -79,28 +70,37 @@ class InferenceEngine:
         # 3. Acoustic Feature Extractor
         self.acoustic_extractor = AcousticFeatureExtractor(sample_rate=settings.target_sample_rate)
 
-        # 4. Load XGBoost Classifier & Scaler
+        # 4. Whisper Multimodal Extractor
+        self.whisper_extractor = WhisperMultimodalExtractor(model_size="tiny", device=str(self.device))
+
+        # 5. Load XGBoost Classifier & Scaler (Prefer 296-dim Quad; Fallback to 272-dim Triple)
+        self.is_quad = False
         self.xgb_model = xgb.XGBClassifier()
-        if os.path.exists(settings.xgb_model_path):
-            self.xgb_model.load_model(settings.xgb_model_path)
-            logger.info(f"Loaded XGBoost ensemble from {settings.xgb_model_path}")
-        else:
-            logger.warning(f"XGBoost model not found at {settings.xgb_model_path}")
-
         self.scaler = None
-        if os.path.exists(settings.scaler_path):
-            self.scaler = joblib.load(settings.scaler_path)
-            logger.info(f"Loaded feature scaler from {settings.scaler_path}")
-        else:
-            logger.warning(f"Feature scaler not found at {settings.scaler_path}")
 
-    def predict(self, caller_audio_16k: np.ndarray) -> Tuple[bool, float]:
+        if os.path.exists(settings.xgb_quad_model_path) and os.path.exists(settings.quad_scaler_path):
+            self.xgb_model.load_model(settings.xgb_quad_model_path)
+            self.scaler = joblib.load(settings.quad_scaler_path)
+            self.is_quad = True
+            logger.info(f"Loaded 4-Pillar 296-dim Quad XGBoost ensemble from {settings.xgb_quad_model_path}")
+        elif os.path.exists(settings.xgb_model_path):
+            self.xgb_model.load_model(settings.xgb_model_path)
+            if os.path.exists(settings.scaler_path):
+                self.scaler = joblib.load(settings.scaler_path)
+            logger.info(f"Loaded 3-Model 272-dim Triple XGBoost ensemble from {settings.xgb_model_path}")
+
+    def predict(
+        self,
+        caller_audio_16k: np.ndarray,
+        return_transcript: bool = False
+    ) -> Union[Tuple[bool, float], Tuple[bool, float, List[Dict[str, Any]]]]:
         """
         Executes end-to-end inference on 16kHz caller audio.
 
         Returns:
             is_synthetic (bool): True if probability >= calibrated threshold.
             confidence (float): Confidence in the returned verdict [0.0 - 1.0].
+            turns (optional): Timestamped transcribed speech turns.
         """
         # 1. AASIST Latent Features (132-dim)
         waveform_tensor = torch.tensor(caller_audio_16k, dtype=torch.float32)
@@ -114,10 +114,24 @@ class InferenceEngine:
             caller_audio_16k, sr=settings.target_sample_rate
         )
 
-        # 4. Concatenate Triple Feature Vector (272-dim)
-        combined_feats = np.concatenate(
-            [aasist_feats, rawnet2_extractor.extract_from_waveform(waveform_tensor) if False else rawnet_feats, acoustic_feats], axis=0
-        ).reshape(1, -1)
+        turns = []
+        if self.is_quad:
+            # 4. Whisper Multimodal Features (24-dim) + Optional Transcript
+            whisper_feats, turns = self.whisper_extractor.extract_features(
+                caller_audio_16k, sr=settings.target_sample_rate, return_transcript=return_transcript
+            )
+            combined_feats = np.concatenate(
+                [aasist_feats, rawnet_feats, acoustic_feats, whisper_feats], axis=0
+            ).reshape(1, -1)
+        else:
+            # 272-dim fallback
+            combined_feats = np.concatenate(
+                [aasist_feats, rawnet_feats, acoustic_feats], axis=0
+            ).reshape(1, -1)
+            if return_transcript:
+                _, turns = self.whisper_extractor.extract_features(
+                    caller_audio_16k, sr=settings.target_sample_rate, return_transcript=True
+                )
 
         # 5. Scale features
         if self.scaler is not None:
@@ -143,4 +157,7 @@ class InferenceEngine:
 
         confidence = round(float(np.clip(certainty, 0.50, 1.0)), 4)
 
+        if return_transcript:
+            return is_synthetic, confidence, turns
         return is_synthetic, confidence
+

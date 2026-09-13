@@ -1,0 +1,122 @@
+{
+  "call_summary": {
+    "caller_duration_sec": 13.39,
+    "agent_duration_sec": 38.94,
+    "processing_time_sec": 4.939,
+    "real_time_factor": 0.094,
+    "total_dialogue_turns": 10
+  },
+  "anti_spoofing_verdict": {
+    "is_synthetic": false,
+    "confidence": 0.9724,
+    "decision_threshold": 0.35,
+    "risk_level": "AUTHENTIC"
+  },
+  "semantic_nlp_profile": {
+    "detected_language": "es-MX",
+    "total_words": 50,
+    "filler_density": 0.0,
+    "detected_human_fillers": [],
+    "robotic_phrases_found": 0,
+    "lexical_diversity_ttr": 0.68,
+    "semantic_authenticity_score": 0.5
+  },
+  "conversational_dynamics": {
+    "timeline_synchronized": false,
+    "turn_taking_latency": null,
+    "cross_talk_duration_sec": 0.0,
+    "note": "Audio files were processed as independent continuous speech streams."
+  },
+  "transcript": [
+    {
+      "speaker": "Caller",
+      "channel": 0,
+      "start_time": 0.0,
+      "end_time": 8.0,
+      "duration": 8.0,
+      "text": "Hola, Marina, si quiero saber cuánto de voy para cuando tengo que pagar. Había señal de 1905, 7. ION 3, 8. 1 2. No, la última parte de 8. 1 2, solo quiero saber.",
+      "avg_logprob": -0.658
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 0.0,
+      "end_time": 30.0,
+      "duration": 30.0,
+      "text": "¿Qué es el día? Gracias por llamar Abancualdo. Y así en la marina de comento que esa llamada se grababa para si les me casi casi hagan de calidad. Me puede explicar en que le puedo ayudar hoy. Claro, con gusto, le ayudan a dar un hombre con agua. Gracias, señor Sabier. Palabra puede contundar sin formación de un mespleo, potyen es un número de referencia de clientes de agua. ¿Qué es el que aparece en Estados de cuenta o en tu apépeco de ese me confirmarles? 9, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0",
+      "avg_logprob": -0.627
+    },
+    {
+      "speaker": "Caller",
+      "channel": 0,
+      "start_time": 8.0,
+      "end_time": 13.0,
+      "duration": 5.0,
+      "text": "¡Aja, sobre el crédito que es. 1905, 7. ION 3, 8. 1 2, Aja, FICO, RFC.",
+      "avg_logprob": -0.658
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 30.0,
+      "end_time": 32.0,
+      "duration": 2.0,
+      "text": "¿Qué es el que se les había donde no es de 0,5,3?",
+      "avg_logprob": -1.031
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 32.0,
+      "end_time": 33.0,
+      "duration": 1.0,
+      "text": "Ojo, 1,2,3.",
+      "avg_logprob": -1.031
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 33.0,
+      "end_time": 34.5,
+      "duration": 1.5,
+      "text": "Muy bien, que lo registrado que solicita el.",
+      "avg_logprob": -1.031
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 34.5,
+      "end_time": 36.0,
+      "duration": 1.5,
+      "text": "Le ha dado como que se cuya nada es mi paviestre.",
+      "avg_logprob": -1.031
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 36.0,
+      "end_time": 37.0,
+      "duration": 1.0,
+      "text": "Pendiente de su mensaje con la información del estrellido,",
+      "avg_logprob": -1.031
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 37.0,
+      "end_time": 38.0,
+      "duration": 1.0,
+      "text": "en el transporto del día.",
+      "avg_logprob": -1.031
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 38.0,
+      "end_time": 39.0,
+      "duration": 1.0,
+      "text": "¿Qué tengo en el que le dice?",
+      "avg_logprob": -1.031
+    }
+  ]
+}

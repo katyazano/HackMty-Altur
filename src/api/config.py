@@ -25,6 +25,8 @@ class Settings(BaseModel):
     rawnet2_weights: str = os.getenv("RAWNET2_WEIGHTS", str(PROJECT_ROOT / "weights" / "rawnet2_best.pth"))
     xgb_model_path: str = os.getenv("XGB_MODEL_PATH", str(PROJECT_ROOT / "weights" / "xgboost_triple_ensemble.json"))
     scaler_path: str = os.getenv("SCALER_PATH", str(PROJECT_ROOT / "weights" / "triple_scaler.joblib"))
+    xgb_quad_model_path: str = os.getenv("XGB_QUAD_MODEL_PATH", str(PROJECT_ROOT / "weights" / "xgboost_quad_ensemble.json"))
+    quad_scaler_path: str = os.getenv("QUAD_SCALER_PATH", str(PROJECT_ROOT / "weights" / "quad_scaler.joblib"))
 
     # AWS S3 Audit Configuration
     aws_region: str = os.getenv("AWS_REGION", "us-east-1")
@@ -33,3 +35,4 @@ class Settings(BaseModel):
 
 
 settings = Settings()
+

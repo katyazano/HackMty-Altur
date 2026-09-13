@@ -16,6 +16,7 @@ from pathlib import Path
 from typing import Dict, Any, Tuple, List, Optional
 import numpy as np
 import soundfile as sf
+import librosa
 import joblib
 from sklearn.model_selection import StratifiedKFold
 from sklearn.preprocessing import StandardScaler
@@ -41,9 +42,11 @@ from src.models.rawnet2 import RawNet2
 from src.features import (
     AcousticFeatureExtractor,
     AASISTEmbeddingExtractor,
-    RawNet2ScoreExtractor
+    RawNet2ScoreExtractor,
+    WhisperMultimodalExtractor
 )
 from src.trainer import train_model
+
 
 
 def compute_eer(y_true: np.ndarray, y_scores: np.ndarray) -> Tuple[float, float]:
@@ -377,8 +380,277 @@ def train_and_evaluate_triple_xgboost(
     print(f"  * Uncertainty Band (0.40-0.60): {suspicious_count} test calls flagged as 'suspicious' (Step-up Auth)")
     print("=" * 80 + "\n", flush=True)
 
+def extract_dataset_features_quad(
+    audio_dir: Path,
+    manifest_path: Path,
+    aasist_extractor: AASISTEmbeddingExtractor,
+    rawnet2_extractor: RawNet2ScoreExtractor,
+    acoustic_extractor: AcousticFeatureExtractor,
+    whisper_extractor: WhisperMultimodalExtractor,
+    verbose: bool = True
+) -> Tuple[np.ndarray, np.ndarray, List[str]]:
+    """
+    Extracts 296-dimensional 4-Pillar Multimodal Features:
+    [ AASIST (132) || RawNet2 (4) || Acoustic DSP (136) || Whisper Multimodal (24) ]
+    """
+    label_map = {}
+    manifest_paths = [manifest_path, PROJECT_ROOT / "Data" / "manifest.csv", PROJECT_ROOT / "Data" / "train_manifest.csv", PROJECT_ROOT / "Data" / "test_manifest.csv"]
+    for m_path in manifest_paths:
+        if m_path.exists():
+            with open(m_path, "r", encoding="utf-8") as f:
+                reader = csv.DictReader(f)
+                for row in reader:
+                    cid = (row.get("anon_id") or row.get("id") or "").strip()
+                    label = (row.get("label") or "").strip().lower()
+                    if label in ("human", "synthetic"):
+                        num_label = 0 if label == "human" else 1
+                        if cid:
+                            label_map[cid] = num_label
+
+
+    audio_files = sorted(list(audio_dir.glob("*.wav")))
+    if not audio_files:
+        raise FileNotFoundError(f"No .wav files found in {audio_dir}")
+
+    if verbose:
+        print(f"Extracting 296-dim quad features from {len(audio_files)} files in {audio_dir.name}...", flush=True)
+
+    X_quad_list = []
+    y_list = []
+
+    for idx, wpath in enumerate(audio_files, 1):
+        cid = wpath.stem.replace("_agent_0", "")
+        if cid not in label_map:
+            continue
+
+        target_y = label_map[cid]
+
+        try:
+            data, sr = sf.read(str(wpath), dtype="float32")
+            if data.ndim > 1:
+                data = data[:, 0]
+            if sr != 16000:
+                data = librosa.resample(data, orig_sr=sr, target_sr=16000).astype(np.float32)
+                sr = 16000
+
+
+            # 1. Acoustic DSP features (136-dim)
+            ac_feats = acoustic_extractor.extract_features(data, sr=sr)
+
+            # 2. AASIST latent features (132-dim)
+            waveform_t = torch.tensor(data, dtype=torch.float32)
+            aa_feats = aasist_extractor.extract_from_waveform(waveform_t)
+
+            # 3. RawNet2 score features (4-dim)
+            rn_feats = rawnet2_extractor.extract_from_waveform(waveform_t)
+
+            # 4. Whisper Multimodal features (24-dim)
+            wh_feats, _ = whisper_extractor.extract_features(data, sr=sr, return_transcript=False)
+
+            # Concatenate all 296 dimensions
+            quad_vec = np.concatenate([aa_feats, rn_feats, ac_feats, wh_feats], axis=0)
+
+            X_quad_list.append(quad_vec)
+            y_list.append(target_y)
+
+            if verbose and (idx % 25 == 0 or idx == len(audio_files)):
+                print(f"  [Progress] Processed {idx:3d}/{len(audio_files)} files ({idx/len(audio_files)*100:.1f}%)", flush=True)
+
+        except Exception as err:
+            print(f"  Warning: Skipped {wpath.name} due to error: {err}", flush=True)
+
+    X_quad = np.array(X_quad_list, dtype=np.float32)
+    y = np.array(y_list, dtype=np.int64)
+
+    aasist_names = [f"aasist_emb_{i}" for i in range(128)] + ["aasist_logit_human", "aasist_logit_spoof", "aasist_prob_human", "aasist_prob_spoof"]
+    rawnet_names = ["rawnet2_logit_human", "rawnet2_logit_spoof", "rawnet2_prob_human", "rawnet2_prob_spoof"]
+    whisper_names = [f"whisper_lat_{i}" for i in range(16)] + [
+        "whisper_mean_logprob", "whisper_min_logprob", "whisper_mean_comp", "whisper_mean_no_speech",
+        "whisper_filler_density", "whisper_speech_rate", "whisper_ttr", "whisper_authenticity"
+    ]
+    quad_names = aasist_names + rawnet_names + acoustic_extractor.feature_names + whisper_names
+
+    if verbose:
+        print(f"  ✓ Processed {len(y)} samples. Quad multimodal vector dimension: {X_quad.shape[1]}")
+
+    return X_quad, y, quad_names
+
+
+def train_and_evaluate_quad_xgboost(
+    epochs_base: int = 15,
+    n_splits: int = 5,
+    verbose: bool = True
+) -> Dict[str, Any]:
+    print("=" * 85)
+    print("   4-PILLAR MULTIMODAL ENSEMBLE: AASIST + RAWNET2 + ACOUSTIC DSP + WHISPER ASR")
+    print("=" * 85)
+
+    weights_dir = PROJECT_ROOT / "weights"
+    weights_dir.mkdir(parents=True, exist_ok=True)
+    aasist_weights = str(weights_dir / "aasist_best.pth")
+    rawnet_weights = str(weights_dir / "rawnet2_best.pth")
+
+    device = "cuda" if torch.cuda.is_available() else "cpu"
+
+    # Verify/Train base models
+    if not os.path.exists(aasist_weights):
+        train_model(model=AASIST(), epochs=epochs_base, save_path=aasist_weights, device=device)
+    if not os.path.exists(rawnet_weights):
+        train_model(model=RawNet2(), epochs=epochs_base, save_path=rawnet_weights, device=device)
+
+    # Initialize feature extractors
+    aasist_m = AASIST().to(device)
+    aasist_m.load_state_dict(torch.load(aasist_weights, map_location=device))
+    aasist_m.eval()
+    aasist_ext = AASISTEmbeddingExtractor(model=aasist_m, device=device)
+
+    rawnet_m = RawNet2().to(device)
+    rawnet_m.load_state_dict(torch.load(rawnet_weights, map_location=device))
+    rawnet_m.eval()
+    rawnet_ext = RawNet2ScoreExtractor(model=rawnet_m, device=device)
+
+    ac_ext = AcousticFeatureExtractor(sample_rate=16000)
+    wh_ext = WhisperMultimodalExtractor(model_size="tiny", device=device)
+
+    train_dir = PROJECT_ROOT / "Data" / "separated_agents" / "agent_0" / "train"
+    if not train_dir.exists() or not list(train_dir.glob("*.wav")):
+        train_dir = PROJECT_ROOT / "Data" / "audio" / "train"
+
+    test_dir = PROJECT_ROOT / "Data" / "separated_agents" / "agent_0" / "test"
+    if not test_dir.exists() or not list(test_dir.glob("*.wav")):
+        test_dir = PROJECT_ROOT / "Data" / "audio" / "test"
+
+    manifest_path = PROJECT_ROOT / "Data" / "manifest.csv"
+    if not manifest_path.exists():
+        manifest_path = PROJECT_ROOT / "Data" / "train_manifest.csv"
+
+
+    print("\n>>> Extracting Train Set Quad Features...", flush=True)
+    X_quad_tr, y_tr, quad_names = extract_dataset_features_quad(
+        train_dir, manifest_path, aasist_ext, rawnet_ext, ac_ext, wh_ext, verbose=verbose
+    )
+
+    print("\n>>> Extracting Test Set Quad Features...", flush=True)
+    X_quad_te, y_te, _ = extract_dataset_features_quad(
+        test_dir, manifest_path, aasist_ext, rawnet_ext, ac_ext, wh_ext, verbose=verbose
+    )
+
+    X_quad_all = np.vstack([X_quad_tr, X_quad_te])
+    y_all = np.concatenate([y_tr, y_te])
+
+    print(f"\n================================================================================")
+    print(f"K-FOLD STRATIFIED VALIDATION (4-PILLAR MULTIMODAL) ({len(y_all)} recordings)")
+    print(f"================================================================================")
+    skf = StratifiedKFold(n_splits=n_splits, shuffle=True, random_state=42)
+
+    cv_accs_quad = []
+    xgb_params = {
+        "n_estimators": 180,
+        "max_depth": 3,
+        "learning_rate": 0.03,
+        "subsample": 0.80,
+        "colsample_bytree": 0.80,
+        "gamma": 0.20,
+        "reg_lambda": 2.5,
+        "reg_alpha": 0.5,
+        "eval_metric": "logloss",
+        "tree_method": "hist",
+        "n_jobs": 1,
+        "random_state": 42
+    }
+
+    for fold, (tr_idx, va_idx) in enumerate(skf.split(X_quad_all, y_all), 1):
+        scaler_fold = StandardScaler()
+        X_tr_s = scaler_fold.fit_transform(X_quad_all[tr_idx])
+        X_va_s = scaler_fold.transform(X_quad_all[va_idx])
+
+        clf_fold = xgb.XGBClassifier(**xgb_params)
+        clf_fold.fit(X_tr_s, y_all[tr_idx])
+        pred_fold = clf_fold.predict(X_va_s)
+        acc_fold = accuracy_score(y_all[va_idx], pred_fold)
+        cv_accs_quad.append(acc_fold)
+        print(f"  * Fold {fold} -> Quad Multimodal Accuracy: {acc_fold*100:.2f}%")
+
+    mean_cv = float(np.mean(cv_accs_quad))
+    std_cv = float(np.std(cv_accs_quad))
+
+    print("-" * 80)
+    print(f"  >>> Entire-Corpus 5-Fold Quad Multimodal Accuracy: {mean_cv*100:.2f}% ± {std_cv*100:.2f}%")
+
+    # Fit final production Quad Ensemble on Train split
+    final_scaler = StandardScaler()
+    X_train_scaled = final_scaler.fit_transform(X_quad_tr)
+    X_test_scaled = final_scaler.transform(X_quad_te)
+
+    final_model = xgb.XGBClassifier(**xgb_params)
+    t0 = time.perf_counter()
+    final_model.fit(X_train_scaled, y_tr)
+    train_time = time.perf_counter() - t0
+
+    y_test_probs = final_model.predict_proba(X_test_scaled)[:, 1]
+    eer, optimal_threshold = compute_eer(y_te, y_test_probs)
+
+    y_test_pred_eer = (y_test_probs >= optimal_threshold).astype(int)
+    acc_eer = accuracy_score(y_te, y_test_pred_eer)
+    prec_eer = precision_score(y_te, y_test_pred_eer, pos_label=1, zero_division=0)
+    rec_eer = recall_score(y_te, y_test_pred_eer, pos_label=1, zero_division=0)
+    f1_eer = f1_score(y_te, y_test_pred_eer, pos_label=1, zero_division=0)
+    tn_eer, fp_eer, fn_eer, tp_eer = confusion_matrix(y_te, y_test_pred_eer, labels=[0, 1]).ravel()
+
+    # Save Quad model artifacts
+    quad_model_path = str(weights_dir / "xgboost_quad_ensemble.json")
+    quad_scaler_path = str(weights_dir / "quad_scaler.joblib")
+    final_model.save_model(quad_model_path)
+    joblib.dump(final_scaler, quad_scaler_path)
+
+    # Top Features
+    importances = final_model.feature_importances_
+    top_indices = np.argsort(importances)[::-1][:15]
+    top_features = [{"feature": quad_names[i], "importance": float(importances[i])} for i in top_indices]
+
+    report = {
+        "model_name": "4-Pillar Multimodal Ensemble (AASIST + RawNet2 + Acoustic DSP + Whisper ASR)",
+        "timestamp": time.strftime("%Y-%m-%d %H:%M:%S"),
+        "training_time_s": round(train_time, 3),
+        "total_dimensions": 296,
+        "kfold_validation": {
+            "n_splits": n_splits,
+            "total_samples": len(y_all),
+            "quad_mean_accuracy": round(mean_cv, 4),
+            "quad_std_accuracy": round(std_cv, 4)
+        },
+        "threshold_calibration": {
+            "optimal_eer_threshold": round(optimal_threshold, 4),
+            "eer_value": round(eer, 4)
+        },
+        "calibrated_test_metrics": {
+            "accuracy": round(float(acc_eer), 4),
+            "precision": round(float(prec_eer), 4),
+            "recall": round(float(rec_eer), 4),
+            "f1_score": round(float(f1_eer), 4),
+            "tp": int(tp_eer), "tn": int(tn_eer), "fp": int(fp_eer), "fn": int(fn_eer)
+        },
+        "top_features": top_features
+    }
+
+    report_path = PROJECT_ROOT / "Data" / "xgboost_quad_training_report.json"
+    with open(report_path, "w", encoding="utf-8") as f:
+        json.dump(report, f, indent=2)
+
+    print("\n" + "=" * 85)
+    print("               QUAD MULTIMODAL CALIBRATION REPORT")
+    print("=" * 85)
+    print(f"  * 5-Fold Full Corpus Accuracy : {mean_cv*100:.2f}% ± {std_cv*100:.2f}%")
+    print(f"  * Equal Error Rate (EER)      : {eer*100:.2f}%")
+    print(f"  * Optimal Calibrated Threshold: {optimal_threshold:.4f}")
+    print(f"  * Calibrated Test Accuracy    : {acc_eer*100:.2f}% (F1-Score: {f1_eer*100:.2f}%)")
+    print(f"  * Confusion Matrix (at EER)   : TP={tp_eer}, TN={tn_eer}, FP={fp_eer}, FN={fn_eer}")
+    print(f"  * Saved Model Weights         : {quad_model_path}")
+    print("=" * 85 + "\n", flush=True)
+
     return report
 
 
 if __name__ == "__main__":
-    train_and_evaluate_triple_xgboost()
+    train_and_evaluate_quad_xgboost()
+

@@ -1,0 +1,215 @@
+{
+  "call_summary": {
+    "caller_duration_sec": 128.66,
+    "agent_duration_sec": 128.66,
+    "processing_time_sec": 15.308,
+    "real_time_factor": 0.059,
+    "total_dialogue_turns": 19
+  },
+  "anti_spoofing_verdict": {
+    "is_synthetic": false,
+    "confidence": 0.9833,
+    "decision_threshold": 0.35,
+    "risk_level": "AUTHENTIC"
+  },
+  "semantic_nlp_profile": {
+    "detected_language": "es-MX",
+    "total_words": 61,
+    "filler_density": 0.0,
+    "detected_human_fillers": [],
+    "robotic_phrases_found": 0,
+    "lexical_diversity_ttr": 0.7213,
+    "semantic_authenticity_score": 0.5
+  },
+  "conversational_dynamics": {
+    "timeline_synchronized": true,
+    "turn_taking_latency": {
+      "mean_ms": -12085.0,
+      "median_ms": -12085.0,
+      "samples_evaluated": 2
+    },
+    "cross_talk_duration_sec": 113.8,
+    "note": "Turn-taking latency and cross-talk evaluated on synchronized timeline."
+  },
+  "transcript": [
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 0.0,
+      "end_time": 7.6,
+      "duration": 7.6,
+      "text": "Buen día gracias por llamar a Banco Al Tour, le atiende marín. Marina Rosales, ¿en qué puedo ayudarle hoy?",
+      "avg_logprob": -0.311
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 7.6,
+      "end_time": 24.28,
+      "duration": 16.68,
+      "text": "Hola señor Cortes Lima, mucho gusto en atenderle, ¿en qué puedo apoyarle el día de hoy?",
+      "avg_logprob": -0.311
+    },
+    {
+      "speaker": "Caller",
+      "channel": 0,
+      "start_time": 8.14,
+      "end_time": 10.98,
+      "duration": 2.84,
+      "text": "...no lo que tal soy Adrián Corterdima.",
+      "avg_logprob": -0.288,
+      "no_speech_prob": 0.206,
+      "compression_ratio": 3.559
+    },
+    {
+      "speaker": "Caller",
+      "channel": 0,
+      "start_time": 10.98,
+      "end_time": 23.44,
+      "duration": 12.46,
+      "text": "Pero aquí tengo el problema de que hizo un pago y apareció dos veces en el estado de cuenta.",
+      "avg_logprob": -0.288,
+      "no_speech_prob": 0.206,
+      "compression_ratio": 3.559
+    },
+    {
+      "speaker": "Caller",
+      "channel": 0,
+      "start_time": 23.44,
+      "end_time": 63.17,
+      "duration": 39.73,
+      "text": "el primer de septiembre, por 2016 y cien dos pesos, y aparece en misado de cuenta duplicado,",
+      "avg_logprob": -0.974,
+      "no_speech_prob": 0.13,
+      "compression_ratio": 1.319
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 24.28,
+      "end_time": 29.28,
+      "duration": 5.0,
+      "text": "Entiendo, señor Cortes Lima. Para poder ayudarle, me puede proporcionar su número de referencia de cliente por favor.",
+      "avg_logprob": -0.311
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 29.28,
+      "end_time": 51.75,
+      "duration": 22.47,
+      "text": "Gracias, permítame confirmarlo. Es 44, 71, 92. Así es. Perfecto, gracias por confirmarlo. Ahora, me puede platicar con más detalle lo que pasó, en qué fecha hizo el pago",
+      "avg_logprob": -0.311
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 51.75,
+      "end_time": 71.2,
+      "duration": 19.45,
+      "text": "y cuando no todo el cargo duplicado. Gracias por aclararlo, esto es sobre su cuenta nomina",
+      "avg_logprob": -0.337
+    },
+    {
+      "speaker": "Caller",
+      "channel": 0,
+      "start_time": 63.17,
+      "end_time": 121.94,
+      "duration": 58.77,
+      "text": "dos cobros iguales en la misma fecha, no mina plus, el 40, el 41, 93, sí, no obrote.",
+      "avg_logprob": -0.974,
+      "no_speech_prob": 0.13,
+      "compression_ratio": 1.319
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 71.2,
+      "end_time": 81.96,
+      "duration": 10.76,
+      "text": "Plus o sobre su crédito verde. Ok, señor Cortes LIMAS, me puede confirmar de nuevo",
+      "avg_logprob": -0.337
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 81.96,
+      "end_time": 92.87,
+      "duration": 10.91,
+      "text": "su número de referencia completo por favor. Así como me lo dictó hace un momento. Muy bien,",
+      "avg_logprob": -0.337
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 92.87,
+      "end_time": 102.36,
+      "duration": 9.49,
+      "text": "su número de referencia a es 44,71, 93. Correcto. Listo, señor Cortes LIMAS, queda registrado",
+      "avg_logprob": -0.337
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 102.36,
+      "end_time": 108.16,
+      "duration": 5.8,
+      "text": "su reporte por cobro duplicado el primero de septiembre por 2600 pesos en su cuenta nomina Plus.",
+      "avg_logprob": -0.337
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 108.16,
+      "end_time": 112.6,
+      "duration": 4.44,
+      "text": "El área correspondiente revisará su caso y si procede del reenvolso, verá el depósito",
+      "avg_logprob": -0.389
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 112.6,
+      "end_time": 115.6,
+      "duration": 3.0,
+      "text": "reflejado en un plazo de 3 a 5 días a bile.",
+      "avg_logprob": -0.389
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 115.6,
+      "end_time": 118.72,
+      "duration": 3.12,
+      "text": "Su folio es 5, 3, 4, 1, 8, 2.",
+      "avg_logprob": -0.389
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 118.72,
+      "end_time": 123.44,
+      "duration": 4.72,
+      "text": "Hay algo más en lo que le pueda apoyar hoy.",
+      "avg_logprob": -0.389
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 123.44,
+      "end_time": 126.76,
+      "duration": 3.32,
+      "text": "Muchas gracias por llamar a Banco Alturo, señor Cortes Lima.",
+      "avg_logprob": -0.389
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 126.76,
+      "end_time": 127.76,
+      "duration": 1.0,
+      "text": "¿Qué tenga un excelente día?",
+      "avg_logprob": -0.389
+    }
+  ]
+}
