@@ -10,14 +10,10 @@ venv/
 ENV/
 
 # Model checkpoints & pre-trained weights
-*.pt
-*.pth
-*.onnx
-*.bin
-*.h5
-*.safetensors
-models/weights/
-weights/
+# (Small production weights < 5MB tracked for zero-setup cloud deployments)
+!weights/
+!weights/*
+
 
 # Audio Datasets, User Uploads & Large Archives
 *.tar.gz
