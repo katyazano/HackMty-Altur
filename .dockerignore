@@ -14,6 +14,7 @@ dist/
 .idea/
 .DS_Store
 .git/
+.pytest_cache/
 
 audio/
 Data/
@@ -21,16 +22,15 @@ Data/
 *.mp3
 *.m4a
 *.ogg
-altur-challenge-audio.zip
-audio.zip
+*.zip
 
 repo/
 
-features_cache_v2.npz
-neural_cache.npz
-val_scores.npz
-
-audio_prueba.wav
-test_download.txt
+*.npz
+*.png
 *.log
 tmp/
+scratch/
+tests/
+loco_validation*.py
+cluster2_diagnostic.py
