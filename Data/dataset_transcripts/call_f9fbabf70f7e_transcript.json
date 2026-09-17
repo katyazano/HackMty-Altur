@@ -1,0 +1,184 @@
+{
+  "call_summary": {
+    "caller_duration_sec": 104.38,
+    "agent_duration_sec": 104.38,
+    "processing_time_sec": 9.799,
+    "real_time_factor": 0.047,
+    "total_dialogue_turns": 16
+  },
+  "anti_spoofing_verdict": {
+    "is_synthetic": true,
+    "confidence": 0.9864,
+    "decision_threshold": 0.35,
+    "risk_level": "CRITICAL"
+  },
+  "semantic_nlp_profile": {
+    "detected_language": "es-MX",
+    "total_words": 116,
+    "filler_density": 0.0,
+    "detected_human_fillers": [],
+    "robotic_phrases_found": 0,
+    "lexical_diversity_ttr": 0.5862,
+    "semantic_authenticity_score": 0.5
+  },
+  "conversational_dynamics": {
+    "timeline_synchronized": false,
+    "turn_taking_latency": null,
+    "cross_talk_duration_sec": 0.0,
+    "note": "Audio files were processed as independent continuous speech streams."
+  },
+  "transcript": [
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 0.0,
+      "end_time": 24.54,
+      "duration": 24.54,
+      "text": "Buen día, gracias por llamar a Banco Al Tour, le atiende Marina. Le comento que esta llamada se graba para fines de calidad en qué le puedo ayudar. Claro que si con gusto le ayudo, me puedo dar su nombre por favor.",
+      "avg_logprob": -0.289
+    },
+    {
+      "speaker": "Caller",
+      "channel": 0,
+      "start_time": 9.07,
+      "end_time": 30.25,
+      "duration": 21.18,
+      "text": "Buenas tardes, Marina, disculpe el e llamo porque tengo una duda con mi estado de cuenta. Y hace un pago de 2.600 pesos, el 1° de septiembre, pero me aparece 2 veces el cargo. Me puede ayudar por favor.",
+      "avg_logprob": -0.315,
+      "no_speech_prob": 0.41,
+      "compression_ratio": 1.56
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 24.54,
+      "end_time": 47.2,
+      "duration": 22.66,
+      "text": "Y también me facilita su número de referencia de cliente para poder registrar el reporte. Gracias Adriana, Tomo nota, entonces su número de referencia es 44, 70, 81, 92, así es.",
+      "avg_logprob": -0.289
+    },
+    {
+      "speaker": "Caller",
+      "channel": 0,
+      "start_time": 30.25,
+      "end_time": 69.69,
+      "duration": 39.44,
+      "text": "Sí, claro. Mi nombre es Adriana Cortés Lima. El número de clientes 44.70, 81. 93. No, perdón, es 44.70, 81. 93. No, 92. Sí, claro. Yo hice un solo pago por 2.600 pesos, el día 1° de septiembre.",
+      "avg_logprob": -0.315,
+      "no_speech_prob": 0.41,
+      "compression_ratio": 1.56
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 47.2,
+      "end_time": 57.58,
+      "duration": 10.38,
+      "text": "Perfecto, gracias por la correctión Adriana.",
+      "avg_logprob": -0.367
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 57.58,
+      "end_time": 60.38,
+      "duration": 2.8,
+      "text": "Ahora, me puede platicar con detalle que fue lo que pasó.",
+      "avg_logprob": -0.367
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 60.38,
+      "end_time": 62.66,
+      "duration": 2.28,
+      "text": "¿Cómo se dio cuenta del cargo duplicado?",
+      "avg_logprob": -0.367
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 62.66,
+      "end_time": 80.28,
+      "duration": 17.62,
+      "text": "Ok.",
+      "avg_logprob": -0.367
+    },
+    {
+      "speaker": "Caller",
+      "channel": 0,
+      "start_time": 69.79,
+      "end_time": 76.34,
+      "duration": 6.55,
+      "text": "pero al revisar mi estado de cuenta, el mismo pago dos veces es el mismo día, por eso",
+      "avg_logprob": -0.401,
+      "no_speech_prob": 0.094,
+      "compression_ratio": 1.368
+    },
+    {
+      "speaker": "Caller",
+      "channel": 0,
+      "start_time": 76.34,
+      "end_time": 103.52,
+      "duration": 27.18,
+      "text": "ya hemos porque no reconozco el segundo cobro, no con eso está bien, muchas gracias, buenas tardes",
+      "avg_logprob": -0.401,
+      "no_speech_prob": 0.094,
+      "compression_ratio": 1.368
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 80.28,
+      "end_time": 85.2,
+      "duration": 4.92,
+      "text": "Perfecto lo tengo registrado, 44, 70, 81, 93, correcto.",
+      "avg_logprob": -0.367
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 85.2,
+      "end_time": 89.24,
+      "duration": 4.04,
+      "text": "Adriana, quedó registrado su aclaración por cargo duplicado de 2016,",
+      "avg_logprob": -0.367
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 89.24,
+      "end_time": 90.96,
+      "duration": 1.72,
+      "text": "el primero de septiembre.",
+      "avg_logprob": -0.367
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 90.96,
+      "end_time": 94.24,
+      "duration": 3.28,
+      "text": "El folio es 6, 2, 4, 1, 8, 0.",
+      "avg_logprob": -0.367
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 94.24,
+      "end_time": 97.08,
+      "duration": 2.84,
+      "text": "La respuesta estará lista en un máximo de 10 días.",
+      "avg_logprob": -0.367
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 97.08,
+      "end_time": 99.08,
+      "duration": 2.0,
+      "text": "Necesita que le ayuda con algo más.",
+      "avg_logprob": -0.367
+    }
+  ]
+}

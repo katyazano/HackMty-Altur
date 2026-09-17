@@ -1,0 +1,340 @@
+{
+  "call_summary": {
+    "caller_duration_sec": 129.44,
+    "agent_duration_sec": 129.44,
+    "processing_time_sec": 16.159,
+    "real_time_factor": 0.062,
+    "total_dialogue_turns": 31
+  },
+  "anti_spoofing_verdict": {
+    "is_synthetic": false,
+    "confidence": 0.9797,
+    "decision_threshold": 0.35,
+    "risk_level": "AUTHENTIC"
+  },
+  "semantic_nlp_profile": {
+    "detected_language": "es-MX",
+    "total_words": 83,
+    "filler_density": 0.0241,
+    "detected_human_fillers": [
+      "a ver",
+      "o sea"
+    ],
+    "robotic_phrases_found": 0,
+    "lexical_diversity_ttr": 0.6747,
+    "semantic_authenticity_score": 0.5603
+  },
+  "conversational_dynamics": {
+    "timeline_synchronized": true,
+    "turn_taking_latency": {
+      "mean_ms": -6622.9,
+      "median_ms": -6060.0,
+      "samples_evaluated": 7
+    },
+    "cross_talk_duration_sec": 116.79,
+    "note": "Turn-taking latency and cross-talk evaluated on synchronized timeline."
+  },
+  "transcript": [
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 0.0,
+      "end_time": 15.62,
+      "duration": 15.62,
+      "text": "Buen día, gracias por llamar a Banco Al Tour, le atiende Marina. Le comento que esta llamada se graba para fines de calidad en que le puedo ayudar. Claro.",
+      "avg_logprob": -0.252
+    },
+    {
+      "speaker": "Caller",
+      "channel": 0,
+      "start_time": 6.77,
+      "end_time": 9.9,
+      "duration": 3.13,
+      "text": "¿Cómo? ¿Cómo? ¿Cómo? ¿Cómo?",
+      "avg_logprob": -0.9,
+      "no_speech_prob": 0.182,
+      "compression_ratio": 1.556
+    },
+    {
+      "speaker": "Caller",
+      "channel": 0,
+      "start_time": 9.9,
+      "end_time": 14.62,
+      "duration": 4.72,
+      "text": "¿Me he sido dicho que me ayudes por qué mi pago a vencer y no tengo?",
+      "avg_logprob": -0.9,
+      "no_speech_prob": 0.182,
+      "compression_ratio": 1.556
+    },
+    {
+      "speaker": "Caller",
+      "channel": 0,
+      "start_time": 14.62,
+      "end_time": 16.74,
+      "duration": 2.12,
+      "text": "Entonces, ¿qué dias a ver si puedo pagar unos días?",
+      "avg_logprob": -0.9,
+      "no_speech_prob": 0.182,
+      "compression_ratio": 1.556
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 15.62,
+      "end_time": 28.82,
+      "duration": 13.2,
+      "text": "Si le explico en Banco Al Tour, contamos con una prórroga de hasta 15 días para pagos atrasados. Siempre y cuando las solicite antes de la fecha limite de pago.",
+      "avg_logprob": -0.252
+    },
+    {
+      "speaker": "Caller",
+      "channel": 0,
+      "start_time": 16.74,
+      "end_time": 42.59,
+      "duration": 25.85,
+      "text": "¿Sin que me paguen más?",
+      "avg_logprob": -0.9,
+      "no_speech_prob": 0.182,
+      "compression_ratio": 1.556
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 28.82,
+      "end_time": 38.82,
+      "duration": 10.0,
+      "text": "Con esto, no se reportan nada al buro de crédito y no se le cobra a recargo extra. Si ya pasó la fecha limite, si aplica un cargo por pago tardido, pero lo podemos revisar con una claración.",
+      "avg_logprob": -0.252
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 38.82,
+      "end_time": 48.65,
+      "duration": 9.83,
+      "text": "Me apoya con su número de referencia de cliente por favor. Gracias.",
+      "avg_logprob": -0.337
+    },
+    {
+      "speaker": "Caller",
+      "channel": 0,
+      "start_time": 42.59,
+      "end_time": 46.35,
+      "duration": 3.76,
+      "text": "Sí, 33, 36, no veinte y dos ochenta y hoy.",
+      "avg_logprob": -0.9,
+      "no_speech_prob": 0.182,
+      "compression_ratio": 1.556
+    },
+    {
+      "speaker": "Caller",
+      "channel": 0,
+      "start_time": 46.35,
+      "end_time": 65.82,
+      "duration": 19.47,
+      "text": "¿Tú en el 81?",
+      "avg_logprob": -0.9,
+      "no_speech_prob": 0.182,
+      "compression_ratio": 1.556
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 48.65,
+      "end_time": 51.05,
+      "duration": 2.4,
+      "text": "Permítame confirmarle el número de referencia.",
+      "avg_logprob": -0.337
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 51.05,
+      "end_time": 54.65,
+      "duration": 3.6,
+      "text": "33,06, 92,80,000. Así es.",
+      "avg_logprob": -0.337
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 54.65,
+      "end_time": 60.11,
+      "duration": 5.46,
+      "text": "Perfecto, muchas gracias por la correctión.",
+      "avg_logprob": -0.337
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 60.11,
+      "end_time": 62.11,
+      "duration": 2.0,
+      "text": "Ahora me puedo platicar un poquito más.",
+      "avg_logprob": -0.337
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 62.11,
+      "end_time": 71.64,
+      "duration": 9.53,
+      "text": "Quedi a veces su pago y desde cuando tienes de penientes.",
+      "avg_logprob": -0.337
+    },
+    {
+      "speaker": "Caller",
+      "channel": 0,
+      "start_time": 65.82,
+      "end_time": 82.5,
+      "duration": 16.68,
+      "text": "Y vente del líder de septiembre, pero yo quiero pagar hasta el 23, ¿cuál es posible?",
+      "avg_logprob": -0.9,
+      "no_speech_prob": 0.182,
+      "compression_ratio": 1.556
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 71.64,
+      "end_time": 72.64,
+      "duration": 1.0,
+      "text": "Perdón que lo interrumpa.",
+      "avg_logprob": -0.337
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 72.64,
+      "end_time": 74.64,
+      "duration": 2.0,
+      "text": "Me mencionó 20 del 10 de septiembre.",
+      "avg_logprob": -0.337
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 74.64,
+      "end_time": 77.64,
+      "duration": 3.0,
+      "text": "El vencimiento es el 20 o el 10. Nada más para confirmar.",
+      "avg_logprob": -0.337
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 77.64,
+      "end_time": 80.64,
+      "duration": 3.0,
+      "text": "Ajá, si es el 20, si podría pedirla por rogas hasta el 5 de octubre.",
+      "avg_logprob": -0.337
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 80.64,
+      "end_time": 85.67,
+      "duration": 5.03,
+      "text": "por ejemplo si es el 10 ya estaríamos fuera del periodo sin rec. Gracias por confirmarlo.",
+      "avg_logprob": -0.42
+    },
+    {
+      "speaker": "Caller",
+      "channel": 0,
+      "start_time": 82.5,
+      "end_time": 84.82,
+      "duration": 2.32,
+      "text": "Es de 10.",
+      "avg_logprob": -0.9,
+      "no_speech_prob": 0.182,
+      "compression_ratio": 1.556
+    },
+    {
+      "speaker": "Caller",
+      "channel": 0,
+      "start_time": 84.82,
+      "end_time": 98.38,
+      "duration": 13.56,
+      "text": "O sea, vente en 10.",
+      "avg_logprob": -0.9,
+      "no_speech_prob": 0.182,
+      "compression_ratio": 1.556
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 85.67,
+      "end_time": 94.23,
+      "duration": 8.56,
+      "text": "Es... ok, entonces lo veo por su referencia. Ok. Ahora sí, para dejar todo bien registrado,",
+      "avg_logprob": -0.42
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 94.23,
+      "end_time": 104.6,
+      "duration": 10.37,
+      "text": "me confirman nuevamente su número de referencia completo por favor. Listo confirmado. 33,",
+      "avg_logprob": -0.42
+    },
+    {
+      "speaker": "Caller",
+      "channel": 0,
+      "start_time": 98.38,
+      "end_time": 122.56,
+      "duration": 24.18,
+      "text": "33, los 69 y dos ochenta y hoy no.",
+      "avg_logprob": -0.9,
+      "no_speech_prob": 0.182,
+      "compression_ratio": 1.556
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 104.6,
+      "end_time": 112.42,
+      "duration": 7.82,
+      "text": "0, 0, 92, 81. Que dor registrado que su pago venció el 10 de septiembre y que solicita clarar el tema de la",
+      "avg_logprob": -0.42
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 112.42,
+      "end_time": 119.38,
+      "duration": 6.96,
+      "text": "roga. Su folio es 2, 5, 8, 1, 3, 6. La respuesta la tendrada en máximo 15 días a",
+      "avg_logprob": -0.353
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 119.38,
+      "end_time": 126.72,
+      "duration": 7.34,
+      "text": "bile. ¿Le puedo ayudar con algo más hoy? Perfecto. ¿Qué da la orden para cualquier",
+      "avg_logprob": -0.353
+    },
+    {
+      "speaker": "Caller",
+      "channel": 0,
+      "start_time": 122.56,
+      "end_time": 123.56,
+      "duration": 1.0,
+      "text": "No.",
+      "avg_logprob": -0.722,
+      "no_speech_prob": 0.227,
+      "compression_ratio": 0.273
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 126.72,
+      "end_time": 128.56,
+      "duration": 1.84,
+      "text": "otra duda? ¿Qué tenga muy buen día?",
+      "avg_logprob": -0.353
+    }
+  ]
+}

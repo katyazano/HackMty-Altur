@@ -1,0 +1,327 @@
+{
+  "call_summary": {
+    "caller_duration_sec": 159.0,
+    "agent_duration_sec": 159.0,
+    "processing_time_sec": 16.296,
+    "real_time_factor": 0.051,
+    "total_dialogue_turns": 28
+  },
+  "anti_spoofing_verdict": {
+    "is_synthetic": true,
+    "confidence": 0.9871,
+    "decision_threshold": 0.35,
+    "risk_level": "CRITICAL"
+  },
+  "semantic_nlp_profile": {
+    "detected_language": "es-MX",
+    "total_words": 192,
+    "filler_density": 0.0417,
+    "detected_human_fillers": [
+      "verdad",
+      "a ver",
+      "ah",
+      "ajá",
+      "o sea",
+      "pues"
+    ],
+    "robotic_phrases_found": 0,
+    "lexical_diversity_ttr": 0.6094,
+    "semantic_authenticity_score": 0.6042
+  },
+  "conversational_dynamics": {
+    "timeline_synchronized": true,
+    "turn_taking_latency": {
+      "mean_ms": -11883.3,
+      "median_ms": -10295.0,
+      "samples_evaluated": 6
+    },
+    "cross_talk_duration_sec": 111.55,
+    "note": "Turn-taking latency and cross-talk evaluated on synchronized timeline."
+  },
+  "transcript": [
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 0.0,
+      "end_time": 8.0,
+      "duration": 8.0,
+      "text": "Buen día gracias por llamar a Banco Al Tour, le atiende Marina, le comento que esta llamada se graba para fines de calidad. En qué le puedo ayudar.",
+      "avg_logprob": -0.291
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 8.0,
+      "end_time": 47.18,
+      "duration": 39.18,
+      "text": "Buenas tardes, gracias. Claro, con gusto. Muchas gracias, señora Daniela. Me podría proporcionar por favor su número de referencia de cliente. Así le ayuda a revisar el estatus de su solicitud. Gracias, señora Daniela. Nada más para confirmar.",
+      "avg_logprob": -0.291
+    },
+    {
+      "speaker": "Caller",
+      "channel": 0,
+      "start_time": 11.31,
+      "end_time": 19.76,
+      "duration": 8.45,
+      "text": "Buenas tardes, Marina, muchas gracias. Mire, yo le llamo porque metí una solicitud de crédito personal, hace ya un par de semanas y pues...",
+      "avg_logprob": -0.369,
+      "no_speech_prob": 0.245,
+      "compression_ratio": 1.396
+    },
+    {
+      "speaker": "Caller",
+      "channel": 0,
+      "start_time": 19.76,
+      "end_time": 26.02,
+      "duration": 6.26,
+      "text": "¿Quiestías a ver si ya está aprobada o sea y alguna bance? Soy Daniela Ocampo Rios.",
+      "avg_logprob": -0.369,
+      "no_speech_prob": 0.245,
+      "compression_ratio": 1.396
+    },
+    {
+      "speaker": "Caller",
+      "channel": 0,
+      "start_time": 26.02,
+      "end_time": 56.27,
+      "duration": 30.25,
+      "text": "Sí, claro, con mucho gusto. Mi número de referencia es 6, 6, 4, 1, 2, 0, 7, 5. Se lo repito, así está bien. Ah, ja, estoy atentas.",
+      "avg_logprob": -0.369,
+      "no_speech_prob": 0.245,
+      "compression_ratio": 1.396
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 47.18,
+      "end_time": 58.77,
+      "duration": 11.59,
+      "text": "tengo seis, seis, cuatro, uno, dos, dos, cero, siete, seis. Así es, perfecto, le agradezco. Me",
+      "avg_logprob": -0.32
+    },
+    {
+      "speaker": "Caller",
+      "channel": 0,
+      "start_time": 56.27,
+      "end_time": 71.56,
+      "duration": 15.29,
+      "text": "Sí, claro, mi de la solicitud la metía el 25 de agosto fue por 35 mil pesos.",
+      "avg_logprob": -0.469,
+      "no_speech_prob": 0.397,
+      "compression_ratio": 1.524
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 58.77,
+      "end_time": 63.01,
+      "duration": 4.24,
+      "text": "puede platicar un poquito más que fue lo que pasó o si le dieron algún folio o fecha",
+      "avg_logprob": -0.32
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 63.01,
+      "end_time": 87.84,
+      "duration": 24.83,
+      "text": "estimada cuando hizo las solicitudes. Perdón que la interrompa mencionó que la solicitud fue",
+      "avg_logprob": -0.32
+    },
+    {
+      "speaker": "Caller",
+      "channel": 0,
+      "start_time": 71.56,
+      "end_time": 74.4,
+      "duration": 2.84,
+      "text": "Me diaron un folio, sí, lo tengo aquí apuntado.",
+      "avg_logprob": -0.469,
+      "no_speech_prob": 0.397,
+      "compression_ratio": 1.524
+    },
+    {
+      "speaker": "Caller",
+      "channel": 0,
+      "start_time": 74.4,
+      "end_time": 76.96,
+      "duration": 2.56,
+      "text": "Ecer, y hondo, 0, 4, 1, 8.",
+      "avg_logprob": -0.469,
+      "no_speech_prob": 0.397,
+      "compression_ratio": 1.524
+    },
+    {
+      "speaker": "Caller",
+      "channel": 0,
+      "start_time": 76.96,
+      "end_time": 81.0,
+      "duration": 4.04,
+      "text": "Y pues la verdad desde ese día estoy esperando a ver si sí me lo aprobaron o qué pasó,",
+      "avg_logprob": -0.469,
+      "no_speech_prob": 0.397,
+      "compression_ratio": 1.524
+    },
+    {
+      "speaker": "Caller",
+      "channel": 0,
+      "start_time": 81.0,
+      "end_time": 82.64,
+      "duration": 1.64,
+      "text": "porque no me han hablado ni nada.",
+      "avg_logprob": -0.469,
+      "no_speech_prob": 0.397,
+      "compression_ratio": 1.524
+    },
+    {
+      "speaker": "Caller",
+      "channel": 0,
+      "start_time": 82.64,
+      "end_time": 84.64,
+      "duration": 2.0,
+      "text": "Por eso me han y me amarcarles yo.",
+      "avg_logprob": -0.469,
+      "no_speech_prob": 0.397,
+      "compression_ratio": 1.524
+    },
+    {
+      "speaker": "Caller",
+      "channel": 0,
+      "start_time": 84.64,
+      "end_time": 97.95,
+      "duration": 13.31,
+      "text": "Es sobre mi cuenta no me noplas.",
+      "avg_logprob": -0.469,
+      "no_speech_prob": 0.397,
+      "compression_ratio": 1.524
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 87.84,
+      "end_time": 92.64,
+      "duration": 4.8,
+      "text": "por 35 mil pesos, verdad? Está bien, ya lo tengo han otado. Esto es sobre su cuenta nominar",
+      "avg_logprob": -0.32
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 92.64,
+      "end_time": 108.37,
+      "duration": 15.73,
+      "text": "plus o sobre su crédito verde. Ok, señora Dania, gracias. Entonces me confirma que",
+      "avg_logprob": -0.32
+    },
+    {
+      "speaker": "Caller",
+      "channel": 0,
+      "start_time": 97.95,
+      "end_time": 99.99,
+      "duration": 2.04,
+      "text": "Sí, fue desde ahí donde la pedí.",
+      "avg_logprob": -0.469,
+      "no_speech_prob": 0.397,
+      "compression_ratio": 1.524
+    },
+    {
+      "speaker": "Caller",
+      "channel": 0,
+      "start_time": 99.99,
+      "end_time": 105.46,
+      "duration": 5.47,
+      "text": "Ajá, sí, estoy pendiente.",
+      "avg_logprob": -0.469,
+      "no_speech_prob": 0.397,
+      "compression_ratio": 1.524
+    },
+    {
+      "speaker": "Caller",
+      "channel": 0,
+      "start_time": 105.46,
+      "end_time": 117.94,
+      "duration": 12.48,
+      "text": "Sí, exactamente, así está correcto.",
+      "avg_logprob": -0.469,
+      "no_speech_prob": 0.397,
+      "compression_ratio": 1.524
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 108.37,
+      "end_time": 128.11,
+      "duration": 19.74,
+      "text": "6, 6, 4, 1, 2, 0, 7, 5, hacía esta correcto. Perfecto, queda registrado. Mire ya dejé a notar sus",
+      "avg_logprob": -0.343
+    },
+    {
+      "speaker": "Caller",
+      "channel": 0,
+      "start_time": 117.94,
+      "end_time": 122.86,
+      "duration": 4.92,
+      "text": "6, 6, 4, 1, 2, 0, 7, 5, es mi número de referencia.",
+      "avg_logprob": -0.36,
+      "no_speech_prob": 0.1,
+      "compression_ratio": 1.254
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 128.11,
+      "end_time": 133.71,
+      "duration": 5.6,
+      "text": "solicitudes seguimientos para el crédito personal por 35 mil pesos, ingresada el 25 de agosto",
+      "avg_logprob": -0.343
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 133.71,
+      "end_time": 140.41,
+      "duration": 6.7,
+      "text": "desde su cuenta nomina Plus. El folio parece reporte de 2, 3, 0, 1, 7, 4. El dictamente",
+      "avg_logprob": -0.343
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 140.41,
+      "end_time": 145.61,
+      "duration": 5.2,
+      "text": "crédito tarda hasta 5 días a bile se enresolverse y el estatus se confirma por mensaje al número",
+      "avg_logprob": -0.343
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 145.61,
+      "end_time": 148.41,
+      "duration": 2.8,
+      "text": "registrado. Hay algo más en lo que le pueda apoyar hoy.",
+      "avg_logprob": -0.343
+    },
+    {
+      "speaker": "Caller",
+      "channel": 0,
+      "start_time": 152.35,
+      "end_time": 153.75,
+      "duration": 1.4,
+      "text": "No, muchísimas gracias, Marina.",
+      "avg_logprob": -0.36,
+      "no_speech_prob": 0.1,
+      "compression_ratio": 1.254
+    },
+    {
+      "speaker": "Caller",
+      "channel": 0,
+      "start_time": 154.07,
+      "end_time": 158.15,
+      "duration": 4.08,
+      "text": "Le agradezco mucho su atención y que me haya dado el folio que tenga muy bonita tarde.",
+      "avg_logprob": -0.36,
+      "no_speech_prob": 0.1,
+      "compression_ratio": 1.254
+    }
+  ]
+}

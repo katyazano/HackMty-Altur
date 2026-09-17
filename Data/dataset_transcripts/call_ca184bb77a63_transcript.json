@@ -1,0 +1,316 @@
+{
+  "call_summary": {
+    "caller_duration_sec": 122.1,
+    "agent_duration_sec": 122.1,
+    "processing_time_sec": 17.105,
+    "real_time_factor": 0.07,
+    "total_dialogue_turns": 28
+  },
+  "anti_spoofing_verdict": {
+    "is_synthetic": false,
+    "confidence": 0.9792,
+    "decision_threshold": 0.35,
+    "risk_level": "AUTHENTIC"
+  },
+  "semantic_nlp_profile": {
+    "detected_language": "es-MX",
+    "total_words": 107,
+    "filler_density": 0.0093,
+    "detected_human_fillers": [
+      "pues"
+    ],
+    "robotic_phrases_found": 0,
+    "lexical_diversity_ttr": 0.5047,
+    "semantic_authenticity_score": 0.5232
+  },
+  "conversational_dynamics": {
+    "timeline_synchronized": true,
+    "turn_taking_latency": {
+      "mean_ms": -7618.7,
+      "median_ms": -3630.0,
+      "samples_evaluated": 8
+    },
+    "cross_talk_duration_sec": 113.45,
+    "note": "Turn-taking latency and cross-talk evaluated on synchronized timeline."
+  },
+  "transcript": [
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 0.02,
+      "end_time": 35.41,
+      "duration": 35.39,
+      "text": "Buen día gracias por llamar a Banco Al Tour, le atiende Marina, le comento que esta llamada se graba para fines de calidad, en que le puedo ayudar. Claro, entiendo, me podría dar tu nombre por favor y también cuenta con su número de referencia de clientes. Gracias Adriana, me apoya por favor con su número de referencia de cliente, puede dictarme lo cuando guste, dijito por dijito.",
+      "avg_logprob": -0.281
+    },
+    {
+      "speaker": "Caller",
+      "channel": 0,
+      "start_time": 2.67,
+      "end_time": 24.06,
+      "duration": 21.39,
+      "text": "¿Qué pasa? ¿Qué pasa es que revisen mi, mi, mi, todo el cuenta? Me he cuenta que tengo dos cobros dos veces.",
+      "avg_logprob": -0.64,
+      "no_speech_prob": 0.089,
+      "compression_ratio": 1.266
+    },
+    {
+      "speaker": "Caller",
+      "channel": 0,
+      "start_time": 24.06,
+      "end_time": 43.43,
+      "duration": 19.37,
+      "text": "Sí, claro, es Adriana Cortés Lima. Sí, es 4, 4, 7, 0, 8, 1, 9, 3.",
+      "avg_logprob": -0.64,
+      "no_speech_prob": 0.089,
+      "compression_ratio": 1.266
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 35.41,
+      "end_time": 45.27,
+      "duration": 9.86,
+      "text": "Perfecto, déjenme confirmar, 4, 4, 7, 0, 8, 1, 9, 4.",
+      "avg_logprob": -0.31
+    },
+    {
+      "speaker": "Caller",
+      "channel": 0,
+      "start_time": 43.43,
+      "end_time": 48.78,
+      "duration": 5.35,
+      "text": "¿Qué es el primer de CEMB?",
+      "avg_logprob": -0.827,
+      "no_speech_prob": 0.421,
+      "compression_ratio": 1.5
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 45.27,
+      "end_time": 54.04,
+      "duration": 8.77,
+      "text": "Así es, gracias Adriana, ahora me puede platicar un poquito más.",
+      "avg_logprob": -0.31
+    },
+    {
+      "speaker": "Caller",
+      "channel": 0,
+      "start_time": 48.78,
+      "end_time": 52.54,
+      "duration": 3.76,
+      "text": "No, es 9 de 3.",
+      "avg_logprob": -0.827,
+      "no_speech_prob": 0.421,
+      "compression_ratio": 1.5
+    },
+    {
+      "speaker": "Caller",
+      "channel": 0,
+      "start_time": 52.54,
+      "end_time": 57.7,
+      "duration": 5.16,
+      "text": "¿Cómo estoy?",
+      "avg_logprob": -0.827,
+      "no_speech_prob": 0.421,
+      "compression_ratio": 1.5
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 54.04,
+      "end_time": 57.04,
+      "duration": 3.0,
+      "text": "Cuando a notar estos cargos duplicados o en qué tipo de compra fue,",
+      "avg_logprob": -0.31
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 57.04,
+      "end_time": 69.41,
+      "duration": 12.37,
+      "text": "cuénteme con detalles por favor.",
+      "avg_logprob": -0.31
+    },
+    {
+      "speaker": "Caller",
+      "channel": 0,
+      "start_time": 57.7,
+      "end_time": 61.7,
+      "duration": 4.0,
+      "text": "No, no, no, sé, el día de hoy.",
+      "avg_logprob": -0.827,
+      "no_speech_prob": 0.421,
+      "compression_ratio": 1.5
+    },
+    {
+      "speaker": "Caller",
+      "channel": 0,
+      "start_time": 61.7,
+      "end_time": 64.7,
+      "duration": 3.0,
+      "text": "Pero ese pago fue el primer de CEMB.",
+      "avg_logprob": -0.827,
+      "no_speech_prob": 0.421,
+      "compression_ratio": 1.5
+    },
+    {
+      "speaker": "Caller",
+      "channel": 0,
+      "start_time": 64.7,
+      "end_time": 68.7,
+      "duration": 4.0,
+      "text": "Entonces, no aparece duplicado, pero pues apenas en el 40.",
+      "avg_logprob": -0.827,
+      "no_speech_prob": 0.421,
+      "compression_ratio": 1.5
+    },
+    {
+      "speaker": "Caller",
+      "channel": 0,
+      "start_time": 68.7,
+      "end_time": 75.34,
+      "duration": 6.64,
+      "text": "¿Cómo te hace?",
+      "avg_logprob": -0.827,
+      "no_speech_prob": 0.421,
+      "compression_ratio": 1.5
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 69.41,
+      "end_time": 72.41,
+      "duration": 3.0,
+      "text": "Perdón que la interrumpa Adriana, me confirma que el pagó original",
+      "avg_logprob": -0.31
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 72.41,
+      "end_time": 75.41,
+      "duration": 3.0,
+      "text": "el primero de septiembre, está bien, ya me quedó claro ese punto.",
+      "avg_logprob": -0.31
+    },
+    {
+      "speaker": "Caller",
+      "channel": 0,
+      "start_time": 75.34,
+      "end_time": 76.34,
+      "duration": 1.0,
+      "text": "¿Cómo te hace?",
+      "avg_logprob": -0.827,
+      "no_speech_prob": 0.421,
+      "compression_ratio": 1.5
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 75.41,
+      "end_time": 78.41,
+      "duration": 3.0,
+      "text": "Esto es sobre su cuenta nomina plus o sobre su crey.",
+      "avg_logprob": -0.31
+    },
+    {
+      "speaker": "Caller",
+      "channel": 0,
+      "start_time": 76.34,
+      "end_time": 79.73,
+      "duration": 3.39,
+      "text": "Sí, sí, sí, sí, sí.",
+      "avg_logprob": -0.827,
+      "no_speech_prob": 0.421,
+      "compression_ratio": 1.5
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 78.41,
+      "end_time": 84.81,
+      "duration": 6.4,
+      "text": "Ah, ok, entonces lo veo, no se preocupe al diana,",
+      "avg_logprob": -0.31
+    },
+    {
+      "speaker": "Caller",
+      "channel": 0,
+      "start_time": 79.73,
+      "end_time": 95.72,
+      "duration": 15.99,
+      "text": "es sobre el ciclero es 4,4,7,0,8,1,9,3.",
+      "avg_logprob": -0.258,
+      "no_speech_prob": 0.088,
+      "compression_ratio": 7.632
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 84.81,
+      "end_time": 88.53,
+      "duration": 3.72,
+      "text": "con la referencia a los revisos. Gracias. Me confirman nuevamente su número de referencia",
+      "avg_logprob": -0.279
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 88.53,
+      "end_time": 97.9,
+      "duration": 9.37,
+      "text": "completo por favor. Así como lo dictó antes para asegurarnos. Gracias ya lo tengo.",
+      "avg_logprob": -0.279
+    },
+    {
+      "speaker": "Caller",
+      "channel": 0,
+      "start_time": 95.72,
+      "end_time": 116.12,
+      "duration": 20.4,
+      "text": "No, no me tiene nada, gracias.",
+      "avg_logprob": -1.153,
+      "no_speech_prob": 0.114,
+      "compression_ratio": 0.789
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 97.9,
+      "end_time": 103.46,
+      "duration": 5.56,
+      "text": "4, 4, 7, 0, 8, 1, 9, 3. Es correcto. Bien Adriana quedó registrado su",
+      "avg_logprob": -0.279
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 103.46,
+      "end_time": 109.02,
+      "duration": 5.56,
+      "text": "reporte por cargo duplicados con folio 6, 5, 3, 1, 4, 0. El área de aclaración es",
+      "avg_logprob": -0.279
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 109.02,
+      "end_time": 112.78,
+      "duration": 3.76,
+      "text": "le dará respuesta en un plazo de tres a cinco días a miles. Hay algo más en lo que le",
+      "avg_logprob": -0.279
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 112.78,
+      "end_time": 121.05,
+      "duration": 8.27,
+      "text": "pueda ayudar hoy. Perfecto Adriana, le agradezco mucho su llamada que tenga buena tarde.",
+      "avg_logprob": -0.279
+    }
+  ]
+}

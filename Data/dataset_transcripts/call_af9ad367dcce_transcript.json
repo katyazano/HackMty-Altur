@@ -1,0 +1,245 @@
+{
+  "call_summary": {
+    "caller_duration_sec": 141.3,
+    "agent_duration_sec": 141.3,
+    "processing_time_sec": 15.779,
+    "real_time_factor": 0.056,
+    "total_dialogue_turns": 21
+  },
+  "anti_spoofing_verdict": {
+    "is_synthetic": true,
+    "confidence": 0.9821,
+    "decision_threshold": 0.35,
+    "risk_level": "CRITICAL"
+  },
+  "semantic_nlp_profile": {
+    "detected_language": "es-MX",
+    "total_words": 141,
+    "filler_density": 0.0071,
+    "detected_human_fillers": [
+      "o sea"
+    ],
+    "robotic_phrases_found": 0,
+    "lexical_diversity_ttr": 0.5957,
+    "semantic_authenticity_score": 0.5178
+  },
+  "conversational_dynamics": {
+    "timeline_synchronized": true,
+    "turn_taking_latency": {
+      "mean_ms": -7337.5,
+      "median_ms": -7910.0,
+      "samples_evaluated": 4
+    },
+    "cross_talk_duration_sec": 119.68,
+    "note": "Turn-taking latency and cross-talk evaluated on synchronized timeline."
+  },
+  "transcript": [
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 0.0,
+      "end_time": 8.0,
+      "duration": 8.0,
+      "text": "Buen día, gracias por llamar a Banco Al Tour, le atiende Marina, le comento que está llamada se graba para fines de calidad en qué le puedo ayudar.",
+      "avg_logprob": -0.238
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 8.0,
+      "end_time": 30.25,
+      "duration": 22.25,
+      "text": "Claro, con mucho gusto le ayuda a registrar sus solicitudes, me puedo indicar su nombre completo por favor, y si tiene a la mano su número de referencia de clientes, se lo voy a pedir en un momento.",
+      "avg_logprob": -0.238
+    },
+    {
+      "speaker": "Caller",
+      "channel": 0,
+      "start_time": 11.95,
+      "end_time": 27.99,
+      "duration": 16.04,
+      "text": "Buenas tardes, señorita Marina. Mire, le hablo porque me gustaría saber cuánto de buen mitarjeta y para cuando tengo que hacer el pago por favor.",
+      "avg_logprob": -0.308,
+      "no_speech_prob": 0.142,
+      "compression_ratio": 1.487
+    },
+    {
+      "speaker": "Caller",
+      "channel": 0,
+      "start_time": 27.99,
+      "end_time": 81.78,
+      "duration": 53.79,
+      "text": "Sí, sí, claro que sí, señorita. Mi nombre es Javier Peñal Drete. Y sí tengo al amano el número de referencia que me pide, es el 90, 57, ¿cuenta, 38, 12? No, disculpe, señorita. El último número es 12. O sea, 97, 57, 57, 38, 12. Terminándose por favor.",
+      "avg_logprob": -0.308,
+      "no_speech_prob": 0.142,
+      "compression_ratio": 1.487
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 30.25,
+      "end_time": 70.47,
+      "duration": 40.22,
+      "text": "Gracias, señor Peña. Entonces, para confirmar su número de referencias es 9, 0, 5, 7, 3, 8, 1, 3, así es, esperadón que lo interrumpa nada más para confirmar.",
+      "avg_logprob": -0.238
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 70.47,
+      "end_time": 75.51,
+      "duration": 5.04,
+      "text": "el número de referencia termina en uno dos correcto, ya lo ha notado así. Entonces les",
+      "avg_logprob": -0.375
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 75.51,
+      "end_time": 90.98,
+      "duration": 15.47,
+      "text": "escucho, quieres saber el saldo y la fecha limite de pago, ¿verdad? Perfecto, muchas gracias",
+      "avg_logprob": -0.375
+    },
+    {
+      "speaker": "Caller",
+      "channel": 0,
+      "start_time": 81.78,
+      "end_time": 83.78,
+      "duration": 2.0,
+      "text": "Sí, señorita, exactamente.",
+      "avg_logprob": -0.24,
+      "no_speech_prob": 0.038,
+      "compression_ratio": 1.489
+    },
+    {
+      "speaker": "Caller",
+      "channel": 0,
+      "start_time": 83.78,
+      "end_time": 88.78,
+      "duration": 5.0,
+      "text": "No más quiero saber cuánto debo y para cuando tengo que hacer el pago si está naable.",
+      "avg_logprob": -0.24,
+      "no_speech_prob": 0.038,
+      "compression_ratio": 1.489
+    },
+    {
+      "speaker": "Caller",
+      "channel": 0,
+      "start_time": 88.78,
+      "end_time": 101.51,
+      "duration": 12.73,
+      "text": "Mire, es para mi tarjeta la que termina en 22, 46.",
+      "avg_logprob": -0.24,
+      "no_speech_prob": 0.038,
+      "compression_ratio": 1.489
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 90.98,
+      "end_time": 94.68,
+      "duration": 3.7,
+      "text": "por aclararlo. Esto es sobre su cuenta nomina plus o sobre su crédito verde.",
+      "avg_logprob": -0.375
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 94.68,
+      "end_time": 108.13,
+      "duration": 13.45,
+      "text": "Está bien, no se preocupes. Ya que he do registrado así.",
+      "avg_logprob": -0.375
+    },
+    {
+      "speaker": "Caller",
+      "channel": 0,
+      "start_time": 101.51,
+      "end_time": 104.51,
+      "duration": 3.0,
+      "text": "No sé si se ha de los que dice pero es mi tarjeta de crédito.",
+      "avg_logprob": -0.24,
+      "no_speech_prob": 0.038,
+      "compression_ratio": 1.489
+    },
+    {
+      "speaker": "Caller",
+      "channel": 0,
+      "start_time": 104.51,
+      "end_time": 136.4,
+      "duration": 31.89,
+      "text": "No, señorita, sería todo de mi parte.",
+      "avg_logprob": -0.24,
+      "no_speech_prob": 0.038,
+      "compression_ratio": 1.489
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 108.13,
+      "end_time": 112.63,
+      "duration": 4.5,
+      "text": "Mire señor Peña, que he doado a sentada a su solicitud para consultar el saldo y la fecha limite",
+      "avg_logprob": -0.375
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 112.63,
+      "end_time": 119.15,
+      "duration": 6.52,
+      "text": "de pago de su tarjeto de crédito, con su número de referencia 9, 0, 5, 7, 3, 8, 1, 2.",
+      "avg_logprob": -0.375
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 119.15,
+      "end_time": 123.27,
+      "duration": 4.12,
+      "text": "El folio de atención es el 3, 4, 7, 1, 6, 2.",
+      "avg_logprob": -0.325
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 123.27,
+      "end_time": 129.11,
+      "duration": 5.84,
+      "text": "El saldo y la fecha limites se enviarán hoy mismo por mensaje al número que tiene registrado con nosotros.",
+      "avg_logprob": -0.325
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 129.11,
+      "end_time": 131.63,
+      "duration": 2.52,
+      "text": "Hay algo más en lo que le pueda ayudar esta tarde.",
+      "avg_logprob": -0.325
+    },
+    {
+      "speaker": "Caller",
+      "channel": 0,
+      "start_time": 136.4,
+      "end_time": 139.4,
+      "duration": 3.0,
+      "text": "La agradezco mucho su atención y que tenga una muy buena tarde.",
+      "avg_logprob": -0.24,
+      "no_speech_prob": 0.038,
+      "compression_ratio": 1.489
+    },
+    {
+      "speaker": "Caller",
+      "channel": 0,
+      "start_time": 139.4,
+      "end_time": 140.4,
+      "duration": 1.0,
+      "text": "Hasta luego.",
+      "avg_logprob": -0.24,
+      "no_speech_prob": 0.038,
+      "compression_ratio": 1.489
+    }
+  ]
+}

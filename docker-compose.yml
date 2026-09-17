@@ -1,15 +1,14 @@
 services:
-  api:
-    build: .
+  altur-anti-spoof:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: altur-anti-spoof-platform
     ports:
       - "8000:8000"
-
-  frontend:
-    build: .
-    command: streamlit run frontend.py --server.address 0.0.0.0 --server.port 8501
     environment:
-      - API_URL=http://api:8000
-    ports:
-      - "8501:8501"
-    depends_on:
-      - api
+      - HOST=0.0.0.0
+      - PORT=8000
+      - ENV=production
+      - DECISION_THRESHOLD=0.50
+    restart: unless-stopped
