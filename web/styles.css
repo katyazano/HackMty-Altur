@@ -1,10 +1,11 @@
 /* ==============================================================================
-   ALTUR VAULT — B2B SECURITY & FINTECH SAAS DESIGN SYSTEM (STRIPE / LINEAR HYBRID)
+   ALTUR VAULT — MULTI-THEME DESIGN SYSTEM (STRIPE / LINEAR & TACTICAL CYBER-OPS)
    ============================================================================== */
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
 
-:root {
+/* Default Theme: Option 1 (Clean Fintech / Linear Light) */
+:root, [data-theme="option1-light"] {
   --bg-main: #F8FAFC;
   --bg-card: #FFFFFF;
   --bg-subtle: #F1F5F9;
@@ -13,7 +14,6 @@
   --border-color: #E2E8F0;
   --border-subtle: #EDF2F7;
   --border-hover: #CBD5E1;
-  --border-focus: #94A3B8;
   
   --text-primary: #0F172A;
   --text-secondary: #475569;
@@ -36,6 +36,136 @@
   --status-amber: #D97706;
   --status-amber-bg: #FFFBEB;
   --status-amber-border: #FDE68A;
+  
+  --nav-bg: rgba(255, 255, 255, 0.92);
+  --btn-primary-bg: #0F172A;
+  --btn-primary-text: #FFFFFF;
+  --waveform-bg: #FFFFFF;
+  --waveform-line: #93C5FD;
+  --waveform-prog: #2563EB;
+}
+
+/* Theme: Option 2 (Tactical Cyber-Ops / Palantir Dark) */
+[data-theme="option2-tactical"] {
+  --bg-main: #060913;
+  --bg-card: #0D1322;
+  --bg-subtle: #141C30;
+  --bg-subtle-hover: #1E2945;
+  
+  --border-color: #1E293B;
+  --border-subtle: #162033;
+  --border-hover: #334155;
+  
+  --text-primary: #F8FAFC;
+  --text-secondary: #CBD5E1;
+  --text-muted: #64748B;
+  --text-subtle: #475569;
+  
+  --brand-blue: #00F0FF;
+  --brand-blue-hover: #38BDF8;
+  --brand-blue-subtle: rgba(0, 240, 255, 0.1);
+  --brand-blue-border: rgba(0, 240, 255, 0.3);
+  
+  --status-emerald: #00E599;
+  --status-emerald-bg: rgba(0, 229, 153, 0.1);
+  --status-emerald-border: rgba(0, 229, 153, 0.3);
+  
+  --status-crimson: #FF2E5B;
+  --status-crimson-bg: rgba(255, 46, 91, 0.1);
+  --status-crimson-border: rgba(255, 46, 91, 0.3);
+  
+  --status-amber: #FFB800;
+  --status-amber-bg: rgba(255, 184, 0, 0.1);
+  --status-amber-border: rgba(255, 184, 0, 0.3);
+  
+  --nav-bg: rgba(13, 19, 34, 0.92);
+  --btn-primary-bg: #00F0FF;
+  --btn-primary-text: #060913;
+  --waveform-bg: #060913;
+  --waveform-line: #1E293B;
+  --waveform-prog: #00F0FF;
+}
+
+/* Theme: Emerald Cyber-Fintech (Stripe Dark Mode) */
+[data-theme="emerald-fintech"] {
+  --bg-main: #0B0F17;
+  --bg-card: #111827;
+  --bg-subtle: #1F2937;
+  --bg-subtle-hover: #374151;
+  
+  --border-color: #1F2937;
+  --border-subtle: #182234;
+  --border-hover: #374151;
+  
+  --text-primary: #F9FAFB;
+  --text-secondary: #D1D5DB;
+  --text-muted: #9CA3AF;
+  --text-subtle: #6B7280;
+  
+  --brand-blue: #10B981;
+  --brand-blue-hover: #059669;
+  --brand-blue-subtle: rgba(16, 185, 129, 0.1);
+  --brand-blue-border: rgba(16, 185, 129, 0.3);
+  
+  --status-emerald: #10B981;
+  --status-emerald-bg: rgba(16, 185, 129, 0.1);
+  --status-emerald-border: rgba(16, 185, 129, 0.3);
+  
+  --status-crimson: #EF4444;
+  --status-crimson-bg: rgba(239, 68, 68, 0.1);
+  --status-crimson-border: rgba(239, 68, 68, 0.3);
+  
+  --status-amber: #F59E0B;
+  --status-amber-bg: rgba(245, 158, 11, 0.1);
+  --status-amber-border: rgba(245, 158, 11, 0.3);
+  
+  --nav-bg: rgba(17, 24, 39, 0.92);
+  --btn-primary-bg: #10B981;
+  --btn-primary-text: #0B0F17;
+  --waveform-bg: #0B0F17;
+  --waveform-line: #1F2937;
+  --waveform-prog: #10B981;
+}
+
+/* Theme: Royal Indigo & Slate */
+[data-theme="royal-slate"] {
+  --bg-main: #F1F5F9;
+  --bg-card: #FFFFFF;
+  --bg-subtle: #E2E8F0;
+  --bg-subtle-hover: #CBD5E1;
+  
+  --border-color: #CBD5E1;
+  --border-subtle: #E2E8F0;
+  --border-hover: #94A3B8;
+  
+  --text-primary: #0F172A;
+  --text-secondary: #334155;
+  --text-muted: #64748B;
+  --text-subtle: #94A3B8;
+  
+  --brand-blue: #6366F1;
+  --brand-blue-hover: #4F46E5;
+  --brand-blue-subtle: #EEF2FF;
+  --brand-blue-border: #C7D2FE;
+  
+  --status-emerald: #059669;
+  --status-emerald-bg: #ECFDF5;
+  --status-emerald-border: #A7F3D0;
+  
+  --status-crimson: #DC2626;
+  --status-crimson-bg: #FEF2F2;
+  --status-crimson-border: #FECACA;
+  
+  --status-amber: #D97706;
+  --status-amber-bg: #FFFBEB;
+  --status-amber-border: #FDE68A;
+  
+  --nav-bg: rgba(255, 255, 255, 0.92);
+  --btn-primary-bg: #6366F1;
+  --btn-primary-text: #FFFFFF;
+  --waveform-bg: #FFFFFF;
+  --waveform-line: #C7D2FE;
+  --waveform-prog: #6366F1;
 }
 
 body {
@@ -44,6 +174,7 @@ body {
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   -webkit-font-smoothing: antialiased;
   letter-spacing: -0.011em;
+  transition: background-color 0.2s ease, color 0.2s ease;
 }
 
 .mono-font {
@@ -73,7 +204,7 @@ body {
 
 /* Linear Navbar */
 .navbar-linear {
-  background-color: rgba(255, 255, 255, 0.92);
+  background-color: var(--nav-bg);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--border-color);
@@ -104,8 +235,8 @@ body {
 
 /* Buttons */
 .btn-linear {
-  background-color: #0F172A;
-  color: #FFFFFF;
+  background-color: var(--btn-primary-bg);
+  color: var(--btn-primary-text);
   font-weight: 600;
   font-size: 0.8125rem;
   border-radius: 0.5rem;
@@ -115,18 +246,17 @@ body {
   align-items: center;
   justify-content: center;
   gap: 0.375rem;
-  box-shadow: 0 1px 2px 0 rgba(15, 23, 42, 0.1);
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.1);
 }
 
 .btn-linear:hover {
-  background-color: #1E293B;
+  opacity: 0.9;
   transform: translateY(-0.5px);
-  box-shadow: 0 4px 8px 0 rgba(15, 23, 42, 0.15);
 }
 
 .btn-linear-blue {
   background-color: var(--brand-blue);
-  color: #FFFFFF;
+  color: var(--btn-primary-text);
   font-weight: 600;
   font-size: 0.8125rem;
   border-radius: 0.5rem;
@@ -136,17 +266,15 @@ body {
   align-items: center;
   justify-content: center;
   gap: 0.375rem;
-  box-shadow: 0 1px 2px 0 rgba(37, 99, 235, 0.2);
 }
 
 .btn-linear-blue:hover {
   background-color: var(--brand-blue-hover);
   transform: translateY(-0.5px);
-  box-shadow: 0 4px 12px 0 rgba(37, 99, 235, 0.3);
 }
 
 .btn-linear-outline {
-  background-color: #FFFFFF;
+  background-color: var(--bg-card);
   color: var(--text-primary);
   border: 1px solid var(--border-color);
   font-weight: 500;
@@ -208,7 +336,7 @@ body {
 
 /* Waveform Canvas & Audio Scrubber */
 .waveform-canvas-box {
-  background-color: #FFFFFF;
+  background-color: var(--waveform-bg);
   border: 1px solid var(--border-color);
   border-radius: 0.625rem;
   position: relative;
@@ -224,7 +352,7 @@ body {
 /* Dropzone */
 .dropzone-linear {
   border: 1.5px dashed var(--border-hover);
-  background-color: #FFFFFF;
+  background-color: var(--bg-card);
   border-radius: 0.75rem;
   transition: all 0.15s ease;
 }
@@ -237,7 +365,7 @@ body {
 /* Probability Spread Gauge Bar */
 .spread-gauge-track {
   height: 6px;
-  background-color: #E2E8F0;
+  background-color: var(--bg-subtle);
   border-radius: 9999px;
   overflow: hidden;
   position: relative;
@@ -249,9 +377,49 @@ body {
   transition: width 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
+/* Theme Switcher Floating Bar */
+.theme-switcher-bar {
+  position: fixed;
+  bottom: 1.25rem;
+  right: 1.25rem;
+  z-index: 999;
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 0.75rem;
+  padding: 0.375rem;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.2), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.theme-pill-btn {
+  padding: 0.3125rem 0.625rem;
+  border-radius: 0.5rem;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  font-family: 'JetBrains Mono', monospace;
+  transition: all 0.15s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  color: var(--text-secondary);
+}
+
+.theme-pill-btn:hover {
+  background-color: var(--bg-subtle);
+  color: var(--text-primary);
+}
+
+.theme-pill-btn.active {
+  background-color: var(--brand-blue);
+  color: var(--btn-primary-text);
+}
+
 /* Scrollbars */
 ::-webkit-scrollbar { width: 5px; height: 5px; }
 ::-webkit-scrollbar-track { background: var(--bg-main); }
-::-webkit-scrollbar-thumb { background: #CBD5E1; border-radius: 3px; }
-::-webkit-scrollbar-thumb:hover { background: #94A3B8; }
+::-webkit-scrollbar-thumb { background: var(--border-hover); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--text-muted); }
+
 

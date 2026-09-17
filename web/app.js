@@ -91,6 +91,7 @@ class TelephonyWaveformVisualizer {
     this.audioBuffer = null;
     this.isPlaying = false;
     this.animId = null;
+    window.activeVisualizer = this;
 
     this.audio.addEventListener('timeupdate', () => this.draw());
     this.audio.addEventListener('play', () => this.startAnimation());
@@ -106,6 +107,7 @@ class TelephonyWaveformVisualizer {
       this.draw();
     });
   }
+
 
   async loadFromBase64(base64Data) {
     try {
@@ -232,5 +234,64 @@ function copyToClipboard(text, btnElement) {
       setTimeout(() => { btnElement.innerHTML = originalHTML; }, 2000);
     }
   });
+}
+
+// Theme Switcher Controller
+const THEMES = [
+  { id: 'option1-light', name: 'Option 1: Linear Light', icon: 'fa-sun' },
+  { id: 'option2-tactical', name: 'Option 2: Cyber-Ops Dark', icon: 'fa-shield-halved' },
+  { id: 'emerald-fintech', name: 'Stripe Emerald Dark', icon: 'fa-chart-network' },
+  { id: 'royal-slate', name: 'Royal Indigo Slate', icon: 'fa-gem' }
+];
+
+function setTheme(themeId) {
+  document.documentElement.setAttribute('data-theme', themeId);
+  localStorage.setItem('altur_theme', themeId);
+  
+  // Update button active state
+  document.querySelectorAll('.theme-pill-btn').forEach(btn => {
+    if (btn.getAttribute('data-target-theme') === themeId) {
+      btn.classList.add('active');
+    } else {
+      btn.classList.remove('active');
+    }
+  });
+
+  // Redraw active waveform with new theme colors if present
+  if (window.activeVisualizer) {
+    window.activeVisualizer.draw();
+  }
+}
+
+function initThemeSwitcher() {
+  const savedTheme = localStorage.getItem('altur_theme') || 'option1-light';
+  document.documentElement.setAttribute('data-theme', savedTheme);
+
+  // Inject Floating Bar if not already present
+  if (!document.getElementById('theme-switcher-bar')) {
+    const bar = document.createElement('div');
+    bar.id = 'theme-switcher-bar';
+    bar.className = 'theme-switcher-bar';
+    
+    let buttonsHTML = '<span class="text-[10px] font-mono text-slate-400 font-bold px-1.5 hidden sm:inline"><i class="fa-solid fa-palette text-blue-500"></i> Theme:</span>';
+    THEMES.forEach(t => {
+      const isActive = (t.id === savedTheme) ? 'active' : '';
+      buttonsHTML += `
+        <button onclick="setTheme('${t.id}')" data-target-theme="${t.id}" class="theme-pill-btn ${isActive}" title="${t.name}">
+          <i class="fa-solid ${t.icon}"></i>
+          <span>${t.name.split(':')[0]}</span>
+        </button>
+      `;
+    });
+    bar.innerHTML = buttonsHTML;
+    document.body.appendChild(bar);
+  }
+}
+
+// Auto-run theme initializer
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initThemeSwitcher);
+} else {
+  initThemeSwitcher();
 }
 
