@@ -182,6 +182,52 @@ async def detect(
 
 
 @app.post(
+    "/detect/baseline",
+    summary="Detect Synthetic Voices using Engine 1 (Fast Baseline CNN/GBM)",
+    tags=["Anti-Spoofing"]
+)
+async def detect_baseline(request: DetectRequest):
+    """
+    Dedicated endpoint for Engine 1: Fast Acoustic DSP + Timing + SpoofCNN.
+    Returns full diagnostics including GBM probability, Neural probability, and latency.
+    """
+    try:
+        audio_str = request.get_audio_str()
+    except ValueError as e:
+        raise HTTPException(status_code=400, detail=str(e))
+
+    orch = get_orchestrator()
+    try:
+        return orch.predict_single(audio_str, engine_type="baseline")
+    except Exception as e:
+        logger.error(f"Baseline inference error: {e}", exc_info=True)
+        raise HTTPException(status_code=500, detail=f"Baseline error: {str(e)}")
+
+
+@app.post(
+    "/detect/multimodal",
+    summary="Detect Synthetic Voices using Engine 2 (4-Pillar Multimodal SOTA)",
+    tags=["Anti-Spoofing"]
+)
+async def detect_multimodal(request: DetectRequest):
+    """
+    Dedicated endpoint for Engine 2: 4-Pillar AASIST + RawNet2 + DSP + Whisper + XGBoost.
+    Returns full diagnostics including 4-pillar sub-scores, latency breakdown, and features.
+    """
+    try:
+        audio_str = request.get_audio_str()
+    except ValueError as e:
+        raise HTTPException(status_code=400, detail=str(e))
+
+    orch = get_orchestrator()
+    try:
+        return orch.predict_single(audio_str, engine_type="multimodal")
+    except Exception as e:
+        logger.error(f"Multimodal inference error: {e}", exc_info=True)
+        raise HTTPException(status_code=500, detail=f"Multimodal error: {str(e)}")
+
+
+@app.post(
     "/api/detect/compare",
     summary="Side-by-Side Dual-Engine Comparison and Deep Attribution",
     tags=["Dual-Engine Analysis"]
