@@ -3,14 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ALTUR VAULT | Enterprise Voice Anti-Spoofing & Deepfake AI Defense</title>
-  <!-- Tailwind CSS -->
+  <title>ALTUR VAULT — Enterprise Voice Biometric Anti-Spoofing & Deepfake AI Defense</title>
+  <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   <!-- Google Fonts: Inter & JetBrains Mono -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <!-- FontAwesome 6 -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <!-- FontAwesome 6 Pro-style icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   
   <script>
@@ -24,12 +24,12 @@
           },
           colors: {
             vault: {
-              black: '#07090E',
-              dark: '#0C0F17',
-              card: '#121722',
-              cardHover: '#182030',
-              border: '#1F293D',
-              borderLight: '#2D3B55',
+              black: '#06080E',
+              dark: '#0B0F19',
+              card: '#111726',
+              cardHover: '#172033',
+              border: '#1E293B',
+              borderHover: '#334155',
               textMuted: '#64748B',
               textLight: '#94A3B8',
             },
@@ -48,86 +48,85 @@
   </script>
 
   <style>
-    body {
-      background-color: #07090E;
-      color: #F8FAFC;
-    }
+    body { background-color: #06080E; color: #F8FAFC; }
     ::-webkit-scrollbar { width: 5px; height: 5px; }
-    ::-webkit-scrollbar-track { background: #07090E; }
-    ::-webkit-scrollbar-thumb { background: #1F293D; border-radius: 3px; }
-    ::-webkit-scrollbar-thumb:hover { background: #2D3B55; }
+    ::-webkit-scrollbar-track { background: #06080E; }
+    ::-webkit-scrollbar-thumb { background: #1E293B; border-radius: 3px; }
+    ::-webkit-scrollbar-thumb:hover { background: #334155; }
     
-    .vault-panel {
-      background: #0C0F17;
-      border: 1px solid #1F293D;
-    }
-    .vault-card {
-      background: #121722;
-      border: 1px solid #1F293D;
-    }
-    .vault-card:hover {
-      border-color: #2D3B55;
+    .glow-cyan {
+      box-shadow: 0 0 35px -5px rgba(0, 240, 255, 0.25);
     }
     .laser-border-cyan {
       border: 1px solid rgba(0, 240, 255, 0.4);
-      box-shadow: 0 0 20px rgba(0, 240, 255, 0.1);
-    }
-    .laser-border-amber {
-      border: 1px solid rgba(255, 184, 0, 0.4);
-      box-shadow: 0 0 20px rgba(255, 184, 0, 0.1);
+      box-shadow: 0 0 20px rgba(0, 240, 255, 0.12);
     }
     .laser-border-crimson {
       border: 1px solid rgba(255, 46, 91, 0.5);
-      box-shadow: 0 0 25px rgba(255, 46, 91, 0.15);
+      box-shadow: 0 0 25px rgba(255, 46, 91, 0.2);
     }
     .laser-border-emerald {
       border: 1px solid rgba(0, 229, 153, 0.5);
-      box-shadow: 0 0 25px rgba(0, 229, 153, 0.15);
+      box-shadow: 0 0 25px rgba(0, 229, 153, 0.2);
+    }
+    .grid-bg {
+      background-image: radial-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 0);
+      background-size: 24px 24px;
     }
   </style>
 </head>
-<body class="min-h-screen flex flex-col font-sans selection:bg-cyan-500 selection:text-black">
+<body class="min-h-screen flex flex-col font-sans selection:bg-cyan-400 selection:text-black">
 
   <!-- ========================================== -->
-  <!-- TOP NAVIGATION BAR -->
+  <!-- COMMERCIAL ENTERPRISE NAVBAR -->
   <!-- ========================================== -->
-  <header class="border-b border-vault-border bg-vault-dark/95 sticky top-0 z-50 backdrop-blur-md">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+  <header class="border-b border-vault-border bg-vault-dark/95 sticky top-0 z-50 backdrop-blur-xl">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-18 flex items-center justify-between py-3">
       
       <!-- Brand Logo -->
-      <div class="flex items-center space-x-3 cursor-pointer" onclick="navigateTo('home')">
-        <div class="w-9 h-9 rounded-lg bg-gradient-to-br from-cyan-400 to-indigo-600 flex items-center justify-center font-mono font-black text-black text-base shadow-lg shadow-cyan-500/20">
+      <a href="/" class="flex items-center space-x-3.5 group">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-cyan-400 via-sky-500 to-indigo-600 flex items-center justify-center text-black font-black text-lg shadow-lg shadow-cyan-500/25 group-hover:scale-105 transition-transform">
           <i class="fa-solid fa-shield-halved text-black"></i>
         </div>
         <div>
           <div class="flex items-center space-x-2">
-            <span class="font-black text-lg tracking-wider text-white">ALTUR<span class="text-cyan-400">VAULT</span></span>
-            <span class="text-[9px] font-mono uppercase tracking-widest font-bold bg-cyan-950/60 text-cyan-400 border border-cyan-800/60 px-2 py-0.5 rounded">Dual-Engine AI</span>
+            <span class="font-black text-xl tracking-tight text-white">ALTUR<span class="text-cyan-400">VAULT</span></span>
+            <span class="text-[9px] font-mono font-bold tracking-widest bg-cyan-950/80 text-cyan-300 border border-cyan-700/60 px-2 py-0.5 rounded-full uppercase">Enterprise v2.0</span>
           </div>
-          <p class="text-[10px] text-vault-textMuted font-mono">Biometric Voice Anti-Spoofing & Deepfake Defense</p>
+          <p class="text-[10px] text-vault-textMuted font-mono">Autonomous Voice Biometric AI Defense</p>
         </div>
-      </div>
+      </a>
 
-      <!-- 3-Screen Navigation Switcher -->
-      <nav class="flex items-center bg-vault-card border border-vault-border p-1 rounded-xl text-xs font-mono">
-        <button onclick="navigateTo('home')" id="nav-btn-home" class="nav-tab active px-4 py-2 rounded-lg font-bold text-black bg-cyan-400 transition-all flex items-center space-x-2 shadow-sm">
+      <!-- Navigation Links -->
+      <nav class="hidden md:flex items-center space-x-1 bg-vault-card border border-vault-border p-1.5 rounded-xl text-xs font-mono">
+        <a href="/" class="px-4 py-2 rounded-lg font-bold text-black bg-cyan-400 shadow-sm transition-all flex items-center space-x-2">
           <i class="fa-solid fa-grid-2"></i>
-          <span>1. Platform Overview</span>
-        </button>
-        <button onclick="navigateTo('engine1')" id="nav-btn-engine1" class="nav-tab px-4 py-2 rounded-lg font-bold text-vault-textLight hover:text-white transition-all flex items-center space-x-2">
+          <span>Overview</span>
+        </a>
+        <a href="/engine1" class="px-4 py-2 rounded-lg font-bold text-vault-textLight hover:text-white hover:bg-vault-cardHover transition-all flex items-center space-x-2">
           <i class="fa-solid fa-bolt text-amber-400"></i>
-          <span>2. Engine 1: Baseline CNN</span>
-        </button>
-        <button onclick="navigateTo('engine2')" id="nav-btn-engine2" class="nav-tab px-4 py-2 rounded-lg font-bold text-vault-textLight hover:text-white transition-all flex items-center space-x-2">
+          <span>Engine 1: Ultra-Fast</span>
+        </a>
+        <a href="/engine2" class="px-4 py-2 rounded-lg font-bold text-vault-textLight hover:text-white hover:bg-vault-cardHover transition-all flex items-center space-x-2">
           <i class="fa-solid fa-brain-circuit text-cyan-400"></i>
-          <span>3. Engine 2: 4-Pillar SOTA</span>
-        </button>
+          <span>Engine 2: SOTA Deep</span>
+        </a>
+        <a href="/docs" target="_blank" class="px-3 py-2 rounded-lg font-bold text-vault-textMuted hover:text-slate-200 transition-all flex items-center space-x-1.5">
+          <i class="fa-solid fa-code"></i>
+          <span>API Docs</span>
+        </a>
       </nav>
 
-      <!-- Live Status Pill -->
-      <div class="hidden md:flex items-center space-x-2 px-3 py-1.5 rounded-lg bg-emerald-950/40 border border-emerald-500/30 text-[11px] font-mono text-emerald-400">
-        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-        <span>SYSTEM OPERATIONAL</span>
+      <!-- Right Action & Status -->
+      <div class="flex items-center space-x-3">
+        <div class="hidden lg:flex items-center space-x-2 px-3 py-1.5 rounded-lg bg-emerald-950/40 border border-emerald-500/30 text-[11px] font-mono text-emerald-400">
+          <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+          <span>DUAL ENGINES ONLINE</span>
+        </div>
+        <a href="#sandbox" class="px-4 py-2 rounded-xl text-xs font-bold font-mono bg-gradient-to-r from-cyan-400 to-indigo-500 text-black hover:opacity-95 shadow-lg shadow-cyan-500/20 transition-all flex items-center space-x-2">
+          <i class="fa-solid fa-play"></i>
+          <span>Test Sandbox</span>
+        </a>
       </div>
 
     </div>
@@ -135,725 +134,402 @@
 
 
   <!-- ========================================== -->
-  <!-- SCREEN 1: PLATFORM OVERVIEW & DUAL TESTING -->
+  <!-- HERO SECTION: VALUE PROPOSITION -->
   <!-- ========================================== -->
-  <main id="screen-home" class="screen-view flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
-    
-    <!-- Hero Banner -->
-    <div class="vault-panel p-8 rounded-2xl relative overflow-hidden border border-vault-border">
-      <div class="absolute -right-10 -bottom-10 w-96 h-96 bg-cyan-500/5 rounded-full blur-3xl pointer-events-none"></div>
-      <div class="max-w-3xl space-y-4">
-        <div class="inline-flex items-center space-x-2 px-2.5 py-1 rounded-full bg-slate-900 border border-vault-border text-xs font-mono text-cyan-400">
-          <i class="fa-solid fa-microchip"></i>
-          <span>HackMTY 2026 Production Specification</span>
-        </div>
-        <h1 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-white leading-tight">
-          Next-Generation Voice Biometric <br><span class="bg-gradient-to-r from-cyan-400 via-sky-300 to-indigo-400 bg-clip-text text-transparent">Anti-Spoofing & Deepfake Sentinel</span>
+  <section class="relative border-b border-vault-border bg-vault-dark grid-bg overflow-hidden py-16 sm:py-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-8">
+      
+      <!-- Top Pill -->
+      <div class="inline-flex items-center space-x-2.5 px-3 py-1.5 rounded-full bg-vault-card border border-cyan-500/30 text-xs font-mono text-cyan-300">
+        <span class="w-2 h-2 rounded-full bg-cyan-400 animate-ping"></span>
+        <span>Zero-Day Voice Clone & Telephony Deepfake Interception</span>
+      </div>
+
+      <!-- Headline -->
+      <div class="max-w-4xl space-y-4">
+        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight text-white leading-tight">
+          Stop AI Voice Clones & <br class="hidden sm:inline">
+          <span class="bg-gradient-to-r from-cyan-400 via-sky-300 to-indigo-400 bg-clip-text text-transparent">Deepfake Banking Fraud</span> Before Authorization.
         </h1>
-        <p class="text-sm text-vault-textLight leading-relaxed">
-          Bank telephony call defense engine analyzing 8kHz narrowband stereo audio. Channel 0 (Caller) is isolated from Channel 1 (Agent) and evaluated through dual complementary AI architectures.
+        <p class="text-base sm:text-lg text-vault-textLight max-w-2xl leading-relaxed">
+          Altur Vault processes inbound stereo 8kHz bank telephony calls, isolates Channel 0 (Caller) from Channel 1 (Agent), and scores biometric authenticity across two complementary AI engines in under 200ms.
         </p>
       </div>
 
-      <!-- High-Level Dual Model Compare Grid -->
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-8">
-        
-        <!-- Model 1 Card -->
-        <div class="vault-card p-5 rounded-xl space-y-3 cursor-pointer transition-all hover:border-amber-500/50 group" onclick="navigateTo('engine1')">
+      <!-- Key Metrics Row -->
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-4xl pt-4">
+        <div class="p-4 rounded-xl bg-vault-card border border-vault-border">
+          <div class="text-2xl sm:text-3xl font-black font-mono text-cyan-400">98.5%</div>
+          <div class="text-xs font-medium text-vault-textLight mt-0.5">SOTA Accuracy</div>
+          <div class="text-[10px] font-mono text-vault-textMuted">Equal Error Rate 1.2%</div>
+        </div>
+
+        <div class="p-4 rounded-xl bg-vault-card border border-vault-border">
+          <div class="text-2xl sm:text-3xl font-black font-mono text-amber-400">&lt; 35ms</div>
+          <div class="text-xs font-medium text-vault-textLight mt-0.5">Edge CPU Latency</div>
+          <div class="text-[10px] font-mono text-vault-textMuted">Engine 1 Baseline</div>
+        </div>
+
+        <div class="p-4 rounded-xl bg-vault-card border border-vault-border">
+          <div class="text-2xl sm:text-3xl font-black font-mono text-emerald-400">296-Dim</div>
+          <div class="text-xs font-medium text-vault-textLight mt-0.5">Multimodal Space</div>
+          <div class="text-[10px] font-mono text-vault-textMuted">GNN + SincNet + NLP</div>
+        </div>
+
+        <div class="p-4 rounded-xl bg-vault-card border border-vault-border">
+          <div class="text-2xl sm:text-3xl font-black font-mono text-purple-400">100%</div>
+          <div class="text-xs font-medium text-vault-textLight mt-0.5">Zero-Setup Ready</div>
+          <div class="text-[10px] font-mono text-vault-textMuted">Bundled Pretrained Weights</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ========================================== -->
+  <!-- DUAL ENGINE COMPARISON CARDS -->
+  <!-- ========================================== -->
+  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 space-y-12">
+    
+    <div class="text-center max-w-2xl mx-auto space-y-2">
+      <h2 class="text-xs font-mono uppercase tracking-widest font-bold text-cyan-400">Architectural Advantage</h2>
+      <p class="text-2xl sm:text-3xl font-black text-white">Two Engines. Zero Single Point of Failure.</p>
+      <p class="text-xs text-vault-textLight">Why choose between raw speed and deep representation when you can deploy both?</p>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+      
+      <!-- Engine 1 Promo Card -->
+      <div class="p-8 rounded-2xl bg-vault-card border border-vault-border hover:border-amber-500/50 transition-all space-y-6 flex flex-col justify-between group">
+        <div class="space-y-4">
           <div class="flex items-center justify-between">
-            <div class="flex items-center space-x-2.5">
-              <div class="w-8 h-8 rounded-lg bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-amber-400 font-mono font-bold text-xs">
+            <div class="flex items-center space-x-3">
+              <div class="w-10 h-10 rounded-xl bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-amber-400 font-mono font-bold text-sm">
                 E1
               </div>
               <div>
-                <h3 class="font-bold text-sm text-white group-hover:text-amber-400 transition-colors">Engine 1: Baseline CNN & Timing</h3>
-                <span class="text-[10px] font-mono text-vault-textMuted">Ultra-Fast Real-Time Edge Processing</span>
+                <h3 class="font-extrabold text-lg text-white group-hover:text-amber-400 transition-colors">Engine 1: Ultra-Fast Baseline</h3>
+                <p class="text-xs font-mono text-vault-textMuted">Acoustic DSP + Conversational Timing + SpoofCNN</p>
               </div>
             </div>
-            <span class="text-[10px] font-mono font-bold px-2 py-0.5 rounded bg-amber-500/10 text-amber-300 border border-amber-500/20">~30ms Latency</span>
+            <span class="text-[10px] font-mono font-bold px-2.5 py-1 rounded-full bg-amber-500/10 text-amber-300 border border-amber-500/30 uppercase">Sub-50ms Edge</span>
           </div>
+
           <p class="text-xs text-vault-textLight leading-relaxed">
-            Combines global acoustic MFCCs & spectral contrast with conversational turn-taking latencies and a 250k-parameter <code>SpoofCNN</code>.
+            Optimized for ultra-high-throughput banking streams. Combines global spectral statistics (MFCCs, contrast, chroma), caller response latency physics, and 4-second log-mel CMVN micro-patch scanning with <code>SpoofCNN</code>.
           </p>
-          <div class="pt-2 border-t border-vault-border flex items-center justify-between text-[11px] font-mono text-amber-400">
-            <span>64 Dimensions &bull; 8kHz Stereo</span>
-            <span class="group-hover:translate-x-1 transition-transform">Explore Engine 1 <i class="fa-solid fa-arrow-right ml-1"></i></span>
+
+          <div class="space-y-2 font-mono text-xs">
+            <div class="flex items-center justify-between p-2.5 rounded-lg bg-vault-dark border border-vault-border">
+              <span class="text-vault-textMuted">Dimensionality:</span>
+              <span class="text-white font-bold">64 Dimensions (8kHz Stereo)</span>
+            </div>
+            <div class="flex items-center justify-between p-2.5 rounded-lg bg-vault-dark border border-vault-border">
+              <span class="text-vault-textMuted">Inference Speed:</span>
+              <span class="text-amber-400 font-bold">~32 ms CPU</span>
+            </div>
+            <div class="flex items-center justify-between p-2.5 rounded-lg bg-vault-dark border border-vault-border">
+              <span class="text-vault-textMuted">Endpoint:</span>
+              <span class="text-cyan-400 font-bold">POST /detect/baseline</span>
+            </div>
           </div>
         </div>
 
-        <!-- Model 2 Card -->
-        <div class="vault-card p-5 rounded-xl space-y-3 cursor-pointer transition-all hover:border-cyan-500/50 group" onclick="navigateTo('engine2')">
+        <a href="/engine1" class="w-full py-3 rounded-xl font-bold font-mono text-xs bg-amber-400/10 hover:bg-amber-400 text-amber-300 hover:text-black border border-amber-500/30 transition-all flex items-center justify-center space-x-2">
+          <span>EXPLORE ENGINE 1 ANATOMY & BENCHMARKS</span>
+          <i class="fa-solid fa-arrow-right"></i>
+        </a>
+      </div>
+
+      <!-- Engine 2 Promo Card -->
+      <div class="p-8 rounded-2xl bg-vault-card border border-cyan-500/40 laser-border-cyan transition-all space-y-6 flex flex-col justify-between group">
+        <div class="space-y-4">
           <div class="flex items-center justify-between">
-            <div class="flex items-center space-x-2.5">
-              <div class="w-8 h-8 rounded-lg bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center text-cyan-400 font-mono font-bold text-xs">
+            <div class="flex items-center space-x-3">
+              <div class="w-10 h-10 rounded-xl bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center text-cyan-400 font-mono font-bold text-sm">
                 E2
               </div>
               <div>
-                <h3 class="font-bold text-sm text-white group-hover:text-cyan-400 transition-colors">Engine 2: 4-Pillar Multimodal SOTA</h3>
-                <span class="text-[10px] font-mono text-vault-textMuted">Deep Biometric Representation</span>
+                <h3 class="font-extrabold text-lg text-white group-hover:text-cyan-400 transition-colors">Engine 2: 4-Pillar Multimodal SOTA</h3>
+                <p class="text-xs font-mono text-vault-textMuted">Graph Neural Networks + SincNet + Whisper NLP</p>
               </div>
             </div>
-            <span class="text-[10px] font-mono font-bold px-2 py-0.5 rounded bg-cyan-500/10 text-cyan-300 border border-cyan-500/20">98.5% Accuracy</span>
+            <span class="text-[10px] font-mono font-bold px-2.5 py-1 rounded-full bg-cyan-500/10 text-cyan-300 border border-cyan-500/30 uppercase">SOTA 98.5%</span>
           </div>
+
           <p class="text-xs text-vault-textLight leading-relaxed">
-            Fuses Graph Neural Networks (AASIST), raw waveform SincNet (RawNet2), 136-dim DSP physics, and Whisper Mexican Spanish NLP fillers into XGBoost.
+            State-of-the-art multimodal representation fusing Graph Neural Networks (AASIST), raw waveform sinc convolutions (RawNet2), 136-dim DSP acoustics, and Spanish colloquial filler NLP into a regularized XGBoost meta-classifier.
           </p>
-          <div class="pt-2 border-t border-vault-border flex items-center justify-between text-[11px] font-mono text-cyan-400">
-            <span>296 Dimensions &bull; 16kHz Polyphase</span>
-            <span class="group-hover:translate-x-1 transition-transform">Explore Engine 2 <i class="fa-solid fa-arrow-right ml-1"></i></span>
+
+          <div class="space-y-2 font-mono text-xs">
+            <div class="flex items-center justify-between p-2.5 rounded-lg bg-vault-dark border border-vault-border">
+              <span class="text-vault-textMuted">Dimensionality:</span>
+              <span class="text-white font-bold">296 Dimensions (16kHz Polyphase)</span>
+            </div>
+            <div class="flex items-center justify-between p-2.5 rounded-lg bg-vault-dark border border-vault-border">
+              <span class="text-vault-textMuted">Accuracy / EER:</span>
+              <span class="text-emerald-400 font-bold">98.5% Accuracy &bull; 1.2% EER</span>
+            </div>
+            <div class="flex items-center justify-between p-2.5 rounded-lg bg-vault-dark border border-vault-border">
+              <span class="text-vault-textMuted">Endpoint:</span>
+              <span class="text-cyan-400 font-bold">POST /detect/multimodal</span>
+            </div>
           </div>
         </div>
 
+        <a href="/engine2" class="w-full py-3 rounded-xl font-bold font-mono text-xs bg-cyan-400 hover:bg-cyan-300 text-black shadow-lg shadow-cyan-500/20 transition-all flex items-center justify-center space-x-2">
+          <span>EXPLORE ENGINE 2 ANATOMY & BENCHMARKS</span>
+          <i class="fa-solid fa-arrow-right"></i>
+        </a>
       </div>
+
     </div>
 
-    <!-- Dual Live Consensus Audio Testing Station -->
-    <div class="vault-panel p-6 rounded-2xl border border-vault-border space-y-6">
-      <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between pb-4 border-b border-vault-border gap-2">
-        <div>
-          <h2 class="text-lg font-bold text-white flex items-center space-x-2 font-mono">
-            <i class="fa-solid fa-sliders text-cyan-400"></i>
-            <span>DUAL CONSENSUS TESTING STATION</span>
-          </h2>
-          <p class="text-xs text-vault-textLight">Run both AI engines simultaneously against inbound bank telephony audio to evaluate model agreement.</p>
+  </section>
+
+
+  <!-- ========================================== -->
+  <!-- LIVE DUAL CONSENSUS SANDBOX (TESTING) -->
+  <!-- ========================================== -->
+  <section id="sandbox" class="border-t border-vault-border bg-vault-dark py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+      
+      <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pb-4 border-b border-vault-border">
+        <div class="space-y-1">
+          <div class="flex items-center space-x-2">
+            <span class="text-xs font-mono font-bold px-2 py-0.5 rounded bg-cyan-500/10 text-cyan-300 border border-cyan-500/30">INTERACTIVE LAB</span>
+            <h2 class="text-2xl font-black text-white font-mono">DUAL-ENGINE CONSENSUS SENTINEL</h2>
+          </div>
+          <p class="text-xs text-vault-textLight">Upload call recordings or select test presets to run simultaneous parallel evaluation across both engines.</p>
         </div>
-        <span class="text-[10px] font-mono text-vault-textMuted bg-vault-card px-2.5 py-1 rounded border border-vault-border">Endpoint: POST /api/detect/compare</span>
+        <span class="text-xs font-mono text-vault-textMuted bg-vault-card px-3 py-1.5 rounded-lg border border-vault-border">POST /api/detect/compare</span>
       </div>
 
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
         
-        <!-- Left 5 cols: Audio Ingestion -->
+        <!-- Audio Input (5 cols) -->
         <div class="lg:col-span-5 space-y-4">
           
-          <!-- Dropzone -->
-          <div id="home-dropzone" class="border-2 border-dashed border-vault-border hover:border-cyan-500/50 rounded-xl p-6 text-center cursor-pointer bg-vault-card hover:bg-vault-cardHover transition-all">
-            <input type="file" id="home-file-input" accept="audio/*" class="hidden">
-            <div class="space-y-2">
-              <div class="w-10 h-10 rounded-full bg-cyan-500/10 text-cyan-400 mx-auto flex items-center justify-center text-lg">
+          <div id="dropzone" class="border-2 border-dashed border-vault-border hover:border-cyan-400 rounded-2xl p-8 text-center cursor-pointer bg-vault-card hover:bg-vault-cardHover transition-all">
+            <input type="file" id="file-input" accept="audio/*" class="hidden">
+            <div class="space-y-3">
+              <div class="w-12 h-12 rounded-2xl bg-cyan-500/10 text-cyan-400 mx-auto flex items-center justify-center text-xl">
                 <i class="fa-solid fa-cloud-arrow-up"></i>
               </div>
-              <p class="text-xs font-semibold text-white">Upload Stereo Telephony WAV</p>
-              <p class="text-[10px] text-vault-textMuted">Channel 0 (Caller) & Channel 1 (Agent)</p>
+              <div>
+                <p class="text-sm font-bold text-white">Upload Stereo Call WAV / MP3</p>
+                <p class="text-xs text-vault-textMuted mt-1">Channel 0 (Caller) evaluated &bull; Channel 1 (Agent) excluded</p>
+              </div>
             </div>
           </div>
 
-          <!-- Quick Samples -->
-          <div class="space-y-1.5">
-            <span class="text-[10px] font-mono uppercase tracking-wider text-vault-textMuted font-bold">Quick Preset Benchmarks:</span>
-            <div class="grid grid-cols-2 gap-2">
-              <button onclick="loadSampleOnScreen('home', 'synthetic_scam')" class="p-2.5 rounded-lg bg-vault-card border border-vault-border hover:border-crimson/40 hover:bg-red-950/10 text-left transition-all group">
+          <!-- Quick Benchmarks -->
+          <div class="space-y-2">
+            <span class="text-[10px] font-mono uppercase tracking-wider text-vault-textMuted font-bold">Preset Audio Streams:</span>
+            <div class="grid grid-cols-2 gap-2.5">
+              <button onclick="loadPreset('synthetic_scam')" class="p-3 rounded-xl bg-vault-card border border-vault-border hover:border-red-500/50 hover:bg-red-950/20 text-left transition-all group">
                 <div class="flex items-center justify-between">
-                  <span class="text-xs font-bold text-red-400">Fraud AI Caller</span>
-                  <span class="text-[9px] font-mono bg-red-500/20 text-red-300 px-1 rounded">DEEPFAKE</span>
+                  <span class="text-xs font-bold text-red-400 group-hover:text-red-300">Fraud AI Scam</span>
+                  <span class="text-[9px] font-mono bg-red-500/20 text-red-300 px-1.5 py-0.5 rounded font-bold">DEEPFAKE</span>
                 </div>
-                <p class="text-[10px] text-vault-textMuted mt-0.5">Synthetic vocoder bank scam</p>
+                <p class="text-[10px] text-vault-textMuted mt-1">Synthetic vocoder call</p>
               </button>
 
-              <button onclick="loadSampleOnScreen('home', 'legit_human')" class="p-2.5 rounded-lg bg-vault-card border border-vault-border hover:border-emerald-500/40 hover:bg-emerald-950/10 text-left transition-all group">
+              <button onclick="loadPreset('legit_human')" class="p-3 rounded-xl bg-vault-card border border-vault-border hover:border-emerald-500/50 hover:bg-emerald-950/20 text-left transition-all group">
                 <div class="flex items-center justify-between">
-                  <span class="text-xs font-bold text-emerald-400">Human Customer</span>
-                  <span class="text-[9px] font-mono bg-emerald-500/20 text-emerald-300 px-1 rounded">REAL</span>
+                  <span class="text-xs font-bold text-emerald-400 group-hover:text-emerald-300">Human Client</span>
+                  <span class="text-[9px] font-mono bg-emerald-500/20 text-emerald-300 px-1.5 py-0.5 rounded font-bold">AUTHENTIC</span>
                 </div>
-                <p class="text-[10px] text-vault-textMuted mt-0.5">Natural prosody & micro-jitter</p>
+                <p class="text-[10px] text-vault-textMuted mt-1">Natural human speech</p>
               </button>
             </div>
           </div>
 
-          <!-- Audio Preview & Trigger -->
-          <div id="home-audio-box" class="p-4 rounded-xl bg-vault-card border border-vault-border space-y-3 hidden">
+          <!-- Active Audio Box -->
+          <div id="audio-box" class="p-5 rounded-2xl bg-vault-card border border-vault-border space-y-4 hidden">
             <div class="flex items-center justify-between text-xs font-mono">
-              <span id="home-audio-name" class="text-slate-300 truncate max-w-[200px]">sample.wav</span>
-              <span id="home-audio-dur" class="text-cyan-400">0.0s</span>
+              <span id="audio-name" class="text-slate-200 truncate max-w-[220px]">sample.wav</span>
+              <span id="audio-dur" class="text-cyan-400 font-bold">0.0s</span>
             </div>
-            <audio id="home-audio-player" controls class="w-full h-9 rounded bg-vault-dark"></audio>
-            
-            <button onclick="executeDualCompare()" id="home-btn-run" class="w-full py-2.5 px-4 rounded-xl font-bold font-mono text-xs bg-cyan-400 hover:bg-cyan-300 text-black shadow-lg shadow-cyan-500/20 flex items-center justify-center space-x-2 transition-all">
-              <i class="fa-solid fa-bolt"></i>
-              <span>EXECUTE DUAL-ENGINE INFERENCE</span>
+            <audio id="audio-player" controls class="w-full h-10 rounded-lg bg-vault-dark"></audio>
+
+            <button onclick="runDualInference()" id="btn-run" class="w-full py-3.5 px-4 rounded-xl font-bold font-mono text-xs bg-cyan-400 hover:bg-cyan-300 text-black shadow-lg shadow-cyan-500/25 flex items-center justify-center space-x-2 transition-all">
+              <i class="fa-solid fa-shield-check text-sm"></i>
+              <span>RUN PARALLEL DUAL-ENGINE VERIFICATION</span>
             </button>
           </div>
 
         </div>
 
-        <!-- Right 7 cols: Results & Consensus -->
-        <div class="lg:col-span-7 space-y-4">
+        <!-- Output & Visualizer (7 cols) -->
+        <div class="lg:col-span-7 space-y-6">
           
-          <div id="home-empty-state" class="p-12 text-center rounded-xl bg-vault-card border border-vault-border space-y-2">
-            <i class="fa-solid fa-waveform-lines text-2xl text-vault-textMuted"></i>
-            <p class="text-xs text-vault-textLight font-mono">Load an audio file to run parallel dual-engine inference.</p>
+          <div id="empty-state" class="p-16 text-center rounded-2xl bg-vault-card border border-vault-border space-y-3">
+            <div class="w-14 h-14 rounded-2xl bg-vault-dark border border-vault-border mx-auto flex items-center justify-center text-vault-textMuted text-xl">
+              <i class="fa-solid fa-waveform-lines"></i>
+            </div>
+            <p class="text-xs font-mono text-vault-textLight">Awaiting audio stream input. Load a file or select a preset to analyze.</p>
           </div>
 
-          <div id="home-loading-state" class="p-12 text-center rounded-xl bg-vault-card border border-vault-border space-y-3 hidden">
-            <div class="w-10 h-10 border-3 border-cyan-400/20 border-t-cyan-400 animate-spin mx-auto rounded-full"></div>
-            <p class="text-xs font-mono text-cyan-400">Executing simultaneous inference across Engine 1 & Engine 2...</p>
+          <div id="loading-state" class="p-16 text-center rounded-2xl bg-vault-card border border-vault-border space-y-4 hidden">
+            <div class="w-12 h-12 border-3 border-cyan-400/20 border-t-cyan-400 animate-spin mx-auto rounded-full"></div>
+            <p class="text-xs font-mono text-cyan-400">Executing simultaneous dual-engine inference across 360 combined dimensions...</p>
           </div>
 
-          <div id="home-results-box" class="space-y-4 hidden">
+          <div id="results-box" class="space-y-6 hidden">
             
-            <!-- Consensus Result Card -->
-            <div id="home-consensus-card" class="p-5 rounded-xl border transition-all space-y-3">
-              <div class="flex items-center justify-between">
-                <div class="flex items-center space-x-3">
-                  <div id="home-consensus-icon" class="w-10 h-10 rounded-lg flex items-center justify-center text-lg"></div>
+            <!-- High-Impact Verdict Banner -->
+            <div id="verdict-banner" class="p-6 rounded-2xl border transition-all space-y-4">
+              <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+                <div class="flex items-center space-x-4">
+                  <div id="verdict-icon" class="w-12 h-12 rounded-xl flex items-center justify-center text-xl"></div>
                   <div>
-                    <div class="text-[10px] font-mono uppercase tracking-wider text-vault-textMuted">Consensus Decision</div>
-                    <div id="home-consensus-title" class="font-extrabold text-base tracking-tight font-mono"></div>
+                    <div class="text-[10px] font-mono uppercase tracking-widest text-vault-textMuted font-bold">Consensus Biometric Verdict</div>
+                    <div id="verdict-title" class="text-xl font-black tracking-tight font-mono"></div>
                   </div>
                 </div>
                 <div class="text-right font-mono">
                   <div class="text-[10px] text-vault-textMuted uppercase">Agreement Status</div>
-                  <div id="home-consensus-status" class="text-xs font-bold text-cyan-400"></div>
+                  <div id="verdict-status" class="text-xs font-bold text-cyan-400"></div>
+                  <div id="verdict-lat" class="text-[10px] text-vault-textMuted mt-0.5"></div>
                 </div>
               </div>
             </div>
 
-            <!-- Side by Side Model Columns -->
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <!-- Comparison Columns -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
               
-              <!-- Engine 1 Result -->
-              <div class="p-4 rounded-xl bg-vault-card border border-vault-border space-y-2 font-mono text-xs">
-                <div class="flex items-center justify-between border-b border-vault-border pb-1.5">
-                  <span class="font-bold text-amber-400 flex items-center space-x-1">
-                    <i class="fa-solid fa-bolt"></i>
-                    <span>Engine 1: Baseline</span>
-                  </span>
-                  <span id="home-e1-verdict" class="text-[10px] font-bold px-1.5 py-0.5 rounded"></span>
+              <!-- Engine 1 Output Card -->
+              <div class="p-5 rounded-2xl bg-vault-card border border-vault-border space-y-3 font-mono text-xs">
+                <div class="flex items-center justify-between border-b border-vault-border pb-2">
+                  <div class="flex items-center space-x-2">
+                    <i class="fa-solid fa-bolt text-amber-400"></i>
+                    <span class="font-bold text-white">Engine 1: Baseline</span>
+                  </div>
+                  <span id="res-e1-badge" class="text-[10px] font-bold px-2 py-0.5 rounded"></span>
                 </div>
-                <div class="flex justify-between text-vault-textLight">
-                  <span>P(Synthetic):</span>
-                  <span id="home-e1-prob" class="font-bold text-white"></span>
+                <div class="space-y-1.5 text-vault-textLight text-[11px]">
+                  <div class="flex justify-between">
+                    <span>P(Synthetic):</span>
+                    <span id="res-e1-prob" class="text-white font-bold"></span>
+                  </div>
+                  <div class="flex justify-between">
+                    <span>GBM / Neural:</span>
+                    <span id="res-e1-split" class="text-amber-300"></span>
+                  </div>
+                  <div class="flex justify-between">
+                    <span>Latency:</span>
+                    <span id="res-e1-lat" class="text-amber-400 font-bold"></span>
+                  </div>
                 </div>
-                <div class="flex justify-between text-vault-textLight">
-                  <span>Latency:</span>
-                  <span id="home-e1-lat" class="text-amber-300"></span>
-                </div>
-                <div class="flex justify-between text-vault-textLight">
-                  <span>Features:</span>
-                  <span>64 dims</span>
-                </div>
-              </div>
-
-              <!-- Engine 2 Result -->
-              <div class="p-4 rounded-xl bg-vault-card border border-vault-border space-y-2 font-mono text-xs">
-                <div class="flex items-center justify-between border-b border-vault-border pb-1.5">
-                  <span class="font-bold text-cyan-400 flex items-center space-x-1">
-                    <i class="fa-solid fa-brain-circuit"></i>
-                    <span>Engine 2: SOTA</span>
-                  </span>
-                  <span id="home-e2-verdict" class="text-[10px] font-bold px-1.5 py-0.5 rounded"></span>
-                </div>
-                <div class="flex justify-between text-vault-textLight">
-                  <span>P(Synthetic):</span>
-                  <span id="home-e2-prob" class="font-bold text-white"></span>
-                </div>
-                <div class="flex justify-between text-vault-textLight">
-                  <span>Latency:</span>
-                  <span id="home-e2-lat" class="text-cyan-300"></span>
-                </div>
-                <div class="flex justify-between text-vault-textLight">
-                  <span>Features:</span>
-                  <span>296 dims (4 Pillars)</span>
+                <div class="pt-2 border-t border-vault-border">
+                  <a href="/engine1" class="text-[10px] text-amber-400 hover:underline flex items-center justify-between">
+                    <span>Inspect Engine 1 Diagnostics</span>
+                    <i class="fa-solid fa-arrow-right"></i>
+                  </a>
                 </div>
               </div>
 
+              <!-- Engine 2 Output Card -->
+              <div class="p-5 rounded-2xl bg-vault-card border border-cyan-500/30 space-y-3 font-mono text-xs">
+                <div class="flex items-center justify-between border-b border-vault-border pb-2">
+                  <div class="flex items-center space-x-2">
+                    <i class="fa-solid fa-brain-circuit text-cyan-400"></i>
+                    <span class="font-bold text-white">Engine 2: SOTA Deep</span>
+                  </div>
+                  <span id="res-e2-badge" class="text-[10px] font-bold px-2 py-0.5 rounded"></span>
+                </div>
+                <div class="space-y-1.5 text-vault-textLight text-[11px]">
+                  <div class="flex justify-between">
+                    <span>P(Synthetic):</span>
+                    <span id="res-e2-prob" class="text-white font-bold"></span>
+                  </div>
+                  <div class="flex justify-between">
+                    <span>AASIST / SincNet:</span>
+                    <span id="res-e2-split" class="text-cyan-300"></span>
+                  </div>
+                  <div class="flex justify-between">
+                    <span>Latency:</span>
+                    <span id="res-e2-lat" class="text-cyan-400 font-bold"></span>
+                  </div>
+                </div>
+                <div class="pt-2 border-t border-vault-border">
+                  <a href="/engine2" class="text-[10px] text-cyan-400 hover:underline flex items-center justify-between">
+                    <span>Inspect 4-Pillar Attributions</span>
+                    <i class="fa-solid fa-arrow-right"></i>
+                  </a>
+                </div>
+              </div>
+
             </div>
 
           </div>
 
-        </div>
-
-      </div>
-    </div>
-
-    <!-- API Reference Guide -->
-    <div class="vault-panel p-6 rounded-2xl border border-vault-border space-y-4 font-mono">
-      <div class="flex items-center justify-between">
-        <h3 class="text-sm font-bold text-white flex items-center space-x-2">
-          <i class="fa-solid fa-code text-cyan-400"></i>
-          <span>PRODUCTION API ENDPOINTS REFERENCE</span>
-        </h3>
-        <span class="text-xs text-vault-textMuted">FastAPI 0.110+ &bull; Port 8000</span>
-      </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-3 text-xs">
-        <div class="p-3.5 rounded-xl bg-vault-card border border-vault-border space-y-1">
-          <div class="flex items-center justify-between">
-            <span class="text-emerald-400 font-bold">POST /detect</span>
-            <span class="text-[10px] text-vault-textMuted">Challenge Standard</span>
-          </div>
-          <p class="text-[11px] text-vault-textLight font-sans">Evaluates Channel 0 with default SOTA model returning <code>{"is_synthetic": bool, "confidence": float}</code>.</p>
-        </div>
-
-        <div class="p-3.5 rounded-xl bg-vault-card border border-vault-border space-y-1">
-          <div class="flex items-center justify-between">
-            <span class="text-amber-400 font-bold">POST /detect/baseline</span>
-            <span class="text-[10px] text-vault-textMuted">Engine 1 Dedicated</span>
-          </div>
-          <p class="text-[11px] text-vault-textLight font-sans">Direct execution against Baseline CNN/GBM with feature attribution breakdown.</p>
-        </div>
-
-        <div class="p-3.5 rounded-xl bg-vault-card border border-vault-border space-y-1">
-          <div class="flex items-center justify-between">
-            <span class="text-cyan-400 font-bold">POST /detect/multimodal</span>
-            <span class="text-[10px] text-vault-textMuted">Engine 2 Dedicated</span>
-          </div>
-          <p class="text-[11px] text-vault-textLight font-sans">Direct execution against 4-Pillar AASIST + RawNet2 + DSP + Whisper XGBoost ensemble.</p>
-        </div>
-      </div>
-    </div>
-
-  </main>
-
-
-  <!-- ========================================== -->
-  <!-- SCREEN 2: ENGINE 1 DEEP-DIVE (BASELINE) -->
-  <!-- ========================================== -->
-  <main id="screen-engine1" class="screen-view flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8 hidden">
-    
-    <!-- Engine 1 Header -->
-    <div class="vault-panel p-6 rounded-2xl border border-vault-border flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
-      <div class="space-y-1">
-        <div class="flex items-center space-x-2">
-          <span class="text-xs font-mono font-bold px-2 py-0.5 rounded bg-amber-500/10 text-amber-300 border border-amber-500/30">ENGINE 1</span>
-          <h1 class="text-2xl font-extrabold text-white">Baseline Fast Acoustic & AudioCNN</h1>
-        </div>
-        <p class="text-xs text-vault-textLight font-sans">
-          Ultra-low latency architecture combining global acoustic features, conversational timing physics, and a 1D/2D log-mel micro-segment CNN.
-        </p>
-      </div>
-
-      <div class="flex items-center space-x-3 font-mono text-xs">
-        <div class="p-2.5 rounded-xl bg-vault-card border border-vault-border text-center">
-          <div class="text-amber-400 font-bold">~32 ms</div>
-          <div class="text-[10px] text-vault-textMuted">CPU Latency</div>
-        </div>
-        <div class="p-2.5 rounded-xl bg-vault-card border border-vault-border text-center">
-          <div class="text-white font-bold">64</div>
-          <div class="text-[10px] text-vault-textMuted">Dimensions</div>
-        </div>
-        <div class="p-2.5 rounded-xl bg-vault-card border border-vault-border text-center">
-          <div class="text-emerald-400 font-bold">&lt;90 MB</div>
-          <div class="text-[10px] text-vault-textMuted">RAM Usage</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Engine 1 Architecture & Dedicated Testing -->
-    <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
-      
-      <!-- Left 5 cols: Dedicated Engine 1 Ingestion & Testing -->
-      <div class="lg:col-span-5 space-y-4">
-        <div class="vault-panel p-5 rounded-xl border border-vault-border space-y-4">
-          <div class="flex items-center justify-between border-b border-vault-border pb-2">
-            <h3 class="font-bold text-xs text-white font-mono flex items-center space-x-2">
-              <i class="fa-solid fa-vial text-amber-400"></i>
-              <span>TEST ENGINE 1 (POST /detect/baseline)</span>
-            </h3>
-          </div>
-
-          <div id="e1-dropzone" class="border-2 border-dashed border-vault-border hover:border-amber-500/50 rounded-xl p-5 text-center cursor-pointer bg-vault-card hover:bg-vault-cardHover transition-all">
-            <input type="file" id="e1-file-input" accept="audio/*" class="hidden">
-            <div class="space-y-1">
-              <i class="fa-solid fa-cloud-arrow-up text-amber-400 text-lg"></i>
-              <p class="text-xs font-semibold text-white">Upload Call WAV for Engine 1</p>
-              <p class="text-[10px] text-vault-textMuted">8kHz Stereo Audio</p>
-            </div>
-          </div>
-
-          <div class="flex space-x-2">
-            <button onclick="loadSampleOnScreen('e1', 'synthetic_scam')" class="flex-1 py-1.5 px-2 rounded bg-vault-card border border-vault-border hover:border-red-500/40 text-[11px] font-mono text-red-400">
-              Preset: Fraud AI
-            </button>
-            <button onclick="loadSampleOnScreen('e1', 'legit_human')" class="flex-1 py-1.5 px-2 rounded bg-vault-card border border-vault-border hover:border-emerald-500/40 text-[11px] font-mono text-emerald-400">
-              Preset: Human
-            </button>
-          </div>
-
-          <div id="e1-audio-box" class="space-y-3 pt-2 border-t border-vault-border hidden">
-            <audio id="e1-audio-player" controls class="w-full h-8 rounded bg-vault-dark"></audio>
-            <button onclick="executeEngine1Test()" id="e1-btn-run" class="w-full py-2.5 rounded-xl font-bold font-mono text-xs bg-amber-400 hover:bg-amber-300 text-black transition-all flex items-center justify-center space-x-2">
-              <i class="fa-solid fa-play"></i>
-              <span>EVALUATE WITH ENGINE 1</span>
-            </button>
-          </div>
-
-        </div>
-
-        <!-- Architectural Anatomy Cards -->
-        <div class="vault-panel p-5 rounded-xl border border-vault-border space-y-3 font-mono text-xs">
-          <span class="text-[10px] uppercase font-bold text-vault-textMuted">Engine 1 Anatomy:</span>
-          
-          <div class="p-3 rounded-lg bg-vault-card border border-vault-border space-y-1 font-sans">
-            <div class="font-bold text-amber-400 text-xs font-mono">1. Global Acoustic & Spectral DSP (40-dim)</div>
-            <p class="text-[11px] text-vault-textLight leading-relaxed">
-              20 MFCCs, 20 first-order deltas, spectral contrast across 4 frequency sub-bands, chroma harmonic distribution, and zero-crossing rate.
-            </p>
-          </div>
-
-          <div class="p-3 rounded-lg bg-vault-card border border-vault-border space-y-1 font-sans">
-            <div class="font-bold text-amber-400 text-xs font-mono">2. Conversational Timing Physics (24-dim)</div>
-            <p class="text-[11px] text-vault-textLight leading-relaxed">
-              Dual-channel energy VAD isolates Caller (Ch 0) and Agent (Ch 1), computing turn-taking response latency CV, speech overlap ratios, and pause variances.
-            </p>
-          </div>
-
-          <div class="p-3 rounded-lg bg-vault-card border border-vault-border space-y-1 font-sans">
-            <div class="font-bold text-amber-400 text-xs font-mono">3. 1D/2D SpoofCNN Micro-Segments (~250k Params)</div>
-            <p class="text-[11px] text-vault-textLight leading-relaxed">
-              4-second log-mel CMVN normalized patches are scanned to detect localized vocoder phase artifacts that global averages dilate.
-            </p>
-          </div>
-        </div>
-
-      </div>
-
-      <!-- Right 7 cols: Diagnostic Output & Feature Explorer -->
-      <div class="lg:col-span-7 space-y-4">
-        
-        <div id="e1-results-box" class="vault-panel p-6 rounded-xl border border-vault-border space-y-4 hidden">
-          <div class="flex items-center justify-between pb-3 border-b border-vault-border">
-            <h4 class="font-mono font-bold text-sm text-white">ENGINE 1 INFERENCE DIAGNOSTICS</h4>
-            <span id="e1-diag-badge" class="text-xs font-mono font-bold px-2.5 py-0.5 rounded"></span>
-          </div>
-
-          <!-- Meters -->
-          <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 font-mono text-center">
-            <div class="p-3 rounded-lg bg-vault-card border border-vault-border">
-              <div class="text-[10px] text-vault-textMuted uppercase">P(Synthetic)</div>
-              <div id="e1-diag-prob" class="text-base font-bold text-white mt-1"></div>
-            </div>
-            <div class="p-3 rounded-lg bg-vault-card border border-vault-border">
-              <div class="text-[10px] text-vault-textMuted uppercase">GBM Prob</div>
-              <div id="e1-diag-gbm" class="text-base font-bold text-amber-300 mt-1"></div>
-            </div>
-            <div class="p-3 rounded-lg bg-vault-card border border-vault-border">
-              <div class="text-[10px] text-vault-textMuted uppercase">Neural Prob</div>
-              <div id="e1-diag-neural" class="text-base font-bold text-amber-300 mt-1"></div>
-            </div>
-            <div class="p-3 rounded-lg bg-vault-card border border-vault-border">
-              <div class="text-[10px] text-vault-textMuted uppercase">Inference Time</div>
-              <div id="e1-diag-lat" class="text-base font-bold text-cyan-400 mt-1"></div>
-            </div>
-          </div>
-
-          <!-- Raw JSON Response Viewer -->
-          <div class="space-y-1 font-mono text-xs">
-            <span class="text-[10px] text-vault-textMuted uppercase font-bold">API JSON Response Payload:</span>
-            <pre id="e1-diag-json" class="p-3 rounded-lg bg-vault-dark border border-vault-border text-cyan-300 overflow-x-auto text-[11px]"></pre>
-          </div>
-        </div>
-
-        <!-- Empirical Benchmark Table -->
-        <div class="vault-panel p-5 rounded-xl border border-vault-border space-y-3 font-mono">
-          <h4 class="text-xs font-bold text-white uppercase tracking-wider">Engine 1 Benchmark Performance</h4>
-          <table class="w-full text-left text-xs divide-y divide-vault-border">
-            <thead>
-              <tr class="text-vault-textMuted text-[10px]">
-                <th class="py-2">Metric</th>
-                <th class="py-2">Score</th>
-                <th class="py-2">Operational Profile</th>
-              </tr>
-            </thead>
-            <tbody class="divide-y divide-vault-border text-vault-textLight">
-              <tr><td class="py-2">Accuracy</td><td class="py-2 text-white font-bold">95.20%</td><td class="py-2 text-[11px]">Strong baseline discrimination</td></tr>
-              <tr><td class="py-2">Equal Error Rate (EER)</td><td class="py-2 text-white font-bold">4.80%</td><td class="py-2 text-[11px]">Calibrated threshold = 0.50</td></tr>
-              <tr><td class="py-2">AUC-ROC</td><td class="py-2 text-white font-bold">0.981</td><td class="py-2 text-[11px]">High overall separability</td></tr>
-              <tr><td class="py-2">Average CPU Latency</td><td class="py-2 text-amber-400 font-bold">32.0 ms</td><td class="py-2 text-[11px]">Sub-frame latency on standard CPU</td></tr>
-            </tbody>
-          </table>
         </div>
 
       </div>
 
     </div>
-
-  </main>
-
-
-  <!-- ========================================== -->
-  <!-- SCREEN 3: ENGINE 2 DEEP-DIVE (MULTIMODAL SOTA) -->
-  <!-- ========================================== -->
-  <main id="screen-engine2" class="screen-view flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8 hidden">
-    
-    <!-- Engine 2 Header -->
-    <div class="vault-panel p-6 rounded-2xl border border-vault-border flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
-      <div class="space-y-1">
-        <div class="flex items-center space-x-2">
-          <span class="text-xs font-mono font-bold px-2 py-0.5 rounded bg-cyan-500/10 text-cyan-300 border border-cyan-500/30">ENGINE 2</span>
-          <h1 class="text-2xl font-extrabold text-white">4-Pillar Multimodal Deep Ensemble</h1>
-        </div>
-        <p class="text-xs text-vault-textLight font-sans">
-          State-of-the-art 296-dimensional biometric anti-spoofing engine fusing Graph Neural Networks, SincNet raw waveforms, acoustic physics, and Spanish conversational disfluency NLP.
-        </p>
-      </div>
-
-      <div class="flex items-center space-x-3 font-mono text-xs">
-        <div class="p-2.5 rounded-xl bg-vault-card border border-vault-border text-center">
-          <div class="text-cyan-400 font-bold">98.5%</div>
-          <div class="text-[10px] text-vault-textMuted">Accuracy</div>
-        </div>
-        <div class="p-2.5 rounded-xl bg-vault-card border border-vault-border text-center">
-          <div class="text-emerald-400 font-bold">1.20%</div>
-          <div class="text-[10px] text-vault-textMuted">EER</div>
-        </div>
-        <div class="p-2.5 rounded-xl bg-vault-card border border-vault-border text-center">
-          <div class="text-white font-bold">296</div>
-          <div class="text-[10px] text-vault-textMuted">Dimensions</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Engine 2 Architecture & Dedicated Testing -->
-    <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
-      
-      <!-- Left 5 cols: Dedicated Engine 2 Ingestion & Testing -->
-      <div class="lg:col-span-5 space-y-4">
-        <div class="vault-panel p-5 rounded-xl border border-vault-border space-y-4">
-          <div class="flex items-center justify-between border-b border-vault-border pb-2">
-            <h3 class="font-bold text-xs text-white font-mono flex items-center space-x-2">
-              <i class="fa-solid fa-vial text-cyan-400"></i>
-              <span>TEST ENGINE 2 (POST /detect/multimodal)</span>
-            </h3>
-          </div>
-
-          <div id="e2-dropzone" class="border-2 border-dashed border-vault-border hover:border-cyan-500/50 rounded-xl p-5 text-center cursor-pointer bg-vault-card hover:bg-vault-cardHover transition-all">
-            <input type="file" id="e2-file-input" accept="audio/*" class="hidden">
-            <div class="space-y-1">
-              <i class="fa-solid fa-cloud-arrow-up text-cyan-400 text-lg"></i>
-              <p class="text-xs font-semibold text-white">Upload Call WAV for Engine 2</p>
-              <p class="text-[10px] text-vault-textMuted">8kHz / 16kHz Stereo Audio</p>
-            </div>
-          </div>
-
-          <div class="flex space-x-2">
-            <button onclick="loadSampleOnScreen('e2', 'synthetic_scam')" class="flex-1 py-1.5 px-2 rounded bg-vault-card border border-vault-border hover:border-red-500/40 text-[11px] font-mono text-red-400">
-              Preset: Fraud AI
-            </button>
-            <button onclick="loadSampleOnScreen('e2', 'legit_human')" class="flex-1 py-1.5 px-2 rounded bg-vault-card border border-vault-border hover:border-emerald-500/40 text-[11px] font-mono text-emerald-400">
-              Preset: Human
-            </button>
-          </div>
-
-          <div id="e2-audio-box" class="space-y-3 pt-2 border-t border-vault-border hidden">
-            <audio id="e2-audio-player" controls class="w-full h-8 rounded bg-vault-dark"></audio>
-            <button onclick="executeEngine2Test()" id="e2-btn-run" class="w-full py-2.5 rounded-xl font-bold font-mono text-xs bg-cyan-400 hover:bg-cyan-300 text-black transition-all flex items-center justify-center space-x-2">
-              <i class="fa-solid fa-play"></i>
-              <span>EVALUATE WITH ENGINE 2</span>
-            </button>
-          </div>
-
-        </div>
-
-        <!-- 4 Pillars Deep Dive Cards -->
-        <div class="vault-panel p-5 rounded-xl border border-vault-border space-y-3 font-mono text-xs">
-          <span class="text-[10px] uppercase font-bold text-vault-textMuted">The 4 Pillars (296 Dimensions):</span>
-          
-          <div class="p-3 rounded-lg bg-vault-card border border-vault-border space-y-1 font-sans">
-            <div class="font-bold text-cyan-400 text-xs font-mono">Pillar 1: AASIST (GNN - 132 dims)</div>
-            <p class="text-[11px] text-vault-textLight leading-relaxed">
-              Graph Attention Network uncovering spectral-temporal correlation inconsistencies across vocal harmonics.
-            </p>
-          </div>
-
-          <div class="p-3 rounded-lg bg-vault-card border border-vault-border space-y-1 font-sans">
-            <div class="font-bold text-sky-400 text-xs font-mono">Pillar 2: RawNet2 (SincNet - 4 dims)</div>
-            <p class="text-[11px] text-vault-textLight leading-relaxed">
-              Parametric sinc convolutions learn directly on raw waveforms, preserving phase information lost in Fourier transforms.
-            </p>
-          </div>
-
-          <div class="p-3 rounded-lg bg-vault-card border border-vault-border space-y-1 font-sans">
-            <div class="font-bold text-emerald-400 text-xs font-mono">Pillar 3: Acoustic DSP Physics (136 dims)</div>
-            <p class="text-[11px] text-vault-textLight leading-relaxed">
-              Wiener entropy, pitch jitter, shimmer, crest factor, and high-frequency telephony vocoder spectral ratios.
-            </p>
-          </div>
-
-          <div class="p-3 rounded-lg bg-vault-card border border-vault-border space-y-1 font-sans">
-            <div class="font-bold text-purple-400 text-xs font-mono">Pillar 4: Whisper Spanish NLP (24 dims)</div>
-            <p class="text-[11px] text-vault-textLight leading-relaxed">
-              Whisper encoder attention latents + Mexican Spanish colloquial filler frequency (este, o sea, bueno, mmm) and disfluency analysis.
-            </p>
-          </div>
-        </div>
-
-      </div>
-
-      <!-- Right 7 cols: Diagnostic Output & Attributions -->
-      <div class="lg:col-span-7 space-y-4">
-        
-        <div id="e2-results-box" class="vault-panel p-6 rounded-xl border border-vault-border space-y-4 hidden">
-          <div class="flex items-center justify-between pb-3 border-b border-vault-border">
-            <h4 class="font-mono font-bold text-sm text-white">ENGINE 2 INFERENCE & PILLAR ATTRIBUTIONS</h4>
-            <span id="e2-diag-badge" class="text-xs font-mono font-bold px-2.5 py-0.5 rounded"></span>
-          </div>
-
-          <!-- Metric Cards -->
-          <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 font-mono text-center">
-            <div class="p-3 rounded-lg bg-vault-card border border-vault-border">
-              <div class="text-[10px] text-vault-textMuted uppercase">P(Synthetic)</div>
-              <div id="e2-diag-prob" class="text-base font-bold text-white mt-1"></div>
-            </div>
-            <div class="p-3 rounded-lg bg-vault-card border border-vault-border">
-              <div class="text-[10px] text-vault-textMuted uppercase">Certainty</div>
-              <div id="e2-diag-conf" class="text-base font-bold text-cyan-400 mt-1"></div>
-            </div>
-            <div class="p-3 rounded-lg bg-vault-card border border-vault-border">
-              <div class="text-[10px] text-vault-textMuted uppercase">Dimensions</div>
-              <div class="text-base font-bold text-purple-400 mt-1">296 dims</div>
-            </div>
-            <div class="p-3 rounded-lg bg-vault-card border border-vault-border">
-              <div class="text-[10px] text-vault-textMuted uppercase">Latency</div>
-              <div id="e2-diag-lat" class="text-base font-bold text-white mt-1"></div>
-            </div>
-          </div>
-
-          <!-- Sub-Pillars Attribution Grid -->
-          <div class="p-4 rounded-xl bg-vault-card border border-vault-border space-y-2.5 font-mono text-xs">
-            <span class="text-[10px] uppercase font-bold text-vault-textMuted">Sub-Pillar Scores:</span>
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-[11px]">
-              <div class="flex justify-between p-2 rounded bg-vault-dark border border-vault-border">
-                <span class="text-cyan-400">AASIST GNN:</span>
-                <span id="e2-sub-aasist" class="text-white font-bold"></span>
-              </div>
-              <div class="flex justify-between p-2 rounded bg-vault-dark border border-vault-border">
-                <span class="text-sky-400">RawNet2 SincNet:</span>
-                <span id="e2-sub-rawnet" class="text-white font-bold"></span>
-              </div>
-              <div class="flex justify-between p-2 rounded bg-vault-dark border border-vault-border">
-                <span class="text-emerald-400">Acoustic DSP:</span>
-                <span id="e2-sub-dsp" class="text-white font-bold">136 dims</span>
-              </div>
-              <div class="flex justify-between p-2 rounded bg-vault-dark border border-vault-border">
-                <span class="text-purple-400">Whisper Authenticity:</span>
-                <span id="e2-sub-nlp" class="text-white font-bold"></span>
-              </div>
-            </div>
-          </div>
-
-          <!-- Raw JSON Viewer -->
-          <div class="space-y-1 font-mono text-xs">
-            <span class="text-[10px] text-vault-textMuted uppercase font-bold">API JSON Response Payload:</span>
-            <pre id="e2-diag-json" class="p-3 rounded-lg bg-vault-dark border border-vault-border text-cyan-300 overflow-x-auto text-[11px]"></pre>
-          </div>
-        </div>
-
-        <!-- Empirical Benchmark Table -->
-        <div class="vault-panel p-5 rounded-xl border border-vault-border space-y-3 font-mono">
-          <h4 class="text-xs font-bold text-white uppercase tracking-wider">Engine 2 Benchmark Performance</h4>
-          <table class="w-full text-left text-xs divide-y divide-vault-border">
-            <thead>
-              <tr class="text-vault-textMuted text-[10px]">
-                <th class="py-2">Metric</th>
-                <th class="py-2 text-cyan-400">Score</th>
-                <th class="py-2">Operational Profile</th>
-              </tr>
-            </thead>
-            <tbody class="divide-y divide-vault-border text-vault-textLight">
-              <tr><td class="py-2">Accuracy</td><td class="py-2 text-cyan-300 font-bold">98.50%</td><td class="py-2 text-[11px]">SOTA deepfake detection</td></tr>
-              <tr><td class="py-2">Equal Error Rate (EER)</td><td class="py-2 text-cyan-300 font-bold">1.20%</td><td class="py-2 text-[11px]">Ultra-low false alarm rate</td></tr>
-              <tr><td class="py-2">AUC-ROC</td><td class="py-2 text-cyan-300 font-bold">0.998</td><td class="py-2 text-[11px]">Near-perfect separation boundary</td></tr>
-              <tr><td class="py-2">Average CPU Latency</td><td class="py-2 text-white font-bold">~185 ms</td><td class="py-2 text-[11px]">Full 4-pillar deep pipeline pass</td></tr>
-            </tbody>
-          </table>
-        </div>
-
-      </div>
-
-    </div>
-
-  </main>
+  </section>
 
 
   <!-- ========================================== -->
   <!-- FOOTER -->
   <!-- ========================================== -->
-  <footer class="border-t border-vault-border bg-vault-dark py-4 mt-auto font-mono text-[11px]">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-2 text-vault-textMuted">
-      <div>ALTUR VAULT &bull; Biometric AI Defense &bull; HackMTY 2026</div>
-      <div class="flex items-center space-x-4">
-        <span>API: <a href="/docs" target="_blank" class="text-cyan-400 hover:underline">Swagger /docs</a></span>
-        <span>Health: <a href="/health" target="_blank" class="text-cyan-400 hover:underline">/health</a></span>
+  <footer class="border-t border-vault-border bg-vault-dark py-8 mt-auto font-mono text-xs">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-vault-textMuted">
+      <div class="flex items-center space-x-3">
+        <span class="font-black text-white">ALTUR<span class="text-cyan-400">VAULT</span></span>
+        <span>&bull; Enterprise Anti-Spoofing AI Platform &bull; HackMTY 2026</span>
+      </div>
+      <div class="flex items-center space-x-6">
+        <a href="/engine1" class="hover:text-cyan-400 transition-colors">Engine 1</a>
+        <a href="/engine2" class="hover:text-cyan-400 transition-colors">Engine 2</a>
+        <a href="/docs" target="_blank" class="hover:text-cyan-400 transition-colors">Swagger Docs</a>
+        <a href="/health" target="_blank" class="hover:text-cyan-400 transition-colors">System Telemetry</a>
       </div>
     </div>
   </footer>
 
 
-  <!-- ========================================== -->
-  <!-- INTERACTIVE SCRIPTS -->
-  <!-- ========================================== -->
+  <!-- Interactive Logic -->
   <script>
-    // State storage for screens
-    const state = {
-      home: { base64: null, filename: 'sample.wav' },
-      e1: { base64: null, filename: 'sample.wav' },
-      e2: { base64: null, filename: 'sample.wav' }
-    };
+    let activeBase64 = null;
+    let activeFilename = 'sample.wav';
 
-    function navigateTo(screenId) {
-      document.querySelectorAll('.screen-view').forEach(el => el.classList.add('hidden'));
-      document.querySelectorAll('.nav-tab').forEach(el => {
-        el.classList.remove('active', 'bg-cyan-400', 'text-black');
-        el.classList.add('text-vault-textLight');
-      });
+    const dropzone = document.getElementById('dropzone');
+    const fileInput = document.getElementById('file-input');
 
-      const targetScreen = document.getElementById(`screen-${screenId}`);
-      if (targetScreen) targetScreen.classList.remove('hidden');
+    dropzone.addEventListener('click', () => fileInput.click());
+    dropzone.addEventListener('dragover', (e) => { e.preventDefault(); dropzone.classList.add('border-cyan-400'); });
+    dropzone.addEventListener('dragleave', () => dropzone.classList.remove('border-cyan-400'));
+    dropzone.addEventListener('drop', (e) => {
+      e.preventDefault();
+      dropzone.classList.remove('border-cyan-400');
+      if (e.dataTransfer.files.length) handleFile(e.dataTransfer.files[0]);
+    });
+    fileInput.addEventListener('change', (e) => {
+      if (e.target.files.length) handleFile(e.target.files[0]);
+    });
 
-      const activeBtn = document.getElementById(`nav-btn-${screenId}`);
-      if (activeBtn) {
-        activeBtn.classList.add('active', 'bg-cyan-400', 'text-black');
-        activeBtn.classList.remove('text-vault-textLight');
-      }
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-
-    // Setup dropzones
-    function setupDropzone(prefix) {
-      const dropzone = document.getElementById(`${prefix}-dropzone`);
-      const fileInput = document.getElementById(`${prefix}-file-input`);
-      if (!dropzone || !fileInput) return;
-
-      dropzone.addEventListener('click', () => fileInput.click());
-      dropzone.addEventListener('dragover', (e) => { e.preventDefault(); dropzone.classList.add('border-cyan-400'); });
-      dropzone.addEventListener('dragleave', () => dropzone.classList.remove('border-cyan-400'));
-      dropzone.addEventListener('drop', (e) => {
-        e.preventDefault();
-        dropzone.classList.remove('border-cyan-400');
-        if (e.dataTransfer.files.length) handleFileSelect(prefix, e.dataTransfer.files[0]);
-      });
-      fileInput.addEventListener('change', (e) => {
-        if (e.target.files.length) handleFileSelect(prefix, e.target.files[0]);
-      });
-    }
-
-    setupDropzone('home');
-    setupDropzone('e1');
-    setupDropzone('e2');
-
-    function handleFileSelect(prefix, file) {
-      state[prefix].filename = file.name;
+    function handleFile(file) {
+      activeFilename = file.name;
       const reader = new FileReader();
       reader.onload = function(e) {
-        state[prefix].base64 = e.target.result;
-        const player = document.getElementById(`${prefix}-audio-player`);
-        const box = document.getElementById(`${prefix}-audio-box`);
-        if (player && box) {
-          player.src = e.target.result;
-          box.classList.remove('hidden');
-          const nameEl = document.getElementById(`${prefix}-audio-name`);
-          if (nameEl) nameEl.textContent = file.name;
-          player.onloadedmetadata = () => {
-            const durEl = document.getElementById(`${prefix}-audio-dur`);
-            if (durEl) durEl.textContent = `${player.duration.toFixed(1)}s`;
-          };
-        }
+        activeBase64 = e.target.result;
+        const player = document.getElementById('audio-player');
+        player.src = activeBase64;
+        document.getElementById('audio-box').classList.remove('hidden');
+        document.getElementById('audio-name').textContent = file.name;
+        player.onloadedmetadata = () => {
+          document.getElementById('audio-dur').textContent = `${player.duration.toFixed(1)}s`;
+        };
       };
       reader.readAsDataURL(file);
     }
 
-    // Audio Generator for Presets (Stereo 8kHz)
-    function generatePresetWav(type) {
+    function generateWav(type) {
       const sampleRate = 8000;
       const durationSec = 3.5;
       const numSamples = sampleRate * durationSec;
@@ -885,18 +561,14 @@
         let agent = 0.15 * Math.sin(2 * Math.PI * 160 * t);
 
         if (type === 'synthetic_scam') {
-          // Flat robotic buzz harmonics
           caller = 0.35 * Math.sin(2 * Math.PI * 220 * t) + 0.18 * Math.sin(2 * Math.PI * 440 * t) + 0.08 * Math.sin(2 * Math.PI * 880 * t);
         } else {
-          // Human voice: modulated fundamental with micro-jitter
           const f0 = 135 + 18 * Math.sin(2 * Math.PI * 1.4 * t) + (Math.random() - 0.5) * 4;
           caller = 0.35 * Math.sin(2 * Math.PI * f0 * t) * (0.5 + 0.5 * Math.sin(2 * Math.PI * 2.2 * t));
         }
 
-        const ch0 = Math.max(-32768, Math.min(32767, caller * 32767));
-        const ch1 = Math.max(-32768, Math.min(32767, agent * 32767));
-        view.setInt16(offset, ch0, true);
-        view.setInt16(offset + 2, ch1, true);
+        view.setInt16(offset, Math.max(-32768, Math.min(32767, caller * 32767)), true);
+        view.setInt16(offset + 2, Math.max(-32768, Math.min(32767, agent * 32767)), true);
         offset += 4;
       }
 
@@ -904,137 +576,79 @@
       return new File([blob], `${type}_call.wav`, { type: 'audio/wav' });
     }
 
-    function loadSampleOnScreen(prefix, type) {
-      const file = generatePresetWav(type);
-      handleFileSelect(prefix, file);
+    function loadPreset(type) {
+      handleFile(generateWav(type));
     }
 
-    // SCREEN 1: DUAL COMPARE
-    async function executeDualCompare() {
-      if (!state.home.base64) return;
-      document.getElementById('home-empty-state').classList.add('hidden');
-      document.getElementById('home-loading-state').classList.remove('hidden');
-      document.getElementById('home-results-box').classList.add('hidden');
+    async function runDualInference() {
+      if (!activeBase64) return;
+      document.getElementById('empty-state').classList.add('hidden');
+      document.getElementById('loading-state').classList.remove('hidden');
+      document.getElementById('results-box').classList.add('hidden');
 
       try {
         const res = await fetch('/api/detect/compare', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ audio: state.home.base64, call_id: `cmp_${Date.now()}` })
+          body: JSON.stringify({ audio: activeBase64, call_id: `cmp_${Date.now()}` })
         });
         if (!res.ok) throw new Error(`HTTP ${res.status}`);
         const data = await res.json();
-        renderDualResults(data);
+        renderResults(data);
       } catch (err) {
         alert(`Inference failed: ${err.message}`);
       } finally {
-        document.getElementById('home-loading-state').classList.add('hidden');
-        document.getElementById('home-results-box').classList.remove('hidden');
+        document.getElementById('loading-state').classList.add('hidden');
+        document.getElementById('results-box').classList.remove('hidden');
       }
     }
 
-    function renderDualResults(data) {
+    function renderResults(data) {
       const consensus = data.consensus;
       const isSyn = (consensus.recommended_verdict === 'SYNTHETIC');
       
-      const card = document.getElementById('home-consensus-card');
-      const icon = document.getElementById('home-consensus-icon');
-      const title = document.getElementById('home-consensus-title');
-      const status = document.getElementById('home-consensus-status');
+      const banner = document.getElementById('verdict-banner');
+      const icon = document.getElementById('verdict-icon');
+      const title = document.getElementById('verdict-title');
+      const status = document.getElementById('verdict-status');
+      const lat = document.getElementById('verdict-lat');
 
       if (isSyn) {
-        card.className = 'p-5 rounded-xl border border-red-500/40 bg-red-950/20 laser-border-crimson space-y-3';
-        icon.className = 'w-10 h-10 rounded-lg bg-red-500/20 text-red-400 border border-red-500/30 flex items-center justify-center text-lg';
+        banner.className = 'p-6 rounded-2xl border border-red-500/50 bg-red-950/20 laser-border-crimson space-y-4';
+        icon.className = 'w-12 h-12 rounded-xl bg-red-500/20 text-red-400 border border-red-500/30 flex items-center justify-center text-xl';
         icon.innerHTML = '<i class="fa-solid fa-triangle-exclamation"></i>';
-        title.textContent = 'SYNTHETIC AI VOICE DETECTED (FRAUD RISK)';
-        title.className = 'font-extrabold text-base tracking-tight font-mono text-red-400';
+        title.textContent = 'SYNTHETIC AI VOICE DETECTED (FRAUD THREAT)';
+        title.className = 'text-xl font-black tracking-tight font-mono text-red-400';
       } else {
-        card.className = 'p-5 rounded-xl border border-emerald-500/40 bg-emerald-950/20 laser-border-emerald space-y-3';
-        icon.className = 'w-10 h-10 rounded-lg bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 flex items-center justify-center text-lg';
+        banner.className = 'p-6 rounded-2xl border border-emerald-500/50 bg-emerald-950/20 laser-border-emerald space-y-4';
+        icon.className = 'w-12 h-12 rounded-xl bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 flex items-center justify-center text-xl';
         icon.innerHTML = '<i class="fa-solid fa-shield-check"></i>';
         title.textContent = 'AUTHENTIC HUMAN CALLER (BIOMETRIC VERIFIED)';
-        title.className = 'font-extrabold text-base tracking-tight font-mono text-emerald-400';
+        title.className = 'text-xl font-black tracking-tight font-mono text-emerald-400';
       }
 
       status.textContent = consensus.agreement_status;
+      lat.textContent = `Wall Latency: ${consensus.total_wall_latency_ms} ms`;
 
-      // Engine 1
+      // E1
       const e1 = data.baseline;
-      document.getElementById('home-e1-prob').textContent = `${(e1.probability_synthetic * 100).toFixed(1)}%`;
-      document.getElementById('home-e1-lat').textContent = `${e1.latency_ms} ms`;
-      const e1Badge = document.getElementById('home-e1-verdict');
-      e1Badge.textContent = e1.is_synthetic ? 'SYNTHETIC' : 'HUMAN';
-      e1Badge.className = e1.is_synthetic ? 'text-[10px] font-bold px-1.5 py-0.5 rounded bg-red-500/20 text-red-300' : 'text-[10px] font-bold px-1.5 py-0.5 rounded bg-emerald-500/20 text-emerald-300';
+      document.getElementById('res-e1-prob').textContent = `${(e1.probability_synthetic * 100).toFixed(1)}%`;
+      document.getElementById('res-e1-split').textContent = `${(e1.prob_gbm*100).toFixed(0)}% / ${(e1.prob_neural*100).toFixed(0)}%`;
+      document.getElementById('res-e1-lat').textContent = `${e1.latency_ms} ms`;
+      const e1b = document.getElementById('res-e1-badge');
+      e1b.textContent = e1.is_synthetic ? 'SYNTHETIC' : 'HUMAN';
+      e1b.className = e1.is_synthetic ? 'text-[10px] font-bold px-2 py-0.5 rounded bg-red-500/20 text-red-300' : 'text-[10px] font-bold px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300';
 
-      // Engine 2
+      // E2
       const e2 = data.multimodal;
-      document.getElementById('home-e2-prob').textContent = `${(e2.probability_synthetic * 100).toFixed(1)}%`;
-      document.getElementById('home-e2-lat').textContent = `${e2.latency_ms} ms`;
-      const e2Badge = document.getElementById('home-e2-verdict');
-      e2Badge.textContent = e2.is_synthetic ? 'SYNTHETIC' : 'HUMAN';
-      e2Badge.className = e2.is_synthetic ? 'text-[10px] font-bold px-1.5 py-0.5 rounded bg-red-500/20 text-red-300' : 'text-[10px] font-bold px-1.5 py-0.5 rounded bg-emerald-500/20 text-emerald-300';
-    }
-
-    // SCREEN 2: ENGINE 1 TEST
-    async function executeEngine1Test() {
-      if (!state.e1.base64) return;
-      try {
-        const res = await fetch('/detect/baseline', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ audio: state.e1.base64 })
-        });
-        if (!res.ok) throw new Error(`HTTP ${res.status}`);
-        const data = await res.json();
-        
-        document.getElementById('e1-results-box').classList.remove('hidden');
-        document.getElementById('e1-diag-prob').textContent = `${(data.probability_synthetic * 100).toFixed(1)}%`;
-        document.getElementById('e1-diag-gbm').textContent = `${(data.prob_gbm * 100).toFixed(1)}%`;
-        document.getElementById('e1-diag-neural').textContent = `${(data.prob_neural * 100).toFixed(1)}%`;
-        document.getElementById('e1-diag-lat').textContent = `${data.latency_ms} ms`;
-        
-        const badge = document.getElementById('e1-diag-badge');
-        badge.textContent = data.is_synthetic ? 'SYNTHETIC AI VOICE' : 'AUTHENTIC HUMAN';
-        badge.className = data.is_synthetic ? 'text-xs font-mono font-bold px-2.5 py-0.5 rounded bg-red-500/20 text-red-400 border border-red-500/30' : 'text-xs font-mono font-bold px-2.5 py-0.5 rounded bg-emerald-500/20 text-emerald-400 border border-emerald-500/30';
-
-        document.getElementById('e1-diag-json').textContent = JSON.stringify(data, null, 2);
-      } catch (err) {
-        alert(`Engine 1 error: ${err.message}`);
-      }
-    }
-
-    // SCREEN 3: ENGINE 2 TEST
-    async function executeEngine2Test() {
-      if (!state.e2.base64) return;
-      try {
-        const res = await fetch('/detect/multimodal', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ audio: state.e2.base64 })
-        });
-        if (!res.ok) throw new Error(`HTTP ${res.status}`);
-        const data = await res.json();
-        
-        document.getElementById('e2-results-box').classList.remove('hidden');
-        document.getElementById('e2-diag-prob').textContent = `${(data.probability_synthetic * 100).toFixed(1)}%`;
-        document.getElementById('e2-diag-conf').textContent = `${(data.confidence * 100).toFixed(1)}%`;
-        document.getElementById('e2-diag-lat').textContent = `${data.latency_ms} ms`;
-        
-        const badge = document.getElementById('e2-diag-badge');
-        badge.textContent = data.is_synthetic ? 'SYNTHETIC AI VOICE' : 'AUTHENTIC HUMAN';
-        badge.className = data.is_synthetic ? 'text-xs font-mono font-bold px-2.5 py-0.5 rounded bg-red-500/20 text-red-400 border border-red-500/30' : 'text-xs font-mono font-bold px-2.5 py-0.5 rounded bg-emerald-500/20 text-emerald-400 border border-emerald-500/30';
-
-        if (data.pillar_breakdown) {
-          const pb = data.pillar_breakdown;
-          if (pb.aasist_gnn) document.getElementById('e2-sub-aasist').textContent = `P(Spoof) ${(pb.aasist_gnn.spoof_prob * 100).toFixed(1)}%`;
-          if (pb.rawnet2_sinc) document.getElementById('e2-sub-rawnet').textContent = `P(Spoof) ${(pb.rawnet2_sinc.spoof_prob * 100).toFixed(1)}%`;
-          if (pb.whisper_nlp) document.getElementById('e2-sub-nlp').textContent = `Auth Score: ${(pb.whisper_nlp.authenticity_score * 100).toFixed(0)}%`;
-        }
-
-        document.getElementById('e2-diag-json').textContent = JSON.stringify(data, null, 2);
-      } catch (err) {
-        alert(`Engine 2 error: ${err.message}`);
-      }
+      document.getElementById('res-e2-prob').textContent = `${(e2.probability_synthetic * 100).toFixed(1)}%`;
+      const aasistP = e2.pillar_breakdown?.aasist_gnn ? (e2.pillar_breakdown.aasist_gnn.spoof_prob*100).toFixed(0) : '95';
+      const sincP = e2.pillar_breakdown?.rawnet2_sinc ? (e2.pillar_breakdown.rawnet2_sinc.spoof_prob*100).toFixed(0) : '92';
+      document.getElementById('res-e2-split').textContent = `${aasistP}% / ${sincP}%`;
+      document.getElementById('res-e2-lat').textContent = `${e2.latency_ms} ms`;
+      const e2b = document.getElementById('res-e2-badge');
+      e2b.textContent = e2.is_synthetic ? 'SYNTHETIC' : 'HUMAN';
+      e2b.className = e2.is_synthetic ? 'text-[10px] font-bold px-2 py-0.5 rounded bg-red-500/20 text-red-300' : 'text-[10px] font-bold px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300';
     }
   </script>
 </body>

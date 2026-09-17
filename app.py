@@ -80,19 +80,35 @@ def get_orchestrator() -> UnifiedOrchestrator:
     return app.state.orchestrator
 
 
+WEB_INDEX = PROJECT_ROOT / "web" / "index.html"
+WEB_ENGINE1 = PROJECT_ROOT / "web" / "engine1.html"
+WEB_ENGINE2 = PROJECT_ROOT / "web" / "engine2.html"
+
+
 @app.get("/", tags=["UI"])
+@app.get("/overview", tags=["UI"])
 @app.get("/demo", tags=["UI"])
 async def serve_ui():
-    """Serves the interactive Dual-Engine Product Dashboard."""
+    """Serves the Master Product Showcase & Overview."""
     if WEB_INDEX.exists():
         return FileResponse(str(WEB_INDEX))
-    return {
-        "service": settings.app_name,
-        "version": settings.app_version,
-        "docs": "/docs",
-        "health": "/health",
-        "detect_endpoint": "POST /detect"
-    }
+    return {"service": settings.app_name, "docs": "/docs"}
+
+
+@app.get("/engine1", tags=["UI"])
+async def serve_engine1_ui():
+    """Serves the dedicated Engine 1 (Fast Baseline CNN & Timing) page."""
+    if WEB_ENGINE1.exists():
+        return FileResponse(str(WEB_ENGINE1))
+    return FileResponse(str(WEB_INDEX))
+
+
+@app.get("/engine2", tags=["UI"])
+async def serve_engine2_ui():
+    """Serves the dedicated Engine 2 (4-Pillar Multimodal SOTA) page."""
+    if WEB_ENGINE2.exists():
+        return FileResponse(str(WEB_ENGINE2))
+    return FileResponse(str(WEB_INDEX))
 
 
 @app.get("/health", response_model=HealthResponse, tags=["Health"])
