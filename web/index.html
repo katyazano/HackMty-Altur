@@ -45,7 +45,7 @@
     /* TOP NAVBAR CONTAINER - Exact ChainGPT style */
     .top-navbar-grid {
       display: grid;
-      grid-template-columns: 200px 1fr auto 56px;
+      grid-template-columns: 56px 1fr auto 56px;
       height: 68px;
       border-bottom: 1px solid #C8CACF;
       background-color: #E5E6E9;
@@ -58,81 +58,34 @@
       padding: 0 20px;
     }
 
+    .nav-cell-first {
+      padding: 0;
+      justify-content: center;
+    }
+
     .nav-cell-last {
       border-right: none;
       padding: 0;
       justify-content: center;
     }
 
-    /* Logo Cell */
-    .logo-box {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      text-decoration: none;
-      color: #111317;
-    }
-
-    .logo-icon {
-      width: 34px;
-      height: 34px;
-      background-color: #FF5500;
-      border-radius: 8px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #FFFFFF;
-      font-size: 16px;
-    }
-
-    .logo-text {
-      font-weight: 700;
-      font-size: 14px;
-      letter-spacing: -0.02em;
-      line-height: 1.1;
-    }
-
-    .logo-sub {
-      font-size: 10px;
-      color: #6A707E;
-      font-family: 'JetBrains Mono', monospace;
-    }
-
     /* Center Nav & mergeConflict Title */
     .center-nav-box {
       display: flex;
       align-items: center;
-      justify-content: space-between;
+      justify-content: center;
       position: relative;
       padding: 0 28px;
     }
 
-    .nav-links-group {
-      display: flex;
-      align-items: center;
-      gap: 22px;
-    }
-
-    .nav-link-item {
-      font-size: 13px;
-      font-weight: 500;
-      color: #555B67;
-      text-decoration: none;
-      transition: color 0.15s;
-    }
-
-    .nav-link-item:hover {
-      color: #111317;
-    }
-
     .center-title {
-      font-size: 18px;
+      font-size: 20px;
       font-weight: 700;
       color: #111317;
       letter-spacing: -0.03em;
       display: flex;
       align-items: center;
-      gap: 4px;
+      gap: 2px;
     }
 
     .center-title span {
@@ -327,7 +280,7 @@
       color: #FF5500;
     }
 
-    /* 2-Column Split Section Below Hero (Like ChainGPT) */
+    /* 2-Column Split Section Below Hero */
     .hero-split-section {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -405,7 +358,7 @@
       .top-navbar-grid {
         grid-template-columns: 1fr auto;
       }
-      .center-nav-box, .nav-cell-last {
+      .nav-cell-first, .nav-cell-last {
         display: none;
       }
       .content-grid-wrapper {
@@ -434,36 +387,13 @@
     <!-- 1. TOP NAVBAR (ChainGPT Grid Style) -->
     <header class="top-navbar-grid">
       
-      <!-- Left: Logo Cell -->
-      <div class="nav-cell">
-        <a href="index.html" class="logo-box">
-          <div class="logo-icon">
-            <i class="fa-solid fa-cube"></i>
-          </div>
-          <div>
-            <div class="logo-text">ALTUR</div>
-            <div class="logo-sub">VAULT // LABS</div>
-          </div>
-        </a>
-      </div>
+      <!-- Left: Clean Grid Cell (Removed Altur Vault // Labs) -->
+      <div class="nav-cell nav-cell-first"></div>
 
-      <!-- Center: Nav Links & "mergeConflict" in the VERY CENTER -->
+      <!-- Center: "mergeConflict" in the VERY CENTER -->
       <div class="nav-cell center-nav-box">
-        <div class="nav-links-group">
-          <a href="index.html" class="nav-link-item">Our Programs</a>
-          <a href="#portfolio" class="nav-link-item">Portfolio</a>
-          <a href="#telephony" class="nav-link-item">Telephony</a>
-        </div>
-
-        <!-- Exact Center Title Requested -->
         <div class="center-title">
           merge<span>Conflict</span>
-        </div>
-
-        <div class="nav-links-group">
-          <a href="#engine1" class="nav-link-item">Reviews</a>
-          <a href="#engine2" class="nav-link-item">Team</a>
-          <a href="/docs" target="_blank" class="nav-link-item">FAQ</a>
         </div>
       </div>
 
@@ -505,7 +435,7 @@
         <div class="hero-top-row">
           <div class="mono text-xs text-[#555B67] flex items-center gap-2">
             <span class="w-2 h-2 rounded-full bg-[#FF5500]"></span>
-            <span>TELEPHONY BIOMETRIC ARBITRATION PROTOCOL // LIVE MATRIX</span>
+            <span>Altur HackMTY Challenge</span>
           </div>
         </div>
 
