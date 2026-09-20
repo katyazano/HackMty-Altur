@@ -42,10 +42,10 @@
       position: relative;
     }
 
-    /* TOP NAVBAR CONTAINER */
+    /* TOP NAVBAR CONTAINER - Clustered Center Grid */
     .top-navbar-grid {
       display: grid;
-      grid-template-columns: 180px 1fr 180px 56px;
+      grid-template-columns: 1fr auto auto auto 1fr 56px;
       height: 68px;
       border-bottom: 1px solid #C8CACF;
       background-color: #E5E6E9;
@@ -56,6 +56,10 @@
       align-items: center;
       border-right: 1px solid #C8CACF;
       padding: 0 20px;
+    }
+
+    .nav-cell-spacer {
+      border-right: 1px solid #C8CACF;
     }
 
     .nav-engine-cell {
@@ -72,6 +76,7 @@
       letter-spacing: -0.01em;
       transition: all 0.15s ease;
       background-color: #E5E6E9;
+      padding: 0 26px;
       gap: 8px;
     }
 
@@ -99,7 +104,8 @@
       align-items: center;
       justify-content: center;
       position: relative;
-      padding: 0 28px;
+      padding: 0 32px;
+      border-right: 1px solid #C8CACF;
     }
 
     .center-title {
@@ -207,6 +213,9 @@
     <!-- TOP NAVBAR -->
     <header class="top-navbar-grid">
 
+      <!-- Left Spacer Grid Wing -->
+      <div class="nav-cell nav-cell-spacer"></div>
+
       <!-- Engine 1 Square -->
       <a href="engine1.html" class="nav-engine-cell">
         <span class="mono text-xs text-[#FF5500]">01</span>
@@ -225,6 +234,9 @@
         <span class="mono text-xs text-[#FF5500]">02</span>
         <span>Engine 2</span>
       </a>
+
+      <!-- Right Spacer Grid Wing -->
+      <div class="nav-cell nav-cell-spacer"></div>
 
       <!-- Far Right Utility Icon -->
       <div class="nav-cell nav-cell-last">
