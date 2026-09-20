@@ -3,135 +3,574 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>mergeConflict — Enterprise Telephony Biometric Defense</title>
-  <script src="https://cdn.tailwindcss.com"></script>
+  <title>mergeConflict</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link rel="stylesheet" href="styles.css">
+  
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: #E5E6E9;
+      color: #111317;
+      font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
+      -webkit-font-smoothing: antialiased;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .mono {
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    /* Outer Grid Frame */
+    .app-frame {
+      width: 100%;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      border-left: 1px solid #C8CACF;
+      border-right: 1px solid #C8CACF;
+      background-color: #E5E6E9;
+      position: relative;
+    }
+
+    /* TOP NAVBAR CONTAINER - Exact ChainGPT style */
+    .top-navbar-grid {
+      display: grid;
+      grid-template-columns: 200px 1fr auto 56px;
+      height: 68px;
+      border-bottom: 1px solid #C8CACF;
+      background-color: #E5E6E9;
+    }
+
+    .nav-cell {
+      display: flex;
+      align-items: center;
+      border-right: 1px solid #C8CACF;
+      padding: 0 20px;
+    }
+
+    .nav-cell-last {
+      border-right: none;
+      padding: 0;
+      justify-content: center;
+    }
+
+    /* Logo Cell */
+    .logo-box {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      color: #111317;
+    }
+
+    .logo-icon {
+      width: 34px;
+      height: 34px;
+      background-color: #FF5500;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #FFFFFF;
+      font-size: 16px;
+    }
+
+    .logo-text {
+      font-weight: 700;
+      font-size: 14px;
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+    }
+
+    .logo-sub {
+      font-size: 10px;
+      color: #6A707E;
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    /* Center Nav & mergeConflict Title */
+    .center-nav-box {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: relative;
+      padding: 0 28px;
+    }
+
+    .nav-links-group {
+      display: flex;
+      align-items: center;
+      gap: 22px;
+    }
+
+    .nav-link-item {
+      font-size: 13px;
+      font-weight: 500;
+      color: #555B67;
+      text-decoration: none;
+      transition: color 0.15s;
+    }
+
+    .nav-link-item:hover {
+      color: #111317;
+    }
+
+    .center-title {
+      font-size: 18px;
+      font-weight: 700;
+      color: #111317;
+      letter-spacing: -0.03em;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .center-title span {
+      color: #FF5500;
+    }
+
+    /* Right Action Cell */
+    .right-action-box {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      padding: 0 20px;
+      border-right: 1px solid #C8CACF;
+    }
+
+    .ecosystem-label {
+      font-size: 12px;
+      font-weight: 600;
+      color: #555B67;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      cursor: pointer;
+    }
+
+    .btn-apply-orange {
+      background-color: #FF5500;
+      color: #FFFFFF;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 10px 20px;
+      border-radius: 6px;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      transition: background-color 0.15s;
+      white-space: nowrap;
+    }
+
+    .btn-apply-orange:hover {
+      background-color: #E64D00;
+    }
+
+    /* Utility Rail Right */
+    .util-circle-btn {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      border: 1px solid #C8CACF;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #555B67;
+    }
+
+    .util-circle-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background-color: #FF5500;
+    }
+
+    /* SUB-HEADER / BANNER ROW WITH SIDE RAIL */
+    .content-grid-wrapper {
+      display: grid;
+      grid-template-columns: 56px 1fr 56px;
+      flex: 1;
+    }
+
+    .left-rail {
+      border-right: 1px solid #C8CACF;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .right-rail {
+      border-left: 1px solid #C8CACF;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .rail-cell {
+      height: 56px;
+      border-bottom: 1px solid #C8CACF;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #555B67;
+      font-size: 13px;
+      text-decoration: none;
+      transition: background-color 0.15s, color 0.15s;
+    }
+
+    .rail-cell:hover {
+      background-color: #ECEEF2;
+      color: #FF5500;
+    }
+
+    /* Crosshair Box (Top Left Cell) */
+    .crosshair-box {
+      width: 32px;
+      height: 32px;
+      border: 1px solid #B4B8C1;
+      position: relative;
+    }
+
+    .crosshair-box::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background-color: #B4B8C1;
+    }
+
+    .crosshair-box::after {
+      content: '';
+      position: absolute;
+      left: 50%;
+      top: 0;
+      bottom: 0;
+      width: 1px;
+      background-color: #B4B8C1;
+    }
+
+    /* HERO MAIN STAGE */
+    .hero-stage {
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+
+    .hero-top-row {
+      height: 56px;
+      border-bottom: 1px solid #C8CACF;
+      display: flex;
+      align-items: center;
+      padding: 0 28px;
+    }
+
+    /* Main Big Hero Typography Box */
+    .hero-center-box {
+      border-bottom: 1px solid #C8CACF;
+      padding: 48px 36px;
+      position: relative;
+      background-color: #E5E6E9;
+    }
+
+    /* 4 Corner Orange Squares */
+    .corner-mark {
+      position: absolute;
+      width: 8px;
+      height: 8px;
+      background-color: #FF5500;
+    }
+    .corner-tl { top: 12px; left: 12px; }
+    .corner-tr { top: 12px; right: 12px; }
+    .corner-bl { bottom: 12px; left: 12px; }
+    .corner-br { bottom: 12px; right: 12px; }
+
+    .hero-tag {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 11px;
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 700;
+      color: #3B404B;
+      letter-spacing: 0.08em;
+      margin-bottom: 20px;
+    }
+
+    .hero-tag-dot {
+      width: 6px;
+      height: 6px;
+      background-color: #FF5500;
+    }
+
+    .hero-title-giant {
+      font-size: clamp(48px, 8vw, 108px);
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      line-height: 0.92;
+      text-transform: uppercase;
+      color: #111317;
+    }
+
+    .hero-title-giant span {
+      color: #FF5500;
+    }
+
+    /* 2-Column Split Section Below Hero (Like ChainGPT) */
+    .hero-split-section {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      border-bottom: 1px solid #C8CACF;
+    }
+
+    .split-col-left {
+      padding: 36px;
+      border-right: 1px solid #C8CACF;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .split-col-right {
+      padding: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #DFE1E5;
+    }
+
+    .split-desc-text {
+      font-size: 15px;
+      line-height: 1.6;
+      color: #3E4450;
+      max-width: 360px;
+      margin-bottom: 28px;
+    }
+
+    .btn-incubation-orange {
+      display: inline-block;
+      background-color: #FF5500;
+      color: #FFFFFF;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 14px 28px;
+      border-radius: 6px;
+      text-decoration: none;
+      width: fit-content;
+      transition: background-color 0.15s;
+    }
+
+    .btn-incubation-orange:hover {
+      background-color: #E64D00;
+    }
+
+    /* Partner Logos Row */
+    .partner-grid-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      height: 76px;
+      border-bottom: 1px solid #C8CACF;
+      background-color: #ECEEF1;
+    }
+
+    .partner-cell {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-right: 1px solid #C8CACF;
+      font-weight: 700;
+      font-size: 16px;
+      color: #111317;
+      gap: 8px;
+    }
+
+    .partner-cell:last-child {
+      border-right: none;
+    }
+
+    @media (max-width: 900px) {
+      .top-navbar-grid {
+        grid-template-columns: 1fr auto;
+      }
+      .center-nav-box, .nav-cell-last {
+        display: none;
+      }
+      .content-grid-wrapper {
+        grid-template-columns: 1fr;
+      }
+      .left-rail, .right-rail {
+        display: none;
+      }
+      .hero-split-section {
+        grid-template-columns: 1fr;
+      }
+      .partner-grid-row {
+        grid-template-columns: repeat(2, 1fr);
+        height: auto;
+      }
+      .partner-cell {
+        padding: 20px;
+      }
+    }
+  </style>
 </head>
 <body>
 
-  <!-- Fullscreen Technical Grid Background Layer -->
-  <div class="grid-canvas-background"></div>
+  <div class="app-frame">
 
-  <!-- Master Layout Grid Container -->
-  <div class="master-grid-container">
+    <!-- 1. TOP NAVBAR (ChainGPT Grid Style) -->
+    <header class="top-navbar-grid">
+      
+      <!-- Left: Logo Cell -->
+      <div class="nav-cell">
+        <a href="index.html" class="logo-box">
+          <div class="logo-icon">
+            <i class="fa-solid fa-cube"></i>
+          </div>
+          <div>
+            <div class="logo-text">ALTUR</div>
+            <div class="logo-sub">VAULT // LABS</div>
+          </div>
+        </a>
+      </div>
 
-    <!-- LEFT SIDE TECHNICAL RAIL -->
-    <aside class="side-rail-left">
-      <!-- Crosshair Box matching the picture top-left corner -->
-      <div class="rail-cell h-[80px] p-2">
-        <div class="w-full h-full border border-[#CDD0D5] relative flex items-center justify-center">
-          <div class="absolute inset-0 flex items-center justify-center">
-            <div class="w-full h-[1px] bg-[#CDD0D5]"></div>
-          </div>
-          <div class="absolute inset-0 flex items-center justify-center">
-            <div class="h-full w-[1px] bg-[#CDD0D5]"></div>
-          </div>
-          <div class="w-2.5 h-2.5 border border-[#CDD0D5] rotate-45 z-10 bg-[#F2F4F7]"></div>
+      <!-- Center: Nav Links & "mergeConflict" in the VERY CENTER -->
+      <div class="nav-cell center-nav-box">
+        <div class="nav-links-group">
+          <a href="index.html" class="nav-link-item">Our Programs</a>
+          <a href="#portfolio" class="nav-link-item">Portfolio</a>
+          <a href="#telephony" class="nav-link-item">Telephony</a>
+        </div>
+
+        <!-- Exact Center Title Requested -->
+        <div class="center-title">
+          merge<span>Conflict</span>
+        </div>
+
+        <div class="nav-links-group">
+          <a href="#engine1" class="nav-link-item">Reviews</a>
+          <a href="#engine2" class="nav-link-item">Team</a>
+          <a href="/docs" target="_blank" class="nav-link-item">FAQ</a>
         </div>
       </div>
-      <div class="rail-cell h-[60px] text-xs font-mono text-slate-400">01</div>
-      <div class="rail-cell h-[60px] text-xs font-mono text-slate-400">02</div>
-      <div class="rail-cell flex-1"></div>
-    </aside>
 
-    <!-- CENTER MAIN GRID AREA -->
-    <div class="main-grid-area">
-
-      <!-- TOP NAVBAR WRAPPER -->
-      <header class="industrial-navbar-wrapper">
-        <div class="industrial-navbar">
-          
-          <!-- Left: Logo & Identifier -->
-          <div class="flex items-center gap-3">
-            <div class="w-8 h-8 rounded-lg bg-[#FF5500] text-white flex items-center justify-center font-bold text-sm shadow-sm">
-              <i class="fa-solid fa-code-fork"></i>
-            </div>
-            <div class="hidden sm:flex flex-col">
-              <span class="font-bold text-xs uppercase tracking-wider text-[#0F1115]">TELEPHONY DEFENSE</span>
-              <span class="text-[10px] font-mono text-[#848B98]">SYS://NODE-01</span>
-            </div>
-          </div>
-
-          <!-- VERY CENTER: Title "mergeConflict" -->
-          <div class="navbar-center-brand">
-            <span class="brand-title-text">
-              merge<span class="highlight">Conflict</span>
-            </span>
-          </div>
-
-          <!-- Right: Navigation Links & Orange Button -->
-          <div class="flex items-center gap-6">
-            <nav class="hidden md:flex items-center gap-5 navbar-nav-links">
-              <a href="index.html" class="nav-item-link active">Consensus Hub</a>
-              <a href="engine1.html" class="nav-item-link">Engine 1: Edge</a>
-              <a href="engine2.html" class="nav-item-link">Engine 2: SOTA</a>
-              <a href="/docs" target="_blank" class="nav-item-link">API Specs</a>
-            </nav>
-
-            <a href="#test-section" class="btn-orange-action">
-              <span>INITIALIZE</span>
-              <i class="fa-solid fa-arrow-right text-[10px]"></i>
-            </a>
-          </div>
-
+      <!-- Right: Ecosystem & Orange Action Button -->
+      <div class="right-action-box">
+        <div class="ecosystem-label">
+          <i class="fa-solid fa-braille text-[#FF5500]"></i>
+          <span>Our Ecosystem</span>
         </div>
-      </header>
+        <a href="#test" class="btn-apply-orange">APPLY NOW</a>
+      </div>
 
-      <!-- HERO / MAIN CONTENT GRID FRAME WITH CORNER ORANGE MARKS -->
-      <section class="p-6 md:p-10 relative flex-1 flex flex-col justify-center">
-        
-        <!-- Corner Orange Square Markers matching the reference image -->
-        <div class="absolute top-6 left-6 corner-dot"></div>
-        <div class="absolute top-6 right-6 corner-dot"></div>
-        <div class="absolute bottom-6 left-6 corner-dot"></div>
-        <div class="absolute bottom-6 right-6 corner-dot"></div>
+      <!-- Far Right Utility Icon -->
+      <div class="nav-cell nav-cell-last">
+        <div class="util-circle-btn">
+          <div class="util-circle-dot"></div>
+        </div>
+      </div>
 
-        <!-- Frame Label -->
-        <div class="text-[11px] font-mono text-[#565C68] tracking-widest uppercase mb-6 flex items-center gap-2">
-          <span class="corner-dot !w-1.5 !h-1.5"></span>
-          <span>BIOMETRIC ARBITRATION // TELEPHONY SHIELD</span>
+    </header>
+
+    <!-- 2. CONTENT GRID WITH SIDE RAILS -->
+    <div class="content-grid-wrapper">
+
+      <!-- Left Rail (56px) -->
+      <aside class="left-rail">
+        <div class="rail-cell">
+          <div class="crosshair-box"></div>
+        </div>
+        <div class="rail-cell mono text-xs">01</div>
+        <div class="rail-cell mono text-xs">02</div>
+        <div class="rail-cell mono text-xs">03</div>
+      </aside>
+
+      <!-- Main Content Stage -->
+      <main class="hero-stage">
+
+        <!-- Subheader Ticker Row -->
+        <div class="hero-top-row">
+          <div class="mono text-xs text-[#555B67] flex items-center gap-2">
+            <span class="w-2 h-2 rounded-full bg-[#FF5500]"></span>
+            <span>TELEPHONY BIOMETRIC ARBITRATION PROTOCOL // LIVE MATRIX</span>
+          </div>
         </div>
 
-        <!-- Massive Header Title Typography matching reference image -->
-        <div class="space-y-4 max-w-4xl">
-          <h1 class="text-4xl sm:text-6xl md:text-7xl font-extrabold tracking-tighter text-[#0F1115] uppercase leading-[0.95]">
-            REAL-TIME <br class="hidden sm:inline" />
-            <span class="text-[#FF5500]">DEEPFAKE</span> DEFENSE
+        <!-- Big Hero Box with 4 Orange Corners (■) -->
+        <div class="hero-center-box">
+          <div class="corner-mark corner-tl"></div>
+          <div class="corner-mark corner-tr"></div>
+          <div class="corner-mark corner-bl"></div>
+          <div class="corner-mark corner-br"></div>
+
+          <div class="hero-tag">
+            <span class="hero-tag-dot"></span>
+            <span>BACKING TOMORROW</span>
+          </div>
+
+          <h1 class="hero-title-giant">
+            MERGE <span>DEFENSE</span>
           </h1>
-          <p class="text-sm md:text-base text-[#565C68] max-w-xl font-normal leading-relaxed pt-2">
-            Continuous sub-50ms biometric arbitration for telephony ingress audio. Protecting enterprise contact centers against synthetic voice cloning and neural TTS attacks.
-          </p>
         </div>
 
-      </section>
+        <!-- 2-Column Split Details Section -->
+        <div class="hero-split-section">
+          <div class="split-col-left">
+            <p class="split-desc-text">
+              Backing the very best telephony security builders — transforming visionary biometric AI into sub-50ms real-world defense against synthetic voice cloning.
+            </p>
+            <a href="#sandbox" class="btn-incubation-orange">APPLY FOR INCUBATION</a>
+          </div>
+
+          <div class="split-col-right">
+            <div class="text-center p-6 border border-[#C8CACF] bg-[#E5E6E9] rounded-lg">
+              <i class="fa-solid fa-shield-virus text-5xl text-[#FF5500] mb-3"></i>
+              <div class="font-bold text-sm text-[#111317]">SUB-50ms DUAL ENGINE</div>
+              <div class="mono text-xs text-[#555B67] mt-1">SIP RTP Real-Time Wire</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Partner Grid Row -->
+        <div class="partner-grid-row">
+          <div class="partner-cell">
+            <i class="fa-solid fa-link text-[#FF5500]"></i> Chainlink
+          </div>
+          <div class="partner-cell">
+            <i class="fa-solid fa-network-wired text-[#111317]"></i> TRON
+          </div>
+          <div class="partner-cell">
+            <i class="fa-solid fa-cubes text-[#F3BA2F]"></i> BNB Chain
+          </div>
+          <div class="partner-cell">
+            <i class="fa-solid fa-shapes text-[#111317]"></i> OKX
+          </div>
+        </div>
+
+      </main>
+
+      <!-- Right Rail (56px) with Social Icons -->
+      <aside class="right-rail">
+        <a href="#" class="rail-cell"><i class="fa-brands fa-twitter"></i></a>
+        <a href="#" class="rail-cell"><i class="fa-brands fa-telegram"></i></a>
+        <a href="#" class="rail-cell"><i class="fa-brands fa-medium"></i></a>
+        <a href="#" class="rail-cell"><i class="fa-brands fa-linkedin-in"></i></a>
+      </aside>
 
     </div>
-
-    <!-- RIGHT SIDE TECHNICAL RAIL (With icons matching the picture) -->
-    <aside class="side-rail-right">
-      <!-- Target dot matching top-right of image -->
-      <div class="rail-cell h-[80px]">
-        <div class="w-6 h-6 rounded-full border border-[#CDD0D5] flex items-center justify-center text-[#565C68] text-xs">
-          <div class="w-2 h-2 rounded-full bg-[#FF5500]"></div>
-        </div>
-      </div>
-      
-      <!-- Social / Technical Action Buttons -->
-      <a href="#" class="rail-cell rail-cell-btn h-[50px]">
-        <i class="fa-brands fa-twitter text-sm"></i>
-      </a>
-      <a href="#" class="rail-cell rail-cell-btn h-[50px]">
-        <i class="fa-brands fa-telegram text-sm"></i>
-      </a>
-      <a href="#" class="rail-cell rail-cell-btn h-[50px]">
-        <i class="fa-brands fa-medium text-sm"></i>
-      </a>
-      <a href="#" class="rail-cell rail-cell-btn h-[50px]">
-        <i class="fa-brands fa-linkedin-in text-sm"></i>
-      </a>
-      <div class="rail-cell flex-1"></div>
-    </aside>
 
   </div>
 
