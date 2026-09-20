@@ -1,5 +1,5 @@
 /* ==============================================================================
-   ALTUR VAULT — SHARED CLIENT UTILITIES, WAVEFORM CANVAS & AUDIO HANDLERS
+   ALTUR VAULT — FINTECH GLASS CLIENT ENGINE & AUDIO WORKBENCH
    ============================================================================== */
 
 // Generates high-fidelity test audio presets (8kHz 16-bit PCM Stereo)
@@ -32,15 +32,15 @@ function generateAudioPreset(type) {
   for (let i = 0; i < numSamples; i++) {
     const t = i / sampleRate;
     let caller = 0;
-    let agent = 0.15 * Math.sin(2 * Math.PI * 160 * t);
+    let agent = 0.12 * Math.sin(2 * Math.PI * 180 * t);
 
     if (type === 'synthetic_scam') {
-      // Flat robotic buzz without pitch micro-jitter (Synthetic Vocoder)
-      caller = 0.38 * Math.sin(2 * Math.PI * 220 * t) + 0.20 * Math.sin(2 * Math.PI * 440 * t) + 0.09 * Math.sin(2 * Math.PI * 880 * t);
+      // Flat robotic vocoder tone without pitch micro-jitter
+      caller = 0.38 * Math.sin(2 * Math.PI * 220 * t) + 0.22 * Math.sin(2 * Math.PI * 440 * t) + 0.12 * Math.sin(2 * Math.PI * 880 * t);
     } else {
-      // Natural human speech: modulated fundamental frequency + micro-jitter
-      const f0 = 135 + 18 * Math.sin(2 * Math.PI * 1.4 * t) + (Math.random() - 0.5) * 5;
-      caller = 0.38 * Math.sin(2 * Math.PI * f0 * t) * (0.5 + 0.5 * Math.sin(2 * Math.PI * 2.2 * t));
+      // Natural human speech: modulated fundamental frequency + vocal jitter
+      const f0 = 135 + 20 * Math.sin(2 * Math.PI * 1.5 * t) + (Math.random() - 0.5) * 6;
+      caller = 0.38 * Math.sin(2 * Math.PI * f0 * t) * (0.6 + 0.4 * Math.sin(2 * Math.PI * 2.4 * t));
     }
 
     view.setInt16(offset, Math.max(-32768, Math.min(32767, caller * 32767)), true);
@@ -80,7 +80,7 @@ function initDropzone(dropzoneId, inputId, onFileSelected) {
   });
 }
 
-// Interactive Web Audio Waveform Renderer
+// Interactive Web Audio Waveform Renderer (Fintech Glass Aesthetic)
 class TelephonyWaveformVisualizer {
   constructor(canvasId, audioPlayerId) {
     this.canvas = document.getElementById(canvasId);
@@ -91,7 +91,6 @@ class TelephonyWaveformVisualizer {
     this.audioBuffer = null;
     this.isPlaying = false;
     this.animId = null;
-    window.activeVisualizer = this;
 
     this.audio.addEventListener('timeupdate', () => this.draw());
     this.audio.addEventListener('play', () => this.startAnimation());
@@ -106,8 +105,9 @@ class TelephonyWaveformVisualizer {
       this.audio.currentTime = pos * this.audio.duration;
       this.draw();
     });
-  }
 
+    window.addEventListener('resize', () => this.draw());
+  }
 
   async loadFromBase64(base64Data) {
     try {
@@ -147,8 +147,8 @@ class TelephonyWaveformVisualizer {
 
     ctx.clearRect(0, 0, width, height);
 
-    // Background grid lines
-    ctx.strokeStyle = '#F1F5F9';
+    // Subtle glass grid line
+    ctx.strokeStyle = 'rgba(255, 255, 255, 0.05)';
     ctx.lineWidth = 1;
     for (let y = height / 4; y < height; y += height / 4) {
       ctx.beginPath();
@@ -159,7 +159,7 @@ class TelephonyWaveformVisualizer {
 
     if (!this.audioBuffer) {
       // Idle line
-      ctx.strokeStyle = '#CBD5E1';
+      ctx.strokeStyle = 'rgba(255, 255, 255, 0.15)';
       ctx.lineWidth = 1.5;
       ctx.beginPath();
       ctx.moveTo(0, height / 2);
@@ -176,9 +176,9 @@ class TelephonyWaveformVisualizer {
     const progress = this.audio.duration ? (this.audio.currentTime / this.audio.duration) : 0;
     const progressX = width * progress;
 
-    // Draw Channel 1 (Agent - Subdued Slate)
+    // Draw Channel 1 (Agent - Reference / Inactive / Dim Slate)
     if (agentData) {
-      ctx.strokeStyle = '#94A3B8';
+      ctx.strokeStyle = 'rgba(148, 163, 184, 0.25)';
       ctx.lineWidth = 1;
       ctx.beginPath();
       for (let i = 0; i < width; i++) {
@@ -196,7 +196,7 @@ class TelephonyWaveformVisualizer {
       ctx.stroke();
     }
 
-    // Draw Channel 0 (Caller - Primary Blue / Highlighted)
+    // Draw Channel 0 (Caller - Active Ingress / Electric Cyan to Indigo Gradient)
     for (let i = 0; i < width; i++) {
       let min = 1.0, max = -1.0;
       for (let j = 0; j < step; j++) {
@@ -207,7 +207,7 @@ class TelephonyWaveformVisualizer {
       const yTop = ((1 + min) * 0.5) * height;
       const yBot = ((1 + max) * 0.5) * height;
 
-      ctx.strokeStyle = i < progressX ? '#2563EB' : '#93C5FD';
+      ctx.strokeStyle = i < progressX ? '#67E8F9' : 'rgba(99, 102, 241, 0.4)';
       ctx.lineWidth = 1.5;
       ctx.beginPath();
       ctx.moveTo(i, yTop);
@@ -215,8 +215,8 @@ class TelephonyWaveformVisualizer {
       ctx.stroke();
     }
 
-    // Draw Scrubber Line
-    ctx.strokeStyle = '#0F172A';
+    // Draw Scrubber Indicator
+    ctx.strokeStyle = '#FFFFFF';
     ctx.lineWidth = 2;
     ctx.beginPath();
     ctx.moveTo(progressX, 0);
@@ -230,68 +230,8 @@ function copyToClipboard(text, btnElement) {
   navigator.clipboard.writeText(text).then(() => {
     if (btnElement) {
       const originalHTML = btnElement.innerHTML;
-      btnElement.innerHTML = '<i class="fa-solid fa-check text-emerald-600"></i> Copied';
+      btnElement.innerHTML = '<i class="fa-solid fa-check text-emerald-400"></i> Copied';
       setTimeout(() => { btnElement.innerHTML = originalHTML; }, 2000);
     }
   });
 }
-
-// Theme Switcher Controller
-const THEMES = [
-  { id: 'option1-light', name: 'Option 1: Linear Light', icon: 'fa-sun' },
-  { id: 'option2-tactical', name: 'Option 2: Cyber-Ops Dark', icon: 'fa-shield-halved' },
-  { id: 'emerald-fintech', name: 'Stripe Emerald Dark', icon: 'fa-chart-network' },
-  { id: 'royal-slate', name: 'Royal Indigo Slate', icon: 'fa-gem' }
-];
-
-function setTheme(themeId) {
-  document.documentElement.setAttribute('data-theme', themeId);
-  localStorage.setItem('altur_theme', themeId);
-  
-  // Update button active state
-  document.querySelectorAll('.theme-pill-btn').forEach(btn => {
-    if (btn.getAttribute('data-target-theme') === themeId) {
-      btn.classList.add('active');
-    } else {
-      btn.classList.remove('active');
-    }
-  });
-
-  // Redraw active waveform with new theme colors if present
-  if (window.activeVisualizer) {
-    window.activeVisualizer.draw();
-  }
-}
-
-function initThemeSwitcher() {
-  const savedTheme = localStorage.getItem('altur_theme') || 'option1-light';
-  document.documentElement.setAttribute('data-theme', savedTheme);
-
-  // Inject Floating Bar if not already present
-  if (!document.getElementById('theme-switcher-bar')) {
-    const bar = document.createElement('div');
-    bar.id = 'theme-switcher-bar';
-    bar.className = 'theme-switcher-bar';
-    
-    let buttonsHTML = '<span class="text-[10px] font-mono text-slate-400 font-bold px-1.5 hidden sm:inline"><i class="fa-solid fa-palette text-blue-500"></i> Theme:</span>';
-    THEMES.forEach(t => {
-      const isActive = (t.id === savedTheme) ? 'active' : '';
-      buttonsHTML += `
-        <button onclick="setTheme('${t.id}')" data-target-theme="${t.id}" class="theme-pill-btn ${isActive}" title="${t.name}">
-          <i class="fa-solid ${t.icon}"></i>
-          <span>${t.name.split(':')[0]}</span>
-        </button>
-      `;
-    });
-    bar.innerHTML = buttonsHTML;
-    document.body.appendChild(bar);
-  }
-}
-
-// Auto-run theme initializer
-if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', initThemeSwitcher);
-} else {
-  initThemeSwitcher();
-}
-
