@@ -40,3 +40,9 @@ audio_prueba.wav
 test_download.txt
 *.log
 tmp/
+
+# Frontend / Node
+frontend/node_modules/
+node_modules/
+web/dist/
+frontend/dist/

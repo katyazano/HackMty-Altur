@@ -69,9 +69,15 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# Static files if web directory exists
-if (PROJECT_ROOT / "web").exists():
-    app.mount("/static", StaticFiles(directory=str(PROJECT_ROOT / "web")), name="static")
+# Static files and React build assets
+DIST_DIR = PROJECT_ROOT / "web" / "dist"
+WEB_DIR = PROJECT_ROOT / "web"
+
+if (DIST_DIR / "assets").exists():
+    app.mount("/assets", StaticFiles(directory=str(DIST_DIR / "assets")), name="assets")
+
+if WEB_DIR.exists():
+    app.mount("/static", StaticFiles(directory=str(WEB_DIR)), name="static")
 
 
 def get_orchestrator() -> UnifiedOrchestrator:
@@ -80,9 +86,9 @@ def get_orchestrator() -> UnifiedOrchestrator:
     return app.state.orchestrator
 
 
-WEB_INDEX = PROJECT_ROOT / "web" / "index.html"
-WEB_ENGINE1 = PROJECT_ROOT / "web" / "engine1.html"
-WEB_ENGINE2 = PROJECT_ROOT / "web" / "engine2.html"
+WEB_INDEX = (DIST_DIR / "index.html") if (DIST_DIR / "index.html").exists() else (WEB_DIR / "index.html")
+WEB_ENGINE1 = (DIST_DIR / "index.html") if (DIST_DIR / "index.html").exists() else (WEB_DIR / "engine1.html")
+WEB_ENGINE2 = (DIST_DIR / "index.html") if (DIST_DIR / "index.html").exists() else (WEB_DIR / "engine2.html")
 
 
 @app.get("/", tags=["UI"])
