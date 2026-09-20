@@ -5,7 +5,7 @@ import path from 'path';
 export default defineConfig({
   plugins: [react()],
   build: {
-    outDir: '../web/dist',
+    outDir: 'dist',
     emptyOutDir: true,
   },
   server: {

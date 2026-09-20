@@ -70,7 +70,7 @@ app.add_middleware(
 )
 
 # Static files and React build assets
-DIST_DIR = PROJECT_ROOT / "web" / "dist"
+DIST_DIR = PROJECT_ROOT / "frontend" / "dist"
 
 if (DIST_DIR / "assets").exists():
     app.mount("/assets", StaticFiles(directory=str(DIST_DIR / "assets")), name="assets")
