@@ -339,11 +339,12 @@
     }
 
     .split-col-left {
-      padding: 36px;
+      padding: 32px 36px;
       border-right: 1px solid #C8CACF;
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
+      gap: 20px;
+      background-color: #E5E6E9;
     }
 
     .split-col-right {
@@ -354,32 +355,174 @@
       background-color: #DFE1E5;
     }
 
-    .split-desc-text {
-      font-size: 15px;
-      line-height: 1.6;
-      color: #3E4450;
-      max-width: 360px;
-      margin-bottom: 28px;
+    /* Engine Card Elements */
+    .engine-card-header {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
     }
 
-    .btn-incubation-orange {
-      display: inline-block;
-      background-color: #FF5500;
-      color: #FFFFFF;
+    .engine-tag-label {
+      font-size: 10px;
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 700;
+      color: #FF5500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .engine-card-title {
+      font-size: 20px;
+      font-weight: 700;
+      color: #111317;
+      letter-spacing: -0.02em;
+    }
+
+    .engine-card-desc {
+      font-size: 13px;
+      line-height: 1.5;
+      color: #4B5160;
+    }
+
+    .component-chips-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 2px;
+    }
+
+    .component-chip {
+      background-color: #DFE1E5;
+      border: 1px solid #C8CACF;
+      border-radius: 4px;
+      padding: 3px 8px;
+      font-size: 11px;
+      font-family: 'JetBrains Mono', monospace;
+      color: #1E2229;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    /* Interactive Sub-Row: Upload + Mini Terminal */
+    .engine-workbench-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 16px;
+      margin-top: 4px;
+    }
+
+    .upload-sub-box {
+      border: 1.5px dashed #A6ABB5;
+      background-color: #EDEDF0;
+      border-radius: 8px;
+      padding: 20px 16px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      gap: 10px;
+      cursor: not-allowed;
+      transition: border-color 0.15s;
+    }
+
+    .upload-icon-circle {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background-color: #E0E2E7;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #FF5500;
+      font-size: 15px;
+    }
+
+    .upload-label-main {
       font-size: 12px;
       font-weight: 700;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      padding: 14px 28px;
-      border-radius: 6px;
-      text-decoration: none;
-      width: fit-content;
-      transition: background-color 0.15s;
+      color: #111317;
     }
 
-    .btn-incubation-orange:hover {
-      background-color: #E64D00;
+    .upload-label-sub {
+      font-size: 10px;
+      font-family: 'JetBrains Mono', monospace;
+      color: #7B8290;
     }
+
+    .btn-choose-file {
+      background-color: #FF5500;
+      color: #FFFFFF;
+      font-size: 10px;
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      padding: 6px 14px;
+      border-radius: 4px;
+      border: none;
+      cursor: not-allowed;
+      opacity: 0.9;
+    }
+
+    /* Mini Terminal View */
+    .mini-terminal-box {
+      background-color: #0E1015;
+      border: 1px solid #2B2F38;
+      border-radius: 8px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    }
+
+    .mini-terminal-header {
+      background-color: #181B22;
+      border-bottom: 1px solid #2B2F38;
+      padding: 6px 10px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .terminal-dots-row {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .terminal-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+    }
+    .dot-red { background-color: #FF5F56; }
+    .dot-yellow { background-color: #FFBD2E; }
+    .dot-green { background-color: #27C93F; }
+
+    .terminal-title-tag {
+      font-size: 9px;
+      font-family: 'JetBrains Mono', monospace;
+      color: #8C93A0;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .mini-terminal-body {
+      padding: 10px 12px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10.5px;
+      line-height: 1.45;
+      color: #D1D5DB;
+      overflow-x: auto;
+      background-color: #0E1015;
+    }
+
+    .json-key { color: #FF7B54; }
+    .json-bool { color: #00E599; }
+    .json-num { color: #79C0FF; }
+    .json-str { color: #A5D6FF; }
 
     /* Partner Logos Row */
     .partner-grid-row {
@@ -496,13 +639,72 @@
 
         <!-- 2-Column Split Details Section -->
         <div class="hero-split-section">
+          
+          <!-- LEFT CARD: Engine 1 Test Workbench -->
           <div class="split-col-left">
-            <p class="split-desc-text">
-              Backing the very best telephony security builders — transforming visionary biometric AI into sub-50ms real-world defense against synthetic voice cloning.
-            </p>
-            <a href="#sandbox" class="btn-incubation-orange">APPLY FOR INCUBATION</a>
+            
+            <!-- Header & Model Details -->
+            <div class="engine-card-header">
+              <span class="engine-tag-label">Engine 1 • Real-Time Baseline</span>
+              <h2 class="engine-card-title">Ultra-Fast Baseline (64 dimensions)</h2>
+              <p class="engine-card-desc">
+                Ultra-low latency (~30ms CPU) frontline voice biometrics combining acoustic DSP physics with micro-segment convolutional scoring.
+              </p>
+              
+              <!-- Component Models -->
+              <div class="component-chips-row">
+                <span class="component-chip">
+                  <i class="fa-solid fa-microchip text-[#FF5500]"></i> SpoofCNN (AudioCNN)
+                </span>
+                <span class="component-chip">
+                  <i class="fa-solid fa-tree text-[#555B67]"></i> HistGradientBoosting
+                </span>
+                <span class="component-chip">
+                  <i class="fa-solid fa-bolt text-[#FF5500]"></i> ~32ms Latency
+                </span>
+              </div>
+            </div>
+
+            <!-- Workbench: Upload Audio + Mini Terminal Response View -->
+            <div class="engine-workbench-grid">
+              
+              <!-- Upload Box (Placeholder) -->
+              <div class="upload-sub-box">
+                <div class="upload-icon-circle">
+                  <i class="fa-solid fa-cloud-arrow-up"></i>
+                </div>
+                <div>
+                  <div class="upload-label-main">Upload Test Audio</div>
+                  <div class="upload-label-sub">.WAV • 8kHz / 16kHz</div>
+                </div>
+                <button class="btn-choose-file" disabled>Choose File</button>
+              </div>
+
+              <!-- Mini Terminal View -->
+              <div class="mini-terminal-box">
+                <div class="mini-terminal-header">
+                  <div class="terminal-dots-row">
+                    <div class="terminal-dot dot-red"></div>
+                    <div class="terminal-dot dot-yellow"></div>
+                    <div class="terminal-dot dot-green"></div>
+                  </div>
+                  <span class="terminal-title-tag">POST /detect/baseline</span>
+                </div>
+                <pre class="mini-terminal-body">{
+  <span class="json-key">"is_synthetic"</span>: <span class="json-bool">false</span>,
+  <span class="json-key">"confidence"</span>: <span class="json-num">0.982</span>,
+  <span class="json-key">"latency_ms"</span>: <span class="json-num">28.4</span>,
+  <span class="json-key">"engine"</span>: <span class="json-str">"baseline"</span>,
+  <span class="json-key">"prob_gbm"</span>: <span class="json-num">0.015</span>,
+  <span class="json-key">"prob_neural"</span>: <span class="json-num">0.021</span>
+}</pre>
+              </div>
+
+            </div>
+
           </div>
 
+          <!-- RIGHT CARD -->
           <div class="split-col-right">
             <div class="text-center p-6 border border-[#C8CACF] bg-[#E5E6E9] rounded-lg">
               <i class="fa-solid fa-shield-virus text-5xl text-[#FF5500] mb-3"></i>
