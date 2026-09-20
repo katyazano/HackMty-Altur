@@ -64,32 +64,58 @@
 
     .nav-engine-cell {
       display: flex;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
       height: 100%;
       border-right: 1px solid #C8CACF;
       text-decoration: none;
-      color: #3B404B;
+      color: #111317;
+      transition: all 0.15s ease;
+      background-color: #E5E6E9;
+      padding: 0 28px;
+      gap: 2px;
+    }
+
+    .nav-engine-title {
       font-weight: 600;
       font-size: 13px;
       font-family: 'Space Grotesk', sans-serif;
       letter-spacing: -0.01em;
-      transition: all 0.15s ease;
-      background-color: #E5E6E9;
-      padding: 0 26px;
-      gap: 8px;
+      color: #111317;
+      line-height: 1.1;
+    }
+
+    .nav-engine-sub {
+      font-size: 10px;
+      font-family: 'JetBrains Mono', monospace;
+      color: #7B8290;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      line-height: 1.1;
     }
 
     .nav-engine-cell:hover {
       background-color: #ECEEF2;
+    }
+
+    .nav-engine-cell:hover .nav-engine-title,
+    .nav-engine-cell:hover .nav-engine-sub {
       color: #FF5500;
     }
 
     .nav-engine-cell.active {
       background-color: #DFE2E7;
-      color: #111317;
-      font-weight: 700;
       box-shadow: inset 0 -2px 0 #FF5500;
+    }
+
+    .nav-engine-cell.active .nav-engine-title {
+      font-weight: 700;
+    }
+
+    .nav-engine-cell.active .nav-engine-sub {
+      color: #FF5500;
+      font-weight: 700;
     }
 
     .nav-cell-last {
@@ -218,8 +244,8 @@
 
       <!-- Engine 1 Active Square -->
       <a href="engine1.html" class="nav-engine-cell active">
-        <span class="mono text-xs text-[#FF5500]">01</span>
-        <span>Engine 1</span>
+        <span class="nav-engine-title">Engine 1</span>
+        <span class="nav-engine-sub">docs</span>
       </a>
 
       <!-- Center: "mergeConflict" -->
@@ -231,8 +257,8 @@
 
       <!-- Engine 2 Square -->
       <a href="engine2.html" class="nav-engine-cell">
-        <span class="mono text-xs text-[#FF5500]">02</span>
-        <span>Engine 2</span>
+        <span class="nav-engine-title">Engine 2</span>
+        <span class="nav-engine-sub">docs</span>
       </a>
 
       <!-- Right Spacer Grid Wing -->
