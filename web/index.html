@@ -362,6 +362,36 @@
       gap: 6px;
     }
 
+    .card-top-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+    }
+
+    .btn-view-docs {
+      font-size: 11px;
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 600;
+      color: #3B404B;
+      background-color: #DFE1E5;
+      border: 1px solid #C8CACF;
+      border-radius: 4px;
+      padding: 3px 9px;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      transition: all 0.15s ease;
+    }
+
+    .btn-view-docs:hover {
+      background-color: #FFFFFF;
+      color: #FF5500;
+      border-color: #B4B8C1;
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
+    }
+
     .engine-tag-label {
       font-size: 10px;
       font-family: 'JetBrains Mono', monospace;
@@ -645,7 +675,13 @@
             
             <!-- Header & Model Details -->
             <div class="engine-card-header">
-              <span class="engine-tag-label">Engine 1 • Real-Time Baseline</span>
+              <div class="card-top-bar">
+                <span class="engine-tag-label">Engine 1 • Real-Time Baseline</span>
+                <a href="engine1.html" class="btn-view-docs">
+                  <span>View docs</span>
+                  <i class="fa-solid fa-arrow-up-right-from-square text-[9px]"></i>
+                </a>
+              </div>
               <h2 class="engine-card-title">Ultra-Fast Baseline (64 dimensions)</h2>
               <p class="engine-card-desc">
                 Ultra-low latency (~30ms CPU) frontline voice biometrics combining acoustic DSP physics with micro-segment convolutional scoring.
@@ -705,7 +741,13 @@
             
             <!-- Header & Model Details -->
             <div class="engine-card-header">
-              <span class="engine-tag-label">Engine 2 • Multimodal Deep SOTA</span>
+              <div class="card-top-bar">
+                <span class="engine-tag-label">Engine 2 • Multimodal Deep SOTA</span>
+                <a href="engine2.html" class="btn-view-docs">
+                  <span>View docs</span>
+                  <i class="fa-solid fa-arrow-up-right-from-square text-[9px]"></i>
+                </a>
+              </div>
               <h2 class="engine-card-title">4-Pillar Multimodal (296 dimensions)</h2>
               <p class="engine-card-desc">
                 Deep representation learning uniting Graph Neural Networks, SincNet raw waveforms, acoustic physics, and Spanish conversational semantics.
