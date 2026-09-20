@@ -1,16 +1,14 @@
 services:
-  altur-anti-spoof:
+  api:
     build:
       context: .
       dockerfile: Dockerfile
-    container_name: altur-anti-spoof-platform
+    container_name: hackmty-api
     ports:
       - "8000:8000"
-    volumes:
-      - .:/app
     environment:
-      - HOST=0.0.0.0
-      - PORT=8000
-      - ENV=production
-      - DECISION_THRESHOLD=0.50
+      - APP_NAME=mergeConflict
+      - APP_ENV=production
+      - LOG_LEVEL=INFO
+      - CALIBRATED_THRESHOLD=0.50
     restart: unless-stopped

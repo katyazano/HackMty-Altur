@@ -69,32 +69,28 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# Static files and React build assets
-DIST_DIR = PROJECT_ROOT / "frontend" / "dist"
-
-if (DIST_DIR / "assets").exists():
-    app.mount("/assets", StaticFiles(directory=str(DIST_DIR / "assets")), name="assets")
-
-
 def get_orchestrator() -> UnifiedOrchestrator:
     if not hasattr(app.state, "orchestrator") or app.state.orchestrator is None:
         app.state.orchestrator = UnifiedOrchestrator()
     return app.state.orchestrator
 
 
-WEB_INDEX = DIST_DIR / "index.html"
-
-
-@app.get("/", tags=["UI"])
-@app.get("/overview", tags=["UI"])
-@app.get("/demo", tags=["UI"])
-@app.get("/engine1", tags=["UI"])
-@app.get("/engine2", tags=["UI"])
-async def serve_ui():
-    """Serves the Master Product Showcase & Overview (React SPA)."""
-    if WEB_INDEX.exists():
-        return FileResponse(str(WEB_INDEX))
-    return {"service": settings.app_name, "docs": "/docs"}
+@app.get("/", tags=["Info"])
+async def root():
+    """Returns Master API metadata and documentation links."""
+    return {
+        "service": settings.app_name,
+        "version": settings.app_version,
+        "status": "online",
+        "endpoints": {
+            "engine_1_baseline": "/detect/baseline",
+            "engine_2_multimodal": "/detect/multimodal",
+            "dual_comparator": "/compare",
+            "health_telemetry": "/health",
+            "swagger_docs": "/docs",
+            "openapi_spec": "/openapi.json"
+        }
+    }
 
 
 @app.get("/health", response_model=HealthResponse, tags=["Health"])
