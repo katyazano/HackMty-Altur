@@ -1,32 +1,20 @@
-FROM python:3.11-slim
-
-ENV PYTHONUNBUFFERED=1 \
-    PYTHONDONTWRITEBYTECODE=1 \
-    PORT=8000 \
-    HOST=0.0.0.0 \
-    OMP_NUM_THREADS=2
-
-# Install system audio and C runtime libraries
-RUN apt-get update && apt-get install -y --no-install-recommends \
-    libsndfile1 \
-    ffmpeg \
-    libgomp1 \
-    curl \
-    && rm -rf /var/lib/apt/lists/*
+# Multi-Stage Build: Node 20 Builder -> Nginx Alpine
+FROM node:20-alpine AS builder
 
 WORKDIR /app
 
-# Install python dependencies
-COPY requirements.txt .
-RUN pip install --no-cache-dir --upgrade pip && \
-    pip install --no-cache-dir -r requirements.txt
+COPY package*.json ./
+RUN npm ci
 
-# Copy application files and weights
 COPY . .
+RUN npm run build
 
-EXPOSE 8000
+# Production Stage: High Performance Nginx Alpine Server
+FROM nginx:alpine
 
-HEALTHCHECK --interval=30s --timeout=5s --start-period=10s --retries=3 \
-    CMD curl -f http://localhost:8000/health || exit 1
+COPY --from=builder /app/dist /usr/share/nginx/html
+COPY nginx.conf /etc/nginx/conf.d/default.conf
 
-CMD ["uvicorn", "app:app", "--host", "0.0.0.0", "--port", "8000"]
+EXPOSE 80
+
+CMD ["nginx", "-g", "daemon off;"]

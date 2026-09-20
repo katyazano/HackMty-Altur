@@ -1,48 +1,23 @@
-# Entorno virtual
-.venv/
-venv/
-ENV/
-env/
-.env
-
-# Python
-__pycache__/
-*.py[cod]
-*.so
-build/
-dist/
-*.egg-info/
-
-# IDE
-.vscode/
-.idea/
-.DS_Store
-
-# Dataset de audio (pesado, no se sube)
-audio/
-Data/
-*.wav
-*.mp3
-*.m4a
-*.ogg
-*.zip
-
-# Repo clonado del reto (tiene su propio git, no se anida)
-repo/
-
-# Cache de features (se regenera con train.py / train_neural.py)
-features_cache_v2.npz
-neural_cache.npz
-val_scores.npz
-
-# Archivos temporales de prueba
-audio_prueba.wav
-test_download.txt
+# Logs
+logs
 *.log
-tmp/
+npm-debug.log*
+yarn-debug.log*
+pnpm-debug.log*
+lerna-debug.log*
 
-# Frontend / Node
-frontend/node_modules/
-node_modules/
-web/dist/
-frontend/dist/
+node_modules
+dist
+dist-ssr
+*.local
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?

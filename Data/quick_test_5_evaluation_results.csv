@@ -1,6 +1,0 @@
-call_id,true_label,pred_synthetic,confidence,correct,duration_sec,proc_time_sec,rtf,total_turns,filler_count,filler_density,detected_fillers,semantic_authenticity_score,json_path
-call_0294f969f98b,synthetic,True,0.9305,True,108.78,16.28,0.075,25,2,0.0351,"ajá, a ver",0.5877,Data/dataset_transcripts/call_0294f969f98b_transcript.json
-call_0847d7417bb1,synthetic,True,0.9834,True,115.4,11.58,0.05,19,0,0.0,,0.5,Data/dataset_transcripts/call_0847d7417bb1_transcript.json
-call_0cf2f4a71328,synthetic,True,0.9871,True,159.0,16.3,0.051,28,6,0.0417,"verdad, a ver, ah, ajá, o sea, pues",0.6042,Data/dataset_transcripts/call_0cf2f4a71328_transcript.json
-call_0e1e2f29bfdc,human,False,0.9797,True,129.44,16.17,0.062,31,2,0.0241,"a ver, o sea",0.5603,Data/dataset_transcripts/call_0e1e2f29bfdc_transcript.json
-call_10aa0d1d33f0,human,False,0.9689,True,136.16,15.86,0.058,35,1,0.0182,mira,0.5455,Data/dataset_transcripts/call_10aa0d1d33f0_transcript.json

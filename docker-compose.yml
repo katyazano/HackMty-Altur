@@ -1,16 +1,9 @@
 services:
-  altur-anti-spoof:
+  frontend:
     build:
       context: .
       dockerfile: Dockerfile
-    container_name: altur-anti-spoof-platform
+    container_name: hackmty-frontend
     ports:
-      - "8000:8000"
-    volumes:
-      - .:/app
-    environment:
-      - HOST=0.0.0.0
-      - PORT=8000
-      - ENV=production
-      - DECISION_THRESHOLD=0.50
+      - "3000:80"
     restart: unless-stopped
