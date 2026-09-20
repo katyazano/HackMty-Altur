@@ -348,11 +348,11 @@
     }
 
     .split-col-right {
-      padding: 36px;
+      padding: 32px 36px;
       display: flex;
-      align-items: center;
-      justify-content: center;
-      background-color: #DFE1E5;
+      flex-direction: column;
+      gap: 20px;
+      background-color: #E5E6E9;
     }
 
     /* Engine Card Elements */
@@ -704,13 +704,78 @@
 
           </div>
 
-          <!-- RIGHT CARD -->
+          <!-- RIGHT CARD: Engine 2 Test Workbench -->
           <div class="split-col-right">
-            <div class="text-center p-6 border border-[#C8CACF] bg-[#E5E6E9] rounded-lg">
-              <i class="fa-solid fa-shield-virus text-5xl text-[#FF5500] mb-3"></i>
-              <div class="font-bold text-sm text-[#111317]">SUB-50ms DUAL ENGINE</div>
-              <div class="mono text-xs text-[#555B67] mt-1">SIP RTP Real-Time Wire</div>
+            
+            <!-- Header & Model Details -->
+            <div class="engine-card-header">
+              <span class="engine-tag-label">Engine 2 • Multimodal Deep SOTA</span>
+              <h2 class="engine-card-title">4-Pillar Multimodal (296 dimensions)</h2>
+              <p class="engine-card-desc">
+                Deep representation learning uniting Graph Neural Networks, SincNet raw waveforms, acoustic physics, and Spanish conversational semantics.
+              </p>
+              
+              <!-- Component Models -->
+              <div class="component-chips-row">
+                <span class="component-chip">
+                  <i class="fa-solid fa-circle-nodes text-[#FF5500]"></i> AASIST (GNN)
+                </span>
+                <span class="component-chip">
+                  <i class="fa-solid fa-wave-square text-[#555B67]"></i> RawNet2
+                </span>
+                <span class="component-chip">
+                  <i class="fa-solid fa-microphone-lines text-[#555B67]"></i> 136-dim DSP
+                </span>
+                <span class="component-chip">
+                  <i class="fa-solid fa-comments text-[#555B67]"></i> Whisper NLP
+                </span>
+                <span class="component-chip">
+                  <i class="fa-solid fa-brain text-[#FF5500]"></i> XGBoost Quad
+                </span>
+              </div>
             </div>
+
+            <!-- Workbench: Upload Audio + Mini Terminal Response View -->
+            <div class="engine-workbench-grid">
+              
+              <!-- Upload Box (Placeholder) -->
+              <div class="upload-sub-box">
+                <div class="upload-icon-circle">
+                  <i class="fa-solid fa-cloud-arrow-up"></i>
+                </div>
+                <div>
+                  <div class="upload-label-main">Upload Test Audio</div>
+                  <div class="upload-label-sub">.WAV • 8kHz / 16kHz</div>
+                </div>
+                <button class="btn-choose-file" disabled>Choose File</button>
+              </div>
+
+              <!-- Mini Terminal View -->
+              <div class="mini-terminal-box">
+                <div class="mini-terminal-header">
+                  <div class="terminal-dots-row">
+                    <div class="terminal-dot dot-red"></div>
+                    <div class="terminal-dot dot-yellow"></div>
+                    <div class="terminal-dot dot-green"></div>
+                  </div>
+                  <span class="terminal-title-tag">POST /detect/multimodal</span>
+                </div>
+                <pre class="mini-terminal-body">{
+  <span class="json-key">"is_synthetic"</span>: <span class="json-bool">false</span>,
+  <span class="json-key">"confidence"</span>: <span class="json-num">0.991</span>,
+  <span class="json-key">"latency_ms"</span>: <span class="json-num">182.5</span>,
+  <span class="json-key">"engine"</span>: <span class="json-str">"multimodal"</span>,
+  <span class="json-key">"pillars"</span>: {
+    <span class="json-key">"aasist_gnn"</span>: <span class="json-num">0.008</span>,
+    <span class="json-key">"rawnet2"</span>: <span class="json-num">0.012</span>,
+    <span class="json-key">"dsp"</span>: <span class="json-num">0.014</span>,
+    <span class="json-key">"whisper_nlp"</span>: <span class="json-num">0.005</span>
+  }
+}</pre>
+              </div>
+
+            </div>
+
           </div>
         </div>
 
