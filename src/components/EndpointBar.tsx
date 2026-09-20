@@ -5,6 +5,10 @@ interface EndpointBarProps {
   method?: string;
 }
 
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL !== undefined
+  ? import.meta.env.VITE_API_BASE_URL
+  : 'http://localhost:8000';
+
 export const EndpointBar: React.FC<EndpointBarProps> = ({
   endpoint,
   method = 'POST',
@@ -13,12 +17,9 @@ export const EndpointBar: React.FC<EndpointBarProps> = ({
 
   const handleCopy = (e: React.MouseEvent) => {
     e.stopPropagation();
-    const urlToCopy =
-      window.location.origin &&
-      window.location.origin !== 'null' &&
-      !window.location.origin.startsWith('file:')
-        ? window.location.origin + endpoint
-        : endpoint;
+    const urlToCopy = endpoint.startsWith('http')
+      ? endpoint
+      : `${API_BASE_URL}${endpoint}`;
 
     if (navigator.clipboard && navigator.clipboard.writeText) {
       navigator.clipboard.writeText(urlToCopy).then(() => {

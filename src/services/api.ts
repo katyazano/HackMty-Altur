@@ -1,6 +1,9 @@
 import { DetectResponse } from '../types/detection';
 
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || '';
+// Defaults to Backend on Port 8000, or custom VITE_API_BASE_URL if configured
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL !== undefined
+  ? import.meta.env.VITE_API_BASE_URL
+  : 'http://localhost:8000';
 
 export async function detectAudio(
   file: File,
