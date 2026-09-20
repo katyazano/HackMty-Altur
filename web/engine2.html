@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Engine 2 — mergeConflict</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: #E5E6E9;
+      color: #111317;
+      font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
+      -webkit-font-smoothing: antialiased;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .mono {
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    /* Outer Grid Frame */
+    .app-frame {
+      width: 100%;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      border-left: 1px solid #C8CACF;
+      border-right: 1px solid #C8CACF;
+      background-color: #E5E6E9;
+      position: relative;
+    }
+
+    /* TOP NAVBAR CONTAINER */
+    .top-navbar-grid {
+      display: grid;
+      grid-template-columns: 180px 1fr 180px 56px;
+      height: 68px;
+      border-bottom: 1px solid #C8CACF;
+      background-color: #E5E6E9;
+    }
+
+    .nav-cell {
+      display: flex;
+      align-items: center;
+      border-right: 1px solid #C8CACF;
+      padding: 0 20px;
+    }
+
+    .nav-engine-cell {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+      border-right: 1px solid #C8CACF;
+      text-decoration: none;
+      color: #3B404B;
+      font-weight: 600;
+      font-size: 13px;
+      font-family: 'Space Grotesk', sans-serif;
+      letter-spacing: -0.01em;
+      transition: all 0.15s ease;
+      background-color: #E5E6E9;
+      gap: 8px;
+    }
+
+    .nav-engine-cell:hover {
+      background-color: #ECEEF2;
+      color: #FF5500;
+    }
+
+    .nav-engine-cell.active {
+      background-color: #DFE2E7;
+      color: #111317;
+      font-weight: 700;
+      box-shadow: inset 0 -2px 0 #FF5500;
+    }
+
+    .nav-cell-last {
+      border-right: none;
+      padding: 0;
+      justify-content: center;
+    }
+
+    /* Center Nav & mergeConflict Title */
+    .center-nav-box {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      padding: 0 28px;
+    }
+
+    .center-title {
+      font-size: 20px;
+      font-weight: 700;
+      color: #111317;
+      letter-spacing: -0.03em;
+      display: flex;
+      align-items: center;
+      gap: 2px;
+      text-decoration: none;
+    }
+
+    .center-title span {
+      color: #FF5500;
+    }
+
+    /* Utility Rail Right */
+    .util-circle-btn {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      border: 1px solid #C8CACF;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #555B67;
+    }
+
+    .util-circle-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background-color: #FF5500;
+    }
+
+    /* Content Layout */
+    .content-grid-wrapper {
+      display: grid;
+      grid-template-columns: 1fr 56px;
+      flex: 1;
+    }
+
+    .right-rail {
+      border-left: 1px solid #C8CACF;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .rail-cell {
+      height: 56px;
+      border-bottom: 1px solid #C8CACF;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #555B67;
+      font-size: 13px;
+      text-decoration: none;
+      transition: background-color 0.15s, color 0.15s;
+    }
+
+    .rail-cell:hover {
+      background-color: #ECEEF2;
+      color: #FF5500;
+    }
+
+    .stage-container {
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+
+    .stage-top-row {
+      height: 56px;
+      border-bottom: 1px solid #C8CACF;
+      display: flex;
+      align-items: center;
+      padding: 0 28px;
+    }
+
+    .stage-blank-box {
+      flex: 1;
+      padding: 48px 36px;
+      position: relative;
+      background-color: #E5E6E9;
+    }
+
+    /* 4 Corner Orange Squares */
+    .corner-mark {
+      position: absolute;
+      width: 8px;
+      height: 8px;
+      background-color: #FF5500;
+    }
+    .corner-tl { top: 12px; left: 12px; }
+    .corner-tr { top: 12px; right: 12px; }
+    .corner-bl { bottom: 12px; left: 12px; }
+    .corner-br { bottom: 12px; right: 12px; }
+  </style>
+</head>
+<body>
+
+  <div class="app-frame">
+
+    <!-- TOP NAVBAR -->
+    <header class="top-navbar-grid">
+
+      <!-- Engine 1 Square -->
+      <a href="engine1.html" class="nav-engine-cell">
+        <span class="mono text-xs text-[#FF5500]">01</span>
+        <span>Engine 1</span>
+      </a>
+
+      <!-- Center: "mergeConflict" -->
+      <div class="nav-cell center-nav-box">
+        <a href="index.html" class="center-title">
+          merge<span>Conflict</span>
+        </a>
+      </div>
+
+      <!-- Engine 2 Active Square -->
+      <a href="engine2.html" class="nav-engine-cell active">
+        <span class="mono text-xs text-[#FF5500]">02</span>
+        <span>Engine 2</span>
+      </a>
+
+      <!-- Far Right Utility Icon -->
+      <div class="nav-cell nav-cell-last">
+        <div class="util-circle-btn">
+          <div class="util-circle-dot"></div>
+        </div>
+      </div>
+
+    </header>
+
+    <!-- CONTENT GRID -->
+    <div class="content-grid-wrapper">
+
+      <main class="stage-container">
+        <!-- Subheader Ticker Row -->
+        <div class="stage-top-row">
+          <div class="mono text-xs text-[#555B67] flex items-center gap-2">
+            <span class="w-2 h-2 rounded-full bg-[#FF5500]"></span>
+            <span>ENGINE 2 // 4-PILLAR MULTIMODAL SOTA (AASIST + RAWNET2 + DSP + WHISPER)</span>
+          </div>
+        </div>
+
+        <!-- Blank Box with 4 Corner Markers -->
+        <div class="stage-blank-box">
+          <div class="corner-mark corner-tl"></div>
+          <div class="corner-mark corner-tr"></div>
+          <div class="corner-mark corner-bl"></div>
+          <div class="corner-mark corner-br"></div>
+        </div>
+      </main>
+
+      <!-- Right Rail (56px) -->
+      <aside class="right-rail">
+        <a href="#" class="rail-cell"><i class="fa-brands fa-twitter"></i></a>
+        <a href="#" class="rail-cell"><i class="fa-brands fa-telegram"></i></a>
+        <a href="#" class="rail-cell"><i class="fa-brands fa-medium"></i></a>
+        <a href="#" class="rail-cell"><i class="fa-brands fa-linkedin-in"></i></a>
+      </aside>
+
+    </div>
+
+  </div>
+
+</body>
+</html>
