@@ -1,45 +1,95 @@
-# mergeConflict • Frontend Web Interface
+# merge-conflict • Dual-Engine Voice Anti-Spoofing & Deepfake Detection
 
-High-performance modular React + TypeScript + Vite web interface for the **Altur HackMTY Voice Anti-Spoofing & Deepfake Detection Challenge**.
+High-performance, industrial web application engineered for the **Altur HackMTY Voice Anti-Spoofing Challenge**. 
 
-## Features
-- **Dual Engine Workbenches**: Live testing for Engine 1 (Real-Time Baseline) and Engine 2 (4-Pillar Multimodal SOTA).
-- **Interactive Audio Ingestion**: Drag-and-drop / `.wav` upload sending requests to backend at `http://localhost:8000`.
-- **Terminal View**: Color-coded JSON syntax highlighter with dimmed placeholder state and live latency display.
-- **Copy Endpoint Strips**: One-click clipboard copy for API endpoints.
-- **Documentation Pages**: In-depth architecture breakdown and benchmarks for both engines.
+Provides real-time audio testing workbenches, live backend health monitoring, and in-depth documentation for both detection engines.
 
 ---
 
-## 🚀 Quick Start (Single-Command Docker on Port 8001)
+## ⚡ Key Highlights & Architecture
 
-Run with Docker Compose:
+- **Engine 1: Ultra-Fast Baseline (64 dimensions)**:
+  - Frontline voice biometrics optimized for telephony and call center gateways (~700ms CPU).
+  - Uses ITU-T P.56 normalization, 25ms Hamming STFT, 64-dimensional acoustic DSP physics, and a HistGradientBoosting decision forest.
+- **Engine 2: 4-Pillar Multimodal SOTA (296 dimensions)**:
+  - Deep representation learning (~1300ms) for high-stakes verification.
+  - Combines **AASIST** (Graph Neural Network), **RawNet2** (Parametric SincNet waveforms), **136-dim Deep DSP**, and **Whisper NLP** conversational token analysis fused via an **XGBoost Quad** meta-learner.
+- **Live Health Monitoring & Dashboard Redirect**:
+  - Automatically polls backend status (`http://localhost:8000`) with visual feedback (pulsing orange dot for online, gray for offline).
+  - Direct redirect to the live analytics dashboard (`http://localhost:8000/dashboard`).
+- **Interactive Workbench**:
+  - Drag-and-drop `.wav` audio upload, live millisecond latency calculation, and formatted JSON response terminal.
+- **API Integration Guides**:
+  - Copy-paste integration code in Python, cURL, and Node.js for both engines.
+
+---
+
+## 🚀 Quick Start with Docker (Port 8001)
+
+Run the frontend container with Docker Compose:
+
 ```bash
 docker compose up --build
 ```
-Open **`http://localhost:8001`** in your browser.
+
+Access the web interface at **`http://localhost:8001`**.
 
 ---
 
-## 💻 Local Development
+## 💻 Local Development (Vite + React + TypeScript)
 
-1. **Install dependencies**:
-   ```bash
-   npm install
-   ```
+### 1. Prerequisites
+- Node.js 18+
+- npm 9+
 
-2. **Configure backend URL** (defaults to `http://localhost:8000`):
-   ```bash
-   cp .env.example .env
-   ```
+### 2. Install Dependencies
+```bash
+npm install
+```
 
-3. **Start Vite Dev Server** (Port 8001):
-   ```bash
-   npm run dev
-   ```
-   Open **`http://localhost:8001`**.
+### 3. Environment Configuration
+By default, the frontend connects to the backend at `http://localhost:8000`. You can override this using `.env`:
+```bash
+cp .env.example .env
+```
 
-4. **Production Build**:
-   ```bash
-   npm run build
-   ```
+### 4. Run Development Server
+```bash
+npm run dev
+```
+Navigate to **`http://localhost:8001`** in your browser.
+
+### 5. Build for Production
+```bash
+npm run build
+```
+
+---
+
+## 🔌 API Endpoints Reference
+
+| Engine | Endpoint | Runtime | Dimensions | Target Spoofs |
+| :--- | :--- | :--- | :--- | :--- |
+| **Engine 1** | `POST /detect/baseline` | ~700 ms (CPU) | 64 | Replay, Vocoder artifacts |
+| **Engine 2** | `POST /detect/multimodal` | ~1300 ms (CPU) | 296 | Zero-shot clones, ElevenLabs, XTTS-v2, HiFi-GAN |
+| **Dashboard** | `GET /dashboard` | — | — | Live telemetry & metrics |
+
+### Expected Response Schema:
+```json
+{
+  "is_synthetic": false,
+  "confidence": 0.982
+}
+```
+
+---
+
+## 👥 Contributors (Team `merge-conflict`)
+
+- [pontro](https://github.com/pontro)
+- [Chewbaccas](https://github.com/Chewbaccas)
+- [katyazano](https://github.com/katyazano)
+- [cris-hernandezz](https://github.com/cris-hernandezz)
+
+Built for **HackMTY 2026** // Altur Voice Anti-Spoofing Challenge.
+
