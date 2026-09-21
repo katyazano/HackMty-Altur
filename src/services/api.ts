@@ -1,9 +1,25 @@
 import { DetectResponse } from '../types/detection';
 
 // Defaults to Backend on Port 8000, or custom VITE_API_BASE_URL if configured
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL !== undefined
+export const API_BASE_URL = import.meta.env.VITE_API_BASE_URL !== undefined
   ? import.meta.env.VITE_API_BASE_URL
   : 'http://localhost:8000';
+
+export async function checkBackendHealth(): Promise<boolean> {
+  try {
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), 2000);
+    await fetch(`${API_BASE_URL}/docs`, {
+      method: 'GET',
+      mode: 'no-cors',
+      signal: controller.signal,
+    });
+    clearTimeout(timeoutId);
+    return true;
+  } catch {
+    return false;
+  }
+}
 
 export async function detectAudio(
   file: File,

@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { checkBackendHealth, API_BASE_URL } from '../services/api';
 
 interface NavbarProps {
   currentRoute?: 'home' | 'engine1' | 'engine2';
@@ -9,12 +10,35 @@ export const Navbar: React.FC<NavbarProps> = ({
   currentRoute = 'home',
   onNavigate,
 }) => {
+  const [isBackendOnline, setIsBackendOnline] = useState<boolean>(false);
+
+  useEffect(() => {
+    let mounted = true;
+
+    const verifyHealth = async () => {
+      const online = await checkBackendHealth();
+      if (mounted) {
+        setIsBackendOnline(online);
+      }
+    };
+
+    verifyHealth();
+    const interval = setInterval(verifyHealth, 4000);
+
+    return () => {
+      mounted = false;
+      clearInterval(interval);
+    };
+  }, []);
+
   const handleNav = (route: 'home' | 'engine1' | 'engine2', e: React.MouseEvent) => {
     if (onNavigate) {
       e.preventDefault();
       onNavigate(route);
     }
   };
+
+  const dashboardUrl = `${API_BASE_URL}/dashboard`;
 
   return (
     <header className="top-navbar-grid">
@@ -46,7 +70,7 @@ export const Navbar: React.FC<NavbarProps> = ({
         </div>
       </div>
 
-      {/* Left of mergeConflict: Engine 1 Square Cell */}
+      {/* Left of merge-conflict: Engine 1 Square Cell */}
       <a
         href="#/engine1"
         onClick={(e) => handleNav('engine1', e)}
@@ -67,7 +91,7 @@ export const Navbar: React.FC<NavbarProps> = ({
         >merge-<span>conflict</span></a>
       </div>
 
-      {/* Right of mergeConflict: Engine 2 Square Cell */}
+      {/* Right of merge-conflict: Engine 2 Square Cell */}
       <a
         href="#/engine2"
         onClick={(e) => handleNav('engine2', e)}
@@ -78,8 +102,30 @@ export const Navbar: React.FC<NavbarProps> = ({
         <span className="nav-engine-sub">docs</span>
       </a>
 
-      {/* Right Spacer Grid Wing with Project GitHub Repo Link */}
-      <div className="nav-cell nav-cell-spacer-right">
+      {/* Right Spacer Grid Wing with Dashboard Button and GitHub Link */}
+      <div className="nav-cell nav-cell-spacer-right" style={{ gap: '10px' }}>
+        {isBackendOnline ? (
+          <a
+            href={dashboardUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="nav-dashboard-link online"
+            title="Open Live Backend Dashboard (http://localhost:8000/dashboard)"
+          >
+            <span className="status-indicator-dot online"></span>
+            <span>Dashboard</span>
+            <i className="fa-solid fa-arrow-up-right-from-square text-[9px]"></i>
+          </a>
+        ) : (
+          <div
+            className="nav-dashboard-link offline"
+            title="Backend server offline (run backend on port 8000 to enable dashboard)"
+          >
+            <span className="status-indicator-dot offline"></span>
+            <span>Dashboard (Offline)</span>
+          </div>
+        )}
+
         <a
           href="https://github.com/katyazano/HackMty-Altur"
           target="_blank"

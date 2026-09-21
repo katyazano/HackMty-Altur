@@ -44,7 +44,16 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
               <i className="fa-solid fa-arrow-right text-[9px] text-[#7B8290]"></i>
             </a>
             <a
-              href="/docs"
+              href="http://localhost:8000/dashboard"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="footer-link"
+            >
+              <span>Live Analytics Dashboard</span>
+              <i className="fa-solid fa-arrow-up-right-from-square text-[9px] text-[#7B8290]"></i>
+            </a>
+            <a
+              href="http://localhost:8000/docs"
               target="_blank"
               rel="noopener noreferrer"
               className="footer-link"
