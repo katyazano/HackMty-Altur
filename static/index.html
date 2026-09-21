@@ -1,0 +1,1027 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Developer Dashboard • Altur Voice AI Defense</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background-color: #E5E6E9;
+      color: #111317;
+      font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .mono { font-family: 'JetBrains Mono', monospace; }
+
+    .app-frame {
+      width: 100%;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      border-left: 1px solid #C8CACF;
+      border-right: 1px solid #C8CACF;
+      background-color: #E5E6E9;
+    }
+
+    /* TOP NAVBAR */
+    .top-navbar-grid {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 64px;
+      border-bottom: 1px solid #C8CACF;
+      background-color: #E5E6E9;
+      padding: 0 32px;
+    }
+
+    .brand-title {
+      font-size: 18px;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      color: #111317;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .brand-title span { color: #FF5500; }
+
+    .dev-badge {
+      background-color: #ECEEF2;
+      border: 1px solid #C8CACF;
+      border-radius: 4px;
+      padding: 2px 7px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      font-weight: 700;
+      color: #FF5500;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .nav-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 14px;
+      background-color: #E5E6E9;
+      border: 1px solid #C8CACF;
+      border-radius: 5px;
+      color: #111317;
+      text-decoration: none;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11.5px;
+      font-weight: 600;
+      transition: all 0.15s ease;
+      cursor: pointer;
+    }
+
+    .nav-btn:hover {
+      background-color: #ECEEF2;
+      border-color: #B4B8C1;
+      color: #FF5500;
+    }
+
+    .nav-btn.primary {
+      background-color: #111317;
+      color: #FFFFFF;
+      border-color: #111317;
+    }
+
+    .nav-btn.primary:hover {
+      background-color: #FF5500;
+      border-color: #FF5500;
+      color: #FFFFFF;
+    }
+
+    /* SUBHEADER / CONTROL STRIP */
+    .control-strip {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 32px;
+      background-color: #DFE1E5;
+      border-bottom: 1px solid #C8CACF;
+      gap: 16px;
+    }
+
+    .strip-group {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .status-indicator {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      color: #111317;
+    }
+
+    .pulse-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background-color: #00E599;
+      box-shadow: 0 0 6px rgba(0, 229, 153, 0.6);
+    }
+
+    /* MAIN DEV LAYOUT */
+    .dev-container {
+      padding: 28px 32px;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      flex: 1;
+    }
+
+    /* SECTION HEADINGS */
+    .section-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 12px;
+    }
+
+    .section-title {
+      font-size: 14px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: #111317;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .section-title i { color: #FF5500; font-size: 13px; }
+
+    /* CARDS & PANELS */
+    .dev-panel {
+      background-color: #ECEEF2;
+      border: 1px solid #C8CACF;
+      border-radius: 8px;
+      padding: 20px;
+    }
+
+    /* GRID 2 COLUMNS: TESTER & DIAGNOSTICS */
+    .dev-grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    /* BENCHMARK STAT CARDS */
+    .kpi-grid-4 {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+
+    .kpi-card {
+      background-color: #FFFFFF;
+      border: 1px solid #C8CACF;
+      border-radius: 6px;
+      padding: 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .kpi-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      font-weight: 700;
+      color: #7B8290;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .kpi-value {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 20px;
+      font-weight: 800;
+      color: #111317;
+    }
+
+    .kpi-value.accent { color: #FF5500; }
+    .kpi-value.green { color: #00B377; }
+
+    /* UPLOAD DROPZONE */
+    .dev-dropzone {
+      background-color: #FFFFFF;
+      border: 1.5px dashed #B8BAC0;
+      border-radius: 6px;
+      padding: 20px 16px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      gap: 8px;
+      cursor: pointer;
+      transition: all 0.15s ease;
+      margin-bottom: 14px;
+    }
+
+    .dev-dropzone:hover, .dev-dropzone.drag-over {
+      background-color: #F8F9FA;
+      border-color: #FF5500;
+    }
+
+    .btn-action {
+      background-color: #FF5500;
+      color: #FFFFFF;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 8px 16px;
+      border-radius: 4px;
+      border: none;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: background-color 0.15s ease;
+    }
+
+    .btn-action:hover { background-color: #E64D00; }
+
+    .btn-secondary {
+      background-color: #FFFFFF;
+      color: #111317;
+      border: 1px solid #C8CACF;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      font-weight: 600;
+      padding: 6px 12px;
+      border-radius: 4px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.15s ease;
+    }
+
+    .btn-secondary:hover {
+      border-color: #B4B8C1;
+      color: #FF5500;
+    }
+
+    /* ENGINE SELECTOR */
+    .engine-toggle-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+      margin-bottom: 14px;
+    }
+
+    .engine-toggle-label {
+      background-color: #FFFFFF;
+      border: 1px solid #C8CACF;
+      border-radius: 5px;
+      padding: 8px 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+
+    .engine-toggle-label:has(input:checked) {
+      border-color: #FF5500;
+      background-color: #FFF6F2;
+    }
+
+    .engine-toggle-title {
+      font-size: 11.5px;
+      font-weight: 700;
+      color: #111317;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .engine-toggle-sub {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 9.5px;
+      color: #7B8290;
+    }
+
+    /* TERMINAL CONSOLE */
+    .dev-terminal {
+      background-color: #0E1015;
+      border: 1px solid #2B2F38;
+      border-radius: 6px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    }
+
+    .terminal-header {
+      background-color: #181B22;
+      border-bottom: 1px solid #2B2F38;
+      padding: 8px 14px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .terminal-dots { display: flex; gap: 6px; }
+    .dot { width: 8px; height: 8px; border-radius: 50%; }
+    .dot.red { background-color: #FF5F56; }
+    .dot.yellow { background-color: #FFBD2E; }
+    .dot.green { background-color: #27C93F; }
+
+    .terminal-body {
+      padding: 14px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      line-height: 1.6;
+      color: #D1D5DB;
+      background-color: #0E1015;
+      overflow-x: auto;
+      min-height: 160px;
+      max-height: 240px;
+    }
+
+    .json-key { color: #FF7B54; }
+    .json-bool { color: #00E599; }
+    .json-num { color: #79C0FF; }
+    .json-str { color: #A5D6FF; }
+
+    /* BENCHMARK TABLE */
+    .bm-table {
+      width: 100%;
+      border-collapse: collapse;
+      background-color: #FFFFFF;
+      border: 1px solid #C8CACF;
+      border-radius: 6px;
+      overflow: hidden;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+    }
+
+    .bm-table th {
+      background-color: #ECEEF2;
+      padding: 9px 12px;
+      text-align: left;
+      font-weight: 700;
+      color: #555B67;
+      border-bottom: 1px solid #C8CACF;
+    }
+
+    .bm-table td {
+      padding: 9px 12px;
+      border-bottom: 1px solid #E5E6E9;
+      color: #111317;
+    }
+
+    .bm-table tr:last-child td { border-bottom: none; }
+
+    .badge-pill {
+      display: inline-block;
+      padding: 2px 6px;
+      border-radius: 3px;
+      font-size: 9.5px;
+      font-weight: 700;
+    }
+    .badge-pass { background-color: #E6FBF3; color: #00A36C; border: 1px solid #B8F2DD; }
+    .badge-fail { background-color: #FEECEB; color: #E02424; border: 1px solid #FCD2D0; }
+    .badge-synth { background-color: #FFF1EB; color: #FF5500; border: 1px solid #FFD6C4; }
+    .badge-real { background-color: #EBF5FF; color: #1A56DB; border: 1px solid #C3DDFD; }
+
+    /* TOAST */
+    #toast {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 1000;
+      background-color: #111317;
+      color: #FFFFFF;
+      padding: 12px 18px;
+      border-radius: 6px;
+      border: 1px solid #333;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11.5px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+      transform: translateY(100px);
+      opacity: 0;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    #toast.show { transform: translateY(0); opacity: 1; }
+
+    @media (max-width: 900px) {
+      .dev-grid-2 { grid-template-columns: 1fr; }
+      .kpi-grid-4 { grid-template-columns: 1fr 1fr; }
+      .control-strip { padding: 12px 20px; }
+      .dev-container { padding: 20px; }
+    }
+  </style>
+</head>
+<body>
+  <div id="toast">Notification</div>
+
+  <div class="app-frame">
+    
+    <!-- TOP NAVBAR (Brutalist Dev Style) -->
+    <header class="top-navbar-grid">
+      <div class="brand-title">
+        merge<span>Conflict</span>
+        <span class="dev-badge">Developer Dashboard</span>
+      </div>
+
+      <div class="nav-actions">
+        <button id="installDevBtn" class="nav-btn">
+          <i class="fa-solid fa-toolbox text-[#FF5500]"></i>
+          <span id="devToolsLabel">Install Dev Tools</span>
+        </button>
+
+        <button id="launchJupyterBtn" class="nav-btn">
+          <i class="fa-solid fa-book-bookmark text-[#FF5500]"></i>
+          <span>Jupyter Notebook</span>
+        </button>
+
+        <a href="/docs" target="_blank" class="nav-btn primary">
+          <i class="fa-solid fa-code"></i>
+          <span>Swagger Docs</span>
+        </a>
+      </div>
+    </header>
+
+    <!-- CONTROL & TELEMETRY STRIP -->
+    <div class="control-strip">
+      <div class="strip-group">
+        <div class="status-indicator">
+          <span class="pulse-dot"></span>
+          <span>API Gateway Online</span>
+        </div>
+        <span style="color: #B4B8C1;">|</span>
+        <div class="status-indicator">
+          <span style="color: #7B8290;">Port:</span>
+          <strong>8000</strong>
+        </div>
+        <span style="color: #B4B8C1;">|</span>
+        <div class="status-indicator">
+          <span style="color: #7B8290;">Active Device:</span>
+          <strong>CPU (x86_64)</strong>
+        </div>
+      </div>
+
+      <div class="strip-group">
+        <div style="display: flex; align-items: center; gap: 8px; font-family: 'JetBrains Mono', monospace; font-size: 11.5px;">
+          <span style="color: #7B8290; font-weight: 700; text-transform: uppercase;">Decision Threshold:</span>
+          <span id="thresholdVal" style="font-weight: 800; color: #FF5500;">0.50</span>
+          <input type="range" id="thresholdSlider" min="0.10" max="0.90" step="0.05" value="0.50" style="width: 75px; accent-color: #FF5500; cursor: pointer;">
+        </div>
+      </div>
+    </div>
+
+    <!-- MAIN DEV WORKBENCH -->
+    <main class="dev-container">
+
+      <!-- SECTION 1: LIVE INFERENCE TESTER & RESPONSE INSPECTOR -->
+      <div class="dev-panel">
+        <div class="section-header">
+          <div class="section-title">
+            <i class="fa-solid fa-vial"></i>
+            <span>Interactive Model Tester</span>
+          </div>
+          <span class="mono" style="font-size: 11px; color: #7B8290;">Accepts Stereo / Mono WAV audio</span>
+        </div>
+
+        <div class="dev-grid-2">
+          
+          <!-- Left: Input & Engine Controls -->
+          <div>
+            <!-- Dropzone -->
+            <div class="dev-dropzone" id="dropzone">
+              <i class="fa-solid fa-cloud-arrow-up" style="font-size: 24px; color: #FF5500;"></i>
+              <div>
+                <div id="fileNameDisplay" style="font-size: 12px; font-weight: 700; color: #111317;">Select or Drop Audio File (.WAV)</div>
+                <div id="fileSubDisplay" class="mono" style="font-size: 10px; color: #7B8290;">Supports 8kHz & 16kHz audio</div>
+              </div>
+              <input type="file" id="audioFileInput" accept="audio/*" style="display: none;">
+            </div>
+
+            <!-- Audio Player -->
+            <div style="margin-bottom: 12px;">
+              <audio id="audioPlayer" controls style="width: 100%; height: 36px; display: none;"></audio>
+            </div>
+
+            <!-- Engine Selection Radio -->
+            <div class="engine-toggle-row">
+              <label class="engine-toggle-label">
+                <div class="engine-toggle-title">
+                  <span>Multimodal</span>
+                  <input type="radio" name="engineSelect" value="multimodal" checked style="accent-color: #FF5500;">
+                </div>
+                <span class="engine-toggle-sub">4-Pillar SOTA (~180ms)</span>
+              </label>
+
+              <label class="engine-toggle-label">
+                <div class="engine-toggle-title">
+                  <span>Baseline</span>
+                  <input type="radio" name="engineSelect" value="baseline" style="accent-color: #FF5500;">
+                </div>
+                <span class="engine-toggle-sub">Fast DSP/CNN (~30ms)</span>
+              </label>
+
+              <label class="engine-toggle-label">
+                <div class="engine-toggle-title">
+                  <span>Dual Compare</span>
+                  <input type="radio" name="engineSelect" value="compare" style="accent-color: #FF5500;">
+                </div>
+                <span class="engine-toggle-sub">Consensus Agreement</span>
+              </label>
+            </div>
+
+            <div style="display: flex; gap: 8px;">
+              <button id="runInferenceBtn" class="btn-action" style="flex: 1; justify-content: center;">
+                <i class="fa-solid fa-bolt"></i>
+                <span>Run Biometric Detection</span>
+              </button>
+              <button id="loadPresetSampleBtn" class="btn-secondary" title="Load synthetic test tone">
+                <i class="fa-solid fa-wand-magic-sparkles"></i>
+                <span>Load Preset Tone</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Right: Terminal Response Inspector -->
+          <div class="dev-terminal">
+            <div class="terminal-header">
+              <div class="terminal-dots">
+                <span class="dot red"></span>
+                <span class="dot yellow"></span>
+                <span class="dot green"></span>
+              </div>
+              <span class="mono" id="termEndpointTag" style="font-size: 11px; color: #8C93A0; text-transform: uppercase;">POST /detect</span>
+            </div>
+            <pre class="terminal-body" id="termBody"><span class="json-str">"Ready for inference"</span>: {
+  <span class="json-key">"status"</span>: <span class="json-str">"idle"</span>,
+  <span class="json-key">"instructions"</span>: <span class="json-str">"Upload a WAV file and click 'Run Biometric Detection'"</span>
+}</pre>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- SECTION 2: LIVE BENCHMARK & DIAGNOSTIC RUNNER -->
+      <div class="dev-panel">
+        <div class="section-header">
+          <div class="section-title">
+            <i class="fa-solid fa-gauge-high"></i>
+            <span>Live Benchmark & Performance Diagnostics</span>
+          </div>
+          <div style="display: flex; align-items: center; gap: 8px;">
+            <div id="datasetBadge" class="mono" style="font-size: 11px; padding: 4px 10px; border-radius: 4px; border: 1px solid #C8CACF; background: #FFFFFF; color: #555B67;">
+              Checking dataset...
+            </div>
+            <button id="syncDatasetBtn" class="btn-secondary" style="background: #FFFFFF; font-weight: 700;" title="Download & extract validation telephony dataset">
+              <i class="fa-solid fa-cloud-arrow-down text-[#FF5500]"></i>
+              <span id="syncDatasetLabel">Sync Val Dataset</span>
+            </button>
+            <select id="benchmarkLimitSelect" style="font-family: 'Space Grotesk', sans-serif; font-size: 11.5px; font-weight: 600; padding: 7px 10px; border-radius: 4px; border: 1px solid #C8CACF; background: #FFFFFF; color: #111317; cursor: pointer;">
+              <option value="10">10 Calls (Fast)</option>
+              <option value="25">25 Calls (~25s)</option>
+              <option value="0" selected>All 71 Calls (Full Split)</option>
+            </select>
+            <button id="runBenchmarkBatchBtn" class="btn-action">
+              <i class="fa-solid fa-play"></i>
+              <span>Run Benchmark Batch</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Separate KPI Metric Cards for Each Engine -->
+        <div class="kpi-grid-4">
+          <div class="kpi-card">
+            <span class="kpi-label">Engine 1 (Baseline) Accuracy</span>
+            <span class="kpi-value green" id="e1AccuracyVal">-- %</span>
+          </div>
+          <div class="kpi-card">
+            <span class="kpi-label">Engine 1 (Baseline) Latency</span>
+            <span class="kpi-value" id="e1LatencyVal">-- ms</span>
+          </div>
+          <div class="kpi-card">
+            <span class="kpi-label">Engine 2 (Multimodal) Accuracy</span>
+            <span class="kpi-value green" id="e2AccuracyVal">-- %</span>
+          </div>
+          <div class="kpi-card">
+            <span class="kpi-label">Engine 2 (Multimodal) Latency</span>
+            <span class="kpi-value accent" id="e2LatencyVal">-- ms</span>
+          </div>
+        </div>
+
+        <!-- Benchmark Results Table -->
+        <table class="bm-table">
+          <thead>
+            <tr>
+              <th>Test Sample ID</th>
+              <th>Ground Truth</th>
+              <th>Engine 1 Baseline</th>
+              <th>Engine 1 Status</th>
+              <th>Engine 2 Multimodal</th>
+              <th>Engine 2 Status</th>
+              <th>Consensus</th>
+            </tr>
+          </thead>
+          <tbody id="bmTableBody">
+            <tr>
+              <td colspan="7" style="text-align: center; color: #7B8290; padding: 18px; font-family: 'Space Grotesk', sans-serif;">
+                Click <strong>"Run Benchmark Batch"</strong> to evaluate test audios against both Baseline and Multimodal engines.
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- SECTION 3: RETRAINING & MODEL CALIBRATION -->
+      <div class="dev-panel">
+        <div class="section-header">
+          <div class="section-title">
+            <i class="fa-solid fa-microchip"></i>
+            <span>Model Retraining & Dynamic Calibration</span>
+          </div>
+        </div>
+
+        <div class="dev-grid-2">
+          <div style="display: flex; flex-direction: column; gap: 8px;">
+            <p style="font-size: 13px; color: #555B67; line-height: 1.5;">
+              Re-fits Engine 1 (HistGradientBoosting meta-classifier) on <code>Data/manifest.csv</code>, optimizes isotonic calibration, and updates runtime decision weights without restarting the container.
+            </p>
+            <div>
+              <button id="retrainBtn" class="btn-secondary" style="background-color: #FFFFFF; font-weight: 700;">
+                <i class="fa-solid fa-arrows-rotate text-[#FF5500]"></i>
+                <span>Retrain Baseline Model</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="dev-terminal" style="min-height: 100px;">
+            <div class="terminal-header">
+              <span class="mono" style="font-size: 10px; color: #8C93A0; text-transform: uppercase;">System Activity Log</span>
+            </div>
+            <pre class="terminal-body" id="systemLogs" style="min-height: 80px; font-size: 11px;">[Ready] Dual-engine gateway listening on http://0.0.0.0:8000</pre>
+          </div>
+        </div>
+      </div>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer style="padding: 18px 32px; border-top: 1px solid #C8CACF; background-color: #ECEEF2; display: flex; align-items: center; justify-content: space-between; font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #555B67;">
+      <span>&copy; 2026 mergeConflict Team • Altur Voice AI Defense Gateway</span>
+      <span>API v2.0.0 • Single Container Mode</span>
+    </footer>
+
+  </div>
+
+  <script>
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 3500);
+    }
+
+    // Threshold Slider
+    const thresholdSlider = document.getElementById('thresholdSlider');
+    const thresholdVal = document.getElementById('thresholdVal');
+    thresholdSlider.addEventListener('input', async (e) => {
+      const val = parseFloat(e.target.value);
+      thresholdVal.textContent = val.toFixed(2);
+      try {
+        await fetch(`/api/threshold/update?val=${val}`, { method: 'POST' });
+        showToast(`Calibrated threshold updated to ${val.toFixed(2)}`);
+      } catch (err) {}
+    });
+
+    // File Upload & Drag-Drop
+    let selectedBase64 = null;
+    const dropzone = document.getElementById('dropzone');
+    const fileInput = document.getElementById('audioFileInput');
+    const fileNameDisplay = document.getElementById('fileNameDisplay');
+    const fileSubDisplay = document.getElementById('fileSubDisplay');
+    const audioPlayer = document.getElementById('audioPlayer');
+    const termBody = document.getElementById('termBody');
+    const termEndpointTag = document.getElementById('termEndpointTag');
+    const runInferenceBtn = document.getElementById('runInferenceBtn');
+
+    dropzone.addEventListener('click', () => fileInput.click());
+    fileInput.addEventListener('change', (e) => handleFile(e.target.files[0]));
+    dropzone.addEventListener('dragover', (e) => { e.preventDefault(); dropzone.classList.add('drag-over'); });
+    dropzone.addEventListener('dragleave', () => dropzone.classList.remove('drag-over'));
+    dropzone.addEventListener('drop', (e) => {
+      e.preventDefault();
+      dropzone.classList.remove('drag-over');
+      if (e.dataTransfer.files.length > 0) handleFile(e.dataTransfer.files[0]);
+    });
+
+    function handleFile(file) {
+      if (!file) return;
+      fileNameDisplay.textContent = file.name;
+      fileSubDisplay.textContent = `${(file.size / 1024).toFixed(1)} KB • Ready for analysis`;
+
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        const dataUrl = e.target.result;
+        audioPlayer.src = dataUrl;
+        audioPlayer.style.display = 'block';
+        selectedBase64 = dataUrl.split(',')[1];
+      };
+      reader.readAsDataURL(file);
+    }
+
+    // Preset Tone Generator
+    document.getElementById('loadPresetSampleBtn').addEventListener('click', () => {
+      const sampleRate = 8000;
+      const duration = 3.0;
+      const numSamples = sampleRate * duration;
+      const buffer = new Float32Array(numSamples);
+
+      for (let i = 0; i < numSamples; i++) {
+        const t = i / sampleRate;
+        buffer[i] = 0.3 * Math.sin(2 * Math.PI * 240 * t) + 0.15 * Math.sin(2 * Math.PI * 480 * t);
+      }
+
+      // Encode WAV
+      const wavBytes = encodeWavMono(buffer, sampleRate);
+      selectedBase64 = btoa(String.fromCharCode.apply(null, new Uint8Array(wavBytes)));
+      fileNameDisplay.textContent = "preset_synthetic_carrier.wav";
+      fileSubDisplay.textContent = "Synthesized Test Tone (3.0s)";
+      audioPlayer.src = `data:audio/wav;base64,${selectedBase64}`;
+      audioPlayer.style.display = 'block';
+      showToast("Loaded synthetic carrier preset tone");
+    });
+
+    function encodeWavMono(samples, sampleRate) {
+      const buffer = new ArrayBuffer(44 + samples.length * 2);
+      const view = new DataView(buffer);
+      const writeStr = (offset, str) => { for (let i = 0; i < str.length; i++) view.setUint8(offset + i, str.charCodeAt(i)); };
+
+      writeStr(0, 'RIFF'); view.setUint32(4, 36 + samples.length * 2, true); writeStr(8, 'WAVE');
+      writeStr(12, 'fmt '); view.setUint32(16, 16, true); view.setUint16(20, 1, true); view.setUint16(22, 1, true);
+      view.setUint32(24, sampleRate, true); view.setUint32(28, sampleRate * 2, true); view.setUint16(32, 2, true); view.setUint16(34, 16, true);
+      writeStr(36, 'data'); view.setUint32(40, samples.length * 2, true);
+
+      let offset = 44;
+      for (let i = 0; i < samples.length; i++, offset += 2) {
+        const s = Math.max(-1, Math.min(1, samples[i]));
+        view.setInt16(offset, s < 0 ? s * 0x8000 : s * 0x7FFF, true);
+      }
+      return buffer;
+    }
+
+    // Run Inference
+    runInferenceBtn.addEventListener('click', async () => {
+      if (!selectedBase64) {
+        alert("Please upload or select an audio file first.");
+        return;
+      }
+
+      const engine = document.querySelector('input[name="engineSelect"]:checked').value;
+      let endpoint = "/detect";
+      if (engine === "baseline") endpoint = "/detect/baseline";
+      else if (engine === "multimodal") endpoint = "/detect/multimodal";
+      else if (engine === "compare") endpoint = "/api/detect/compare";
+
+      termEndpointTag.textContent = `POST ${endpoint} (RUNNING)`;
+      termBody.innerHTML = `<span class="json-str">"Processing biometric extraction..."</span>`;
+      runInferenceBtn.disabled = true;
+
+      const t0 = performance.now();
+      try {
+        const res = await fetch(endpoint, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ audio: selectedBase64, call_id: fileNameDisplay.textContent })
+        });
+        const data = await res.json();
+        const latency = (performance.now() - t0).toFixed(1);
+
+        termEndpointTag.textContent = `POST ${endpoint} (${latency}ms)`;
+        termBody.innerHTML = formatJson(data);
+
+        const isSyn = data.is_synthetic !== undefined ? data.is_synthetic : (data.consensus && data.consensus.recommended_verdict.includes("SYNTHETIC"));
+        showToast(`Inference: ${isSyn ? 'SYNTHETIC SPOOF' : 'AUTHENTIC HUMAN'} in ${latency}ms`);
+      } catch (err) {
+        termEndpointTag.textContent = `POST ${endpoint} (ERROR)`;
+        termBody.innerHTML = `{\n  <span class="json-key">"error"</span>: <span class="json-str">"${err.message}"</span>\n}`;
+      } finally {
+        runInferenceBtn.disabled = false;
+      }
+    });
+
+    function formatJson(obj) {
+      const json = JSON.stringify(obj, null, 2);
+      return json.replace(/("(\\u[a-zA-Z0-9]{4}|\\[^u]|[^\\"])*"(\s*:)?|\b(true|false|null)\b|-?\d+(?:\.\d*)?(?:[eE][+\\-]?\d+)?)/g, function (match) {
+        let cls = 'json-num';
+        if (/^"/.test(match)) {
+          if (/:$/.test(match)) {
+            cls = 'json-key';
+          } else {
+            cls = 'json-str';
+          }
+        } else if (/true|false/.test(match)) {
+          cls = 'json-bool';
+        }
+        return '<span class="' + cls + '">' + match + '</span>';
+      });
+    }
+
+    // Dataset Management & Benchmark
+    const datasetBadge = document.getElementById('datasetBadge');
+    const syncDatasetBtn = document.getElementById('syncDatasetBtn');
+    const syncDatasetLabel = document.getElementById('syncDatasetLabel');
+
+    async function checkDatasetStatus() {
+      try {
+        const res = await fetch('/api/benchmarks/dataset/status');
+        const data = await res.json();
+        if (data.installed && data.total_samples > 0) {
+          datasetBadge.innerHTML = `<span style="color: #00B377; font-weight: 700;">● Real Val Corpus (${data.wav_files_found || data.total_samples} Audios)</span>`;
+          syncDatasetLabel.textContent = "Re-Sync Val Dataset";
+        } else {
+          datasetBadge.innerHTML = `<span style="color: #FF5500; font-weight: 700;">○ Fallback Synthetic Mode</span>`;
+          syncDatasetLabel.textContent = "Download Val Dataset";
+        }
+      } catch (err) {
+        datasetBadge.innerHTML = `<span style="color: #7B8290;">○ Status Unavailable</span>`;
+      }
+    }
+    checkDatasetStatus();
+
+    syncDatasetBtn.addEventListener('click', async () => {
+      syncDatasetBtn.disabled = true;
+      syncDatasetLabel.textContent = "Downloading & Unpacking...";
+      showToast("Downloading validation audio corpus (~127MB) from GitHub Releases...");
+      try {
+        await fetch('/api/benchmarks/dataset/download', { method: 'POST' });
+        // Poll for completion
+        let checks = 0;
+        const interval = setInterval(async () => {
+          checks++;
+          const res = await fetch('/api/benchmarks/dataset/status');
+          const data = await res.json();
+          if (data.installed && data.wav_files_found > 0) {
+            clearInterval(interval);
+            syncDatasetBtn.disabled = false;
+            checkDatasetStatus();
+            showToast(`Dataset ready! ${data.wav_files_found} validation audios extracted.`);
+          } else if (checks > 30) {
+            clearInterval(interval);
+            syncDatasetBtn.disabled = false;
+            checkDatasetStatus();
+          }
+        }, 3000);
+      } catch (err) {
+        syncDatasetBtn.disabled = false;
+        alert("Failed to trigger dataset download: " + err.message);
+      }
+    });
+
+    // Live Benchmark Runner
+    const runBenchmarkBatchBtn = document.getElementById('runBenchmarkBatchBtn');
+    runBenchmarkBatchBtn.addEventListener('click', async () => {
+      runBenchmarkBatchBtn.disabled = true;
+      runBenchmarkBatchBtn.innerHTML = `<i class="fa-solid fa-spinner fa-spin"></i><span>Running Benchmark...</span>`;
+
+      const limitVal = document.getElementById('benchmarkLimitSelect').value;
+      const limitParam = parseInt(limitVal, 10);
+      try {
+        const res = await fetch(`/api/benchmarks/run?limit=${limitParam}`, { method: 'POST' });
+        if (!res.ok) {
+          const errText = await res.text();
+          throw new Error(`Server returned status ${res.status}: ${errText}`);
+        }
+        const data = await res.json();
+        if (!data || !data.samples_evaluated) {
+          throw new Error("Invalid response format from benchmark endpoint.");
+        }
+
+        if (data.engine_1_baseline) {
+          document.getElementById('e1AccuracyVal').textContent = `${(data.engine_1_baseline.accuracy * 100).toFixed(1)} %`;
+          document.getElementById('e1LatencyVal').textContent = `${data.engine_1_baseline.avg_latency_ms.toFixed(1)} ms`;
+        }
+        if (data.engine_2_multimodal) {
+          document.getElementById('e2AccuracyVal').textContent = `${(data.engine_2_multimodal.accuracy * 100).toFixed(1)} %`;
+          document.getElementById('e2LatencyVal').textContent = `${data.engine_2_multimodal.avg_latency_ms.toFixed(1)} ms`;
+        }
+
+        const tbody = document.getElementById('bmTableBody');
+        tbody.innerHTML = '';
+        data.samples_evaluated.forEach(s => {
+          const row = document.createElement('tr');
+          const isSynth = s.ground_truth === 'SYNTHETIC';
+          const e1 = s.baseline || {};
+          const e2 = s.multimodal || {};
+          row.innerHTML = `
+            <td style="font-weight: 700;">${s.test_id}</td>
+            <td><span class="badge-pill ${isSynth ? 'badge-synth' : 'badge-real'}">${s.ground_truth}</span></td>
+            <td><strong>${e1.verdict || '-'}</strong> <span style="color: #7B8290; font-size: 10px;">(${e1.latency_ms || 0}ms)</span></td>
+            <td><span class="badge-pill ${e1.correct ? 'badge-pass' : 'badge-fail'}">${e1.correct ? '✔ PASS' : '✘ FAIL'}</span></td>
+            <td><strong>${e2.verdict || '-'}</strong> <span style="color: #7B8290; font-size: 10px;">(${e2.latency_ms || 0}ms)</span></td>
+            <td><span class="badge-pill ${e2.correct ? 'badge-pass' : 'badge-fail'}">${e2.correct ? '✔ PASS' : '✘ FAIL'}</span></td>
+            <td><span class="badge-pill ${s.consensus === 'SYNTHETIC' ? 'badge-synth' : 'badge-real'}">${s.consensus || '-'}</span></td>
+          `;
+          tbody.appendChild(row);
+        });
+        showToast(`Benchmark completed on ${data.samples_evaluated.length} test samples (${data.dataset_source})`);
+      } catch (err) {
+        showToast(err.message, false);
+        alert("Benchmark error: " + err.message);
+      } finally {
+        runBenchmarkBatchBtn.disabled = false;
+        runBenchmarkBatchBtn.innerHTML = `<i class="fa-solid fa-play"></i><span>Run Benchmark Batch</span>`;
+      }
+    });
+
+    // Dev Tools Status & Installer
+    const installDevBtn = document.getElementById('installDevBtn');
+    const devToolsLabel = document.getElementById('devToolsLabel');
+    async function checkDevStatus() {
+      try {
+        const res = await fetch('/api/dev/status');
+        const data = await res.json();
+        if (data.installed) {
+          devToolsLabel.textContent = "Dev Tools: Installed ✔";
+          installDevBtn.style.color = "#00B377";
+        } else if (data.status === "installing") {
+          devToolsLabel.textContent = "Installing Dev Tools...";
+          setTimeout(checkDevStatus, 3000);
+        } else {
+          devToolsLabel.textContent = "Install Dev Tools";
+        }
+      } catch (err) {}
+    }
+    checkDevStatus();
+
+    installDevBtn.addEventListener('click', async () => {
+      devToolsLabel.textContent = "Installing in Background...";
+      showToast("Installing pytest, jupyter, matplotlib, seaborn in container...");
+      try {
+        await fetch('/api/dev/install', { method: 'POST' });
+        setTimeout(checkDevStatus, 4000);
+      } catch (err) {}
+    });
+
+    // Jupyter Launcher
+    const launchJupyterBtn = document.getElementById('launchJupyterBtn');
+    launchJupyterBtn.addEventListener('click', async () => {
+      showToast("Launching Jupyter Notebook server on port 8888...");
+      try {
+        const res = await fetch('/api/jupyter/launch', { method: 'POST' });
+        const data = await res.json();
+        if (res.status === 200) {
+          showToast("Jupyter is running on http://localhost:8888");
+          window.open('http://localhost:8888/tree', '_blank');
+        } else {
+          alert(data.detail);
+        }
+      } catch (err) {
+        alert("Jupyter error: " + err.message);
+      }
+    });
+
+    // Retrain Baseline
+    const retrainBtn = document.getElementById('retrainBtn');
+    retrainBtn.addEventListener('click', async () => {
+      retrainBtn.disabled = true;
+      showToast("Triggered Baseline HistGBM retraining on manifest.csv");
+      try {
+        const res = await fetch('/api/train/baseline', { method: 'POST' });
+        const data = await res.json();
+        document.getElementById('systemLogs').textContent += `\n[Retrain] ${data.message}`;
+      } catch (err) {
+        alert("Retrain error: " + err.message);
+      } finally {
+        retrainBtn.disabled = false;
+      }
+    });
+  </script>
+</body>
+</html>

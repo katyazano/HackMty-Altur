@@ -6,7 +6,8 @@ import requests
 REPO_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 URL = "http://127.0.0.1:8000/detect"
-df = pd.read_csv(os.path.join(REPO_ROOT, "manifest.csv"))
+manifest_path = os.path.join(REPO_ROOT, "Data", "manifest.csv")
+df = pd.read_csv(manifest_path)
 
 # Toma 5 humanos y 5 sintéticos del val
 val = df[df["split"] == "val"]
@@ -19,9 +20,20 @@ ok, total = 0, 0
 print(f"{'archivo':<20} {'real':<12} {'predicho':<12} {'confidence':<12} {'resultado'}")
 print("-" * 70)
 
+audio_dirs = [
+    os.path.join(REPO_ROOT, "Data", "benchmark_audios"),
+    os.path.join(REPO_ROOT, "audio"),
+    "/home/kontgo/Downloads/altur-challenge-audio/audio"
+]
+
 for _, row in muestra.iterrows():
-    path = os.path.join(REPO_ROOT, "audio", row["anon_id"] + ".wav")
-    if not os.path.exists(path):
+    path = None
+    for ad in audio_dirs:
+        candidate = os.path.join(ad, row["anon_id"] + ".wav")
+        if os.path.exists(candidate):
+            path = candidate
+            break
+    if not path:
         continue
 
     b64 = base64.b64encode(open(path, "rb").read()).decode()

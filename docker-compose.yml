@@ -6,6 +6,7 @@ services:
     container_name: hackmty-api
     ports:
       - "8000:8000"
+      - "8888:8888"
     environment:
       - APP_NAME=mergeConflict
       - APP_ENV=production

@@ -12,7 +12,8 @@ env
 .idea
 *.log
 tmp
-Data
+Data/*
+!Data/manifest.csv
 val_scores.npz
 features_cache_v2.npz
 neural_cache.npz
