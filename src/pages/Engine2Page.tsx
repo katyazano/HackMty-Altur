@@ -142,58 +142,6 @@ export const Engine2Page: React.FC<Engine2PageProps> = ({ onNavigate }) => {
         </div>
       </div>
 
-      {/* Cross-Domain Benchmark Results */}
-      <div className="docs-section">
-        <div className="docs-section-title">
-          <i className="fa-solid fa-trophy text-[#FF5500]"></i>
-          <span>Cross-Domain Benchmark Evaluation</span>
-        </div>
-
-        <div className="tech-table-container">
-          <table className="tech-table">
-            <thead>
-              <tr>
-                <th>Evaluation Benchmark</th>
-                <th>Model Architecture</th>
-                <th>Equal Error Rate (EER)</th>
-                <th>Min t-DCF</th>
-                <th>Status</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><strong>In-the-Wild Spanish Telephony (HackMTY)</strong></td>
-                <td><strong>Engine 2: 4-Pillar Quad Fusion</strong></td>
-                <td><span className="badge-pill badge-green">1.82% EER</span></td>
-                <td><span className="badge-pill badge-green">0.054</span></td>
-                <td><span className="badge-pill badge-orange">SOTA Production</span></td>
-              </tr>
-              <tr>
-                <td>ASVspoof 2019 Logical Access (LA)</td>
-                <td>AASIST + RawNet2 + DSP</td>
-                <td><span className="badge-pill badge-blue">1.94% EER</span></td>
-                <td><span className="badge-pill badge-blue">0.061</span></td>
-                <td>Evaluated</td>
-              </tr>
-              <tr>
-                <td>ASVspoof 2021 Deepfake (DF) Track</td>
-                <td>4-Pillar XGBoost Ensemble</td>
-                <td><span className="badge-pill badge-blue">3.41% EER</span></td>
-                <td><span className="badge-pill badge-blue">0.112</span></td>
-                <td>Evaluated</td>
-              </tr>
-              <tr>
-                <td>Standard Acoustic Baseline (Engine 1)</td>
-                <td>SpoofCNN + HistGBM</td>
-                <td><span className="badge-pill badge-orange">4.88% EER</span></td>
-                <td><span className="badge-pill badge-orange">0.148</span></td>
-                <td>Frontline Fast (~700ms)</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-
       {/* Technical Specifications Table */}
       <div className="docs-section">
         <div className="docs-section-title">
