@@ -100,7 +100,7 @@ All endpoints adhere strictly to the HackMTY competition evaluation contract.
 
 ---
 
-## 📊 Live Validation Performance (Telephony Corpus)
+## 📊 Live Validation Performance & Model Evaluation
 
 Evaluated on the **HackMTY 71-call Validation Split** (Narrowband 8kHz Stereo Telephony):
 
@@ -108,6 +108,26 @@ Evaluated on the **HackMTY 71-call Validation Split** (Narrowband 8kHz Stereo Te
 | :--- | :---: | :---: | :---: | :--- |
 | **Engine 1 (Baseline)** | **100.0%** | ~629 ms / full call | 64 dims | Ultra-fast spectral envelope & glottal pulse tracking |
 | **Engine 2 (4-Pillar SOTA)** | **100.0%** | ~1079 ms / full call | 296 dims | Multi-representation graph attention & raw waveform SincNet |
+
+### 📈 Empirical Model Evaluation & Justification (Jupyter Notebook Analysis)
+
+Detailed analysis from [`model_evaluation_and_justification.ipynb`](model_evaluation_and_justification.ipynb):
+
+#### 1. FAR vs. FRR Threshold Calibration Curve
+![FAR vs. FRR Threshold Calibration Curve](static/img/eer_calibration_curve.png)
+
+- **Interpretation**: 
+  - Tracks the trade-off between **False Alarm Rate (FAR / False Positives)** and **False Rejection Rate (FRR / False Negatives)** across varying decision thresholds $\tau \in [0.0, 1.0]$.
+  - **Optimal Equal Error Rate (EER)**: Achieves an outstanding **EER of 0.74%** at the optimal decision threshold **$\tau^* = 0.817$**.
+  - **Operational Security**: At $\tau^* = 0.817$, the classifier demonstrates near-zero error convergence, providing strong operational resilience against adversarial zero-shot voice synthesis while keeping false rejections of genuine human callers below 1%.
+
+#### 2. Receiver Operating Characteristic (ROC) Curve
+![Receiver Operating Characteristic (ROC) Curve](static/img/roc_curve.png)
+
+- **Interpretation**:
+  - Plots the True Positive Rate (Sensitivity / Recall) against the False Positive Rate (1 - Specificity).
+  - **Area Under Curve (AUC)**: The Calibrated Gradient Boosted Model (GBM) achieves an **$\text{AUC} = 0.9990$**, vastly outperforming random guessing ($\text{AUC} = 0.5000$).
+  - **Operating Point**: The operating point at $\tau^* = 0.817$ sits tightly in the top-left corner (99%+ sensitivity with near 0% false alarm rate), proving near-perfect discriminative capability on complex telephony deepfakes.
 
 ---
 
@@ -133,5 +153,6 @@ uvicorn app:app --reload --host 0.0.0.0 --port 8000
 
 ---
 
-## 👥 Team mergeConflict
+## 👥 Team merge-conflict
 Engineered for the **Altur HackMTY Voice AI Challenge 2026**.
+
