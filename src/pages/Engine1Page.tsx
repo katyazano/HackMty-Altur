@@ -8,12 +8,12 @@ const ENGINE_1_CONFIG: EngineConfig = {
   titleTag: 'Engine 1 • Real-Time Baseline',
   title: 'Ultra-Fast Baseline (64 dimensions)',
   description:
-    'Ultra-low latency (~30ms CPU) frontline voice biometrics combining acoustic DSP physics with micro-segment convolutional scoring.',
+    'Frontline voice biometrics (~700ms CPU) combining acoustic DSP physics with micro-segment convolutional scoring.',
   endpoint: '/detect/baseline',
   chips: [
     { icon: 'fa-solid fa-microchip', label: 'SpoofCNN (AudioCNN)', highlight: true },
     { icon: 'fa-solid fa-tree', label: 'HistGradientBoosting' },
-    { icon: 'fa-solid fa-bolt', label: '~32ms Latency', highlight: true },
+    { icon: 'fa-solid fa-bolt', label: '~700ms Latency', highlight: true },
   ],
   exampleResponse: {
     is_synthetic: false,
@@ -36,7 +36,7 @@ export const Engine1Page: React.FC<Engine1PageProps> = ({ onNavigate }) => {
         <div className="docs-tag">Frontline Telephony Voice Biometrics</div>
         <h1 className="docs-title">Engine 1: Ultra-Fast Baseline</h1>
         <p className="docs-desc">
-          Engine 1 is engineered specifically for frontline interactive telephony systems (IVRs, call centers, VoIP gateways) where every millisecond counts. It delivers deterministic, calibrated anti-spoofing verdicts within a strict <strong>&lt;50ms response budget</strong> on standard CPU instances without GPU dependencies.
+          Engine 1 is engineered specifically for frontline interactive telephony systems (IVRs, call centers, VoIP gateways) where rapid response counts. It delivers deterministic, calibrated anti-spoofing verdicts within ~<strong>700ms total execution time</strong> on standard CPU instances without GPU dependencies.
         </p>
       </div>
 
@@ -105,7 +105,7 @@ export const Engine1Page: React.FC<Engine1PageProps> = ({ onNavigate }) => {
                 <span>Ensemble Fusion & Calibrated Confidence</span>
               </div>
               <div className="pipeline-step-desc">
-                Fuses both branch outputs with a weighted ensemble and Platt scaling calibrator, emitting the standardized HackMTY payload <code>{`{"is_synthetic": bool, "confidence": float}`}</code> in ~32ms total CPU runtime.
+                Fuses both branch outputs with a weighted ensemble and Platt scaling calibrator, emitting the standardized HackMTY payload <code>{`{"is_synthetic": bool, "confidence": float}`}</code> in ~700ms total CPU runtime.
               </div>
             </div>
           </div>
@@ -175,8 +175,8 @@ export const Engine1Page: React.FC<Engine1PageProps> = ({ onNavigate }) => {
               </tr>
               <tr>
                 <td>Average Latency</td>
-                <td><span className="badge-pill badge-green"><i className="fa-solid fa-bolt"></i> ~32 ms (CPU)</span></td>
-                <td>Measured on standard 2-vCPU virtual machine</td>
+                <td><span className="badge-pill badge-green"><i className="fa-solid fa-bolt"></i> ~700 ms (CPU)</span></td>
+                <td>Measured end-to-end including DSP extraction and inference</td>
               </tr>
               <tr>
                 <td>Memory Footprint</td>

@@ -10,12 +10,12 @@ const ENGINE_1_CONFIG: EngineConfig = {
   titleTag: 'Engine 1 • Real-Time Baseline',
   title: 'Ultra-Fast Baseline (64 dimensions)',
   description:
-    'Ultra-low latency (~30ms CPU) frontline voice biometrics combining acoustic DSP physics with micro-segment convolutional scoring.',
+    'Frontline voice biometrics (~700ms CPU) combining acoustic DSP physics with micro-segment convolutional scoring.',
   endpoint: '/detect/baseline',
   chips: [
     { icon: 'fa-solid fa-microchip', label: 'SpoofCNN (AudioCNN)', highlight: true },
     { icon: 'fa-solid fa-tree', label: 'HistGradientBoosting' },
-    { icon: 'fa-solid fa-bolt', label: '~32ms Latency', highlight: true },
+    { icon: 'fa-solid fa-bolt', label: '~700ms Latency', highlight: true },
   ],
   exampleResponse: {
     is_synthetic: false,
@@ -30,13 +30,14 @@ const ENGINE_2_CONFIG: EngineConfig = {
   titleTag: 'Engine 2 • Multimodal Deep SOTA',
   title: '4-Pillar Multimodal (296 dimensions)',
   description:
-    'Deep representation learning uniting Graph Neural Networks, SincNet raw waveforms, acoustic physics, and Spanish conversational semantics.',
+    'Deep representation learning (~1300ms) uniting Graph Neural Networks, SincNet raw waveforms, acoustic physics, and Spanish conversational semantics.',
   endpoint: '/detect/multimodal',
   chips: [
     { icon: 'fa-solid fa-circle-nodes', label: 'AASIST (GNN)', highlight: true },
     { icon: 'fa-solid fa-wave-square', label: 'RawNet2' },
     { icon: 'fa-solid fa-microphone-lines', label: '136-dim DSP' },
     { icon: 'fa-solid fa-comments', label: 'Whisper NLP' },
+    { icon: 'fa-solid fa-bolt', label: '~1300ms Latency', highlight: true },
     { icon: 'fa-solid fa-brain', label: 'XGBoost Quad', highlight: true },
   ],
   exampleResponse: {

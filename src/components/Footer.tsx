@@ -34,7 +34,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
               onClick={(e) => handleNav('engine1', e)}
               className="footer-link"
             >
-              <span>Engine 1: Baseline (~30ms)</span>
+              <span>Engine 1: Baseline (~700ms)</span>
               <i className="fa-solid fa-arrow-right text-[9px] text-[#7B8290]"></i>
             </a>
             <a

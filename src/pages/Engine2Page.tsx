@@ -8,13 +8,14 @@ const ENGINE_2_CONFIG: EngineConfig = {
   titleTag: 'Engine 2 • Multimodal Deep SOTA',
   title: '4-Pillar Multimodal (296 dimensions)',
   description:
-    'Deep representation learning uniting Graph Neural Networks, SincNet raw waveforms, acoustic physics, and Spanish conversational semantics.',
+    'Deep representation learning (~1300ms) uniting Graph Neural Networks, SincNet raw waveforms, acoustic physics, and Spanish conversational semantics.',
   endpoint: '/detect/multimodal',
   chips: [
     { icon: 'fa-solid fa-circle-nodes', label: 'AASIST (GNN)', highlight: true },
     { icon: 'fa-solid fa-wave-square', label: 'RawNet2' },
     { icon: 'fa-solid fa-microphone-lines', label: '136-dim DSP' },
     { icon: 'fa-solid fa-comments', label: 'Whisper NLP' },
+    { icon: 'fa-solid fa-bolt', label: '~1300ms Latency', highlight: true },
     { icon: 'fa-solid fa-brain', label: 'XGBoost Quad', highlight: true },
   ],
   exampleResponse: {
@@ -186,7 +187,7 @@ export const Engine2Page: React.FC<Engine2PageProps> = ({ onNavigate }) => {
                 <td>SpoofCNN + HistGBM</td>
                 <td><span className="badge-pill badge-orange">4.88% EER</span></td>
                 <td><span className="badge-pill badge-orange">0.148</span></td>
-                <td>Frontline Fast (&lt;35ms)</td>
+                <td>Frontline Fast (~700ms)</td>
               </tr>
             </tbody>
           </table>
@@ -222,8 +223,8 @@ export const Engine2Page: React.FC<Engine2PageProps> = ({ onNavigate }) => {
               </tr>
               <tr>
                 <td>Average Latency</td>
-                <td><span className="badge-pill badge-orange">~120 - 180 ms (CPU)</span> / <span className="badge-pill badge-green">&lt;40 ms (GPU)</span></td>
-                <td>Deep neural graph propagation & acoustic physics extraction</td>
+                <td><span className="badge-pill badge-orange">~1300 ms (CPU)</span> / <span className="badge-pill badge-green">&lt;350 ms (GPU)</span></td>
+                <td>Deep neural graph propagation, SincNet filtering & Whisper NLP extraction</td>
               </tr>
               <tr>
                 <td>Target Spoof Attacks</td>
