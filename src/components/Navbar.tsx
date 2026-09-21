@@ -64,9 +64,7 @@ export const Navbar: React.FC<NavbarProps> = ({
           onClick={(e) => handleNav('home', e)}
           className="center-title"
           title="merge-conflict Home"
-        >
-          merge-<span>conflict</span>
-        </a>
+        >merge-<span>conflict</span></a>
       </div>
 
       {/* Right of mergeConflict: Engine 2 Square Cell */}
