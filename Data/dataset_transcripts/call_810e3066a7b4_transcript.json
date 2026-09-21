@@ -1,0 +1,203 @@
+{
+  "call_summary": {
+    "caller_duration_sec": 130.34,
+    "agent_duration_sec": 130.34,
+    "processing_time_sec": 11.742,
+    "real_time_factor": 0.045,
+    "total_dialogue_turns": 17
+  },
+  "anti_spoofing_verdict": {
+    "is_synthetic": true,
+    "confidence": 0.9798,
+    "decision_threshold": 0.35,
+    "risk_level": "CRITICAL"
+  },
+  "semantic_nlp_profile": {
+    "detected_language": "es-MX",
+    "total_words": 83,
+    "filler_density": 0.012,
+    "detected_human_fillers": [
+      "ah"
+    ],
+    "robotic_phrases_found": 0,
+    "lexical_diversity_ttr": 0.6265,
+    "semantic_authenticity_score": 0.53
+  },
+  "conversational_dynamics": {
+    "timeline_synchronized": true,
+    "turn_taking_latency": {
+      "mean_ms": -18812.5,
+      "median_ms": -16650.0,
+      "samples_evaluated": 4
+    },
+    "cross_talk_duration_sec": 97.0,
+    "note": "Turn-taking latency and cross-talk evaluated on synchronized timeline."
+  },
+  "transcript": [
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 0.0,
+      "end_time": 41.42,
+      "duration": 41.42,
+      "text": "Buen día, gracias por llamar a Banco Al Tour, le atiende Marina. Le comento que está llamada se graba para fines de calidad. En qué le puedo ayudar. Gracias por comentármelo. Me podría dar su nombre por favor y también tiene a la mano su número de referencia de cliente para poder apuera. Perfecto, me indicas su nombre por favor. Y cuando guste, diga, me su número de referencia, uno por uno. Gracias, Adriana. Me dictas su número de referencia por favor. Díjito por, de la anterriana, la escucho. Me puede dar su número de referencia por favor. Díjito por díjito.",
+      "avg_logprob": -0.344
+    },
+    {
+      "speaker": "Caller",
+      "channel": 0,
+      "start_time": 9.55,
+      "end_time": 14.35,
+      "duration": 4.8,
+      "text": "Buenas tardes. Sí, Mire, le hablo porque me aparezio un pago duplicado en mi estado de cuenta.",
+      "avg_logprob": -0.383,
+      "no_speech_prob": 0.426,
+      "compression_ratio": 1.641
+    },
+    {
+      "speaker": "Caller",
+      "channel": 0,
+      "start_time": 14.35,
+      "end_time": 44.54,
+      "duration": 30.19,
+      "text": "Fue uno de dos mil seiscientos pesos del día primero de septiembre. Sí, claro. Sí, Adriana. Sí, clar... Sí, es 44,",
+      "avg_logprob": -0.383,
+      "no_speech_prob": 0.426,
+      "compression_ratio": 1.641
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 41.62,
+      "end_time": 63.74,
+      "duration": 22.12,
+      "text": "Gracias, Adriana, entonces para confirmar su referencia es 44,7192, así es, perfecto, pero aunque la interrumpa Adriana,",
+      "avg_logprob": -0.399
+    },
+    {
+      "speaker": "Caller",
+      "channel": 0,
+      "start_time": 44.54,
+      "end_time": 75.42,
+      "duration": 30.88,
+      "text": "70, 81, 93, no es 93, al final. 81, 93. Ah, sí, fue por dos mil seiscientos pesos del primero de septiembre,",
+      "avg_logprob": -0.383,
+      "no_speech_prob": 0.426,
+      "compression_ratio": 1.641
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 63.74,
+      "end_time": 68.44,
+      "duration": 4.7,
+      "text": "usted mencionó que el pago fue por 2,600 pesos, el día 1 de septiembre, verdad?",
+      "avg_logprob": -0.399
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 68.44,
+      "end_time": 89.52,
+      "duration": 21.08,
+      "text": "Ya me queda claro, es continuo de por favor, ok, muy bien Adriana, me puede confirmar de nuevo su número de referencia completo por favor, así lo dejo bien registrado.",
+      "avg_logprob": -0.399
+    },
+    {
+      "speaker": "Caller",
+      "channel": 0,
+      "start_time": 75.42,
+      "end_time": 92.47,
+      "duration": 17.05,
+      "text": "pero me lo cobraron doble. Me aparece dos veces en el estado de cuenta.",
+      "avg_logprob": -0.58,
+      "no_speech_prob": 0.221,
+      "compression_ratio": 1.099
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 89.52,
+      "end_time": 102.55,
+      "duration": 13.03,
+      "text": "Gracias Adriana, entonces, su referencia es 44, 781, 93.",
+      "avg_logprob": -0.361
+    },
+    {
+      "speaker": "Caller",
+      "channel": 0,
+      "start_time": 92.47,
+      "end_time": 95.51,
+      "duration": 3.04,
+      "text": "Si 44, se tenta o 81, 93.",
+      "avg_logprob": -0.58,
+      "no_speech_prob": 0.221,
+      "compression_ratio": 1.099
+    },
+    {
+      "speaker": "Caller",
+      "channel": 0,
+      "start_time": 95.51,
+      "end_time": 106.75,
+      "duration": 11.24,
+      "text": "Sí correcto.",
+      "avg_logprob": -0.58,
+      "no_speech_prob": 0.221,
+      "compression_ratio": 1.099
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 102.55,
+      "end_time": 103.55,
+      "duration": 1.0,
+      "text": "Correcto.",
+      "avg_logprob": -0.361
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 103.55,
+      "end_time": 113.74,
+      "duration": 10.19,
+      "text": "Listo Adriana, quedar registrado su reporte por cobro duplicado de 2600 pesos el primero de septiembre.",
+      "avg_logprob": -0.361
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 113.74,
+      "end_time": 118.74,
+      "duration": 5.0,
+      "text": "El área de aclaraciones lo reviza y, de proceder, el rembolso llega entre esos 5 días a bile.",
+      "avg_logprob": -0.361
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 118.74,
+      "end_time": 122.74,
+      "duration": 4.0,
+      "text": "Su folio es 9, 1, 4, 2, 7, 6.",
+      "avg_logprob": -0.361
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 122.74,
+      "end_time": 128.74,
+      "duration": 6.0,
+      "text": "Necesita que se lo repita o le apoyo con algo más, muchas gracias por comunicarse Adriana, que tenga bonita tarde.",
+      "avg_logprob": -0.361
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 128.74,
+      "end_time": 129.74,
+      "duration": 1.0,
+      "text": "Hasta luego.",
+      "avg_logprob": -0.361
+    }
+  ]
+}

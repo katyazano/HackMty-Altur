@@ -1,0 +1,379 @@
+{
+  "call_summary": {
+    "caller_duration_sec": 185.04,
+    "agent_duration_sec": 185.04,
+    "processing_time_sec": 18.092,
+    "real_time_factor": 0.049,
+    "total_dialogue_turns": 37
+  },
+  "anti_spoofing_verdict": {
+    "is_synthetic": false,
+    "confidence": 0.9815,
+    "decision_threshold": 0.35,
+    "risk_level": "AUTHENTIC"
+  },
+  "semantic_nlp_profile": {
+    "detected_language": "es-MX",
+    "total_words": 82,
+    "filler_density": 0.0,
+    "detected_human_fillers": [],
+    "robotic_phrases_found": 0,
+    "lexical_diversity_ttr": 0.6585,
+    "semantic_authenticity_score": 0.5
+  },
+  "conversational_dynamics": {
+    "timeline_synchronized": true,
+    "turn_taking_latency": {
+      "mean_ms": -3225.0,
+      "median_ms": -500.0,
+      "samples_evaluated": 4
+    },
+    "cross_talk_duration_sec": 129.27,
+    "note": "Turn-taking latency and cross-talk evaluated on synchronized timeline."
+  },
+  "transcript": [
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 0.05,
+      "end_time": 8.55,
+      "duration": 8.5,
+      "text": "Buen día, gracias por llamar a Banco Al Tour, le atiende Marina. Le comento que esta llamada se graba para fines de calidad en que le puedo ayudar.",
+      "avg_logprob": -0.251
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 8.55,
+      "end_time": 28.22,
+      "duration": 19.67,
+      "text": "Perfecto, con gusto le ha ayudado a registrar su nuevo número. Me puede dar su nombre por favor y enseguida le pido también su número de referencia de clientes para ubicar su información.",
+      "avg_logprob": -0.251
+    },
+    {
+      "speaker": "Caller",
+      "channel": 0,
+      "start_time": 11.22,
+      "end_time": 17.22,
+      "duration": 6.0,
+      "text": "Hola, lo que pasa es que hay que cambiar el mismo mero y me necesito utilizarlo para que me siguen llegando a los mensajes del banco.",
+      "avg_logprob": -0.547,
+      "no_speech_prob": 0.216,
+      "compression_ratio": 1.567
+    },
+    {
+      "speaker": "Caller",
+      "channel": 0,
+      "start_time": 17.22,
+      "end_time": 96.67,
+      "duration": 79.45,
+      "text": "Luzía, Luzía, Ferre, Montaño, 772, 004, 59, no, 0, otros 59, no, necesito que registro del nuevo mero y que me piden a llegar a los mensajes del nuevo mero.",
+      "avg_logprob": -0.547,
+      "no_speech_prob": 0.216,
+      "compression_ratio": 1.567
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 28.22,
+      "end_time": 39.8,
+      "duration": 11.58,
+      "text": "Gracias, lucia, me puede proporcionar su número de referencia de cliente por favor, es el que viene en su estado de cuenta o en su aplicación, normalmente son entre seis y ocho digital.",
+      "avg_logprob": -0.251
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 39.8,
+      "end_time": 42.28,
+      "duration": 2.48,
+      "text": "Se lo pido para poder continuar con el registro.",
+      "avg_logprob": -0.35
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 47.49,
+      "end_time": 55.53,
+      "duration": 8.04,
+      "text": "Gracias. Entonces, su número es 7, 7, 1, 2, 0, 4, 58, 9, a 10.",
+      "avg_logprob": -0.35
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 59.61,
+      "end_time": 63.05,
+      "duration": 3.44,
+      "text": "Perfecto, gracias por confirmarlo. Ahora, para poder continuar,",
+      "avg_logprob": -0.35
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 63.05,
+      "end_time": 67.53,
+      "duration": 4.48,
+      "text": "me puede platicar con detalle que fue lo que pasó y desde cuando tiene el nuevo número.",
+      "avg_logprob": -0.35
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 67.53,
+      "end_time": 69.21,
+      "duration": 1.68,
+      "text": "Ya no tiene acceso a la anterior.",
+      "avg_logprob": -0.35
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 69.21,
+      "end_time": 83.76,
+      "duration": 14.55,
+      "text": "Pero aunque la interrumpa a luz, el número que tenía antes terminaba en 9, 1, 0 o cual era la terminación.",
+      "avg_logprob": -0.35
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 83.76,
+      "end_time": 86.64,
+      "duration": 2.88,
+      "text": "Gracias por la clara, entonces lo que usted quiere",
+      "avg_logprob": -0.35
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 86.64,
+      "end_time": 89.48,
+      "duration": 2.84,
+      "text": "es que los mensajes del banco lleguen a su nuevo número.",
+      "avg_logprob": -0.446
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 92.99,
+      "end_time": 95.83,
+      "duration": 2.84,
+      "text": "Esto es sobre su cuenta nomina plus sobre su crédito verde.",
+      "avg_logprob": -0.446
+    },
+    {
+      "speaker": "Caller",
+      "channel": 0,
+      "start_time": 96.67,
+      "end_time": 114.84,
+      "duration": 18.17,
+      "text": "sobre el criito verde. 7, 7, 1, 2, 0, 4, 5, 9.",
+      "avg_logprob": -0.618,
+      "no_speech_prob": 0.1,
+      "compression_ratio": 1.019
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 99.37,
+      "end_time": 100.17,
+      "duration": 0.8,
+      "text": "Ok.",
+      "avg_logprob": -0.446
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 102.96,
+      "end_time": 107.3,
+      "duration": 4.34,
+      "text": "Bien lo sea, ahora le pido que me confirme por favor su número de referencia completo.",
+      "avg_logprob": -0.446
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 107.3,
+      "end_time": 109.74,
+      "duration": 2.44,
+      "text": "Díjito por disto para dejar todo bien registrado.",
+      "avg_logprob": -0.446
+    },
+    {
+      "speaker": "Caller",
+      "channel": 0,
+      "start_time": 114.84,
+      "end_time": 144.21,
+      "duration": 29.37,
+      "text": "¿Y quién no te da dos? No, número.",
+      "avg_logprob": -0.618,
+      "no_speech_prob": 0.1,
+      "compression_ratio": 1.019
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 115.78,
+      "end_time": 120.52,
+      "duration": 4.74,
+      "text": "Perfecto. Entonces todo monotá. 7, 7, 1, 2, 0, 4, 5, 9.",
+      "avg_logprob": -0.446
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 120.52,
+      "end_time": 122.08,
+      "duration": 1.56,
+      "text": "Así está bien listo lo sea.",
+      "avg_logprob": -0.446
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 122.08,
+      "end_time": 125.66,
+      "duration": 3.58,
+      "text": "Que dor registrada la solicitud para actualizar su número en su crédito verde.",
+      "avg_logprob": -0.446
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 125.66,
+      "end_time": 132.22,
+      "duration": 6.56,
+      "text": "el área encargada, validará la información y, si todo está correcto, en el transcurso de hoy le llegará un mensaje al nuevo número.",
+      "avg_logprob": -0.316
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 132.22,
+      "end_time": 135.36,
+      "duration": 3.14,
+      "text": "Su folio es 3, 4, 8, 1, 6, 2.",
+      "avg_logprob": -0.316
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 135.36,
+      "end_time": 139.6,
+      "duration": 4.24,
+      "text": "Si necesita que le envienen el saldo o alguna notificación, ya le estarán llegando ahí.",
+      "avg_logprob": -0.316
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 139.6,
+      "end_time": 146.05,
+      "duration": 6.45,
+      "text": "Hay algo más en lo que le pueda ayudar hoy.",
+      "avg_logprob": -0.316
+    },
+    {
+      "speaker": "Caller",
+      "channel": 0,
+      "start_time": 144.21,
+      "end_time": 165.66,
+      "duration": 21.45,
+      "text": "51, 21, 90, 44, 70, 7.",
+      "avg_logprob": -0.618,
+      "no_speech_prob": 0.1,
+      "compression_ratio": 1.019
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 146.05,
+      "end_time": 151.83,
+      "duration": 5.78,
+      "text": "Ah, claro, lo si ha tiene razón para dejar todo bien registrado y que las notificaciones lleguen al número correcto,",
+      "avg_logprob": -0.316
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 151.83,
+      "end_time": 155.23,
+      "duration": 3.4,
+      "text": "necesito que me digte de espacio su nuevo número de teléfono, por favor.",
+      "avg_logprob": -0.316
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 155.23,
+      "end_time": 158.23,
+      "duration": 3.0,
+      "text": "Así lo han otoconpleto y lo canalizo a la área correspondiente.",
+      "avg_logprob": -0.316
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 158.23,
+      "end_time": 160.23,
+      "duration": 2.0,
+      "text": "Me lo puede dar dígito por dígito.",
+      "avg_logprob": -0.335
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 160.23,
+      "end_time": 168.4,
+      "duration": 8.17,
+      "text": "Gracias, Lucia.",
+      "avg_logprob": -0.335
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 168.4,
+      "end_time": 170.08,
+      "duration": 1.68,
+      "text": "¿Qué dar registrado su nuevo número?",
+      "avg_logprob": -0.335
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 170.08,
+      "end_time": 175.08,
+      "duration": 5.0,
+      "text": "5, 1, 2, 1, 9, 0, 4, 4, 7, 7, 7.",
+      "avg_logprob": -0.335
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 175.08,
+      "end_time": 179.08,
+      "duration": 4.0,
+      "text": "El área de validación le enviará un mensaje de confirmación en el transcurso del día.",
+      "avg_logprob": -0.335
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 179.08,
+      "end_time": 181.08,
+      "duration": 2.0,
+      "text": "Si necesitar algo más, lo estamos para servirle.",
+      "avg_logprob": -0.335
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 181.08,
+      "end_time": 184.08,
+      "duration": 3.0,
+      "text": "Le agradezco su llamada y le deseo muy buena tarde.",
+      "avg_logprob": -0.335
+    }
+  ]
+}

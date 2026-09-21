@@ -1,0 +1,215 @@
+{
+  "call_summary": {
+    "caller_duration_sec": 133.64,
+    "agent_duration_sec": 133.64,
+    "processing_time_sec": 12.767,
+    "real_time_factor": 0.048,
+    "total_dialogue_turns": 19
+  },
+  "anti_spoofing_verdict": {
+    "is_synthetic": false,
+    "confidence": 0.7782,
+    "decision_threshold": 0.35,
+    "risk_level": "AUTHENTIC"
+  },
+  "semantic_nlp_profile": {
+    "detected_language": "es-MX",
+    "total_words": 61,
+    "filler_density": 0.0,
+    "detected_human_fillers": [],
+    "robotic_phrases_found": 0,
+    "lexical_diversity_ttr": 0.5902,
+    "semantic_authenticity_score": 0.5
+  },
+  "conversational_dynamics": {
+    "timeline_synchronized": true,
+    "turn_taking_latency": {
+      "mean_ms": -7920.0,
+      "median_ms": -9035.0,
+      "samples_evaluated": 4
+    },
+    "cross_talk_duration_sec": 103.39,
+    "note": "Turn-taking latency and cross-talk evaluated on synchronized timeline."
+  },
+  "transcript": [
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 0.0,
+      "end_time": 18.36,
+      "duration": 18.36,
+      "text": "Buen día, gracias por llamar a Banco Al Tour, le atiende Marina. Le comento que está llamada se graba para fines de calidad. En qué le puedo ayudar. Entiendo, me podría dar su nombre por favor y si me ayuda también con el número de referencia de cliente para revisar el estatus de la entrega.",
+      "avg_logprob": -0.256
+    },
+    {
+      "speaker": "Caller",
+      "channel": 0,
+      "start_time": 8.43,
+      "end_time": 48.77,
+      "duration": 40.34,
+      "text": "Mi tarjeta no ha llegado. Sí. María Villalogo y uno uno nueve ocho, seis, seis, tres, pero. No, al último,",
+      "avg_logprob": -0.497,
+      "no_speech_prob": 0.142,
+      "compression_ratio": 1.388
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 18.36,
+      "end_time": 29.23,
+      "duration": 10.87,
+      "text": "Perfecto, me dice, gracias, señora María, adelante el escucho, me puede dictar su número de referencia por favor,",
+      "avg_logprob": -0.411
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 29.23,
+      "end_time": 42.04,
+      "duration": 12.81,
+      "text": "dijito por dito. Cuando gust, gracias, señora María, entonces para confirmar su número de referencia es 1,",
+      "avg_logprob": -0.411
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 42.04,
+      "end_time": 58.22,
+      "duration": 16.18,
+      "text": "1, 9, 8, 6, 6, 4, 0, a 10, perfecto, muchas gracias por la correctión. Ahora, me puede platicar un poquito más, desde cuando está esperando la tarjeta o si le dieron alguna guía de envío,",
+      "avg_logprob": -0.411
+    },
+    {
+      "speaker": "Caller",
+      "channel": 0,
+      "start_time": 48.77,
+      "end_time": 65.38,
+      "duration": 16.61,
+      "text": "es tres, pero. La pedida de el 19 de agosto y no me ha llegado nada, no es recibido ni mudando",
+      "avg_logprob": -0.497,
+      "no_speech_prob": 0.142,
+      "compression_ratio": 1.388
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 58.22,
+      "end_time": 74.0,
+      "duration": 15.78,
+      "text": "Perdón que la interrumpa mencionó que la solicitud del 19 de agosto, le confirmaron si la entrega",
+      "avg_logprob": -0.383
+    },
+    {
+      "speaker": "Caller",
+      "channel": 0,
+      "start_time": 65.38,
+      "end_time": 101.56,
+      "duration": 36.18,
+      "text": "la identificación nada. Adó mi sirio sobre el crédito verde. Uno, uno, nueve, ocho, seis,",
+      "avg_logprob": -0.646,
+      "no_speech_prob": 0.159,
+      "compression_ratio": 1.183
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 74.0,
+      "end_time": 82.19,
+      "duration": 8.19,
+      "text": "sería domicilio o a su curso al? Gracias por confirmarlo, esto es sobre su cuenta nomina",
+      "avg_logprob": -0.383
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 82.19,
+      "end_time": 87.39,
+      "duration": 5.2,
+      "text": "Plus o sobre su crédito verde.",
+      "avg_logprob": -0.383
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 87.39,
+      "end_time": 94.44,
+      "duration": 7.05,
+      "text": "Ok, señora María, me confirmé nuevamente su número de referencia completo por favor.",
+      "avg_logprob": -0.383
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 94.44,
+      "end_time": 105.24,
+      "duration": 10.8,
+      "text": "Digame la otra vez, dijito por dijito para dejarlo bien registrado. Perfecto, entonces tengo",
+      "avg_logprob": -0.383
+    },
+    {
+      "speaker": "Caller",
+      "channel": 0,
+      "start_time": 101.56,
+      "end_time": 111.82,
+      "duration": 10.26,
+      "text": "seis, tres, tres. Es correcto.",
+      "avg_logprob": -0.646,
+      "no_speech_prob": 0.159,
+      "compression_ratio": 1.183
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 105.24,
+      "end_time": 110.64,
+      "duration": 5.4,
+      "text": "1, 1, 9, 8, 6, 6, 3, 0, el correcto.",
+      "avg_logprob": -0.407
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 110.64,
+      "end_time": 118.26,
+      "duration": 7.62,
+      "text": "Listo, señor Amaria, quedó registrado su reporte, su tarjeta de crédito verde, solicitada",
+      "avg_logprob": -0.407
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 118.26,
+      "end_time": 122.46,
+      "duration": 4.2,
+      "text": "el 19 de agosto, con entregado misilio no ha llegado ni ha recibido notificación.",
+      "avg_logprob": -0.407
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 122.46,
+      "end_time": 125.54,
+      "duration": 3.08,
+      "text": "El folio es 4, 8, 2, 9, 7, 1.",
+      "avg_logprob": -0.407
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 125.54,
+      "end_time": 130.54,
+      "duration": 5.0,
+      "text": "La respuesta a tarda de 7 a 10 días aviles, necesitaron más de mi parte, sino que tenga bonita",
+      "avg_logprob": -0.407
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 130.54,
+      "end_time": 132.74,
+      "duration": 2.2,
+      "text": "tarde y gracias por llamar a Banqualtur.",
+      "avg_logprob": -0.407
+    }
+  ]
+}

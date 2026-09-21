@@ -5,15 +5,27 @@ import pandas as pd
 REPO_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 URL = "http://127.0.0.1:8000/detect"
-df = pd.read_csv(os.path.join(REPO_ROOT, "manifest.csv"))
+manifest_path = os.path.join(REPO_ROOT, "Data", "manifest.csv")
+df = pd.read_csv(manifest_path)
 val = df[df["split"] == "val"].reset_index(drop=True)
 
 print(f"Probando {len(val)} audios del set de validación...\n")
 
+audio_dirs = [
+    os.path.join(REPO_ROOT, "Data", "benchmark_audios"),
+    os.path.join(REPO_ROOT, "audio"),
+    "/home/kontgo/Downloads/altur-challenge-audio/audio"
+]
+
 resultados = []
 for i, row in val.iterrows():
-    path = os.path.join(REPO_ROOT, "audio", row["anon_id"] + ".wav")
-    if not os.path.exists(path):
+    path = None
+    for ad in audio_dirs:
+        candidate = os.path.join(ad, row["anon_id"] + ".wav")
+        if os.path.exists(candidate):
+            path = candidate
+            break
+    if not path:
         print(f"  [FALTA] {row['anon_id']}")
         continue
     b64 = base64.b64encode(open(path, "rb").read()).decode()

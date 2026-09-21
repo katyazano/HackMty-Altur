@@ -1,0 +1,382 @@
+{
+  "call_summary": {
+    "caller_duration_sec": 163.74,
+    "agent_duration_sec": 163.74,
+    "processing_time_sec": 17.818,
+    "real_time_factor": 0.054,
+    "total_dialogue_turns": 36
+  },
+  "anti_spoofing_verdict": {
+    "is_synthetic": true,
+    "confidence": 0.9854,
+    "decision_threshold": 0.35,
+    "risk_level": "CRITICAL"
+  },
+  "semantic_nlp_profile": {
+    "detected_language": "es-MX",
+    "total_words": 133,
+    "filler_density": 0.0,
+    "detected_human_fillers": [],
+    "robotic_phrases_found": 0,
+    "lexical_diversity_ttr": 0.6165,
+    "semantic_authenticity_score": 0.5
+  },
+  "conversational_dynamics": {
+    "timeline_synchronized": true,
+    "turn_taking_latency": {
+      "mean_ms": -6498.6,
+      "median_ms": -3140.0,
+      "samples_evaluated": 7
+    },
+    "cross_talk_duration_sec": 133.09,
+    "note": "Turn-taking latency and cross-talk evaluated on synchronized timeline."
+  },
+  "transcript": [
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 0.08,
+      "end_time": 13.1,
+      "duration": 13.02,
+      "text": "Buen día gracias por llamar a Banco Al Tour, le atiende Marina. Le comento que esta llamada se grababa para fines de calidad, de calidad. En qué puedo ayudarle hoy. Muchas gracias.",
+      "avg_logprob": -0.296
+    },
+    {
+      "speaker": "Caller",
+      "channel": 0,
+      "start_time": 5.3,
+      "end_time": 20.93,
+      "duration": 15.63,
+      "text": "Buenas tardes, más... entiendo, gran... estoy llamando para preguntar por una tarjeta que pedí el 10 y 9 de agosto. No ha llegado a mi dirección que es callan a rangos 244 colonia del valle.",
+      "avg_logprob": -0.383,
+      "no_speech_prob": 0.251,
+      "compression_ratio": 2.278
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 13.1,
+      "end_time": 54.52,
+      "duration": 41.42,
+      "text": "Me claro, con gusto le ayudó a revisar el estatus de su tarjeta. Me regalas un hombre por favor y también les he visto que me proporciones un número de referencia de... Perfecto le escucho. ¿Cuál es un hombre completo por favor? Y si lo tiene a la mano, también el número de referencia de cliente. Gracias de señor Ernesto. Me permito un momento por favor.",
+      "avg_logprob": -0.296
+    },
+    {
+      "speaker": "Caller",
+      "channel": 0,
+      "start_time": 20.93,
+      "end_time": 23.09,
+      "duration": 2.16,
+      "text": "Podría ayudarme a verificar qué pasó.",
+      "avg_logprob": -0.383,
+      "no_speech_prob": 0.251,
+      "compression_ratio": 2.278
+    },
+    {
+      "speaker": "Caller",
+      "channel": 0,
+      "start_time": 23.09,
+      "end_time": 47.79,
+      "duration": 24.7,
+      "text": "Mi nombre es Ernesto Villalovoz Prieto y mi número de referencia de cliente es uno uno 9 8",
+      "avg_logprob": -0.555,
+      "no_speech_prob": 0.153,
+      "compression_ratio": 1.451
+    },
+    {
+      "speaker": "Caller",
+      "channel": 0,
+      "start_time": 47.79,
+      "end_time": 83.46,
+      "duration": 35.67,
+      "text": "Gion 6 6 3 0. Si es correcto uno 9 8 Gion 6 3 0. Podría decir eso,",
+      "avg_logprob": -0.555,
+      "no_speech_prob": 0.153,
+      "compression_ratio": 1.451
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 54.52,
+      "end_time": 60.22,
+      "duration": 5.7,
+      "text": "Voy a confirmar su número de referencia 1, 1, 9, 8, 6, 6, 3, 1, así es.",
+      "avg_logprob": -0.446
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 67.66,
+      "end_time": 69.02,
+      "duration": 1.36,
+      "text": "Perfecto, muchas gracias.",
+      "avg_logprob": -0.446
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 69.02,
+      "end_time": 71.5,
+      "duration": 2.48,
+      "text": "Me puede platicar un poquito más que fue lo que pasó.",
+      "avg_logprob": -0.446
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 71.5,
+      "end_time": 72.52,
+      "duration": 1.02,
+      "text": "Por ejemplo,",
+      "avg_logprob": -0.446
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 73.02,
+      "end_time": 77.32,
+      "duration": 4.3,
+      "text": "perdón que lo interrumpa a usted mencionó que la tarjeta las solicitudes y nueve de agosto, ¿verdad?",
+      "avg_logprob": -0.446
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 77.32,
+      "end_time": 78.6,
+      "duration": 1.28,
+      "text": "Gracias por confirmarlo.",
+      "avg_logprob": -0.446
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 78.6,
+      "end_time": 81.8,
+      "duration": 3.2,
+      "text": "Esto es sobre su cuenta nomina Plus o sobre su crédito verde.",
+      "avg_logprob": -0.446
+    },
+    {
+      "speaker": "Caller",
+      "channel": 0,
+      "start_time": 83.46,
+      "end_time": 95.79,
+      "duration": 12.33,
+      "text": "me cuenta no mina plus. Pedí la tarjeta nueva porque la anterior se me perdió. Podría decir",
+      "avg_logprob": -0.555,
+      "no_speech_prob": 0.153,
+      "compression_ratio": 1.451
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 89.55,
+      "end_time": 91.83,
+      "duration": 2.28,
+      "text": "Ok, entonces lo veo por su referencia.",
+      "avg_logprob": -0.446
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 91.83,
+      "end_time": 92.55,
+      "duration": 0.72,
+      "text": "Ok.",
+      "avg_logprob": -0.446
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 95.23,
+      "end_time": 96.77,
+      "duration": 1.54,
+      "text": "Me puede confirmar nuevamente.",
+      "avg_logprob": -0.446
+    },
+    {
+      "speaker": "Caller",
+      "channel": 0,
+      "start_time": 95.79,
+      "end_time": 103.41,
+      "duration": 7.62,
+      "text": "Y la tarjeta fue enviada a la dirección para el envío es Callenarangos 244 colonia del",
+      "avg_logprob": -0.574,
+      "no_speech_prob": 0.105,
+      "compression_ratio": 1.238
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 96.77,
+      "end_time": 106.55,
+      "duration": 9.78,
+      "text": "Gracias, señor Ernesto.",
+      "avg_logprob": -0.446
+    },
+    {
+      "speaker": "Caller",
+      "channel": 0,
+      "start_time": 103.41,
+      "end_time": 114.04,
+      "duration": 10.63,
+      "text": "valle.",
+      "avg_logprob": -0.574,
+      "no_speech_prob": 0.105,
+      "compression_ratio": 1.238
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 106.55,
+      "end_time": 118.46,
+      "duration": 11.91,
+      "text": "Y solo para validar, me puede confirmar nuevamente su número de referencia de cliente, por favor.",
+      "avg_logprob": -0.376
+    },
+    {
+      "speaker": "Caller",
+      "channel": 0,
+      "start_time": 114.04,
+      "end_time": 159.54,
+      "duration": 45.5,
+      "text": "Con gusto es uno uno 988-163-0.",
+      "avg_logprob": -0.574,
+      "no_speech_prob": 0.105,
+      "compression_ratio": 1.238
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 118.46,
+      "end_time": 119.96,
+      "duration": 1.5,
+      "text": "Perfecto, muchas gracias.",
+      "avg_logprob": -0.376
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 119.96,
+      "end_time": 123.06,
+      "duration": 3.1,
+      "text": "Entonces, su número de referencia es uno, uno, nueve, ocho.",
+      "avg_logprob": -0.376
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 123.06,
+      "end_time": 125.86,
+      "duration": 2.8,
+      "text": "Gion, seis, seis, tres, cero.",
+      "avg_logprob": -0.376
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 125.86,
+      "end_time": 127.26,
+      "duration": 1.4,
+      "text": "Es correcto, le comento.",
+      "avg_logprob": -0.376
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 127.26,
+      "end_time": 132.46,
+      "duration": 5.2,
+      "text": "Que dor registrado el reporte por la tarjeta solicitada el 19 de agosto para su cuenta nomina Plus.",
+      "avg_logprob": -0.376
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 132.46,
+      "end_time": 135.86,
+      "duration": 3.4,
+      "text": "Con envío acá, llenar anjos 244, con el onio del valle.",
+      "avg_logprob": -0.376
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 135.86,
+      "end_time": 139.56,
+      "duration": 3.7,
+      "text": "El tiempo de entrega habitual es de siete a diez días aviles.",
+      "avg_logprob": -0.376
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 139.56,
+      "end_time": 145.96,
+      "duration": 6.4,
+      "text": "En este caso vamos a reastrear la guía y si es necesario, se puede pedir el reviva a su curso al o domicilio.",
+      "avg_logprob": -0.316
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 145.96,
+      "end_time": 150.46,
+      "duration": 4.5,
+      "text": "Su folio de atención es 5, 6, 2, 9, 1, 4.",
+      "avg_logprob": -0.316
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 150.46,
+      "end_time": 154.66,
+      "duration": 4.2,
+      "text": "La respuesta le llegará en el transcurso de los próximos tres días a biles.",
+      "avg_logprob": -0.316
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 154.66,
+      "end_time": 156.76,
+      "duration": 2.1,
+      "text": "Hay algo más en lo que le pueda apoyar el día de hoy.",
+      "avg_logprob": -0.316
+    },
+    {
+      "speaker": "Caller",
+      "channel": 0,
+      "start_time": 159.54,
+      "end_time": 160.54,
+      "duration": 1.0,
+      "text": "Gracias por su ayuda.",
+      "avg_logprob": -0.574,
+      "no_speech_prob": 0.105,
+      "compression_ratio": 1.238
+    },
+    {
+      "speaker": "Caller",
+      "channel": 0,
+      "start_time": 160.54,
+      "end_time": 162.14,
+      "duration": 1.6,
+      "text": "No necesito nada más por ahora.",
+      "avg_logprob": -0.574,
+      "no_speech_prob": 0.105,
+      "compression_ratio": 1.238
+    },
+    {
+      "speaker": "Caller",
+      "channel": 0,
+      "start_time": 162.14,
+      "end_time": 162.94,
+      "duration": 0.8,
+      "text": "Que tenga buen día.",
+      "avg_logprob": -0.574,
+      "no_speech_prob": 0.105,
+      "compression_ratio": 1.238
+    }
+  ]
+}

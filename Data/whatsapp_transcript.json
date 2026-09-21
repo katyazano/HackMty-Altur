@@ -1,0 +1,129 @@
+{
+  "call_id": "test_whatsapp",
+  "duration_s": 56.25,
+  "total_turns": 17,
+  "processing_time_s": 8.88,
+  "speaker_1_transcript": "Sí, pues favor me gustaría. ¿De acuerdo? ¿Cómo lo? Claro. Como el cargo ya está picado, no lo reconocer, Está bien. Muchas gracias. ¿Unsilucido?",
+  "speaker_2_transcript": "de los que se han mandado sus movimientos recientes y si identifica algo más ospechoso reporten o de inmediato. Decea que también le Oriente sobre cómo reforzar la seguridad como alertas en el celular o revisar inicios de sesión. Para reforzar su seguridad les jujero el pivar alertas de movimientos en el abdel banco, que su información de contacto esté actualizada y, perificar, periodicamente, los dispositivos con exceso a su cuenta. mantendría abierto el reporte de operación, no reconocida, igual de el folio que le proporcionemos. Si su hará cualquier.",
+  "dialogue": [
+    {
+      "start": 0.3,
+      "end": 5.42,
+      "duration": 5.12,
+      "speaker": "Speaker 2",
+      "text": "de los que se han mandado sus movimientos recientes y si identifica algo más ospechoso"
+    },
+    {
+      "start": 5.42,
+      "end": 7.86,
+      "duration": 2.44,
+      "speaker": "Speaker 2",
+      "text": "reporten o de inmediato."
+    },
+    {
+      "start": 7.86,
+      "end": 14.54,
+      "duration": 6.68,
+      "speaker": "Speaker 2",
+      "text": "Decea que también le Oriente sobre cómo reforzar la seguridad como alertas en el celular"
+    },
+    {
+      "start": 14.54,
+      "end": 18.76,
+      "duration": 4.22,
+      "speaker": "Speaker 2",
+      "text": "o revisar inicios de sesión."
+    },
+    {
+      "start": 18.76,
+      "end": 21.2,
+      "duration": 2.44,
+      "speaker": "Speaker 1",
+      "text": "Sí, pues favor me gustaría."
+    },
+    {
+      "start": 21.2,
+      "end": 22.2,
+      "duration": 1.0,
+      "speaker": "Speaker 1",
+      "text": "¿De acuerdo?"
+    },
+    {
+      "start": 22.2,
+      "end": 23.2,
+      "duration": 1.0,
+      "speaker": "Speaker 1",
+      "text": "¿Cómo lo?"
+    },
+    {
+      "start": 23.2,
+      "end": 24.2,
+      "duration": 1.0,
+      "speaker": "Speaker 1",
+      "text": "Claro."
+    },
+    {
+      "start": 24.2,
+      "end": 29.92,
+      "duration": 5.72,
+      "speaker": "Speaker 2",
+      "text": "Para reforzar su seguridad les jujero el pivar alertas de movimientos en el abdel banco,"
+    },
+    {
+      "start": 29.92,
+      "end": 33.92,
+      "duration": 4.0,
+      "speaker": "Speaker 2",
+      "text": "que su información de contacto esté actualizada y,"
+    },
+    {
+      "start": 33.92,
+      "end": 38.92,
+      "duration": 5.0,
+      "speaker": "Speaker 2",
+      "text": "perificar, periodicamente, los dispositivos con exceso a su cuenta."
+    },
+    {
+      "start": 38.92,
+      "end": 42.05,
+      "duration": 3.13,
+      "speaker": "Speaker 1",
+      "text": "Como el cargo ya está picado, no lo reconocer,"
+    },
+    {
+      "start": 42.05,
+      "end": 45.05,
+      "duration": 3.0,
+      "speaker": "Speaker 2",
+      "text": "mantendría abierto el reporte de operación,"
+    },
+    {
+      "start": 45.05,
+      "end": 49.05,
+      "duration": 4.0,
+      "speaker": "Speaker 2",
+      "text": "no reconocida, igual de el folio que le proporcionemos."
+    },
+    {
+      "start": 49.05,
+      "end": 51.85,
+      "duration": 2.8,
+      "speaker": "Speaker 1",
+      "text": "Está bien. Muchas gracias."
+    },
+    {
+      "start": 52.85,
+      "end": 55.06,
+      "duration": 2.21,
+      "speaker": "Speaker 1",
+      "text": "¿Unsilucido?"
+    },
+    {
+      "start": 55.06,
+      "end": 57.06,
+      "duration": 2.0,
+      "speaker": "Speaker 2",
+      "text": "Si su hará cualquier."
+    }
+  ]
+}

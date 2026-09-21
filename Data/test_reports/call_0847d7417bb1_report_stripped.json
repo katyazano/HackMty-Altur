@@ -1,0 +1,106 @@
+{
+  "call_summary": {
+    "caller_duration_sec": 18.61,
+    "agent_duration_sec": 35.77,
+    "processing_time_sec": 7.415,
+    "real_time_factor": 0.136,
+    "total_dialogue_turns": 8
+  },
+  "anti_spoofing_verdict": {
+    "is_synthetic": false,
+    "confidence": 0.926,
+    "decision_threshold": 0.35,
+    "risk_level": "AUTHENTIC"
+  },
+  "semantic_nlp_profile": {
+    "detected_language": "es-MX",
+    "total_words": 88,
+    "filler_density": 0.0114,
+    "detected_human_fillers": [
+      "este"
+    ],
+    "robotic_phrases_found": 0,
+    "lexical_diversity_ttr": 0.5795,
+    "semantic_authenticity_score": 0.5285
+  },
+  "conversational_dynamics": {
+    "timeline_synchronized": false,
+    "turn_taking_latency": null,
+    "cross_talk_duration_sec": 0.0,
+    "note": "Audio files were processed as independent continuous speech streams."
+  },
+  "transcript": [
+    {
+      "speaker": "Caller",
+      "channel": 0,
+      "start_time": 0.0,
+      "end_time": 5.0,
+      "duration": 5.0,
+      "text": "El pago de 2022, del primero de 100 dólares, me aparece 2 veces en el estado de cuenta.",
+      "avg_logprob": -0.178
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 0.0,
+      "end_time": 30.0,
+      "duration": 30.0,
+      "text": "¿Qué es el que es el que es el que es el que es el que es el que es el que es el que es el que es el que es el que es el que es el que es el que es el que es el que es el que es el que es el que es el que es el que es el que es el que es el que es el que es el que es el que es el que es el que es el que es el que es el que es el que es el que es el que es el que es el que es el que es el que es el que es el que es el que es el que es el que es el que es el que es el que es el que es el que es el que es el que es el que es el que es el que es el que es el que es el que es el que es el que es el que es el que es el que es el que es el que es el que es el que es el que es el que es el que es el que es el que es el que es el que es el",
+      "avg_logprob": -0.166
+    },
+    {
+      "speaker": "Caller",
+      "channel": 0,
+      "start_time": 5.0,
+      "end_time": 10.2,
+      "duration": 5.2,
+      "text": "que proteger el 44 de en el 41, en el 91, en el 91, en el 91, en el 93.",
+      "avg_logprob": -0.235
+    },
+    {
+      "speaker": "Caller",
+      "channel": 0,
+      "start_time": 10.2,
+      "end_time": 13.32,
+      "duration": 3.12,
+      "text": "El primero de este tiempo hay 2.000.000, que entonces solo hizo un pago, pero en el estado de esta",
+      "avg_logprob": -0.885
+    },
+    {
+      "speaker": "Caller",
+      "channel": 0,
+      "start_time": 13.32,
+      "end_time": 16.6,
+      "duration": 3.28,
+      "text": "esta me parece todo es la misma cantidad, el mismo día, por esto ya me sobre la nomina",
+      "avg_logprob": -0.885
+    },
+    {
+      "speaker": "Caller",
+      "channel": 0,
+      "start_time": 16.6,
+      "end_time": 18.6,
+      "duration": 2.0,
+      "text": "plosaje, y es correcto, no, gracias, que tengo en la tarde.",
+      "avg_logprob": -0.885
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 30.0,
+      "end_time": 31.0,
+      "duration": 1.0,
+      "text": "5.1, 2.8.",
+      "avg_logprob": -1.024
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 31.0,
+      "end_time": 35.8,
+      "duration": 4.8,
+      "text": "La respuesta es tarde de 3 a 5 días a Ville y la vida es algo más que lo que le pueda apoyar hoy.",
+      "avg_logprob": -1.024
+    }
+  ]
+}

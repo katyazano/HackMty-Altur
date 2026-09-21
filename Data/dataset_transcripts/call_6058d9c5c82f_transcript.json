@@ -1,0 +1,287 @@
+{
+  "call_summary": {
+    "caller_duration_sec": 153.18,
+    "agent_duration_sec": 153.18,
+    "processing_time_sec": 14.487,
+    "real_time_factor": 0.047,
+    "total_dialogue_turns": 27
+  },
+  "anti_spoofing_verdict": {
+    "is_synthetic": true,
+    "confidence": 0.9774,
+    "decision_threshold": 0.35,
+    "risk_level": "CRITICAL"
+  },
+  "semantic_nlp_profile": {
+    "detected_language": "es-MX",
+    "total_words": 88,
+    "filler_density": 0.0,
+    "detected_human_fillers": [],
+    "robotic_phrases_found": 0,
+    "lexical_diversity_ttr": 0.5795,
+    "semantic_authenticity_score": 0.5
+  },
+  "conversational_dynamics": {
+    "timeline_synchronized": true,
+    "turn_taking_latency": {
+      "mean_ms": -4616.7,
+      "median_ms": -5620.0,
+      "samples_evaluated": 3
+    },
+    "cross_talk_duration_sec": 117.61,
+    "note": "Turn-taking latency and cross-talk evaluated on synchronized timeline."
+  },
+  "transcript": [
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 0.0,
+      "end_time": 15.84,
+      "duration": 15.84,
+      "text": "Buen día, gracias por llamar a Banco Al Tour, le atiende Marina. Le comento que esta llamada se graba para fines de calidad, en que le puedo ayudar.",
+      "avg_logprob": -0.294
+    },
+    {
+      "speaker": "Caller",
+      "channel": 0,
+      "start_time": 9.74,
+      "end_time": 14.74,
+      "duration": 5.0,
+      "text": "Hola buenas noches. Metí una solicitud de crédito personal y quiero saber si ya está aprobada.",
+      "avg_logprob": -0.294,
+      "no_speech_prob": 0.21,
+      "compression_ratio": 1.462
+    },
+    {
+      "speaker": "Caller",
+      "channel": 0,
+      "start_time": 14.74,
+      "end_time": 44.23,
+      "duration": 29.49,
+      "text": "Sí, claro. Daniela, sí es 6, 4, 1, sí lo que siguen en 7, 5, todo junto de 6, 6, 4, 1, 2, 0, 7, 5.",
+      "avg_logprob": -0.294,
+      "no_speech_prob": 0.21,
+      "compression_ratio": 1.462
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 15.84,
+      "end_time": 26.04,
+      "duration": 10.2,
+      "text": "Claro, con mucho gusto le ayudó a revisar el estatus de su solicitud. Me podría dar por favor su nombre completo para dejarlo registrado y también le pido su número de referencia de cliente por favor.",
+      "avg_logprob": -0.294
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 26.04,
+      "end_time": 46.36,
+      "duration": 20.32,
+      "text": "Gracias, Danila. Me podría indicar su... Perfecto. Me puedo dar los otros digitos que siguen por favor. Hacito en el número de referencia completo.",
+      "avg_logprob": -0.294
+    },
+    {
+      "speaker": "Caller",
+      "channel": 0,
+      "start_time": 44.23,
+      "end_time": 75.72,
+      "duration": 31.49,
+      "text": "No es 6, 6, 4, 1, 2, 0, 7, 5. No es 7, 6. La metía el 25 de agosto. No recibir ningún mensaje solo el folio.",
+      "avg_logprob": -0.294,
+      "no_speech_prob": 0.21,
+      "compression_ratio": 1.462
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 46.36,
+      "end_time": 53.76,
+      "duration": 7.4,
+      "text": "Gracias entonces tengo su número de referencia como 6, 6, 4, 1, 2, 0, 7, 6, así es.",
+      "avg_logprob": -0.376
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 53.76,
+      "end_time": 66.19,
+      "duration": 12.43,
+      "text": "A discolpe decirlo, no te mal. Gracias por corregirme Daniela. Me puede platicar un poquito más",
+      "avg_logprob": -0.376
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 66.19,
+      "end_time": 70.67,
+      "duration": 4.48,
+      "text": "sobre cuando hizo las solicitudes o si recibía algún mensaje de confirmación.",
+      "avg_logprob": -0.376
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 70.67,
+      "end_time": 81.34,
+      "duration": 10.67,
+      "text": "Perdón que la interrumpa el folio que recibió lo tiene a la mano o recuerdas como empieza.",
+      "avg_logprob": -0.376
+    },
+    {
+      "speaker": "Caller",
+      "channel": 0,
+      "start_time": 75.72,
+      "end_time": 127.35,
+      "duration": 51.63,
+      "text": "el folio RG120418 no es crédito personal el de 35 mil pesos sí claro CRG120418 si así está bien",
+      "avg_logprob": -0.635,
+      "no_speech_prob": 0.245,
+      "compression_ratio": 1.053
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 81.34,
+      "end_time": 91.99,
+      "duration": 10.65,
+      "text": "Gracias por el dato del 25 de agosto ya lo tengo registrado. Perfecto muchas gracias.",
+      "avg_logprob": -0.376
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 91.99,
+      "end_time": 96.27,
+      "duration": 4.28,
+      "text": "Entonces, esto es sobre su cuenta nominables o sobre su crédito verde.",
+      "avg_logprob": -0.49
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 96.27,
+      "end_time": 104.18,
+      "duration": 7.91,
+      "text": "A, ok, entonces lo veo por su referencia.",
+      "avg_logprob": -0.49
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 104.18,
+      "end_time": 105.14,
+      "duration": 0.96,
+      "text": "Ok.",
+      "avg_logprob": -0.49
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 105.14,
+      "end_time": 111.12,
+      "duration": 5.98,
+      "text": "Gracias, me lo puedo repetir para confirmarlo.",
+      "avg_logprob": -0.49
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 111.12,
+      "end_time": 112.76,
+      "duration": 1.64,
+      "text": "Diga, me lo denuevo por favor.",
+      "avg_logprob": -0.49
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 112.76,
+      "end_time": 120.48,
+      "duration": 7.72,
+      "text": "Gracias, entonces tengo registrado.",
+      "avg_logprob": -0.49
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 120.48,
+      "end_time": 123.88,
+      "duration": 3.4,
+      "text": "C, R, G, O, 2, 0, 4, 1, 8.",
+      "avg_logprob": -0.49
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 123.88,
+      "end_time": 125.08,
+      "duration": 1.2,
+      "text": "A, fiesta bien.",
+      "avg_logprob": -0.49
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 125.08,
+      "end_time": 133.95,
+      "duration": 8.87,
+      "text": "Listo, Daniela, quedó registrado su reporte para seguimiento de solicitud de crédito personal",
+      "avg_logprob": -0.49
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 133.95,
+      "end_time": 135.63,
+      "duration": 1.68,
+      "text": "por 35 mil pesos.",
+      "avg_logprob": -0.49
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 135.63,
+      "end_time": 136.63,
+      "duration": 1.0,
+      "text": "Con folio.",
+      "avg_logprob": -0.49
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 136.63,
+      "end_time": 143.19,
+      "duration": 6.56,
+      "text": "5, 8, 9, 3, 4. El dictamente armada hasta 5 días abiles y le confirman el estatus",
+      "avg_logprob": -0.384
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 143.19,
+      "end_time": 147.03,
+      "duration": 3.84,
+      "text": "por mensaje. Necesita que le apoya con algo más, le agradezco mucho su llamada",
+      "avg_logprob": -0.384
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 147.03,
+      "end_time": 151.07,
+      "duration": 4.04,
+      "text": "Daniela que tengo un excelente noche. Si necesita cualquier otra cosa, estamos para",
+      "avg_logprob": -0.384
+    },
+    {
+      "speaker": "Agent",
+      "channel": 1,
+      "start_time": 151.07,
+      "end_time": 152.27,
+      "duration": 1.2,
+      "text": "servirle en Banco Al Tour.",
+      "avg_logprob": -0.384
+    }
+  ]
+}

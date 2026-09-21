@@ -1,15 +1,15 @@
 services:
   api:
-    build: .
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: hackmty-api
     ports:
       - "8000:8000"
-
-  frontend:
-    build: .
-    command: streamlit run frontend.py --server.address 0.0.0.0 --server.port 8501
+      - "8888:8888"
     environment:
-      - API_URL=http://api:8000
-    ports:
-      - "8501:8501"
-    depends_on:
-      - api
+      - APP_NAME=mergeConflict
+      - APP_ENV=production
+      - LOG_LEVEL=INFO
+      - CALIBRATED_THRESHOLD=0.50
+    restart: unless-stopped
