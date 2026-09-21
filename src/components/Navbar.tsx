@@ -57,15 +57,15 @@ export const Navbar: React.FC<NavbarProps> = ({
         <span className="nav-engine-sub">docs</span>
       </a>
 
-      {/* Center: "mergeConflict" in the VERY CENTER */}
+      {/* Center: "merge-conflict" in the VERY CENTER */}
       <div className="nav-cell center-nav-box">
         <a
           href="#/"
           onClick={(e) => handleNav('home', e)}
           className="center-title"
-          title="mergeConflict Home"
+          title="merge-conflict Home"
         >
-          merge<span>Conflict</span>
+          merge-<span>conflict</span>
         </a>
       </div>
 

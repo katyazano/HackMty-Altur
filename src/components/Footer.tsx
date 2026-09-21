@@ -18,10 +18,10 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
         {/* Column 1: Brand & Hackathon Scope */}
         <div className="footer-col">
           <div className="footer-brand">
-            merge<span>Conflict</span>
+            merge-<span>conflict</span>
           </div>
           <p className="footer-desc">
-            High-performance voice biometrics defense engineered for HackMTY. Sub-50ms frontline acoustic filtering combined with multimodal deepfake representation learning.
+            High-performance voice biometrics defense engineered for HackMTY. Frontline acoustic filtering combined with multimodal deepfake representation learning.
           </p>
         </div>
 
@@ -103,7 +103,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
 
       {/* Sub-Footer Strip */}
       <div className="footer-bottom-bar">
-        <div>mergeConflict // Altur Voice Anti-Spoofing Challenge</div>
+        <div>merge-conflict // Altur Voice Anti-Spoofing Challenge</div>
         <div>Built for HackMTY 2026</div>
       </div>
     </footer>
